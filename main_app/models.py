@@ -61,3 +61,36 @@ class Client(models.Model):
         return str(self.user)
     # clean:
     # save:
+
+
+class Developer(Client):
+    # Constants:
+    # Fields:
+    is_company = models.BooleanField(default=False,
+                                     verbose_name=_('Are you a Company?')
+                                     )
+    company_name = models.CharField(max_length=300,
+                                    unique=True,
+                                    db_index=True,
+                                    verbose_name=_('Company Name'),
+                                    null=True,
+                                    blank=True
+                                    )
+    web_site = models.URLField(max_length=400,
+                               unique=True,
+                               verbose_name=_('Company Website'),
+                               null=True,
+                               blank=True
+                               )
+    trade_record = models.FileField(verbose_name=_('Trade Record'),
+                                    null=True,
+                                    blank=True
+                                    )
+
+    # meta:
+    # srt:
+    def __str__(self):
+        return str(self.user)
+    # clean:
+    # save:
+
