@@ -1,8 +1,11 @@
 from django.contrib import admin
-from .models import (
-    Client,
-    Developer,
-    )
+from . import models
 
-admin.site.register(Client)
-admin.site.register(Developer)
+admin.site.register(models.Client)
+admin.site.register(models.Developer)
+admin.site.register(models.Project)
+admin.site.register(models.Subscription)
+admin.site.register(models.MainPhase)
+admin.site.register(models.SubPhase)
+admin.site.register(models.SubPhaseUpdate)
+admin.site.register(models.UpdateAttachment)
