@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_body %}
+
+{% for proj in projects %}
+    {{proj}}
+{% endfor %}
+
+{% endblock %}

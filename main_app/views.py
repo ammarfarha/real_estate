@@ -1,5 +1,7 @@
-# from django.shortcuts import render, HttpResponse
-#
-# # Create your views here.
-# def project_list():
-#     return HttpResponse("Hello")
+from django.shortcuts import render, HttpResponse
+from .models import Project
+
+
+def home(request):
+    projects = Project.objects.all()
+    return render(request, 'home.html', {'projects': projects})
