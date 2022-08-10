@@ -1,4 +1,3 @@
-from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
@@ -25,23 +24,25 @@ class Client(models.Model):
         blank=False,
         verbose_name=_('Birth Date')
     )
+    # TODO: need to change to phone field
     phone = models.CharField(
         max_length=12,
         null=True,
         blank=False,
         verbose_name=_('Phone Number')
-    )  # need to change to phone field
+    )
+    # TODO: need to change to phone field
     mobile = models.CharField(
         max_length=12,
         null=True,
         blank=False,
         verbose_name=_('Mobile Number')
-    )  # need to change to phone field
+    )
     nationality = CountryField(
         verbose_name=_('Country'),
         default='BH',
         null=True,
-        blank=False
+        blank=False,
     )
     gender = models.CharField(
         max_length=2,
@@ -356,14 +357,3 @@ class UpdateAttachment(models.Model):
         return "File for: " + str(self.update)
     # clean:
     # save:
-
-# ToDo:
-#   0- inner class for all choises values
-#   1- str funtion to all class
-#   2- null , blank for all
-#   3 - related name for all classes
-#   4 - verbase for all
-# ###############################
-#   5 - add package for soicial login
-#   6 - add plugin phone, mobile number
-#   7 - tow factor authentecation
