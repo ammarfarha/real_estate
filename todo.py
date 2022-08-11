@@ -9,4 +9,4 @@
 #   7 - tow factor authentecation
 #   8 - localizations - internatioalization
 #   9 - Base Views for Auth (Cleint - Developer)
-#   10 - crespy form
+#   10 - crispy forms

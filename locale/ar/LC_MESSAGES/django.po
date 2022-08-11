@@ -1,0 +1,223 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-10 19:56-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+#: .\main_app\models.py:8
+msgid "Male"
+msgstr ""
+
+#: .\main_app\models.py:9
+msgid "Female"
+msgstr ""
+
+#: .\main_app\models.py:25
+msgid "Birth Date"
+msgstr ""
+
+#: .\main_app\models.py:32
+msgid "Phone Number"
+msgstr ""
+
+#: .\main_app\models.py:39
+msgid "Mobile Number"
+msgstr ""
+
+#: .\main_app\models.py:42
+msgid "Country"
+msgstr ""
+
+#: .\main_app\models.py:49
+msgid "Gender"
+msgstr ""
+
+#: .\main_app\models.py:57
+msgid "City"
+msgstr ""
+
+#: .\main_app\models.py:62
+msgid "Full Address"
+msgstr ""
+
+#: .\main_app\models.py:67
+msgid "Client Photo"
+msgstr ""
+
+#: .\main_app\models.py:85
+msgid "Are you a Company?"
+msgstr ""
+
+#: .\main_app\models.py:91
+msgid "Company Name"
+msgstr ""
+
+#: .\main_app\models.py:98
+msgid "Company Website"
+msgstr ""
+
+#: .\main_app\models.py:103
+msgid "Trade Record"
+msgstr ""
+
+#: .\main_app\models.py:118
+msgid "Commercial"
+msgstr ""
+
+#: .\main_app\models.py:119
+msgid "Residential"
+msgstr ""
+
+#: .\main_app\models.py:120
+msgid "Industrial"
+msgstr ""
+
+#: .\main_app\models.py:121
+msgid "Special Purpose"
+msgstr ""
+
+#: .\main_app\models.py:122
+msgid "Lands"
+msgstr ""
+
+#: .\main_app\models.py:125
+msgid "Planing"
+msgstr ""
+
+#: .\main_app\models.py:126
+msgid "Initial"
+msgstr ""
+
+#: .\main_app\models.py:127
+msgid "Under Construction"
+msgstr ""
+
+#: .\main_app\models.py:128
+msgid "Done"
+msgstr ""
+
+#: .\main_app\models.py:129
+msgid "Ready To Use"
+msgstr ""
+
+#: .\main_app\models.py:135
+msgid "Developer"
+msgstr ""
+
+#: .\main_app\models.py:143
+msgid "Project Name"
+msgstr ""
+
+#: .\main_app\models.py:150
+msgid "Summary"
+msgstr ""
+
+#: .\main_app\models.py:157
+msgid "Type of the Project"
+msgstr ""
+
+#: .\main_app\models.py:165
+msgid "The project Status"
+msgstr ""
+
+#: .\main_app\models.py:171
+msgid "Location"
+msgstr ""
+
+#: .\main_app\models.py:176
+msgid "Area in Square Meters"
+msgstr ""
+
+#: .\main_app\models.py:183
+msgid "Project Stakeholders"
+msgstr ""
+
+#: .\main_app\models.py:188
+msgid "Project Neighborhood"
+msgstr ""
+
+#: .\main_app\models.py:207
+msgid "Client"
+msgstr ""
+
+#: .\main_app\models.py:215 .\main_app\models.py:247
+msgid "Project"
+msgstr ""
+
+#: .\main_app\models.py:222
+msgid "Subscription Date"
+msgstr ""
+
+#: .\main_app\models.py:227
+msgid "Referral User"
+msgstr ""
+
+#: .\main_app\models.py:254 .\main_app\models.py:280
+msgid "Title"
+msgstr ""
+
+#: .\main_app\models.py:273
+msgid "Sub Phase"
+msgstr ""
+
+#: .\main_app\models.py:285
+msgid "Start Date"
+msgstr ""
+
+#: .\main_app\models.py:290
+msgid "Finish Date"
+msgstr ""
+
+#: .\main_app\models.py:295
+msgid "Duration"
+msgstr ""
+
+#: .\main_app\models.py:314
+msgid "Sub Phase Update"
+msgstr ""
+
+#: .\main_app\models.py:320
+msgid "Update Date"
+msgstr ""
+
+#: .\main_app\models.py:324
+msgid "Update Description"
+msgstr ""
+
+#: .\main_app\models.py:343
+msgid "Update Sun Phase"
+msgstr ""
+
+#: .\main_app\models.py:349
+msgid "Attachment"
+msgstr ""
+
+#: .\main_app\views.py:11
+msgid "Hello"
+msgstr ""
+
+#: .\main_app\views.py:22
+msgid "hello"
+msgstr "مرحباً"
+
+#: .\real_estate\settings.py:134
+msgid "English"
+msgstr "الأنكليزية"
+
+#: .\real_estate\settings.py:135
+msgid "Arabic"
+msgstr "العربية"
