@@ -1,8 +1,6 @@
 from django.contrib import admin
 from . import models
 
-admin.site.register(models.Client)
-admin.site.register(models.Developer)
 admin.site.register(models.Project)
 admin.site.register(models.Subscription)
 admin.site.register(models.MainPhase)

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os.path
 from pathlib import Path
+
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -103,16 +105,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.Client'
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 # LANGUAGE_CODE = 'en-us'
 
-# TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC'
 
-# USE_I18N = True
+USE_I18N = True
 
-# USE_TZ = True
+USE_TZ = True
 
 LANGUAGES_CODE = 'en'
 
@@ -127,6 +130,8 @@ LOCALE_PATHS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+# poedit
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -136,3 +141,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# LOGIN_URL = reverse_lazy('login')

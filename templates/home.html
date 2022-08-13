@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test</title>
-</head>
-<body>
-<h1>{{sample_text}}</h1>
-<h2>{{trans}}</h2>
+{% extends 'base.html' %}
+{% load i18n %}
+{% block body %}
+    <h1>{% trans sample_text %}</h1>
+    <h2>{% trans "hello" %}</h2>
+    <h2>{% trans "Welcome" %}</h2>
 
-{% for proj in projects %}
-    {{proj}}
-{% endfor %}
-</body>
-</html>
+    {% for proj in projects %}
+        {{proj}}
+    {% endfor %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Login</button>
+</form>
+{% endblock %}
