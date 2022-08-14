@@ -63,9 +63,10 @@ class Client(AbstractUser):
     class Meta:
         verbose_name = 'Client'
         verbose_name_plural = 'Clients'
+
     # srt:
     def __str__(self):
-        return str(self.pk)
+        return "client : " + str(self.username)
     # clean:
     # save:
 
@@ -101,7 +102,8 @@ class Developer(Client):
     class Meta:
         verbose_name = 'Developer'
         verbose_name_plural = 'Developers'
-    # srt:
-    # str:
+
+    def __str__(self):
+        return "dev : " + str(self.username)
     # clean:
     # save:

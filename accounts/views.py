@@ -2,15 +2,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from .models import Developer
+from .models import Developer, Client
 
 
 class ClientMixin(LoginRequiredMixin):
-    pass
+    def test_func(self):
+        user = self.request.user
+        developer = Developer.objects.filter(username=user.username)
+        clients = Client.objects.filter(username=user.username)
+        return not developer.exists() and clients.exists()
 
 
 class DeveloperMixin(LoginRequiredMixin, UserPassesTestMixin):
-
     def test_func(self):
         user = self.request.user
         developer = Developer.objects.filter(username=user.username)
@@ -26,7 +29,7 @@ def client_signup(request):
 
 
 def developer_signup(request):
-    return render(request, 'signup.html')
+    return render(request, 'register.html')
 
 
 def sign_in(request):

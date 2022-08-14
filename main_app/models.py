@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from accounts.models import Developer, Client
 
+
 class Project(models.Model):
     # Constants:
     class TypeList(models.TextChoices):
@@ -85,8 +86,11 @@ class Project(models.Model):
     # srt:
     def __str__(self):
         return self.name + " - developed by: (" + str(self.developer) + ")"
+
     # clean:
     # save:
+    def DisplayType(self):
+        return str(self.TypeList(self.type))
 
 
 class Subscription(models.Model):
