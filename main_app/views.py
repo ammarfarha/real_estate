@@ -14,7 +14,7 @@ def home(request):
         'sample_text': _("Hello"),
         'projects': projects,
     }
-    return render(request, 'home.html', context)
+    return render(request, 'index.html', context)
 
 
 # class StaffBaseView(LoginRequiredMixin, UserPassesTestMixin):

@@ -10,3 +10,12 @@
 #   8 - localizations - internatioalization
 #   9 - Base Views for Auth (Cleint - Developer)
 #   10 - crispy forms
+
+
+# namespacing urls
+# fix settings login/logout urls
+# base.html with login/logout and welcome message for loggedin users
+# 3 views:
+#   - list of projects developed by the developer
+#   - list of all subscripbed projects (for client)
+#   - list of all projects (for public)
