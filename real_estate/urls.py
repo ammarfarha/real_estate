@@ -26,7 +26,7 @@ urlpatterns = [
 ]
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
-    path('', include('main_app.urls')),
-    path('users/', include('accounts.urls')),
+    path('', include('main_app.urls', namespace='basic')),
+    path('users/', include('accounts.urls', namespace='accounts')),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 )

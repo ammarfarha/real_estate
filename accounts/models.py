@@ -10,11 +10,7 @@ class GenderList(models.TextChoices):
 
 
 class Client(AbstractUser):
-    birth_date = models.DateField(
-        null=True,
-        blank=False,
-        verbose_name=_('Birth Date')
-    )
+    birth_date = models.DateField(null=True, blank=False, verbose_name=_('Birth Date'))
     # TODO: need to change to phone field
     phone = models.CharField(
         max_length=12,
