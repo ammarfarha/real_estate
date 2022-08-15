@@ -1,18 +1,22 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.shortcuts import render, HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import FormView, ListView
 
-from .models import Project, Developer
+from .models import Project
+from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language, activate, gettext
 
 
 def home(request):
     projects = Project.objects.all()
+    clients = Client.objects.all()
     context = {
         'sample_text': _("Hello"),
         'projects': projects,
+        'users': clients,
     }
     return render(request, 'project_list.html', context)
 
