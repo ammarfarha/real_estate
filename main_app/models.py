@@ -89,8 +89,6 @@ class Project(models.Model):
 
     # clean:
     # save:
-    def DisplayType(self):
-        return str(self.TypeList(self.type))
 
 
 class Subscription(models.Model):
