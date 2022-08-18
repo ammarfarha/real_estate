@@ -18,13 +18,13 @@ def home(request):
         'projects': projects,
         'users': clients,
     }
-    return render(request, 'project_list.html', context)
+    return render(request, 'main_app/project_list.html', context)
     # return render(request, 'buttons.html', context)
 
 
 class DeveloperListProject(DeveloperMixin, ListView):
     model = Project
-    template_name = "developer_project_list.html"
+    template_name = "main_app/developer_project_list.html"
     context_object_name = "projects"
     paginate_by = 5
 
@@ -39,11 +39,10 @@ class ClientSubscribeProjects(ClientMixin, ListView):
     paginate_by = 5
 
     def get_queryset(self, *args, **kwargs):
-        proj = []
-        subscription = Subscription.objects.filter(client=self.request.user)
-        for sub in subscription:
-            proj.append(sub.project)
-        return proj
+        return Project.objects.filter(
+            pk__in=Subscription.objects.filter(client=self.request.user).values_list('project', flat=True)
+        )
+
 
 # class StaffBaseView(LoginRequiredMixin, UserPassesTestMixin):
 #

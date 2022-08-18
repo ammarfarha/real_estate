@@ -1,4 +1,5 @@
 # TODO:
+"""
 #   0- inner class for all choises values
 #   1- str funtion to all class
 #   2- null , blank for all
@@ -19,3 +20,15 @@
 #   - list of projects developed by the developer
 #   - list of all subscripbed projects (for client)
 #   - list of all projects (for public)
+
+
+- template namespacing
+- crispy basic setup
+- media files settings and urls (local)
+--- designated folder (media)
+--- break-down for media sub-folders
+- login - logout - logged-in user - links authorized (templatetags)
+- utilize SuccessMessageMixin
+- pagination for all listviews
+- filter for projects listing pages (use django-filters)
+"""

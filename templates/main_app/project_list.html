@@ -1,17 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'main_app/base.html' %}
 {% load static %}
 {% block page_body %}
-
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <!-- Main Content -->
             <div id="content">
-                {% include 'toolpar.html' %}
+                {% include 'main_app/toolbar.html' %}
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">{{ user.username }} Projects:</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Projects</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">
@@ -110,7 +115,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="../accounts/login.html">Logout</a>
                 </div>
             </div>
         </div>

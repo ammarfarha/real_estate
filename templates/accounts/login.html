@@ -1,7 +1,7 @@
-{% extends 'user_base.html' %}
+{% extends 'accounts/user_base.html' %}
 {% load static %}
 {% block page_body %}
-
+{% load crispy_forms_tags %}
 <body class="bg-gradient-primary">
     <div class="container">
 
@@ -21,29 +21,21 @@
                                     </div>
                                     <form class="user" method="post">
                                         {% csrf_token %}
-                                        {% for field in form %}
-                                            <div class="form-group">
-                                            {{ field }}
-                                            </div>
-                                        {% endfor %}
+                                        {% crispy form %}
 
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-{#                                        <hr>#}
-{#                                        <a href="index.html" class="btn btn-google btn-user btn-block">#}
-{#                                            <i class="fab fa-google fa-fw"></i> Login with Google#}
-{#                                        </a>#}
-{#                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">#}
-{#                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook#}
-{#                                        </a>#}
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="{% url 'accounts:forget_password' %}">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="{% url 'accounts:register-client' %}">Create a Developer Account!</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="{% url 'accounts:register-developer' %}">Create a Client Account!</a>
                                     </div>
                                 </div>
                             </div>

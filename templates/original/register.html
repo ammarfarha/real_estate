@@ -1,4 +1,4 @@
-{% extends 'user_base.html' %}
+{% extends 'accounts/user_base.html' %}
 {% load static %}
 {% block page_body %}
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -35,7 +35,7 @@
                                             id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                <a href="../accounts/login.html" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </a>
                                 <!--
@@ -50,7 +50,7 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="small" href="../accounts/forgot-password.html">Forgot Password?</a>
                             </div>
                             <div class="text-center">
                                 <a class="small" href="{% url 'accounts:login' %}">Already have an account? Login!</a>

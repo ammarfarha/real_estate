@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django_countries.fields import CountryField
 from django.utils.translation import gettext_lazy as _
+from .file_validator import validate_file_extentions
 
 
 class GenderList(models.TextChoices):
@@ -37,27 +38,28 @@ class Client(AbstractUser):
         choices=GenderList.choices,
         default=GenderList.MALE,
         null=True,
-        blank=False
+        blank=False,
     )
     city = models.CharField(
         max_length=200,
         verbose_name=_('City'),
         null=True,
-        blank=False
+        blank=False,
     )
     address = models.TextField(
         verbose_name=_('Full Address'),
         null=True,
-        blank=False
+        blank=False,
     )
     photo = models.ImageField(
         verbose_name=_('Client Photo'),
         null=True,
         blank=False,
+        upload_to='photos/',
     )
 
     class Meta:
-        verbose_name = 'Client'
+        verbose_name = 'Client'  # TODO: translated
         verbose_name_plural = 'Clients'
 
     # srt:
@@ -92,7 +94,10 @@ class Developer(Client):
     trade_record = models.FileField(
         verbose_name=_('Trade Record'),
         null=True,
-        blank=True
+        blank=True,
+        upload_to='treads/',
+        validators=[validate_file_extentions],
+        # TODO: allowed file types extensions
     )
 
     class Meta:

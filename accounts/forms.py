@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 from .models import Developer, Client
 from django.utils.translation import gettext_lazy as _
 
@@ -20,7 +20,7 @@ class ClientCreationForm(UserCreationForm):
             'gender',
             'city',
             'address',
-            # 'photo',
+            'photo',
         ]
         # labels = {
         #     'first_name': _('First Name'),
@@ -78,9 +78,14 @@ class DeveloperCreationForm(ClientCreationForm):
             'gender',
             'city',
             'address',
-            # 'photo',
+            'photo',
             'is_company',
             'company_name',
             'web_site',
-            # 'trade_record',
+            'trade_record',
         ]
+
+
+class ForgetPasswordForm(PasswordResetForm):
+    class Meta:
+        model = Client
