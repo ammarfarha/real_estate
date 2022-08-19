@@ -91,6 +91,28 @@ class Project(models.Model):
     # save:
 
 
+class ProjectImage(models.Model):
+    project = models.ForeignKey(
+        Project,
+        related_name='project_images',
+        verbose_name=_('Project'),
+        on_delete=models.CASCADE,
+        null=True,
+        blank=False,
+    )
+    image = models.ImageField(
+        verbose_name=_('Client Photo'),
+        null=True,
+        blank=False,
+        upload_to='projects/',
+    )
+    alt = models.CharField(
+        max_length=200,
+        null=True,
+        blank=False,
+    )
+
+
 class Subscription(models.Model):
     # Constants:
     # Fields:

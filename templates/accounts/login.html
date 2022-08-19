@@ -21,8 +21,8 @@
                                     </div>
                                     <form class="user" method="post">
                                         {% csrf_token %}
-                                        {% crispy form %}
-
+{#                                        {% crispy form %}#}
+{{ form }}
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>

@@ -1,10 +1,9 @@
-from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 from .models import Developer, Client
-from django.utils.translation import gettext_lazy as _
 
 
 class ClientCreationForm(UserCreationForm):
+
     class Meta:
         model = Client
         fields = [

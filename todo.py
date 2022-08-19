@@ -22,13 +22,22 @@
 #   - list of all projects (for public)
 
 
-- template namespacing
-- crispy basic setup
-- media files settings and urls (local)
+- template namespacing Done
+- crispy basic setup Done
+- media files settings and urls (local) Done
 --- designated folder (media)
 --- break-down for media sub-folders
 - login - logout - logged-in user - links authorized (templatetags)
 - utilize SuccessMessageMixin
 - pagination for all listviews
-- filter for projects listing pages (use django-filters)
+- filter for projects listing pages (use django-filters) (filter)
+
+
+- base view: All Projects
+-- sub class: my projects
+-- sub class: subscribe projects
+- form validation for developer registration page
+- developer approval (approve from super admin)
+----- default active false
+-----message display to developer that we see your registration .....
 """

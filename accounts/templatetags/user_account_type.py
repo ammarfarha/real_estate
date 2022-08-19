@@ -4,12 +4,8 @@ from accounts.views import ClientMixin, DeveloperMixin
 register = template.Library()
 
 
-@register.simple_tag(name='user_type')
-def get_type():
-    if DeveloperMixin.test_func:
-        return 'Developer'
-    else:
-        if ClientMixin.test_func:
-            return 'Client'
-        else:
-            return 'User'
+@register.simple_tag(name='is_developer', takes_context=True)
+def is_developer(context):
+    request = context['request']
+    user = request.user
+    return user.is_authenticated and user.is_developer()

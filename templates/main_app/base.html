@@ -23,13 +23,13 @@
 </head>
 <body id="page-top">
     <h1>
-{#        {% if user_type == "Developer" %}#}
-{#            Soso#}
-{#        {% else %}#}
-{#            DODO#}
-{#        {% endif %}#}
+        {% if user.is_developer %}
+            Soso
+        {% else %}
+            DODO
+        {% endif %}
 {#        {% user_type %}#}
-{#        {% user_type %}#}
+
     </h1>
     <!-- Page Wrapper -->
     <div id="wrapper">

@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django_countries.fields import CountryField
 from django.utils.translation import gettext_lazy as _
-from .file_validator import validate_file_extentions
+from .file_validator import validate_file_extensions
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class GenderList(models.TextChoices):
@@ -13,15 +14,15 @@ class GenderList(models.TextChoices):
 class Client(AbstractUser):
     birth_date = models.DateField(null=True, blank=False, verbose_name=_('Birth Date'))
     # TODO: need to change to phone field
-    phone = models.CharField(
-        max_length=12,
+    phone = PhoneNumberField(
+        # max_length=12,
         null=True,
         blank=False,
         verbose_name=_('Phone Number')
     )
     # TODO: need to change to phone field
-    mobile = models.CharField(
-        max_length=12,
+    mobile = PhoneNumberField(
+        # max_length=12,
         null=True,
         blank=False,
         verbose_name=_('Mobile Number')
@@ -65,8 +66,12 @@ class Client(AbstractUser):
     # srt:
     def __str__(self):
         return "client : " + str(self.username)
+
     # clean:
     # save:
+    def is_developer(self):
+        developer = Developer.objects.filter(username=self.username)
+        return developer.exists()
 
 
 class Developer(Client):
@@ -96,7 +101,7 @@ class Developer(Client):
         null=True,
         blank=True,
         upload_to='treads/',
-        validators=[validate_file_extentions],
+        validators=[validate_file_extensions],
         # TODO: allowed file types extensions
     )
 

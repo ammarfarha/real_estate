@@ -19,6 +19,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='developer',
             name='trade_record',
-            field=models.FileField(blank=True, null=True, upload_to='treads/', validators=[accounts.file_validator.validate_file_extentions], verbose_name='Trade Record'),
+            field=models.FileField(blank=True, null=True, upload_to='treads/', validators=[accounts.file_validator.validate_file_extensions], verbose_name='Trade Record'),
         ),
     ]

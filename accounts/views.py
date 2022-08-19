@@ -8,18 +8,12 @@ from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm
 
 
 class ClientMixin(LoginRequiredMixin):
-    def test_func(self):
-        user = self.request.user
-        developer = Developer.objects.filter(username=user.username)
-        clients = Client.objects.filter(username=user.username)
-        return not developer.exists() and clients.exists()
+    pass
 
 
-class DeveloperMixin(LoginRequiredMixin, UserPassesTestMixin):
+class DeveloperMixin(ClientMixin, UserPassesTestMixin):
     def test_func(self):
-        user = self.request.user
-        developer = Developer.objects.filter(username=user.username)
-        return developer.exists()
+        return self.request.user.is_developer()
 
 
 class ClientRegistrationView(CreateView):
