@@ -3,7 +3,6 @@ from .models import Developer, Client
 
 
 class ClientCreationForm(UserCreationForm):
-
     class Meta:
         model = Client
         fields = [
@@ -62,26 +61,14 @@ class ClientCreationForm(UserCreationForm):
 
 
 class DeveloperCreationForm(ClientCreationForm):
-    class Meta:
+    class Meta(ClientCreationForm.Meta):
         model = Developer
-        fields = [
-            'username',
-            'password1',
-            'password2',
-            'first_name',
-            'last_name',
-            'birth_date',
-            'phone',
-            'mobile',
-            'nationality',
-            'gender',
-            'city',
-            'address',
-            'photo',
+        fields = ClientCreationForm.Meta.fields + [
             'is_company',
             'company_name',
             'web_site',
             'trade_record',
+            'is_active',
         ]
 
 

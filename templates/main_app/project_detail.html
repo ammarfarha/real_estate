@@ -28,9 +28,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {% for project in projects %}
                                         <tr>
-{#                                            <td>{{ project.name }}</td>#}
                                             <td><a href="{% url 'main_app:project-details' pk=project.id %}">{{ project.name }}</a></td>
                                             <td>{{ project.DisplayType }}</td>
                                             <td>{{ project.statue }}</td>
@@ -38,15 +36,16 @@
                                             <td>{{ project.area }}</td>
                                             <td>{{ project.developer }}</td>
                                         </tr>
-                                    {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                <a href="{% url 'main_app:add-project' %}" class="btn btn-primary btn-user btn-block">
-                    Add New Preoject
+                {% if user.is_developer %}
+                    <a href="{% url 'main_app:add-project' %}" class="btn btn-primary btn-user btn-block">
+                    Add New phases
                 </a>
+                {% endif %}
 
 {#                <div class="card shadow mb-4">#}
 {#                        <div class="card-body">#}

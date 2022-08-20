@@ -30,6 +30,12 @@ class DeveloperRegistrationView(SuccessMessageMixin, CreateView):
     success_message = "Developer Created .. "
     success_url = reverse_lazy('main_app:index')
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        # kwargs['is_active'] = False
+        print(kwargs)
+        return kwargs
+
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'accounts/developer-register.html'

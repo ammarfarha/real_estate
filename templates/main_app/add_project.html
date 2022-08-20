@@ -1,52 +1,34 @@
 {% extends 'main_app/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block page_body %}
-
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <!-- Main Content -->
             <div id="content">
                 {% include 'main_app/toolbar.html' %}
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">{{ user.username }} Projects:</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Projects</h1>
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Type</th>
-                                            <th>Status</th>
-                                            <th>Location</th>
-                                            <th>Area</th>
-                                            <th>Developer</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for project in projects %}
-                                        <tr>
-{#                                            <td>{{ project.name }}</td>#}
-                                            <td><a href="{% url 'main_app:project-details' pk=project.id %}">{{ project.name }}</a></td>
-                                            <td>{{ project.DisplayType }}</td>
-                                            <td>{{ project.statue }}</td>
-                                            <td>{{ project.location }}</td>
-                                            <td>{{ project.area }}</td>
-                                            <td>{{ project.developer }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                <a href="{% url 'main_app:add-project' %}" class="btn btn-primary btn-user btn-block">
-                    Add New Preoject
-                </a>
+                    <form class="user" method="post" novalidate enctype="multipart/form-data">
+                                {% csrf_token %}
+{#                                {% crispy form %}#}
+{#                                {{ form }}#}
+                                {{ form|crispy }}
+{#                                <input type="submit" name="Register", value="Register" id="register">#}
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Register Account
+                                </button>
+                            </form>
 
 {#                <div class="card shadow mb-4">#}
 {#                        <div class="card-body">#}

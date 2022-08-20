@@ -39,5 +39,5 @@
 - form validation for developer registration page
 - developer approval (approve from super admin)
 ----- default active false
------message display to developer that we see your registration .....
+----- message display to developer that we see your registration .....
 """

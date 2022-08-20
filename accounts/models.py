@@ -105,6 +105,7 @@ class Developer(Client):
         # TODO: allowed file types extensions
     )
 
+    # super.is_active =
     class Meta:
         verbose_name = 'Developer'
         verbose_name_plural = 'Developers'

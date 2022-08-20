@@ -43,19 +43,23 @@
             </a>
         </li>
         <!-- Nav Item - User Information -->
+    {% if user.is_developer %}
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="{% url 'main_app:my-project-list' %}" id="userDropdown" role="button"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">My Projects</span>
             </a>
         </li>
+    {% endif %}
         <!-- Nav Item - User Information -->
+    {% if user.is_authenticated %}
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="{% url 'main_app:my-subscribed-list' %}" id="userDropdown" role="button"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Subscribe Projects</span>
             </a>
         </li>
+    {% endif %}
         {% if user.is_authenticated %}
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="{% url 'accounts:logout' %}" id="logout" role="button"
