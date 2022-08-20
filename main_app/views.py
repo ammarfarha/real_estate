@@ -8,6 +8,9 @@ from accounts.views import ClientMixin, DeveloperMixin
 from django.views.generic.edit import CreateView
 from .forms import AddProjectForm
 from accounts.views import DeveloperMixin
+from django.db.models import Q
+
+
 def home(request):
     projects = Project.objects.all()
     clients = Client.objects.all()
@@ -24,6 +27,21 @@ class DisplayAllProject(ListView):
     template_name = "main_app/developer_project_list.html"
     context_object_name = "projects"
     paginate_by = 5
+
+
+class SearchResultsView(DisplayAllProject):
+    def get_queryset(self, *args, **kwargs):
+        get_title = self.request.GET.get('title')
+        get_type = self.request.GET.get('type')
+        get_status = self.request.GET.get('status')
+        query_set = Project.objects.filter().order_by('developer')
+        if get_title is not None and get_title != "":
+            query_set.filter(name__icontains=get_title)
+        if get_type is not None and get_type != "":
+            query_set.filter(type=get_type)
+        if get_status is not None and get_status != "":
+            query_set.filter(statue=get_status)
+        return query_set
 
 
 class DeveloperListProject(DeveloperMixin, DisplayAllProject):
@@ -49,7 +67,6 @@ class ProjectDetails(DetailView):
     model = Project
     template_name = 'main_app/project_detail.html'
     context_object_name = 'project'
-
 
 
 class ProjectUpdate(UpdateView):

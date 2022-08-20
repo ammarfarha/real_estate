@@ -1,11 +1,29 @@
-<!-- Topbar Search -->
-    <form
+{% load i18n %}
+    <form method="get" action="{% url 'main_app:search' %}"
         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                aria-label="Search" aria-describedby="basic-addon2">
+            <input type="text" name="title" class="form-control bg-light border-0 small" placeholder="Projects...."
+                aria-label="Search" aria-describedby="basic-addon2">&nbsp;&nbsp;
+            <select name="type" class="form-control bg-light border-0 small" >
+                <option value="">select type</option>
+                <option value="CO">{% trans 'Commercial' %}</option>
+                <option value="RE">{% trans 'Residential' %}</option>
+                <option value="IN">{% trans 'Industrial' %}</option>
+                <option value="SP">{% trans 'Special Purpose' %}</option>
+                <option value="LA">{% trans 'Lands' %}</option>
+            </select>&nbsp;&nbsp;
+            <select name="status" class="form-control bg-light border-0 small" >
+                <option value="">select status</option>
+                <option value="PL">{% trans 'Planing' %}</option>
+                <option value="IN">{% trans 'Initial' %}</option>
+                <option value="UC">{% trans 'Under Construction' %}</option>
+                <option value="DO">{% trans 'Done' %}</option>
+                <option value="RE">{% trans 'Ready To Use' %}</option>
+            </select>&nbsp;&nbsp;
+
+
             <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="submit">
                     <i class="fas fa-search fa-sm"></i>
                 </button>
             </div>
