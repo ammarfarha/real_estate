@@ -68,7 +68,6 @@ class DeveloperCreationForm(ClientCreationForm):
             'company_name',
             'web_site',
             'trade_record',
-            'is_active',
         ]
 
 

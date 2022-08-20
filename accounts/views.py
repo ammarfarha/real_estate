@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import TemplateView, FormView, CreateView
+from django.views.generic import TemplateView, FormView, CreateView, DetailView, ListView
 from .models import Developer, Client
 from django.urls import reverse_lazy
 from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm
@@ -14,6 +14,18 @@ class ClientMixin(LoginRequiredMixin):
 class DeveloperMixin(ClientMixin, UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_developer()
+
+
+class ProfileView(ClientMixin, ListView):
+    model = Client
+    template_name = 'accounts/profile.html'
+    context_object_name = 'current'
+
+    def get_queryset(self):
+        current = Client.objects.get(username=self.request.user.username)
+        if current.is_developer:
+            return Developer.objects.get(username=self.request.user.username)
+        return current
 
 
 class ClientRegistrationView(CreateView):
