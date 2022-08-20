@@ -1,5 +1,12 @@
 from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 from .models import Developer, Client
+from django.utils.translation import gettext_lazy as _
+from django import forms
+from django.forms import ModelForm
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class ClientCreationForm(UserCreationForm):
@@ -17,7 +24,7 @@ class ClientCreationForm(UserCreationForm):
             'nationality',
             'gender',
             'city',
-            'address',
+            # 'address',
             'photo',
         ]
         # labels = {
@@ -26,12 +33,22 @@ class ClientCreationForm(UserCreationForm):
         # help_texts = {
         #     'username': _('please Enter more than 8 chars'),
         # }
-        # error_messages = {
-        #     'first_name': {
-        #         'max_length': _("This first name is too long."),
-        #         'required': _('This Field is Required'),
-        #     },
-        # }
+        error_messages = {
+            'username': {
+                'required': _('This Field is Required'),
+            },
+            'first_name': {
+                'max_length': _("This first name is too long."),
+                'required': _('This Field is Required'),
+            },
+            'last_name': {
+                'max_length': _("This first name is too long."),
+                'required': _('This Field is Required'),
+            },
+        }
+        widgets = {
+            'birth_date': DateInput(),
+        }
         # widgets = {
         #     'username': forms.TextInput(attrs={
         #         'class': 'form-control form-control-user',

@@ -30,6 +30,9 @@
                                             <th>Location</th>
                                             <th>Area</th>
                                             <th>Developer</th>
+                                            {% if user.is_authenticated %}
+                                                <th>Actions</th>
+                                            {% endif %}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,6 +44,10 @@
                                             <td>{{ project.location }}</td>
                                             <td>{{ project.area }}</td>
                                             <td>{{ project.developer }}</td>
+                                            {% if user.is_authenticated %}
+                                                <td><a href="#">Subscribe</a></td>
+                                            {% endif %}
+
                                         </tr>
                                     {% endfor %}
                                     </tbody>

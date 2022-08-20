@@ -67,9 +67,10 @@
                 Welcome: {{user.username}}
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a>
+                  <a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a>
                   <a class="dropdown-item" href="#">Change Password</a>
-                <a class="dropdown-item" href="{% url 'accounts:logout' %}">logout</a>
+                  <a class="dropdown-item" href="#">Edit Profile</a>
+                  <a class="dropdown-item" href="{% url 'accounts:logout' %}">logout</a>
               </div>
             </div>
         </li>

@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, FormView, CreateView, DetailView,
 from .models import Developer, Client
 from django.urls import reverse_lazy
 from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm
+from django.utils.translation import gettext_lazy as _
 
 
 class ClientMixin(LoginRequiredMixin):
@@ -23,8 +24,8 @@ class ProfileView(ClientMixin, ListView):
 
     def get_queryset(self):
         current = Client.objects.get(username=self.request.user.username)
-        if current.is_developer:
-            return Developer.objects.get(username=self.request.user.username)
+        if current.is_developer():
+            current = Developer.objects.get(username=self.request.user.username)
         return current
 
 
@@ -39,7 +40,8 @@ class DeveloperRegistrationView(SuccessMessageMixin, CreateView):
     model = Developer
     template_name = "accounts/developer-register.html"
     form_class = DeveloperCreationForm
-    success_message = "Developer Created .. "
+    success_message = _("congratulations, You have been successfully registered, You will receive a message that your "
+                        "account has been activated")
     success_url = reverse_lazy('main_app:index')
 
     def get_form_kwargs(self):

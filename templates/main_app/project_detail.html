@@ -29,9 +29,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><a href="{% url 'main_app:project-details' pk=project.id %}">{{ project.name }}</a></td>
-                                            <td>{{ project.DisplayType }}</td>
-                                            <td>{{ project.statue }}</td>
+                                            <td>{{ project.name }}</td>
+                                            <td>{{ project.get_type_display }}</td>
+                                            <td>{{ project.get_statue_display }}</td>
                                             <td>{{ project.location }}</td>
                                             <td>{{ project.area }}</td>
                                             <td>{{ project.developer }}</td>
