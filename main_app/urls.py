@@ -5,7 +5,6 @@ app_name = 'main_app'
 
 urlpatterns = [
     path('', views.ProjectsListView.as_view(), name='index'),
-    # path('search/', views.SearchResultsView.as_view(), name='search'),
     path('my_projects/', views.DeveloperProjectsListView.as_view(), name='my-project-list'),
     path('my_projects/add/', views.ProjectAddView.as_view(), name='add-project'),
     path('my_projects/<int:pk>/', views.ProjectDetailsView.as_view(), name='project-details'),

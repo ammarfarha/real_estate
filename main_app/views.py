@@ -8,6 +8,7 @@ from accounts.views import ClientMixin, DeveloperMixin
 from django.views.generic.edit import CreateView
 from .forms import AddProjectForm, ProjectsSearchForm
 from accounts.views import DeveloperMixin
+from accounts.models import Developer
 
 
 class ProjectsListView(ListView):
@@ -68,6 +69,18 @@ class ProjectAddView(DeveloperMixin, CreateView):
     form_class = AddProjectForm
     template_name = 'main_app/add_project.html'
     success_url = reverse_lazy('main_app:my-project-list')
+
+    def form_valid(self, form):
+        form.instance.developer = Developer.objects.get(username=self.request.user.username)
+        form.instance.status = 'PL'
+        return super().form_valid(form)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
+        context['listing_title'] = _('Add Project')
+        return context
+
 
 
 class ProjectDetailsView(DetailView):

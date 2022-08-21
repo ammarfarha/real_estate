@@ -25,8 +25,14 @@ class ClientCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
+        self.fields['username'].required = True
+        self.fields['password1'].required = True
+        self.fields['password2'].required = True
         self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['mobile'].required = True
+        self.fields['email'].required = True
+        self.fields['gender'].required = True
 
 
 class ClientProfileForm(forms.ModelForm):
@@ -45,15 +51,26 @@ class ClientProfileForm(forms.ModelForm):
             'address',
             'photo',
         ]
-        widgets = {
-            'birth_date': DateInput(),
-        }
+
+    widgets = {
+        'birth_date': DateInput(),
+    }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
+        self.fields['birth_date'].required = True
+        self.fields['phone'].required = False
+        self.fields['mobile'].required = False
+        self.fields['email'].required = True
+        self.fields['nationality'].required = True
+        self.fields['gender'].required = True
+        self.fields['city'].required = True
+        self.fields['address'].required = False
+        self.fields['photo'].required = False
+
+
 
 
 class DeveloperCreationForm(ClientCreationForm):
@@ -73,6 +90,9 @@ class DeveloperProfileForm(ClientProfileForm):
             'web_site',
             'trade_record',
         ]
+
+    def clean(self):
+        pass
 
 
 class ForgetPasswordForm(PasswordResetForm):

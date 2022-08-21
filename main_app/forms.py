@@ -5,8 +5,20 @@ from .models import Project, ProjectImage
 class AddProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = "__all__"
+        fields = [
+            'name',
+            'summary',
+            'type',
+            'location',
+            'area',
+        ]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['location'].required = False
+
+    def clean(self):
+        pass
 
 class AddProjectImageFileForm(forms.ModelForm):
     class Meta:

@@ -37,7 +37,9 @@
         </div>
     </div>
 </div>
+    {% if user.is_developer %}
 <a href="{% url 'main_app:add-project' %}" class="btn btn-primary btn-user btn-block">
     Add New Preoject
 </a>
+    {% endif %}
 {% endblock main_body %}

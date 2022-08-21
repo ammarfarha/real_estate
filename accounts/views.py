@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm, ClientProfileForm, \
     DeveloperProfileForm
 from django.utils.translation import gettext_lazy as _
+from main_app.forms import ProjectsSearchForm
 
 
 class ClientMixin(LoginRequiredMixin):
@@ -32,14 +33,21 @@ class ProfileView(ClientMixin, ListView):
 
 class ClientRegistrationView(CreateView):
     model = Client
-    template_name = "accounts/client-register.html"
+    template_name = "accounts/user_form.html"
     form_class = ClientCreationForm
     success_url = reverse_lazy('main_app:index')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
+        context['listing_title'] = _('Create New Client')
+        context['bottom_title'] = _('Create')
+        return context
 
 
 class DeveloperRegistrationView(SuccessMessageMixin, CreateView):
     model = Developer
-    template_name = "accounts/developer-register.html"
+    template_name = "accounts/user_form.html"
     form_class = DeveloperCreationForm
     success_message = _("congratulations, You have been successfully registered, You will receive a message that your "
                         "account has been activated")
@@ -49,16 +57,46 @@ class DeveloperRegistrationView(SuccessMessageMixin, CreateView):
         form.instance.is_active = False
         return super().form_valid(form)
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
+        context['listing_title'] = _('Create New Developer')
+        context['bottom_title'] = _('Create')
+        return context
+
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
-    template_name = 'accounts/developer-register.html'
-    success_message = "fff"
+    template_name = 'accounts/user_form.html'
+    success_message = "Password Have been Rest Successfully"
     success_url = reverse_lazy('accounts:login')
 
 
-class DeveloperProfileUpdateView(DeveloperMixin, UpdateView):
+class ClientProfileUpdateView(UpdateView):
+    model = Client
+    template_name = 'accounts/user_form.html'
+    form_class = ClientProfileForm
+    success_message = _("Your Profile Updated Successfully.")
+    success_url = reverse_lazy('main_app:index')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
+        context['listing_title'] = _('Update Client Profile')
+        context['bottom_title'] = _('Update')
+        return context
+
+
+class DeveloperProfileUpdateView(DeveloperMixin, ClientProfileUpdateView):
+    model = Developer
     form_class = DeveloperProfileForm
-    template_name = 'accounts/developer-register.html'  # TODO: change and define success_url
 
     def get_object(self, queryset=None):
         return self.request.user.get_developer()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['listing_title'] = _('Update Developer Profile')
+        return context
