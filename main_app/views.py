@@ -6,9 +6,8 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from accounts.views import ClientMixin, DeveloperMixin
 from django.views.generic.edit import CreateView
-from .forms import AddProjectForm
+from .forms import AddProjectForm, ProjectsSearchForm
 from accounts.views import DeveloperMixin
-from django.db.models import Q
 
 
 class ProjectsListView(ListView):
@@ -19,7 +18,7 @@ class ProjectsListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['form'] = None  # ProjectsSearchForm(self.request.GET or None)  #TODO: make a form for search and load it its initial with request.GET
+        context['search_form'] = ProjectsSearchForm(self.request.GET or None)  # ProjectsSearchForm(self.request.GET or None)  #TODO: make a form for search and load it its initial with request.GET
         context['listing_title'] = _('All Projects')
         return context
 
