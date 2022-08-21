@@ -33,11 +33,25 @@
 - filter for projects listing pages (use django-filters) (filter)
 
 
-- base view: All Projects
--- sub class: my projects
--- sub class: subscribe projects
-- form validation for developer registration page
+- base view: All Projects Done
+-- sub class: my projects Done
+-- sub class: subscribe projects Done
+
 - developer approval (approve from super admin)
 ----- default active false
 ----- message display to developer that we see your registration .....
+
+- form validation for developer registration page and emplement it client/server side
+- implement developer field in the project create form
+- fix base.html and toolbar as we agreed
+
+- new project form
+--- Step1ProjectCreateView(CreateView) will use Step1ProjectForm
+--- ProjectImagesView(CreateView) will use ProjectImageForm
+----- List of Images as context
+-----
+--- ProjectPhasesView(CreateView) will use ProjectPhaseForm
+----- List of Phases as context
+-----
+
 """

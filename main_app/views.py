@@ -11,61 +11,57 @@ from accounts.views import DeveloperMixin
 from django.db.models import Q
 
 
-def home(request):
-    projects = Project.objects.all()
-    clients = Client.objects.all()
-    context = {
-        'sample_text': _("Hello"),
-        'projects': projects,
-        'users': clients,
-    }
-    return render(request, 'main_app/project_list.html', context)
-
-
-class DisplayAllProject(ListView):
+class ProjectsListView(ListView):
     model = Project
-    template_name = "main_app/developer_project_list.html"
+    template_name = "main_app/projects_list.html"
     context_object_name = "projects"
     paginate_by = 5
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['form'] = None  # ProjectsSearchForm(self.request.GET or None)  #TODO: make a form for search and load it its initial with request.GET
+        context['listing_title'] = _('All Projects')
+        return context
 
-class SearchResultsView(DisplayAllProject):
     def get_queryset(self, *args, **kwargs):
         get_title = self.request.GET.get('title')
         get_type = self.request.GET.get('type')
         get_status = self.request.GET.get('status')
 
-        # query_set = Project.objects.all().order_by('developer')
+        query_set = Project.objects.all()
 
-        # if get_title is not None and get_title != "":
-        #     q1 = Q(name__icontains=get_title)
-        #     query_set.filter(name__icontains=get_title)
-        # else:
-        #     q1 = ()
-            
-        # if get_type is not None and get_type != "":
-        #     query_set.filter(type=get_type)
-        # if get_status is not None and get_status != "":
-        #     query_set.filter(statue=get_status)
+        if get_title:
+            query_set = query_set.filter(name__icontains=get_title)
 
-        query_set = Project.objects.filter(
-            Q(name__icontains=get_title) if get_title else Q(),
-            Q(type=get_type) if get_type else Q(),
-            Q(statue=get_status) if get_status else Q(),
-        ).order_by('developer')
+        if get_type:
+            query_set = query_set.filter(type=get_type)
+
+        if get_status:
+            query_set = query_set.filter(statue=get_status)
+
         return query_set
 
 
-class DeveloperListProject(DeveloperMixin, DisplayAllProject):
+class DeveloperProjectsListView(DeveloperMixin, ProjectsListView):
     def get_queryset(self, *args, **kwargs):
-        return Project.objects.filter(developer=self.request.user)
+        return super().get_queryset(*args, **kwargs).filter(developer=self.request.user)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['listing_title'] = _('My Projects')
+        return context
 
 
-class ClientSubscribeProjects(ClientMixin, DisplayAllProject):
+class ClientSubscribedProjectsListView(ClientMixin, ProjectsListView):
     def get_queryset(self, *args, **kwargs):
-        return Project.objects.filter(
+        return super().get_queryset(*args, **kwargs).filter(
             pk__in=Subscription.objects.filter(client=self.request.user).values_list('project', flat=True)
         )
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['listing_title'] = _('My Subscribed Projects')
+        return context
 
 
 class ProjectAddView(DeveloperMixin, CreateView):
@@ -100,10 +96,6 @@ class ProjectDelete(DeleteView):
 
 class ProjectPhasesList(ListView):
     model = Project
-
-
-class ProjectAdd:
-    pass
 
 
 class ProjectAdd:

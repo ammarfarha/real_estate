@@ -18,69 +18,56 @@ class ClientCreationForm(UserCreationForm):
             'password2',
             'first_name',
             'last_name',
+            'mobile',
+            'email',
+            'gender',
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['first_name'].required = True
+
+
+class ClientProfileForm(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = [
+            'first_name',
+            'last_name',
             'birth_date',
             'phone',
             'mobile',
+            'email',
             'nationality',
             'gender',
             'city',
-            # 'address',
+            'address',
             'photo',
         ]
-        # labels = {
-        #     'first_name': _('First Name'),
-        # }
-        # help_texts = {
-        #     'username': _('please Enter more than 8 chars'),
-        # }
-        error_messages = {
-            'username': {
-                'required': _('This Field is Required'),
-            },
-            'first_name': {
-                'max_length': _("This first name is too long."),
-                'required': _('This Field is Required'),
-            },
-            'last_name': {
-                'max_length': _("This first name is too long."),
-                'required': _('This Field is Required'),
-            },
-        }
         widgets = {
             'birth_date': DateInput(),
         }
-        # widgets = {
-        #     'username': forms.TextInput(attrs={
-        #         'class': 'form-control form-control-user',
-        #         'id': 'username',
-        #         'placeholder': 'User Name',
-        #     }),
-        #     'password1': forms.PasswordInput(attrs={
-        #         'class': 'form-control form-control-user',
-        #         'id': 'password_1',
-        #         'placeholder': 'Password',
-        #     }),
-        #     'password2': forms.PasswordInput(attrs={
-        #         'class': 'form-control form-control-user',
-        #         'id': 'password2',
-        #     }),
-        #     'first_name': forms.TextInput(attrs={
-        #         'class': 'form-control form-control-user',
-        #         'id': 'first_name',
-        #         'placeholder': 'First Name',
-        #     }),
-        #     'last_name': forms.TextInput(attrs={
-        #         'class': 'form-control form-control-user',
-        #         'id': 'last_name',
-        #         'placeholder': 'Last Name',
-        #     }),
-        # }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
 
 
 class DeveloperCreationForm(ClientCreationForm):
     class Meta(ClientCreationForm.Meta):
         model = Developer
         fields = ClientCreationForm.Meta.fields + [
+            'is_company',
+        ]
+
+
+class DeveloperProfileForm(ClientProfileForm):
+    class Meta(ClientProfileForm.Meta):
+        model = Developer
+        fields = ClientProfileForm.Meta.fields + [
             'is_company',
             'company_name',
             'web_site',

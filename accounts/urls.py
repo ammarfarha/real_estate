@@ -10,5 +10,5 @@ urlpatterns = [
     path('forget-password/', views.ResetPasswordView.as_view(), name='forget_password'),
     path('register_client/', views.ClientRegistrationView.as_view(), name='register-client'),
     path('register_developer/', views.DeveloperRegistrationView.as_view(), name='register-developer'),
-    path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('developer_profile/', views.DeveloperProfileUpdateView.as_view(), name='developer-profile'),
 ]

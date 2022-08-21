@@ -67,11 +67,12 @@ class Client(AbstractUser):
     def __str__(self):
         return "client : " + str(self.username)
 
-    # clean:
-    # save:
-    def is_developer(self):
+    def get_developer(self):
         developer = Developer.objects.filter(username=self.username)
-        return developer.exists()
+        return developer.first()
+
+    def is_developer(self):
+        return bool(self.get_developer())
 
 
 class Developer(Client):
