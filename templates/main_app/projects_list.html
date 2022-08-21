@@ -1,132 +1,43 @@
-{% extends 'main_app/base.html' %}
+{% extends 'global/base.html' %}
 {% load i18n %}
 {% load static %}
-{% block page_body %}
-
-        <!-- Main Content -->
-        <div id="content">
-            <div class="row">
-                <div class="col-12">
-                    {# TODO: REMOVE HARD-CODED FORM.. USE A PROPER FORM INSTEAD {{ form|crispy }}  #}
-                    <form method="get"
-                          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" name="title" class="form-control bg-light border-0 small"
-                                   placeholder="Projects...."
-                                   aria-label="Search" aria-describedby="basic-addon2">&nbsp;&nbsp;
-                            <select name="type" class="form-control bg-light border-0 small">
-                                <option value="">select type</option>
-                                <option value="CO">{% trans 'Commercial' %}</option>
-                                <option value="RE">{% trans 'Residential' %}</option>
-                                <option value="IN">{% trans 'Industrial' %}</option>
-                                <option value="SP">{% trans 'Special Purpose' %}</option>
-                                <option value="LA">{% trans 'Lands' %}</option>
-                            </select>&nbsp;&nbsp;
-                            <select name="status" class="form-control bg-light border-0 small">
-                                <option value="">select status</option>
-                                <option value="PL">{% trans 'Planing' %}</option>
-                                <option value="IN">{% trans 'Initial' %}</option>
-                                <option value="UC">{% trans 'Under Construction' %}</option>
-                                <option value="DO">{% trans 'Done' %}</option>
-                                <option value="RE">{% trans 'Ready To Use' %}</option>
-                            </select>&nbsp;&nbsp;
-
-
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <h2>{{ listing_title }}</h2>
-                </div>
-            </div>
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-                <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">{{ user.username }} Projects:</h1>
-                <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                    <th>Location</th>
-                                    <th>Area</th>
-                                    <th>Developer</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for project in projects %}
-                                    <tr>
-                                        {#                                            <td>{{ project.name }}</td>#}
-                                        <td>
-                                            <a href="{% url 'main_app:project-details' pk=project.id %}">{{ project.name }}</a>
-                                        </td>
-                                        <td>{{ project.get_type_display }}</td>
-                                        <td>{{ project.get_statue_display }}</td>
-                                        <td>{{ project.location }}</td>
-                                        <td>{{ project.area }}</td>
-                                        <td>{{ project.developer }}</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <a href="{% url 'main_app:add-project' %}" class="btn btn-primary btn-user btn-block">
-                    Add New Preoject
-                </a>
-
-                {#                <div class="card shadow mb-4">#}
-                {#                        <div class="card-body">#}
-                {#                            <div class="table-responsive">#}
-                {#                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">#}
-                {#                                    <thead>#}
-                {#                                        <tr>#}
-                {#                                            <th>username</th>#}
-                {#                                            <th>First Name</th>#}
-                {#                                            <th>last Name</th>#}
-                {#                                        </tr>#}
-                {#                                    </thead>#}
-                {#                                    <tbody>#}
-                {#                                    {% for user in users %}#}
-                {#                                        <tr>#}
-                {#                                            <td>{{ user.username }}</td>#}
-                {#                                            <td>{{ user.first_name }}</td>#}
-                {#                                            <td>{{ user.last_name }}</td>#}
-                {#                                        </tr>#}
-                {#                                    {% endfor %}#}
-                {#                                    </tbody>#}
-                {#                                </table>#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                    </div>#}
-                {#                </div>#}
-                {#                <!-- /.container-fluid -->#}
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            {#            <footer class="sticky-footer bg-white">#}
-            {#                <div class="container my-auto">#}
-            {#                    <div class="copyright text-center my-auto">#}
-            {#                        <span>Copyright &copy; Your Website 2020</span>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </footer>#}
-            <!-- End of Footer -->
-
+{% block main_body %}
+<h1 class="h3 mb-2 text-gray-800">{{ user.username }} Projects:</h1>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Location</th>
+                    <th>Area</th>
+                    <th>Developer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for project in projects %}
+                    <tr>
+                        {#                                            <td>{{ project.name }}</td>#}
+                        <td>
+                            <a href="{% url 'main_app:project-details' pk=project.id %}">{{ project.name }}</a>
+                        </td>
+                        <td>{{ project.get_type_display }}</td>
+                        <td>{{ project.get_statue_display }}</td>
+                        <td>{{ project.location }}</td>
+                        <td>{{ project.area }}</td>
+                        <td>{{ project.developer }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
-        <!-- End of Content Wrapper -->
-
-
-{% endblock page_body %}
+    </div>
+</div>
+<a href="{% url 'main_app:add-project' %}" class="btn btn-primary btn-user btn-block">
+    Add New Preoject
+</a>
+{% endblock main_body %}
