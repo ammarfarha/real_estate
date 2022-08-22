@@ -1,8 +1,16 @@
 from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
-from .models import Developer, Client
+from django.core.exceptions import ValidationError
+
+from .models import Developer, Client, GenderList
 from django.utils.translation import gettext_lazy as _
 from django import forms
 from django.forms import ModelForm
+
+
+YES_NO_CHOICES = (
+    (True, _('Yes')),
+    (False, _('No')),
+)
 
 
 class DateInput(forms.DateInput):
@@ -25,19 +33,27 @@ class ClientCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].required = True
-        self.fields['password1'].required = True
-        self.fields['password2'].required = True
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['mobile'].required = True
         self.fields['email'].required = True
         self.fields['gender'].required = True
 
+        self.fields['gender'].widget = forms.RadioSelect(choices=GenderList.choices)
 
-class ClientProfileForm(forms.ModelForm):
-    class Meta:
-        model = Client
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if 'gmail' in email or 'yahoo' in email or 'hotmail' in email:
+            raise ValidationError(_('You have to enter an official email address'))
+
+        email = email.lower()
+
+        return email
+
+
+class ClientProfileForm(ClientCreationForm):
+    class Meta(ClientCreationForm.Meta):
         fields = [
             'first_name',
             'last_name',
@@ -66,11 +82,7 @@ class ClientProfileForm(forms.ModelForm):
         self.fields['email'].required = True
         self.fields['nationality'].required = True
         self.fields['gender'].required = True
-        self.fields['city'].required = True
-        self.fields['address'].required = False
-        self.fields['photo'].required = False
-
-
+        # TODO: fix required attr
 
 
 class DeveloperCreationForm(ClientCreationForm):
@@ -80,19 +92,44 @@ class DeveloperCreationForm(ClientCreationForm):
             'is_company',
         ]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-class DeveloperProfileForm(ClientProfileForm):
-    class Meta(ClientProfileForm.Meta):
-        model = Developer
-        fields = ClientProfileForm.Meta.fields + [
+        self.fields['is_company'].widget = forms.RadioSelect(choices=YES_NO_CHOICES)
+
+
+class DeveloperProfileForm(DeveloperCreationForm):
+    class Meta(DeveloperCreationForm.Meta):
+        fields = DeveloperCreationForm.Meta.fields + [
             'is_company',
             'company_name',
             'web_site',
             'trade_record',
         ]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        del self.fields['username']
+        del self.fields['password1']
+        del self.fields['password2']
+
     def clean(self):
-        pass
+        cleaned_data = super().clean()
+        is_company = cleaned_data.get('is_company')
+        company_name = cleaned_data.get('company_name')
+        web_site = cleaned_data.get('web_site')
+        trade_record = cleaned_data.get('trade_record')
+
+        if is_company:
+            if not company_name:
+                raise forms.ValidationError('You have to enter a company name')
+            if not trade_record:
+                raise forms.ValidationError('You have to enter a your company commercial license')
+
+        if not is_company and (company_name or trade_record or web_site):
+            raise ValidationError(_('You are not a company'))
+
+        return cleaned_data
 
 
 class ForgetPasswordForm(PasswordResetForm):

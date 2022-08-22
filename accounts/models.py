@@ -50,12 +50,12 @@ class Client(AbstractUser):
     address = models.TextField(
         verbose_name=_('Full Address'),
         null=True,
-        blank=False,
+        blank=True,
     )
     photo = models.ImageField(
         verbose_name=_('Client Photo'),
         null=True,
-        blank=False,
+        blank=True,
         upload_to='photos/',
     )
 
