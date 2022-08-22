@@ -1,45 +1,87 @@
-{% extends 'global/base.html' %}
-{% load i18n %}
+{% extends 'main_app/base1.html' %}
 {% load static %}
-{% block main_body %}
-<h1 class="h3 mb-2 text-gray-800">{{ user.username }} Projects:</h1>
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Location</th>
-                    <th>Area</th>
-                    <th>Developer</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for project in projects %}
-                    <tr>
-                        {#                                            <td>{{ project.name }}</td>#}
-                        <td>
-                            <a href="{% url 'main_app:project-details' pk=project.id %}">{{ project.name }}</a>
-                        </td>
-                        <td>{{ project.get_type_display }}</td>
-                        <td>{{ project.get_statue_display }}</td>
-                        <td>{{ project.location }}</td>
-                        <td>{{ project.area }}</td>
-                        <td>{{ project.developer }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+{% block page_header %}
+<!--============== Page title Start ==============-->
+<div class="full-row py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="mb-2">
+                    <ol class="breadcrumb mb-0 bg-transparent p-0">
+                        <li class="breadcrumb-item"><a href="{% url 'main_app:index' %}">Home</a></li>
+                        <li class="breadcrumb-item active text-primary" aria-current="page">Project List</li>
+                    </ol>
+                </nav>
+                <h3 class="text-secondary">List Of All Projects</h3>
+            </div>
         </div>
     </div>
 </div>
-    {% if user.is_developer %}
-<a href="{% url 'main_app:add-project' %}" class="btn btn-primary btn-user btn-block">
-    Add New Preoject
-</a>
-    {% endif %}
-{% endblock main_body %}
+<!--============== Page title End ==============-->
+{% endblock page_header %}
+
+{% block main_content %}
+<div class="row row-cols-xl-3 row-cols-md-2 row-cols-1">
+    {% for project in projects %}
+    <div class="col">
+        <!-- Property Grid -->
+        <div class="property-grid-1 bg-white property-block border transation-this hover-shadow mb-30">
+            <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
+                {% if project.has_image %}
+                <a href="#">
+                    <img src="/media/{{ project.get_first_image.image }}" alt="Image Not Found!">
+                </a>
+                {% else %}
+                <a href="#">
+                    <img src="{% static 'images/property_grid/property-grid-1.png' %}" alt="Image Not Found!">
+                </a>
+                {% endif %}
+{#                <span class="price-on text-white font-medium font-500">$1850/<small>mo</small></span>#}
+                <ul class="position-absolute quick-meta">
+                    <li><a href="#" title="Add Compare"><i class="flaticon-transfer flat-mini"></i></a></li>
+                    <li><a href="#" title="Add Favourite"><i class="flaticon-like-1 flat-mini"></i></a></li>
+                </ul>
+            </div>
+            <div class="property_text p-3">
+                <span class="d-inline-block text-primary">{{ project.get_type_display }}</span>
+                <h5 class="mt-2">
+                    <a class="font-400 text-secondary" href="#">
+                        {{ project.name }}
+                    </a>
+                </h5>
+                <span class="my-3 d-block">
+                    <i class="fas fa-map-marker-alt text-primary"></i>
+                    {{ project.location }}
+                </span>
+                <div class="quantity">
+                    <ul class="d-flex">
+                        <li><span>Area:</span> {{ project.area }} m<sup>2</sup></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!--============== Pagination block ==============-->
+<div class="row">
+    <div class="col mt-5">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-dotted-active justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link">Previous Page</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next Page</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--============== End Pagination block ==============-->
+{% endblock main_content %}

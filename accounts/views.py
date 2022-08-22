@@ -33,21 +33,19 @@ class ProfileView(ClientMixin, ListView):
 
 class ClientRegistrationView(CreateView):
     model = Client
-    template_name = "accounts/user_form.html"
+    template_name = "main_app/registration.html"
     form_class = ClientCreationForm
     success_url = reverse_lazy('main_app:index')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
         context['listing_title'] = _('Create New Client')
-        context['bottom_title'] = _('Create')
         return context
 
 
 class DeveloperRegistrationView(SuccessMessageMixin, CreateView):
     model = Developer
-    template_name = "accounts/user_form.html"
+    template_name = "main_app/registration.html"
     form_class = DeveloperCreationForm
     success_message = _("congratulations, You have been successfully registered, You will receive a message that your "
                         "account has been activated")
@@ -59,9 +57,7 @@ class DeveloperRegistrationView(SuccessMessageMixin, CreateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
         context['listing_title'] = _('Create New Developer')
-        context['bottom_title'] = _('Create')
         return context
 
 

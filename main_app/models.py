@@ -87,6 +87,12 @@ class Project(models.Model):
     def __str__(self):
         return self.name + " - developed by: (" + str(self.developer) + ")"
 
+    def get_first_image(self):
+        return ProjectImage.objects.filter(project_id=self.pk).first()
+
+    def has_image(self):
+        return bool(self.get_first_image())
+
     # clean:
     # save:
 
