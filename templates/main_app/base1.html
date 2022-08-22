@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!doctype html>
 <html lang="en">
 
@@ -10,9 +11,9 @@
     <meta name="description" content="Uniland - Real Estate HTML5 Template">
     <meta name="keywords" content="real estate, property, property search, agent, apartments, booking, business, idx, housing, real estate agency, rental">
     <meta name="author" content="unicoder">
-    <title>Uniland - Real Estate HTML5 Template</title>
+    <title>Real Estate</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,10 +62,10 @@
                                             <a class="nav-link dropdown-toggle" href="#">Projects</a>
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="{% url 'main_app:index' %}">All Projects</a></li>
-                                                {% if user.is_aythenticated %}
-                                                <li><a class="dropdown-item" href="#">Subscribe Projects</a></li>
+                                                {% if user.is_authenticated %}
+                                                <li><a class="dropdown-item" href="{% url 'main_app:my-subscribed-list' %}">Subscribe Projects</a></li>
                                                     {% if user.is_developer %}
-                                                <li><a class="dropdown-item" href="#">My Projects</a></li>
+                                                <li><a class="dropdown-item" href="{% url 'main_app:my-project-list' %}">My Projects</a></li>
                                                      {% endif %}
                                                 {% endif %}
                                             </ul>
@@ -73,13 +74,26 @@
                                             <a class="nav-link" href="#">Contact</a>
                                         </li>
                                     </ul>
+                                    {% if user.is_authenticated %}
                                     <ul class="navbar-nav border-start sm-mx-none ps-3">
-                                        {% if user.is_authenticated %}
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'accounts:login' %}"><i class="fas fa-user me-1"></i> Login/Register</a>
+                                            <a class="nav-link" href="#">
+                                                <i class="fas fa-user me-1"></i>
+                                                Welcome {{ user.username }}
+                                            </a>
                                         </li>
-                                        {% endif %}
                                     </ul>
+                                    {% else %}
+                                    <ul class="navbar-nav border-start sm-mx-none ps-3">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'accounts:login' %}">
+                                                <i class="fas fa-user me-1"></i>
+                                                Login/Register
+                                            </a>
+
+                                        </li>
+                                    </ul>
+                                    {% endif %}
                                 </div>
                             </nav>
                         </div>
