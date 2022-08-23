@@ -1,0 +1,195 @@
+{% extends 'dashboards/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block page_header %}
+    <div class="row">
+        <div class="col">
+            <h3 class="my-3">Add New Project</h3>
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block main_containt %}
+<div class="row">
+    <div class="col mb-30">
+        <div class="border rounded bg-white p-30">
+            <h4 class="mb-4">Basic Information</h4>
+            <form class="form-boder" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="row">
+                    <div class="col-md-12 mb-20">
+                        <button type="submit" class="btn btn-primary" name="submitbasic">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mb-30">
+        <div class="border rounded bg-white p-30">
+            <h4 class="mb-4">Detailed Information</h4>
+            <form class="form-boder" action="#" method="POST">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Property Id</label>
+                        <input class="form-control" id="propertyid" name="propertyid" type="text">
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Area Size</label>
+                        <input class="form-control" id="areasize" name="areasize" type="text">
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Land Size</label>
+                        <input class="form-control" id="landsize" name="landsize" type="text">
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Bathrooms</label>
+                        <input class="form-control" id="Bathrooms" name="Bathrooms" type="text">
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Garage</label>
+                        <select>
+                            <option>Select Garage</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Garage Size</label>
+                        <input class="form-control" id="garagesize" name="garagesize" type="text">
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Age Year</label>
+                        <input class="form-control" id="build" name="build" type="text">
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-20">
+                        <label class="mb-2 font-fifteen font-500">Video URL</label>
+                        <input class="form-control" id="video" name="video" type="text">
+                    </div>
+                    <div class="col-md-12">
+                        <h6 class="mb-2">Check options</h6>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="row row-cols-lg-3 row-cols-1 custom-check-box mb-20">
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Air Conditioning</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck2">
+                                <label class="custom-control-label" for="customCheck2">Garage Facility</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck3">
+                                <label class="custom-control-label" for="customCheck3">Swiming Pool</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck4">
+                                <label class="custom-control-label" for="customCheck4">Fire Security</label>
+                            </li>
+
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck5">
+                                <label class="custom-control-label" for="customCheck5">Fire Place Facility</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck6">
+                                <label class="custom-control-label" for="customCheck6">Play Ground</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck7">
+                                <label class="custom-control-label" for="customCheck7">Ferniture Include</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck8">
+                                <label class="custom-control-label" for="customCheck8">Marbel Floor</label>
+                            </li>
+
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck9">
+                                <label class="custom-control-label" for="customCheck9">Store Room</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck10">
+                                <label class="custom-control-label" for="customCheck10">Hight Class Door</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck11">
+                                <label class="custom-control-label" for="customCheck11">Floor Heating System</label>
+                            </li>
+                            <li class="col">
+                                <input type="checkbox" class="custom-control-input hide" id="customCheck12">
+                                <label class="custom-control-label" for="customCheck12">Garden Include</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12 mb-20">
+                        <button class="btn btn-primary" name="submitbasic">Save Information</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col mb-30">
+        <div class="border rounded bg-white p-30">
+            <h4 class="mb-4">Property Media</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <form class="form-boder" action="#" method="POST">
+                <div class="form-row">
+                    <div class="col-md-12 mt-20">
+                        <ul class="row row-cols-xl-6 row-cols-md-3 row-cols-2 media-upload">
+                            <li class="col">
+                                <img src="assets/images/thumbnaillist/01.jpg" class="rounded pb-30" alt="real estate template">
+                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                            </li>
+                            <li class="col">
+                                <img src="assets/images/thumbnaillist/02.jpg" class="rounded pb-30" alt="real estate template">
+                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                            </li>
+                            <li class="col">
+                                <img src="assets/images/thumbnaillist/03.jpg" class="rounded pb-30" alt="real estate template">
+                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                            </li>
+                            <li class="col">
+                                <img src="assets/images/thumbnaillist/04.jpg" class="rounded pb-30" alt="real estate template">
+                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                            </li>
+                            <li class="col">
+                                <img src="assets/images/thumbnaillist/05.jpg" class="rounded pb-30" alt="real estate template">
+                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                            </li>
+                            <li class="col">
+                                <img src="assets/images/thumbnaillist/06.jpg" class="rounded pb-30" alt="real estate template">
+                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-12 mb-20">
+                        <input type="file" id="fileupload-example-1" class="d-none">
+                        <label class="fileupload_label border rounded font-large" for="fileupload-example-1">Drop your photos here or Click</label>
+                    </div>
+                    <div class="col-md-12 mb-20">
+                        <label class="mb-2 font-fifteen font-500 w-100">Attachment</label>
+                        <div class="d-flex">
+                            <input type="text" id="file-path" class="form-control me-3">
+                            <input type="file" class="d-none" id="attachment-file">
+                            <label class="btn btn-secondary d-ruby" for="attachment-file">Select Attachment</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-20">
+                        <button class="btn btn-primary" name="submitbasic">Save Media</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main_containt %}
+

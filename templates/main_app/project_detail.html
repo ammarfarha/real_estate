@@ -1,0 +1,81 @@
+{% extends 'main_app/base1.html' %}
+{% load static %}
+{% block page_header %}
+        <!--============== Page title Start ==============-->
+        <div class="full-row py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav aria-label="breadcrumb" class="mb-2">
+                            <ol class="breadcrumb mb-0 bg-transparent p-0">
+                                <li class="breadcrumb-item"><a href="{% url 'main_app:index' %}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'main_app:my-project-list' %}">Projects</a></li>
+                                <li class="breadcrumb-item active text-primary" aria-current="page">{{ project.name }}</li>
+                            </ol>
+                        </nav>
+                        <h3 class="text-secondary">{{ project.name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Page title End ==============-->
+{% endblock page_header %}
+
+{% block main_content %}
+        <!--============== Property Details Start ==============-->
+<div class="full-row pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2">
+                <!-- Property Search -->
+                <div class="widget advance_search_widget">
+                    <h5 class="mb-30">Admin</h5>
+                    <form class="rounded quick-search form-icon-right" action="#" method="post">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <a href="{% url 'main_app:project-update' project.id  %}" class="btn btn-primary w-100">Edit</a>
+                            </div>
+                            <div class="col-12">
+                                <a href="#" class="btn btn-primary w-100">Delete</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xl-8 order-xl-1">
+                <div class="property-overview border summary rounded bg-white p-30 mb-30">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="single-property" style="width:1200px; height:600px; margin:0 auto 30px;">
+                                <img width="600" src="{% static 'images/slider/5.png' %}" class="ls-bg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-auto">
+                            <div class="post-meta font-small text-uppercase list-color-primary">
+                                <a href="#" class="listing-ctg">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>{{ project.get_type_display }}</span>
+                                </a>
+                            </div>
+                            <h4 class="listing-title"><a href="#">{{ project.name }}</a></h4>
+                            <span class="listing-location"><i class="fas fa-map-marker-alt text-primary"></i>{{ project.location }}</span>
+                        </div>
+                        <div class="col-12">
+                            <div class="mt-2">
+                                <ul class="list-three-fold-width d-table">
+                                    <li><span class="font-500">Status:</span> {{ project.get_statue_display }}</li>
+                                    <li><span class="font-500">Area:</span> {{ project.area }} M<sup>2</sup></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!--============== Property Details End ==============-->
+{% endblock main_content %}

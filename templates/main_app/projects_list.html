@@ -45,7 +45,7 @@
             <div class="property_text p-3">
                 <span class="d-inline-block text-primary">{{ project.get_type_display }}</span>
                 <h5 class="mt-2">
-                    <a class="font-400 text-secondary" href="#">
+                    <a class="font-400 text-secondary" href="{% url 'main_app:project-details' project.id %}">
                         {{ project.name }}
                     </a>
                 </h5>

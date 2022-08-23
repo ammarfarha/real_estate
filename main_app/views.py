@@ -96,17 +96,21 @@ class ProjectAddImageViews(CreateView):
     context_object_name = 'images'
 
 
-class ProjectUpdate(UpdateView):
+class ProjectUpdateView(UpdateView):
     model = Project
-    template_name = 'main_app/project_detail.html'
+    template_name = 'dashboards/project_edit.html'
+    form_class = AddProjectForm
     context_object_name = 'project'
 
+    def get_success_url(self):
+        return reverse_lazy('main_app:project-update', args=[self.object.pk])
 
-class ProjectDelete(DeleteView):
+
+class ProjectDeleteView(DeleteView):
     model = Project
 
 
-class ProjectPhasesList(ListView):
+class ProjectPhasesListView(ListView):
     model = Project
 
 
