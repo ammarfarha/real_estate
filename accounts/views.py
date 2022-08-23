@@ -69,7 +69,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 
 class ClientProfileUpdateView(UpdateView):
     model = Client
-    template_name = 'accounts/user_form.html'
+    template_name = 'dashboards/profile.html'
     form_class = ClientProfileForm
     success_message = _("Your Profile Updated Successfully.")
     success_url = reverse_lazy('main_app:index')
