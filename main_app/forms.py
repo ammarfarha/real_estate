@@ -29,7 +29,6 @@ class AddProjectImageFileForm(forms.ModelForm):
             'alt',
         ]
 
-
 class ProjectsSearchForm(forms.ModelForm):
     class Meta:
         model = Project

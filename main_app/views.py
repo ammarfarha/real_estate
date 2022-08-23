@@ -127,16 +127,28 @@ class ProjectUpdateView(UpdateView):
         context['listing_title'] = _('Add Project')
         return context
 
+
 class ProjectDeleteView(DeleteView):
     model = Project
 
     def get_success_url(self):
-        return reverse_lazy('main_app:project-update', args=[self.object.pk])
+        return reverse_lazy('main_app:admin-my-project-list', args=[self.object.pk])
 
 
 class ProjectPhasesListView(ListView):
     model = Project
 
 
-class ProjectAdd:
-    pass
+class ProjectUploadImageView(DeveloperMixin, CreateView):
+    models = ProjectImage
+    form_class = AddProjectImageFileForm
+    template_name = 'dashboards/profile.html'
+
+    def form_valid(self, form):
+        form.instance.project = Project.objects.get(id=self.request.POST['pk'])
+        form.instance.image = self.request.FILES['image']
+        form.instance.alt = self.request.POST['alt']
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:project-update', args=[self.object.pk])

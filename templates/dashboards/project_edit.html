@@ -30,8 +30,8 @@
     <div class="col mb-30">
         <div class="border rounded bg-white p-30">
             <h4 class="mb-4">Project Images</h4>
-            <form class="form-boder" method="POST" enctype="multipart/form-data">
-
+            <form action="{% url 'main_app:upload-image' project.id %}" class="form-boder" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="pk" value="{{ project.id }}">
                 <div class="form-row">
                     <div class="col-md-12 mt-20">
                         <ul class="row row-cols-xl-6 row-cols-md-3 row-cols-2 media-upload">

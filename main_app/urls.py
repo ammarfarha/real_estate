@@ -13,4 +13,5 @@ urlpatterns = [
     path('my_projects/<int:pk>/delete/', views.ProjectDeleteView.as_view(), name='project-delete'),
     path('my_projects/<int:pk>/phases/', views.ProjectPhasesListView.as_view(), name='project-phases'),
     path('sub-projects/', views.ClientSubscribedProjectsListView.as_view(), name='my-subscribed-list'),
+    path('my_projects/<int:pk>/upload/', views.ProjectUploadImageView.as_view(), name='upload-image'),
 ]
