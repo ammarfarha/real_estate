@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.views.generic import FormView, ListView, CreateView, DetailView, DeleteView, UpdateView
 from .models import Project, Subscription, ProjectImage
 from accounts.models import Client
@@ -82,8 +82,8 @@ class ClientSubscribedProjectsListView(ClientMixin, ProjectsListView):
 class ProjectAddView(DeveloperMixin, CreateView):
     model = Project
     form_class = AddProjectForm
-    template_name = 'main_app/add_project.html'
-    success_url = reverse_lazy('main_app:my-project-list')
+    template_name = 'dashboards/add_project.html'
+    success_url = reverse_lazy('main_app:admin-my-project-list')
 
     def form_valid(self, form):
         form.instance.developer = Developer.objects.get(username=self.request.user.username)
@@ -129,11 +129,16 @@ class ProjectUpdateView(UpdateView):
         return context
 
 
-class ProjectDeleteView(DeleteView):
-    model = Project
+class ProjectDeleteView(DeveloperMixin, DeleteView):
+    models = Project
+    template_name = 'dashboards/delete.html'
+
+    def get_object(self, queryset=None):
+        id_ = self.kwargs.get('pk')
+        return get_object_or_404(Project, id=id_)
 
     def get_success_url(self):
-        return reverse_lazy('main_app:admin-my-project-list', args=[self.object.pk])
+        return reverse_lazy('main_app:admin-my-project-list')
 
 
 class ProjectPhasesListView(ListView):
