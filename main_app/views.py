@@ -102,6 +102,12 @@ class ProjectDetailsView(DetailView):
     template_name = 'main_app/project_detail.html'
     context_object_name = 'project'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['listing_title'] = _('Dispaly Project')
+        context['project_images'] = ProjectImage.objects.filter(project_id=self.object.pk)
+        return context
+
 
 class ProjectAddImageViews(CreateView):
     model = ProjectImage
