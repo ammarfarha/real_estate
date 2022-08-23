@@ -125,6 +125,7 @@ class ProjectUpdateView(UpdateView):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['upload_imag_form'] = AddProjectImageFileForm()
         context['listing_title'] = _('Add Project')
+        context['project_images'] = ProjectImage.objects.filter(project_id=self.object.pk)
         return context
 
 
@@ -151,4 +152,4 @@ class ProjectUploadImageView(DeveloperMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('main_app:project-update', args=[self.object.pk])
+        return reverse_lazy('main_app:project-update', args=[self.request.POST['pk']])

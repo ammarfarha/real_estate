@@ -30,15 +30,21 @@
     <div class="col mb-30">
         <div class="border rounded bg-white p-30">
             <h4 class="mb-4">Project Images</h4>
-            <form action="{% url 'main_app:upload-image' project.id %}" class="form-boder" method="POST" enctype="multipart/form-data">
+            <form id="project_image_list" action="{% url 'main_app:upload-image' project.id %}" class="form-boder" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="pk" value="{{ project.id }}">
                 <div class="form-row">
                     <div class="col-md-12 mt-20">
                         <ul class="row row-cols-xl-6 row-cols-md-3 row-cols-2 media-upload">
-                            <li class="col">
+                            {% for image in project_images %}
+                                <li class="col">
+                                <img src="/media/{{ image.image }}" class="rounded pb-30" alt="{{ image.alt }}">
+                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                            {% empty %}
+                                <li class="col">
                                 <img src="{% static 'images/no_image.jpg' %}" class="rounded pb-30" alt="real estate template">
                                 <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
                             </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="col-md-12 mb-20">
