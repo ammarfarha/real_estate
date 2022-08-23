@@ -28,6 +28,7 @@
         <div class="row">
             <div class="col-xl-4 order-xl-2">
                 <!-- Property Search -->
+                {% if project.get_developer_username.username == user.username %}
                 <div class="widget advance_search_widget">
                     <h5 class="mb-30">Admin</h5>
                     <form class="rounded quick-search form-icon-right" action="#" method="post">
@@ -41,13 +42,14 @@
                         </div>
                     </form>
                 </div>
+                {% endif %}
             </div>
             <div class="col-xl-8 order-xl-1">
                 <div class="property-overview border summary rounded bg-white p-30 mb-30">
                     <div class="row">
                         <div class="col-md-12">
                             <div id="single-property" style="width:1200px; height:600px; margin:0 auto 30px;">
-                                <img width="600" src="{% static 'images/slider/5.png' %}" class="ls-bg" alt="" />
+                                <img width="600" src="{% static 'images/no_image.jpg' %}" class="ls-bg" alt="" />
                             </div>
                         </div>
                     </div>

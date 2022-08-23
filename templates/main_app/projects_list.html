@@ -33,7 +33,7 @@
                 </a>
                 {% else %}
                 <a href="#">
-                    <img src="{% static 'images/property_grid/property-grid-1.png' %}" alt="Image Not Found!">
+                    <img src="{% static 'images/no_image.jpg' %}" alt="Image Not Found!">
                 </a>
                 {% endif %}
 {#                <span class="price-on text-white font-medium font-500">$1850/<small>mo</small></span>#}
@@ -53,7 +53,7 @@
                     <i class="fas fa-map-marker-alt text-primary"></i>
                     {{ project.location }}
                 </span>
-                <div class="quantity">
+                <div class="my-3 d-block">
                     <ul class="d-flex">
                         <li><span>Area:</span> {{ project.area }} m<sup>2</sup></li>
                     </ul>

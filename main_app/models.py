@@ -93,6 +93,9 @@ class Project(models.Model):
     def has_image(self):
         return bool(self.get_first_image())
 
+    def get_developer_username(self):
+        return Developer.objects.filter(pk=self.developer_id).first()
+
     # clean:
     # save:
 
@@ -115,7 +118,7 @@ class ProjectImage(models.Model):
     alt = models.CharField(
         max_length=200,
         null=True,
-        blank=False,
+        blank=True,
     )
 
 

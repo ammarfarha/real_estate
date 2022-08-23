@@ -20,10 +20,14 @@ class AddProjectForm(forms.ModelForm):
     def clean(self):
         pass
 
+
 class AddProjectImageFileForm(forms.ModelForm):
     class Meta:
         model = ProjectImage
-        fields = "__all__"
+        fields = [
+            'image',
+            'alt',
+        ]
 
 
 class ProjectsSearchForm(forms.ModelForm):
@@ -46,7 +50,7 @@ class ProjectsSearchForm(forms.ModelForm):
             {
                 'class': 'col-xs-2',
                 'placeholder': 'Name',
-             }
+            }
         )
         self.fields['name'].required = False
         self.fields['type'].widget.attrs.update()
