@@ -49,18 +49,18 @@
                 <div class="property-overview border summary rounded bg-white p-30 mb-30">
                     <div class="row">
                         <div class="col-md-12">
-                            {% for image in project_images  %}
                             <div id="single-property" style="width:1200px; height:600px; margin:0 auto 30px;">
-                                <img width="400" src="/media/{{ image.image }}" class="ls-bg" alt="No image" />
-                             </div>
-                            {% empty %}
-                             <div id="single-property" style="width:1200px; height:600px; margin:0 auto 30px;">
-                                <img width="600" src="{% static 'images/no_image.jpg' %}" class="ls-bg" alt="No image" />
-                             </div>
-                            {% endfor %}
+                                {% for image in project_images  %}
+                                <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;">
+                                    <img width="1920" height="1280" src="/media/{{ image.image }}" class="ls-bg" alt="" />
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
-                    <div class="row mb-4">
+                </div>
+            <div class="property-overview border summary rounded bg-white p-30 mb-30">
+                <div class="row mb-4">
                         <div class="col-auto">
                             <div class="post-meta font-small text-uppercase list-color-primary">
                                 <a href="#" class="listing-ctg">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
             </div>
         </div>
     </div>

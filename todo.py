@@ -44,13 +44,12 @@
 """
 
 - utilize SuccessMessageMixin
-- pagination for all listviews
-- filter for projects listing pages (use django-filters) (filter)
-
+- pagination for all listviews                                                          Done
+- filter for projects listing pages (use django-filters) (filter)                       Later
 - form validation for developer registration page and implement it client/server side
 
-- project details view/template
--- slider or gallery
+- project details view/template                                                          
+-- slider or gallery                                                                    Done
 -- phases
 ---- show free phases only for non-subscribed users
 ---- enable subscription
