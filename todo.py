@@ -54,7 +54,7 @@
 ---- show free phases only for non-subscribed users
 ---- enable subscription
 
-- add messages to models 
+- add messages to models                                                                Done
 --  send messages as email
 
 
