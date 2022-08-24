@@ -105,7 +105,9 @@ class ProjectDetailsView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['listing_title'] = _('Dispaly Project')
-        context['project_images'] = ProjectImage.objects.filter(project_id=self.object.pk)
+        # context['project_images'] = ProjectImage.objects.filter(project_id=self.object.pk)
+        context['project_images'] = self.object.project_images.all()
+
         return context
 
 
@@ -138,13 +140,14 @@ class ProjectUpdateView(UpdateView):
 class ProjectDeleteView(DeveloperMixin, DeleteView):
     models = Project
     template_name = 'dashboards/delete.html'
+    success_url = reverse_lazy('main_app:admin-my-project-list')
+
+    def test_func(self):
+        return super().test_func() and self.get_object().developer == self.request.user.get_developer()
 
     def get_object(self, queryset=None):
         id_ = self.kwargs.get('pk')
         return get_object_or_404(Project, id=id_)
-
-    def get_success_url(self):
-        return reverse_lazy('main_app:admin-my-project-list')
 
 
 class ProjectPhasesListView(ListView):

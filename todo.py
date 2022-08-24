@@ -1,4 +1,4 @@
-# TODO:
+# DONE:
 """
 #   0- inner class for all choises values
 #   1- str funtion to all class
@@ -11,7 +11,6 @@
 #   8 - localizations - internatioalization
 #   9 - Base Views for Auth (Cleint - Developer)
 #   10 - crispy forms
-
 
 # namespacing urls
 # fix settings login/logout urls
@@ -28,11 +27,6 @@
 --- designated folder (media)
 --- break-down for media sub-folders
 - login - logout - logged-in user - links authorized (templatetags)
-- utilize SuccessMessageMixin
-- pagination for all listviews
-- filter for projects listing pages (use django-filters) (filter)
-
-
 - base view: All Projects Done
 -- sub class: my projects Done
 -- sub class: subscribe projects Done
@@ -40,11 +34,39 @@
 - developer approval (approve from super admin)
 ----- default active false
 ----- message display to developer that we see your registration .....
-
-- form validation for developer registration page and emplement it client/server side
 - implement developer field in the project create form
 - fix base.html and toolbar as we agreed
 
+"""
+
+
+# TODO:
+"""
+
+- utilize SuccessMessageMixin
+- pagination for all listviews
+- filter for projects listing pages (use django-filters) (filter)
+
+- form validation for developer registration page and implement it client/server side
+
+- project details view/template
+-- slider or gallery
+-- phases
+---- show free phases only for non-subscribed users
+---- enable subscription
+
+- add messages to models 
+--  send messages as email
+
+
+- social login
+- google maps
+- tow factor authentication
+- payment gateway
+- msm gateway
+- referral 
+
+- Assigned to Abdullah
 - new project form
 --- Step1ProjectCreateView(CreateView) will use Step1ProjectForm
 --- ProjectImagesView(CreateView) will use ProjectImageForm

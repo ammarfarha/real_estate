@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
@@ -87,11 +88,15 @@ class Project(models.Model):
     def __str__(self):
         return self.name + " - developed by: (" + str(self.developer) + ")"
 
-    def get_first_image(self):
-        return ProjectImage.objects.filter(project_id=self.pk).first()
+    def get_first_image_or_default(self):
+        if self.project_images.all():
+            return self.project_images.all().first().image.url
+        else:
+            return '{}{}'.format(settings.STATIC_URL, 'images/no_image.jpg')
 
+    # TODO: remove
     def has_image(self):
-        return bool(self.get_first_image())
+        return bool(self.get_first_image_or_default())
 
     def get_developer_username(self):
         return Developer.objects.filter(pk=self.developer_id).first()

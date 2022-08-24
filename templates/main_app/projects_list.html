@@ -27,15 +27,9 @@
         <!-- Property Grid -->
         <div class="property-grid-1 bg-white property-block border transation-this hover-shadow mb-30">
             <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
-                {% if project.has_image %}
                 <a href="#">
-                    <img src="/media/{{ project.get_first_image.image }}" alt="Image Not Found!">
+                    <img src="{{ project.get_first_image_or_default }}" alt="Image Not Found!">
                 </a>
-                {% else %}
-                <a href="#">
-                    <img src="{% static 'images/no_image.jpg' %}" alt="Image Not Found!">
-                </a>
-                {% endif %}
 {#                <span class="price-on text-white font-medium font-500">$1850/<small>mo</small></span>#}
                 <ul class="position-absolute quick-meta">
                     <li><a href="#" title="Add Compare"><i class="flaticon-transfer flat-mini"></i></a></li>
