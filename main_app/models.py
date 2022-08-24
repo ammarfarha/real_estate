@@ -283,13 +283,3 @@ class UpdateAttachment(models.Model):
     # clean:
     # save:
 
-
-class Message(models.Model):
-    subject = models.CharField(max_length=200, null=True, blank=True, verbose_name=_('Subject')),
-    message = models.TextField(null=True, blank=True, verbose_name=_('Message')),
-    user_from = models.OneToOneField(Client, verbose_name=_('Sender'), related_name='messages', on_delete=models.CASCADE),
-    user_to = models.ForeignKey(Developer, verbose_name=_('Receiver'), related_name='messages', on_delete=models.CASCADE),
-    send_date = models.DateTimeField(verbose_name=_('Send Date'), auto_now_add=True, null=True, blank=False,)
-
-    def __str__(self):
-        return str(self.subject)
