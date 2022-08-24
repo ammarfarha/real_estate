@@ -13,14 +13,12 @@ class GenderList(models.TextChoices):
 
 class Client(AbstractUser):
     birth_date = models.DateField(null=True, blank=False, verbose_name=_('Birth Date'))
-    # TODO: need to change to phone field
     phone = PhoneNumberField(
         # max_length=12,
         null=True,
         blank=False,
         verbose_name=_('Phone Number')
     )
-    # TODO: need to change to phone field
     mobile = PhoneNumberField(
         # max_length=12,
         null=True,
@@ -60,7 +58,7 @@ class Client(AbstractUser):
     )
 
     class Meta:
-        verbose_name = 'Client'  # TODO: translated
+        verbose_name = _('Client')
         verbose_name_plural = 'Clients'
 
     # srt:
@@ -103,12 +101,11 @@ class Developer(Client):
         blank=True,
         upload_to='treads/',
         validators=[validate_file_extensions],
-        # TODO: allowed file types extensions
     )
 
     # super.is_active =
     class Meta:
-        verbose_name = 'Developer'
+        verbose_name = _('Developer')
         verbose_name_plural = 'Developers'
 
     def __str__(self):

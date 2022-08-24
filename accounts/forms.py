@@ -76,13 +76,9 @@ class ClientProfileForm(ClientCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
-        self.fields['birth_date'].required = True
-        self.fields['phone'].required = False
-        self.fields['mobile'].required = False
         self.fields['email'].required = True
         self.fields['nationality'].required = True
         self.fields['gender'].required = True
-        # TODO: fix required attr
 
 
 class DeveloperCreationForm(ClientCreationForm):
