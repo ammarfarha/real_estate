@@ -20,7 +20,7 @@ class ProjectsListView(ListView):
     model = Project
     template_name = "main_app/projects_list.html"
     context_object_name = "projects"
-    paginate_by = 1
+    paginate_by = 9
 
     # TODO: make a form for search and load it its initial with request.GET
     def get_context_data(self, *, object_list=None, **kwargs):
