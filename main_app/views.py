@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from accounts.views import ClientMixin, DeveloperMixin
 from django.views.generic.edit import CreateView
-from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm
+from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
 
@@ -189,3 +189,19 @@ class ProjectUploadImageView(DeveloperMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('main_app:project-update', args=[self.request.POST['pk']])
+
+
+class ClientSubscribeProjectView(ClientMixin, CreateView):
+    models = Subscription
+    form_class = SubscriptionForm
+    template_name = 'main_app/subscribe.html'
+
+    def form_valid(self, form):
+        form.instance.project = Project.objects.get(id=self.kwargs.get('pk'))
+        form.instance.client = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:index')
+
+

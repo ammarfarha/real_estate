@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project, ProjectImage, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
+from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
 from django.utils.translation import gettext_lazy as _
 
 
@@ -28,6 +28,14 @@ class AddProjectImageFileForm(forms.ModelForm):
         fields = [
             'image',
             'alt',
+        ]
+
+
+class SubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = Subscription
+        fields = [
+            'referral_user',
         ]
 
 
