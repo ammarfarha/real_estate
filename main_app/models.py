@@ -98,11 +98,7 @@ class Project(models.Model):
         return developer.username == Developer.objects.filter(pk=self.developer_id).first().username
 
     def can_subscribe(self, client):
-        print("+++++++++++++++++++++++++++")
-        print(bool(self.subscriptions.all().filter(client=client)))
-        print("******************************")
-        print(self.can_edit(client))
-        return bool(self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
+        return not bool(self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
 
     # clean:
     # save:

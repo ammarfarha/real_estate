@@ -111,7 +111,7 @@
                                     {% for main in main_phases %}
                                     <div class="tab-pane tab-hide" id="{{ main.id }}" style="display: block;">
                                         <div class="table-striped overflow-x-scroll pb-2">
-                                            {% if free_phases.id == main.id and not can_subscribe %}
+                                            {% if free_phases.id == main.id or not can_subscribe %}
                                                 <div>{{ main.title }}</div>
                                                 <ul>
                                                 {% for sub in main.get_sub_phases_or_none %}
@@ -119,7 +119,7 @@
                                                 {% endfor %}
                                                 </ul>
                                             {% else %}
-                                                <div>
+                                                <div> {{ can_subscribe }}
                                                     You must <a href="{% url 'main_app:subscribe' project.id %}">subscribe</a>
                                                 </div>
                                             {% endif %}
