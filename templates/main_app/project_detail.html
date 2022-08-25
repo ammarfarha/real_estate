@@ -29,7 +29,7 @@
             <div class="col-xl-4 order-xl-2">
                 <!-- Property Search -->
 {#            ToDo:  #}
-                {% if project.developer.username == user.username %}
+                {% if can_edit %}
                 <div class="widget advance_search_widget">
                     <h5 class="mb-30">Admin</h5>
                     <form class="rounded quick-search form-icon-right" action="#" method="post">
@@ -69,6 +69,14 @@
                                 </a>
                             </div>
                             <h4 class="listing-title"><a href="#">{{ project.name }}</a></h4>
+                            {% if can_subscribe %}
+                            <div class="post-meta font-small text-uppercase list-color-primary">
+                                <a href="{% url 'main_app:subscribe' project.id %}" class="listing-ctg">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>Subscribe</span>
+                                </a>
+                            </div>
+                            {% endif %}
                             <span class="listing-location"><i class="fas fa-map-marker-alt text-primary"></i>{{ project.location }}</span>
                         </div>
                         <div class="col-12">

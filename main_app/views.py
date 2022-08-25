@@ -23,6 +23,7 @@ class ProjectsListView(ListView):
     paginate_by = 9
 
     # TODO: make a form for search and load it its initial with request.GET
+
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['search_form'] = ProjectsSearchForm(
@@ -103,15 +104,17 @@ class ProjectAddView(DeveloperMixin, CreateView):
         return context
 
 
-class ProjectDetailsView(ProjectCanEditMixin, DetailView):
+class ProjectDetailsView(ClientMixin, DetailView):
     model = Project
     template_name = 'main_app/project_detail.html'
     context_object_name = 'project'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['listing_title'] = _('Dispaly Project')
+        context['listing_title'] = _('Display Project')
         context['project_images'] = self.object.project_images.all()
+        context['can_edit'] = self.object.can_edit(self.request.user)
+        context['can_subscribe'] = self.object.can_subscribe(self.request.user)
         return context
 
 

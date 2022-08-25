@@ -94,8 +94,11 @@ class Project(models.Model):
         else:
             return '{}{}'.format(settings.STATIC_URL, 'images/no_image.jpg')
 
-    def get_developer_username(self):
-        return Developer.objects.filter(pk=self.developer_id).first()
+    def can_edit(self, developer):
+        return developer.username == Developer.objects.filter(pk=self.developer_id).first().username
+
+    def can_subscribe(self, client):
+        return not self.subscriptions.all().filter(client=client) and not self.can_edit(client)
 
     # clean:
     # save:
@@ -282,4 +285,3 @@ class UpdateAttachment(models.Model):
         return "File for: " + str(self.update)
     # clean:
     # save:
-
