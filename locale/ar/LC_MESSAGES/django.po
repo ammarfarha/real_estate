@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-23 18:36-0700\n"
+"POT-Creation-Date: 2022-08-25 12:53-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
 #: .\accounts\file_validator.py:10
 msgid "Unsupported File Type"
 msgstr ""
@@ -35,7 +34,7 @@ msgstr ""
 msgid "You have to enter an official email address"
 msgstr ""
 
-#: .\accounts\forms.py:130
+#: .\accounts\forms.py:126
 msgid "You are not a company"
 msgstr ""
 
@@ -51,48 +50,56 @@ msgstr ""
 msgid "Birth Date"
 msgstr ""
 
-#: .\accounts\models.py:21
+#: .\accounts\models.py:20
 msgid "Phone Number"
 msgstr ""
 
-#: .\accounts\models.py:28
+#: .\accounts\models.py:26
 msgid "Mobile Number"
 msgstr ""
 
-#: .\accounts\models.py:31
+#: .\accounts\models.py:29
 msgid "Country"
 msgstr ""
 
-#: .\accounts\models.py:38
+#: .\accounts\models.py:36
 msgid "Gender"
 msgstr ""
 
-#: .\accounts\models.py:46
+#: .\accounts\models.py:44
 msgid "City"
 msgstr ""
 
-#: .\accounts\models.py:51
+#: .\accounts\models.py:49
 msgid "Full Address"
 msgstr ""
 
-#: .\accounts\models.py:56 .\main_app\models.py:118
+#: .\accounts\models.py:54 .\main_app\models.py:117
 msgid "Client Photo"
 msgstr ""
 
-#: .\accounts\models.py:83
+#: .\accounts\models.py:61 .\main_app\models.py:135
+msgid "Client"
+msgstr ""
+
+#: .\accounts\models.py:81
 msgid "Are you a Company?"
 msgstr ""
 
-#: .\accounts\models.py:89
+#: .\accounts\models.py:87
 msgid "Company Name"
 msgstr ""
 
-#: .\accounts\models.py:96
+#: .\accounts\models.py:94
 msgid "Company Website"
 msgstr ""
 
-#: .\accounts\models.py:101
+#: .\accounts\models.py:99
 msgid "Trade Record"
+msgstr ""
+
+#: .\accounts\models.py:108 .\main_app\models.py:28
+msgid "Developer"
 msgstr ""
 
 #: .\accounts\views.py:42
@@ -125,7 +132,7 @@ msgstr ""
 msgid "Update Developer Profile"
 msgstr ""
 
-#: .\main_app\forms.py:37
+#: .\main_app\forms.py:45
 msgid "Type"
 msgstr ""
 
@@ -169,10 +176,6 @@ msgstr ""
 msgid "Ready To Use"
 msgstr ""
 
-#: .\main_app\models.py:28
-msgid "Developer"
-msgstr ""
-
 #: .\main_app\models.py:36
 msgid "Project Name"
 msgstr ""
@@ -205,99 +208,94 @@ msgstr ""
 msgid "Project Neighborhood"
 msgstr ""
 
-#: .\main_app\models.py:112 .\main_app\models.py:144 .\main_app\models.py:176
+#: .\main_app\models.py:111 .\main_app\models.py:143 .\main_app\models.py:175
 msgid "Project"
 msgstr ""
 
-#: .\main_app\models.py:136
-msgid "Client"
-msgstr ""
-
-#: .\main_app\models.py:151
+#: .\main_app\models.py:150
 msgid "Subscription Date"
 msgstr ""
 
-#: .\main_app\models.py:156
+#: .\main_app\models.py:155
 msgid "Referral User"
 msgstr ""
 
-#: .\main_app\models.py:183 .\main_app\models.py:209
+#: .\main_app\models.py:182 .\main_app\models.py:208
 msgid "Title"
 msgstr ""
 
-#: .\main_app\models.py:202
+#: .\main_app\models.py:201
 msgid "Sub Phase"
 msgstr ""
 
-#: .\main_app\models.py:214
+#: .\main_app\models.py:213
 msgid "Start Date"
 msgstr ""
 
-#: .\main_app\models.py:219
+#: .\main_app\models.py:218
 msgid "Finish Date"
 msgstr ""
 
-#: .\main_app\models.py:224
+#: .\main_app\models.py:223
 msgid "Duration"
 msgstr ""
 
-#: .\main_app\models.py:243
+#: .\main_app\models.py:242
 msgid "Sub Phase Update"
 msgstr ""
 
-#: .\main_app\models.py:249
+#: .\main_app\models.py:248
 msgid "Update Date"
 msgstr ""
 
-#: .\main_app\models.py:253
+#: .\main_app\models.py:252
 msgid "Update Description"
 msgstr ""
 
-#: .\main_app\models.py:272
+#: .\main_app\models.py:271
 msgid "Update Sun Phase"
 msgstr ""
 
-#: .\main_app\models.py:278
+#: .\main_app\models.py:277
 msgid "Attachment"
 msgstr ""
 
-#: .\main_app\views.py:24
+#: .\main_app\views.py:31
 msgid "All Projects"
 msgstr ""
 
-#: .\main_app\views.py:56 .\main_app\views.py:66
+#: .\main_app\views.py:63 .\main_app\views.py:73
 msgid "My Projects"
 msgstr ""
 
-#: .\main_app\views.py:78
+#: .\main_app\views.py:85
 msgid "My Subscribed Projects"
 msgstr ""
 
-#: .\main_app\views.py:96 .\main_app\views.py:135
+#: .\main_app\views.py:103 .\main_app\views.py:160
 msgid "Add Project"
 msgstr ""
 
-#: .\main_app\views.py:107
-msgid "Dispaly Project"
+#: .\main_app\views.py:114
+msgid "Display Project"
 msgstr ""
 
 #: .\real_estate\settings.py:128
 msgid "English"
-msgstr "الأنكليزية"
+msgstr ""
 
 #: .\real_estate\settings.py:129
 msgid "Arabic"
-msgstr "العربية"
+msgstr ""
 
 #: .\templates\dashboards\base2.html:56
 msgid "Open Dashboard Navigation"
 msgstr ""
 
-#~ msgid "Hello"
-#~ msgstr "أهلا"
+#: .\templates\dashboards\base2.html:63
+msgid "Dashboard"
+msgstr ""
 
-#~ msgid "hello"
-#~ msgstr "مرحباً"
-
-#~ msgid "Welcome"
-#~ msgstr "أهلا وسهلا"
+#: .\templates\dashboards\base2.html:66
+msgid "Message"
+msgstr ""

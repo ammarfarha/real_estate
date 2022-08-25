@@ -1,5 +1,6 @@
 {% extends 'main_app/base1.html' %}
 {% load static %}
+{% load i18n %}
 {% block page_header %}
         <!--============== Page title Start ==============-->
         <div class="full-row py-5">
@@ -90,6 +91,46 @@
                         </div>
                     </div>
             </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-8 order-xl-1">
+                <div class="property-overview border rounded bg-white p-30 mb-30">
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <h5 class="mb-3">{% trans 'Main Phases' %}</h5>
+                            <div class="tab-simple tab-action">
+                                <ul class="nav-tab-line list-color-secondary d-table mb-3">
+                                    {% for main in main_phases %}
+                                    <li data-target="#{{ main.id }}">{{ main }}</li>
+                                    {% endfor %}
+                                </ul>
+
+                                <div class="tab-element">
+                                    {% for main in main_phases %}
+                                    <div class="tab-pane tab-hide" id="{{ main.id }}" style="display: block;">
+                                        <div class="table-striped overflow-x-scroll pb-2">
+                                            {% if free_phases.id == main.id and not can_subscribe %}
+                                                <div>{{ main.title }}</div>
+                                                <ul>
+                                                {% for sub in main.get_sub_phases_or_none %}
+                                                    <li>{{ sub.title }}</li>
+                                                {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                <div>
+                                                    You must <a href="{% url 'main_app:subscribe' project.id %}">subscribe</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

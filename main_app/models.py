@@ -86,7 +86,7 @@ class Project(models.Model):
     # meta:
     # srt:
     def __str__(self):
-        return self.name + " - developed by: (" + str(self.developer) + ")"
+        return str(self.name)
 
     def get_first_image_or_default(self):
         if self.project_images.all():
@@ -98,7 +98,11 @@ class Project(models.Model):
         return developer.username == Developer.objects.filter(pk=self.developer_id).first().username
 
     def can_subscribe(self, client):
-        return not self.subscriptions.all().filter(client=client) and not self.can_edit(client)
+        print("+++++++++++++++++++++++++++")
+        print(bool(self.subscriptions.all().filter(client=client)))
+        print("******************************")
+        print(self.can_edit(client))
+        return bool(self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
 
     # clean:
     # save:
@@ -187,7 +191,10 @@ class MainPhase(models.Model):
     # meta:
     # srt:
     def __str__(self):
-        return self.title + " in: " + str(self.project)
+        return str(self.title)
+
+    def get_sub_phases_or_none(self):
+        return self.sub_phases.all()
     # clean:
     # save:
 
@@ -228,7 +235,7 @@ class SubPhase(models.Model):
     # meta:
     # srt:
     def __str__(self):
-        return self.title + "  - of -  " + str(self.phase)
+        return str(self.title)
     # clean:
     # save:
 

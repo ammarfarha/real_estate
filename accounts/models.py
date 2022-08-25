@@ -63,7 +63,7 @@ class Client(AbstractUser):
 
     # srt:
     def __str__(self):
-        return "client : " + str(self.username)
+        return str(self.username)
 
     def get_developer(self):
         developer = Developer.objects.filter(username=self.username)
@@ -109,6 +109,6 @@ class Developer(Client):
         verbose_name_plural = 'Developers'
 
     def __str__(self):
-        return "dev : " + str(self.username)
+        return str(self.username)
     # clean:
     # save:
