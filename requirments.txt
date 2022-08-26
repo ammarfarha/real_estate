@@ -6,4 +6,6 @@ phonenumberslite==8.12.54
 django-phonenumber-field==6.3.0
 django-leaflet==0.28.3
 
+
+# -- download from https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal
 # installing gettext on windows from link: https://mlocati.github.io/articles/gettext-iconv-windows.htmlasgiref==3.5.2
