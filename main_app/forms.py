@@ -1,25 +1,30 @@
 from django import forms
+from leaflet.forms.fields import PointField
+
 from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
 from django.utils.translation import gettext_lazy as _
+from leaflet.forms.widgets import LeafletWidget
 
 
 class AddProjectForm(forms.ModelForm):
+    location = PointField(
+        required=True,
+        widget=LeafletWidget(
+            attrs={
+                'display_raw': True,
+                'map_width': '600px',
+                'map_height': '400px',
+            }
+        ))
+
     class Meta:
         model = Project
         fields = [
             'name',
             'summary',
             'type',
-            'location',
             'area',
         ]
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['location'].required = False
-
-    def clean(self):
-        pass
 
 
 class AddProjectImageFileForm(forms.ModelForm):

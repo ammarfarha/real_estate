@@ -4,7 +4,6 @@ from django.urls import path, include
 from django.views.i18n import JavaScriptCatalog
 from django.conf import settings
 from django.conf.urls.static import static
-from main_app import views
 
 
 urlpatterns = [

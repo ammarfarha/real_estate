@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load leaflet_tags %}
 <!doctype html>
 <html lang="en">
 
@@ -37,6 +38,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/colors/color.css' %}">
     <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    {% leaflet_css plugins="ALL" %}
+    {% leaflet_js plugins="ALL" %}
 </head>
 <body>
     <div class="preloader">
@@ -336,5 +339,6 @@
                 skinsPath: "{% static 'skins' %}",
             });
         </script>
+
 </body>
 </html>
