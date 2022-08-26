@@ -10,6 +10,14 @@ class ClientAdmin(UserAdmin):
     fieldsets = (
         *UserAdmin.fieldsets,
     )
+    add_fieldsets = (
+        (
+            None,
+            {
+                'fields': ClientCreationForm.Meta.fields
+            }
+        ),
+    )
 
 
 class DeveloperAdmin(UserAdmin):
@@ -17,6 +25,14 @@ class DeveloperAdmin(UserAdmin):
     add_form = DeveloperCreationForm
     fieldsets = (
         *UserAdmin.fieldsets,
+    )
+    add_fieldsets = (
+        (
+            None,
+            {
+                'fields': DeveloperCreationForm.Meta.fields
+            }
+        ),
     )
 
 
