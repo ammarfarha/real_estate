@@ -1,4 +1,4 @@
-{% extends 'dashboards/base2.html' %}
+{% extends 'dashboards/dashboard_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block page_header %}
@@ -51,7 +51,7 @@
                     <a href="{% url 'main_app:add-project' %}" class="btn btn-outline-primary">Add New Project</a>
                 </div>
             </div>
-            {% include 'global/pagination.html' %}
+            {% include 'global/../pagination.html' %}
         </div>
     </div>
 </div>

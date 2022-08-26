@@ -50,21 +50,9 @@ class ProjectsListView(ListView):
         return query_set
 
 
-class AdminProjectsListView(DeveloperMixin, ProjectsListView):
+class DeveloperProjectsListView(DeveloperMixin, ProjectsListView):
     template_name = "dashboards/my_admin.html"
 
-
-class DeveloperProjectsListView(DeveloperMixin, ProjectsListView):
-    def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(developer=self.request.user)
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(object_list=object_list, **kwargs)
-        context['listing_title'] = _('My Projects')
-        return context
-
-
-class AdminDeveloperProjectsListView(AdminProjectsListView):
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(developer=self.request.user)
 
@@ -208,5 +196,3 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('main_app:index')
-
-
