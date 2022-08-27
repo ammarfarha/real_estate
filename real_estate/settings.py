@@ -161,12 +161,10 @@ LOGOUT_REDIRECT_URL = reverse_lazy('main_app:index')
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
 
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (24.638373, 46.715577),
