@@ -44,7 +44,6 @@ class SubscriptionForm(forms.ModelForm):
         ]
 
 
-# TODO: use forms.Form not ModelForm
 class ProjectsSearchForm(forms.Form):
     name = forms.CharField(
         label=_('Name'),
