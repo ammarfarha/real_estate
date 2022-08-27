@@ -11,7 +11,7 @@ urlpatterns = [
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
-    path('', include('main_app.urls', namespace='main_app')),
+    path('', include('main_app.urls', namespace='main')),
     path('users/', include('accounts.urls', namespace='accounts')),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 )

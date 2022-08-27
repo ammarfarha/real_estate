@@ -155,8 +155,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = reverse_lazy('accounts:login')
-LOGIN_REDIRECT_URL = reverse_lazy('main_app:index')
-LOGOUT_REDIRECT_URL = reverse_lazy('main_app:index')
+LOGIN_REDIRECT_URL = reverse_lazy('main:index')
+LOGOUT_REDIRECT_URL = reverse_lazy('main:index')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
