@@ -46,33 +46,22 @@ class SubscriptionForm(forms.ModelForm):
 
 # TODO: use forms.Form not ModelForm
 class ProjectsSearchForm(forms.Form):
+    name = forms.CharField(
+        label=_('Name'),
+        widget=forms.TextInput,
+    )
     type = forms.ChoiceField(
         label=_('Type'),
         choices=Project.TypeList.choices,
-        widget=forms.CheckboxSelectMultiple,
+        # widget=forms.CheckboxSelectMultiple,
+    )
+    status = forms.ChoiceField(
+        label=_('Status'),
+        choices=Project.StatusList.choices,
+        # widget=forms.CheckboxSelectMultiple,
     )
 
-    # class Meta:
-    #     model = Project
-    #     fields = [
-    #         'name',
-    #         'type',
-    #         'statue',
-    #     ]
-    #     labels = {
-    #         'name': '',
-    #         'type': '',
-    #         'statue': '',
-    #     }
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['name'].widget.attrs.update(
-    #         {
-    #             'class': 'col-xs-2',
-    #             'placeholder': 'Name',
-    #         }
-    #     )
-    #     self.fields['name'].required = False
-    #     self.fields['type'].widget.attrs.update()
-    #     self.fields['statue'].widget.attrs.update()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['type'].required = False
+        self.fields['status'].required = False

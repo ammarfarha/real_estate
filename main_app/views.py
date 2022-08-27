@@ -78,7 +78,7 @@ class ProjectAddView(DeveloperMixin, CreateView):
     model = Project
     form_class = AddProjectForm
     template_name = 'dashboards/add_project.html'
-    success_url = reverse_lazy('main_app:admin-my-project-list')
+    success_url = reverse_lazy('main_app:my-project-list')
 
     def form_valid(self, form):
         form.instance.developer = Developer.objects.get(username=self.request.user.username)
