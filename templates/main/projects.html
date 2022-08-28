@@ -1,4 +1,5 @@
 {% extends 'main/main_base.html' %}
+{% load i18n %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block page_header %}
@@ -9,64 +10,162 @@
             <div class="col">
                 <nav aria-label="breadcrumb" class="mb-2">
                     <ol class="breadcrumb mb-0 bg-transparent p-0">
-                        <li class="breadcrumb-item"><a href="{% url 'main:index' %}">Home</a></li>
-                        <li class="breadcrumb-item active text-primary" aria-current="page">Project List</li>
+                        <li class="breadcrumb-item"><a href="{% url 'main:index' %}">{% trans "Home" %}</a></li>
+                        <li class="breadcrumb-item active text-primary" aria-current="page">{% trans "Project List" %}</li>
                     </ol>
                 </nav>
-                <h3 class="text-secondary">List Of All Projects</h3>
+                <h3 class="text-secondary">{% trans "List Of All Projects" %}</h3>
             </div>
         </div>
+
     </div>
 </div>
+{#<div class="full-row pt-0">#}
+{#    <div class="container">#}
+{#        <div class="row">#}
+{#            <div class="col">#}
+{#                <div class="woo-filter-bar p-3 d-flex flex-wrap justify-content-between">#}
+{#                    <div class="d-flex flex-wrap">#}
+{#                        <div class="btn push-nav-toggle"><i class="fas fa-filter"></i></div>#}
+{#                        <form class="woocommerce-ordering" method="get">#}
+{#                            {% csrf_token %}#}
+{#                            {{ search_form|crispy }}#}
+{#                            <button type="submit" class="btn btn-border-dark">Search</button>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 <!--============== Page title End ==============-->
 {% endblock page_header %}
 
 {% block main_content %}
-{#<div class="row row-cols-xl-3 row-cols-md-2 row-cols-1">#}
-{#    <form action="{% url 'main:index' %}">#}
-{#        {{ search_form|crispy }}#}
-{#        <input type="submit" name="search" />#}
-{#    </form>#}
-{#</div>#}
-<div class="row row-cols-xl-3 row-cols-md-2 row-cols-1">
-    {% for project in projects %}
-    <div class="col">
-        <!-- Property Grid -->
-        <div class="property-grid-1 bg-white property-block border transation-this hover-shadow mb-30">
-            <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
-                <a href="#">
-                    <img src="{{ project.get_first_image_or_default }}" alt="Image Not Found!">
-                </a>
-{#                <span class="price-on text-white font-medium font-500">$1850/<small>mo</small></span>#}
-                <ul class="position-absolute quick-meta">
-                    <li><a href="#" title="Add Compare"><i class="flaticon-transfer flat-mini"></i></a></li>
-                    <li><a href="#" title="Add Favourite"><i class="flaticon-like-1 flat-mini"></i></a></li>
-                </ul>
+<div class="full-row pt-0">
+    <div class="container">
+        <div class="row row-cols-md-3 row-cols-1 g-4">
+            {% for project in projects %}
+            <div class="col">
+                <div class="gallery-one">
+                    <div class="photo-overlay">
+                        <a href="#quick-view-{{ project.pk }}" class="quick-view transation xy-center">
+                            <span class="flaticon-eye-1 text-primary"></span>
+                        </a>
+                        <a href="{{ project.get_first_image_or_default }}" class="photo-view transation xy-center"
+                           data-fancybox="gallery" data-caption="Caption for image">
+                            <span class="flaticon-zoom-in"></span>
+                        </a>
+                        <img src="{{ project.get_first_image_or_default }}" alt="real estate template" width="100%">
+                    </div>
+                    <div class="portfolio-info mt-3">
+                        <div class="portfolio-title d-inline-block">
+                            <h5 class="font-400 mb-0"><a href="#" class="text-secondary">{{ project.name }}</a></h5>
+                            <div class="text-primary">
+                                <a href="#">Business</a> .
+                                <a href="#">Developer {{ project.developer.first_name }}</a>
+                            </div>
+
+                        </div>
+                        <div class="portfolio-view float-end d-inline-block">
+                            <div class="portfolio-view float-end d-inline-block">
+                                <a href="{% url "main_app:project-details" project.pk %}" class="btn btn-primary md-md-none">{% trans "More Details" %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="property_text p-3">
-                <span class="d-inline-block text-primary">{{ project.get_type_display }}</span>
-                <h5 class="mt-2">
-                    <a class="font-400 text-secondary" href="{% url 'main:project-details' project.id %}">
-                        {{ project.name }}
-                    </a>
-                </h5>
-                <span class="my-3 d-block">
-                    <i class="fas fa-map-marker-alt text-primary"></i>
-                    {{ project.location }}
-                </span>
-                <div class="my-3 d-block">
-                    <ul class="d-flex">
-                        <li><span>Area:</span> {{ project.area }} m<sup>2</sup></li>
-                    </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% block modal %}
+<!--============== Modal Start ==============-->
+{% for project in projects %}
+<div class="overlay-dark modal fade quick-view-modal" id="quick-view-{{ project.pk }}">
+<div class="modal-dialog modal-dialog-centered modal-xl">
+<div class="modal-content">
+    <div class="close view-close">
+        <span aria-hidden="true">&times;</span>
+    </div>
+    <div class="modal-body property-block summary p-3">
+        <div class="row row-cols-xl-2 row-cols-1">
+            <div class="col">
+                <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
+                    <div class="cata position-absolute">
+                        <span class="sale bg-secondary text-white">For Rent</span>
+                        <span class="featured bg-primary text-white">Featured</span>
+                    </div>
+                    <a href="#"><img class="w-100" src="{{ project.get_first_image_or_default }}" alt=""></a>
+{#                    <ul class="position-absolute quick-meta">#}
+{#                        <li><a href="#"><i class="flaticon-transfer flat-mini"></i></a></li>#}
+{#                        <li><a href="#"><i class="flaticon-like-1 flat-mini"></i></a></li>#}
+{#                        <li><a href="#"><i class="flaticon-share flat-mini"></i></a></li>#}
+{#                        <li><a href="#"><i class="flaticon-printer flat-mini"></i></a></li>#}
+{#                    </ul>#}
+                </div>
+            </div>
+            <div class="col">
+                <div class="property_text transation py-3 pe-3">
+                    <span class="d-inline-block text-primary">{{ project.get_type_display }}</span>
+                    <h5 class="modal-title mb-1" id="staticBackdropLabel"><a href="#" class="text-secondary hover-text-primary transation">{{ project.name }}</a></h5>
+                    <span class="mt-1 mb-3 d-block font-fifteen"><i class="fas fa-map-marker-alt text-primary"></i> {{ project.location }}</span>
+                    <a href="#" class="d-block text-light hover-text-primary font-small mb-2">( 100 People Recommended )</a>
+                    <div class="d-flex">
+{#                        <span class="text-secondary font-large">$5600 - $8300/<small>mo</small></span>#}
+{#                        <span class="text-white font-mini px-2 rounded product-status ms-5 my-1 bg-primary"><i class="fas fa-check"></i> Available</span>#}
+                    </div>
+{#                    <div class="product-offers mt-3">#}
+{#                        <ul class="product-offers-list">#}
+{#                            <li class="product-offer-item"> <strong>Special Price </strong>Get extra 19% off (price inclusive of discount)</li>#}
+{#                            <li class="product-offer-item"> <strong>Bank Offer </strong> 10% instant discount on VISA Cards</li>#}
+{#                            <li class="product-offer-item"> <strong>No cost EMI $49/month.</strong> Standard EMI also available</li>#}
+{#                        </ul>#}
+{#                    </div>#}
+                    <hr>
+{#                    <div class="quantity">#}
+{#                        <ul class="d-flex">#}
+{#                            <li><span>Rooms:</span> 5</li>#}
+{#                            <li><span>Beds:</span> 3</li>#}
+{#                            <li><span>Bathrooms:</span> 2</li>#}
+{#                            <li><span>Garage:</span> 1</li>#}
+{#                            <li><span>Area:</span> 1100 Sqft</li>#}
+{#                        </ul>#}
+{#                    </div>#}
+                    <h5 class="text-secondary my-3">{% trans "Description" %}</h5>
+                    <p>{{ project.summary }}</p>
+                    <div class="short-description d-flex">
+                        <span class="me-4"><b>Highlights:</b></span>
+                        <div class="short-description">
+                            <ul class="list-style-tick">
+                                <li>Regular Fit.</li>
+                                <li>Full sleeves.</li>
+                                <li>Machine wash, tumble dry.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center post-meta mt-2 py-3 border-top">
+                        <div class="agent">
+                            <a href="#" class="d-flex text-general align-items-center">
+                                <img class="rounded-circle me-2" src="{{ project.developer.get_logo_image_or_avatar }}" alt="avata">
+                                <span>{{ project.developer.first_name }} {{ project.developer.last_name }}</span>
+                            </a>
+                        </div>
+                        <div class="post-date ms-auto"><span>2 Month Ago</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
-
+</div>
+</div>
+{% endfor %}
+<!--============== Modal End ==============-->
+{% endblock modal %}
 
 <!--============== Pagination block ==============-->
-{% include 'global/../pagination.html' %}
+{% include 'pagination.html' %}
     <!--============== End Pagination block ==============-->
 {% endblock main_content %}

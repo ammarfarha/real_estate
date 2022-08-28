@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django_countries.fields import CountryField
@@ -63,6 +64,8 @@ class Client(AbstractUser):
 
     # srt:
     def __str__(self):
+        if self.first_name and self.last_name:
+            return str(self.first_name) + " " + str(self.last_name)
         return str(self.username)
 
     def get_developer(self):
@@ -71,6 +74,12 @@ class Client(AbstractUser):
 
     def is_developer(self):
         return bool(self.get_developer())
+
+    def get_logo_image_or_avatar(self):
+        if self.photo:
+            return self.photo.url
+        else:
+            return '{}{}'.format(settings.STATIC_URL, 'images/avatar.png')
 
 
 class Developer(Client):

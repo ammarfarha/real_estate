@@ -45,10 +45,11 @@ class SubscriptionForm(forms.ModelForm):
 
 
 class ProjectsSearchForm(forms.Form):
-    name = forms.CharField(
-        label=_('Name'),
-        widget=forms.TextInput,
-    )
+    # name = forms.CharField(
+    #     label=_('Name'),
+    #     widget=forms.TextInput,
+    # )
+    # TODO: display form without labels and with placeholders
     type = forms.ChoiceField(
         label=_('Type'),
         choices=Project.TypeList.choices,
