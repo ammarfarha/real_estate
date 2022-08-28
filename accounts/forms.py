@@ -114,9 +114,9 @@ class DeveloperProfileForm(DeveloperCreationForm):
 
         if is_company:
             if not company_name:
-                raise forms.ValidationError('You have to enter a company name')
+                raise forms.ValidationError(_('You have to enter a company name'))
             if not trade_record:
-                raise forms.ValidationError('You have to enter a your company commercial license')
+                raise forms.ValidationError(_('You have to enter a your company commercial license'))
 
         if not is_company and (company_name or trade_record or web_site):
             raise ValidationError(_('You are not a company'))
