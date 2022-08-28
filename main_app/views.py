@@ -107,8 +107,9 @@ class ProjectDetailsView(ClientMixin, DetailView):
         context['project_images'] = self.object.project_images.all()
         context['can_edit'] = self.object.can_edit(self.request.user)
         context['can_subscribe'] = self.object.can_subscribe(self.request.user)
+        context['is_subscribed'] = self.object.is_subscribed(self.request.user)
         context['main_phases'] = self.object.main_phases.all()
-        context['free_phases'] = self.object.main_phases.all().first()
+        context['free_phase'] = self.object.main_phases.all().first()
         return context
 
 

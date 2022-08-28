@@ -95,10 +95,13 @@ class Project(models.Model):
             return '{}{}'.format(settings.STATIC_URL, 'images/no_image.jpg')
 
     def can_edit(self, developer):
-        return developer.username == Developer.objects.filter(pk=self.developer_id).first().username
+        return self.developer == developer
 
     def can_subscribe(self, client):
         return not bool(self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
+
+    def is_subscribed(self, client):
+        return self.subscriptions.filter(client=client).exists()
 
     # clean:
     # save:
@@ -189,8 +192,6 @@ class MainPhase(models.Model):
     def __str__(self):
         return str(self.title)
 
-    def get_sub_phases_or_none(self):
-        return self.sub_phases.all()
     # clean:
     # save:
 
@@ -241,7 +242,7 @@ class SubPhaseUpdate(models.Model):
     # Fields:
     sub_phase = models.ForeignKey(
         SubPhase,
-        related_name='sub_phases_update',
+        related_name='updates',
         verbose_name=_('Sub Phase Update'),
         on_delete=models.CASCADE,
         null=True,
@@ -270,7 +271,7 @@ class UpdateAttachment(models.Model):
     # Fields:
     update = models.ForeignKey(
         SubPhaseUpdate,
-        related_name='update_sub_phases',
+        related_name='attachments',
         verbose_name=_('Update Sun Phase'),
         on_delete=models.CASCADE,
         null=True,
