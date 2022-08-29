@@ -214,6 +214,6 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 try:
-    from . import local_settings
+    from .local_settings import *
 except ImportError:
-    pass
+    print('WARNING: local_settings file is not defined or does NOT exist')
