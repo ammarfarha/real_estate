@@ -30,7 +30,7 @@
     <div class="col mb-30">
         <div class="border rounded bg-white p-30">
             <h4 class="mb-4">Project Images</h4>
-            <form id="project_image_list" action="{% url 'main_app:upload-image' project.id %}" class="form-boder" method="POST" enctype="multipart/form-data">
+            <form id="project_image_list" action="{% url 'main:upload-image' project.id %}" class="form-boder" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="pk" value="{{ project.id }}">
                 <div class="form-row">
                     <div class="col-md-12 mt-20">

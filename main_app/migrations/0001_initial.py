@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('start_date', models.DateField(null=True, verbose_name='Start Date')),
                 ('end_date', models.DateField(null=True, verbose_name='Finish Date')),
                 ('completion_date', models.DateTimeField(null=True, verbose_name='Duration')),
-                ('phase', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sub_phases', to='main_app.mainphase', verbose_name='Sub Phase')),
+                ('phase', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sub_phases', to='main.mainphase', verbose_name='Sub Phase')),
             ],
         ),
         migrations.CreateModel(
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('update_date', models.DateField(auto_now_add=True, verbose_name='Update Date')),
                 ('description', models.TextField(null=True, verbose_name='Update Description')),
-                ('sub_phase', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sub_phases_update', to='main_app.subphase', verbose_name='Sub Phase Update')),
+                ('sub_phase', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sub_phases_update', to='main.subphase', verbose_name='Sub Phase Update')),
             ],
         ),
         migrations.CreateModel(
@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('update_file', models.FileField(blank=True, null=True, upload_to='', verbose_name='Attachment')),
-                ('update', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='update_sub_phases', to='main_app.subphaseupdate', verbose_name='Update Sun Phase')),
+                ('update', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='update_sub_phases', to='main.subphaseupdate', verbose_name='Update Sun Phase')),
             ],
         ),
         migrations.CreateModel(
@@ -71,7 +71,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('subscription_date', models.DateField(auto_now_add=True, verbose_name='Subscription Date')),
                 ('client', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to=settings.AUTH_USER_MODEL, verbose_name='Client')),
-                ('project', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to='main_app.project', verbose_name='Project')),
+                ('project', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions', to='main.project', verbose_name='Project')),
                 ('referral_user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='subscriptions_by', to=settings.AUTH_USER_MODEL, verbose_name='Referral User')),
             ],
         ),
@@ -81,12 +81,12 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('image', models.ImageField(null=True, upload_to='projects/', verbose_name='Client Photo')),
                 ('alt', models.CharField(blank=True, max_length=200, null=True)),
-                ('project', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='project_images', to='main_app.project', verbose_name='Project')),
+                ('project', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='project_images', to='main.project', verbose_name='Project')),
             ],
         ),
         migrations.AddField(
             model_name='mainphase',
             name='project',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='main_phases', to='main_app.project', verbose_name='Project'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='main_phases', to='main.project', verbose_name='Project'),
         ),
     ]

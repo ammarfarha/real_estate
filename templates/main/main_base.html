@@ -1,0 +1,197 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load leaflet_tags %}
+
+{% block page_title %}
+    Django Projects
+{% endblock page_title %}
+
+{% block custom_CSS %}
+    {% leaflet_css plugins="ALL" %}
+    {% leaflet_js plugins="ALL" %}
+{% endblock custom_CSS %}
+
+{% block body %}
+    <div class="preloader">
+		<div class="loader xy-center"></div>
+	</div>
+    <div id="page_wrapper" class="bg-light">
+        <!--============== Header Section Start ==============-->
+        <header class="header-style nav-on-top bg-white">
+            <div class="main-nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <nav class="navbar navbar-expand-lg nav-secondary nav-primary-hover nav-line-active">
+                                <a class="navbar-brand" href="#">
+                                    <img class="nav-logo" src="{% static 'images/logo/logo11.png' %}" alt="Image not found !">
+                                </a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                        aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon flaticon-menu flat-small text-primary"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav ms-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'main_app:index' %}">{% trans "Home" %}</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'main_app:contact' %}">{% trans "Contact" %}</a>
+                                        </li>
+                                    </ul>
+                                    {% if user.is_authenticated %}
+                                    <ul class="navbar-nav sm-mx-none ps-3">
+                                        <li class="nav-item">
+                                            <i class="fas fa-user me-1"></i>
+                                            Welcome {{ user }}
+                                        </li>
+                                    </ul>
+                                        {% if user.is_developer %}
+                                            <a href="{% url 'accounts:developer-profile' %}" class="btn btn-primary md-mx-none">Edit Profile</a>
+                                         {% else %}
+                                            <a href="{% url 'accounts:client-profile' %}" class="btn btn-primary md-mx-none">Edit Profile</a>
+                                         {% endif %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:logout' %}">Sign Out</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'accounts:login' %}">Sign In</a>
+                                    </li>
+                                    {% endif %}
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--============== Header Section End ==============-->
+        {% block page_header %}
+        
+        {% endblock page_header %}
+
+        <!--============== Property Grid View Start ==============-->
+        <div class="full-row pt-0">
+            <div class="container">
+                {% block main_content %}
+                
+                {% endblock main_content %}
+            </div>
+        </div>
+        <!--============== Property Grid View End ==============-->
+
+        <!--============== Footer Section Start ==============-->
+        <footer class="full-row footer-default-dark bg-footer" style="padding-bottom: 30px">
+            <div class="container">
+                <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <div class="footer-widget mb-4">
+                            <div class="footer-logo mb-4">
+                                <a href="#"><img src="{% static 'images/logo.jpg' %}" alt="Image not found!" /></a>
+                            </div>
+                            <p>Risus commodo congue augue phas ellus morbi hymenaeos ante tincidu eu orci dictum bibe ndum lacus pla tea primis mi lacinia</p>
+                        </div>
+                        <div class="footer-widget media-widget mb-4">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="footer-widget contact-widget mb-4">
+                            <h3 class="widget-title mb-4">Contact Info</h3>
+                            <ul>
+                                <li>Unicoder Design Agency 301 The Greenhouse, Custard Factory, London, E3 8DY.</li>
+                                <li>+1 246-345-0695</li>
+                                <li>helpline@homex.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="footer-widget footer-nav mb-4">
+                            <h3 class="widget-title mb-4">Quick Links</h3>
+                            <ul>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Investment Solution</a></li>
+                                <li><a href="#">Frequenly Ask Question</a></li>
+                                <li><a href="#">How It Work</a></li>
+                                <li><a href="#">Become a Member</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="footer-widget newslatter-widget mb-4">
+                            <h4 class="widget-title mb-4">Appointment</h4>
+                            <p>Litora ligula dapibus scelerisque vitae, fermentum aenean gravida lobortis mus pulvinar magna turient primis.</p>
+                            <a href="#" class="btn btn-primary w-100">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--============== Footer Section End ==============-->
+
+        <!--============== Copyright Section Start ==============-->
+        <div class="copyright bg-footer text-default py-4">
+            <div class="container">
+                <div class="row row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <span class="text-white">© 2022 Uniland All right reserved</span>
+                    </div>
+                    <div class="col">
+                        <ul class="line-menu float-end list-color-gray">
+                            <li><a href="#">Privacy & Policy </a></li>
+                            <li>|</li>
+                            <li><a href="#">Site Map</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Copyright Section End ==============-->
+
+        <!-- Scroll to top -->
+        <a href="#" class="text-general scroll-top-vertical xs-mx-none" id="scroll">Scroll to top</a>
+        <!-- End Scroll To top -->
+
+        {% block modal %}
+        {% endblock modal %}
+    </div>
+{% endblock body %}
+{% block Custom_JS %}
+<script>
+    $('#single-property').layerSlider({
+        sliderVersion: '6.5.0b2',
+        type: 'popup',
+        pauseOnHover: 'disabled',
+        skin: 'photogallery',
+        globalBGSize: 'cover',
+        navStartStop: false,
+        hoverBottomNav: true,
+        showCircleTimer: false,
+        thumbnailNavigation: 'always',
+        tnContainerWidth: '100%',
+        tnHeight: 70,
+        popupShowOnTimeout: 1,
+        popupShowOnce: false,
+        popupCloseButtonStyle: 'background: rgba(0,0,0,.5); border-radius: 2px; border: 0; left: auto; right: 10px;',
+        popupResetOnClose: 'disabled',
+        popupDistanceLeft: 20,
+        popupDistanceRight: 20,
+        popupDistanceTop: 20,
+        popupDistanceBottom: 20,
+        popupDurationIn: 750,
+        popupDelayIn: 500,
+        popupTransitionIn: 'scalefromtop',
+        popupTransitionOut: 'scaletobottom',
+        skinsPath: "{% static 'skins' %}",
+    });
+</script>
+{% endblock Custom_JS %}
+</body>
+</html>

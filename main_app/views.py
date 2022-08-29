@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
-from django.views.generic import FormView, ListView, CreateView, DetailView, DeleteView, UpdateView
+from django.views.generic import FormView, ListView, CreateView, DetailView, DeleteView, UpdateView, TemplateView
 from .models import Project, Subscription, ProjectImage
 from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
@@ -18,7 +18,7 @@ class ProjectCanEditMixin(DeveloperMixin):
 
 class ProjectsListView(ListView):
     model = Project
-    template_name = "main_app/projects_list.html"
+    template_name = "main/projects.html"
     context_object_name = "projects"
     paginate_by = 9
 
@@ -50,6 +50,10 @@ class ProjectsListView(ListView):
         return query_set
 
 
+class ContactUsView(TemplateView):
+    template_name = "main/contact.html"
+
+
 class DeveloperProjectsListView(DeveloperMixin, ProjectsListView):
     template_name = "dashboards/my_admin.html"
 
@@ -78,7 +82,7 @@ class ProjectAddView(DeveloperMixin, CreateView):
     model = Project
     form_class = AddProjectForm
     template_name = 'dashboards/add_project.html'
-    success_url = reverse_lazy('main_app:admin-my-project-list')
+    success_url = reverse_lazy('main:my-project-list')
 
     def form_valid(self, form):
         form.instance.developer = Developer.objects.get(username=self.request.user.username)
@@ -94,7 +98,7 @@ class ProjectAddView(DeveloperMixin, CreateView):
 
 class ProjectDetailsView(ClientMixin, DetailView):
     model = Project
-    template_name = 'main_app/project_detail.html'
+    template_name = 'main/project_detail.html'
     context_object_name = 'project'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -103,14 +107,15 @@ class ProjectDetailsView(ClientMixin, DetailView):
         context['project_images'] = self.object.project_images.all()
         context['can_edit'] = self.object.can_edit(self.request.user)
         context['can_subscribe'] = self.object.can_subscribe(self.request.user)
+        context['is_subscribed'] = self.object.is_subscribed(self.request.user)
         context['main_phases'] = self.object.main_phases.all()
-        context['free_phases'] = self.object.main_phases.all().first()
+        context['free_phase'] = self.object.main_phases.all().first()
         return context
 
 
 class ProjectAddImageViews(ProjectCanEditMixin, CreateView):
     model = ProjectImage
-    template_name = 'main_app/project_detail.html'
+    template_name = 'main/project_detail.html'
 
     def test_func(self):
         return super().test_func()
@@ -118,17 +123,17 @@ class ProjectAddImageViews(ProjectCanEditMixin, CreateView):
 
 class AddProjectMainPhasesView(ProjectCanEditMixin, CreateView):
     model = ProjectImage
-    template_name = 'main_app/project_detail.html'
+    template_name = 'main/project_detail.html'
 
 
 class AddProjectSubPhaseView(ProjectCanEditMixin, CreateView):
     model = ProjectImage
-    template_name = 'main_app/project_detail.html'
+    template_name = 'main/project_detail.html'
 
 
 class AddProjectSubPhaseUpdateView(ProjectCanEditMixin, CreateView):
     model = ProjectImage
-    template_name = 'main_app/project_detail.html'
+    template_name = 'main/project_detail.html'
 
 
 class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
@@ -138,7 +143,7 @@ class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
     context_object_name = 'project'
 
     def get_success_url(self):
-        return reverse_lazy('main_app:project-update', args=[self.object.pk])
+        return reverse_lazy('main:project-update', args=[self.object.pk])
 
     def form_valid(self, form):
         form.instance.developer = Developer.objects.get(username=self.request.user.username)
@@ -155,7 +160,7 @@ class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
 class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
     models = Project
     template_name = 'dashboards/delete.html'
-    success_url = reverse_lazy('main_app:admin-my-project-list')
+    success_url = reverse_lazy('main:admin-my-project-list')
 
     def test_func(self):
         return super().test_func() and self.get_object().developer == self.request.user.get_developer()
@@ -181,13 +186,13 @@ class ProjectUploadImageView(DeveloperMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('main_app:project-update', args=[self.request.POST['pk']])
+        return reverse_lazy('main:project-update', args=[self.request.POST['pk']])
 
 
 class ClientSubscribeProjectView(ClientMixin, CreateView):
     models = Subscription
     form_class = SubscriptionForm
-    template_name = 'main_app/subscribe.html'
+    template_name = 'main/subscribe.html'
 
     def form_valid(self, form):
         form.instance.project = Project.objects.get(id=self.kwargs.get('pk'))
@@ -195,4 +200,4 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('main_app:index')
+        return reverse_lazy('main:index')
