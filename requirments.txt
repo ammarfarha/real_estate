@@ -5,6 +5,8 @@ django-crispy-forms==1.14.0
 phonenumberslite==8.12.54
 django-phonenumber-field==6.3.0
 django-leaflet==0.28.3
+django-geojson==3.2.1
+jsonfield==3.1.0
 
 
 # -- download from https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_countries',
     'crispy_forms',
     'leaflet',
+    'djgeojson',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap'
