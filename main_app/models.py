@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from accounts.models import Developer, Client
+from djgeojson.fields import PointField
 
 
 class Project(models.Model):
@@ -60,11 +61,12 @@ class Project(models.Model):
         null=True,
         blank=False,
     )
-    location = models.TextField(
-        verbose_name=_('Location'),
-        null=True,
-        blank=False
-    )
+    # location = models.TextField(
+    #     verbose_name=_('Location'),
+    #     null=True,
+    #     blank=False
+    # )
+    location = PointField()
     area = models.DecimalField(
         verbose_name=_('Area in Square Meters'),
         max_digits=10,
