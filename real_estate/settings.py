@@ -41,7 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
     'phonenumber_field',
     'django_countries',
     'crispy_forms',
@@ -59,6 +66,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 ROOT_URLCONF = 'real_estate.urls'
@@ -175,6 +187,31 @@ LEAFLET_CONFIG = {
     'MAX_ZOOM': 18,
     'DEFAULT_PRECISION': 6,
 }
+
+SITE_ID = 1
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        "VERIFIED_EMAIL": True,
+        'APP': {
+            'client_id': 'TO_BE_SUBSTITUTED_THROUGH_LOCAL_SETTINGS',
+            'secret': 'TO_BE_SUBSTITUTED_THROUGH_LOCAL_SETTINGS',
+            'key': '',
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            # You must set to offline in order to receive a refresh token on first login
+            # and on re-authentication requests (which is needed to refresh authentication tokens in the background,
+            # without involving the user’s browser)
+            'access_type': 'offline',
+        },
+    },
+}
+
 
 try:
     from . import local_settings
