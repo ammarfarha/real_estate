@@ -8,6 +8,7 @@ from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm
     DeveloperProfileForm
 from django.utils.translation import gettext_lazy as _
 from main_app.forms import ProjectsSearchForm
+from .utils import generate_ref_code
 
 
 class ClientMixin(LoginRequiredMixin):
@@ -36,6 +37,10 @@ class ClientRegistrationView(CreateView):
     template_name = "main/registration.html"
     form_class = ClientCreationForm
     success_url = reverse_lazy('main:index')
+
+    def form_valid(self, form):
+        form.instance.code = generate_ref_code()
+        return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)

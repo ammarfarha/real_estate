@@ -39,9 +39,7 @@ class AddProjectImageFileForm(forms.ModelForm):
 class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
-        fields = [
-            'referral_user',
-        ]
+        fields = []
 
 
 class ProjectsSearchForm(forms.Form):

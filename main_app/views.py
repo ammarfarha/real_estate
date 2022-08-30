@@ -1,5 +1,14 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
-from django.views.generic import FormView, ListView, CreateView, DetailView, DeleteView, UpdateView, TemplateView
+from django.views.generic import (
+    FormView,
+    ListView,
+    CreateView,
+    DetailView,
+    DeleteView,
+    UpdateView,
+    TemplateView,
+    RedirectView,
+)
 from .models import Project, Subscription, ProjectImage
 from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
@@ -160,7 +169,7 @@ class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
 class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
     models = Project
     template_name = 'dashboards/delete.html'
-    success_url = reverse_lazy('main:admin-my-project-list')
+    success_url = reverse_lazy('main_app:admin-my-project-list')
 
     def test_func(self):
         return super().test_func() and self.get_object().developer == self.request.user.get_developer()
@@ -181,12 +190,22 @@ class ProjectUploadImageView(DeveloperMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.project = Project.objects.get(id=self.request.POST['pk'])
-        # form.instance.image = self.request.FILES['image']
-        # form.instance.alt = self.request.POST['alt']
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('main:project-update', args=[self.request.POST['pk']])
+
+
+class ClientReferralSubscribe(ClientMixin, RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        code = str(kwargs.get('ref_code'))
+        try:
+            client = Client.objects.get(code=code)
+            self.request.session['ref_client'] = client.pk
+        except:
+            pass
+        print(self.request.session.get('ref_client'))
+        return reverse_lazy('main_app:subscribe', kwargs={'pk': kwargs.get('pk')})
 
 
 class ClientSubscribeProjectView(ClientMixin, CreateView):
@@ -197,6 +216,13 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
     def form_valid(self, form):
         form.instance.project = Project.objects.get(id=self.kwargs.get('pk'))
         form.instance.client = self.request.user
+        try:
+            if self.request.session.get('ref_client'):
+                form.instance.referral_user = Client.objects.get(pk=self.request.session.get('ref_client'))
+            else:
+                form.instance.referral_user = None
+        except:
+            pass
         return super().form_valid(form)
 
     def get_success_url(self):
