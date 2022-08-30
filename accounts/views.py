@@ -8,7 +8,6 @@ from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm
     DeveloperProfileForm
 from django.utils.translation import gettext_lazy as _
 from main_app.forms import ProjectsSearchForm
-from .utils import generate_ref_code
 
 
 class ClientMixin(LoginRequiredMixin):

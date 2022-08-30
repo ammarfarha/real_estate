@@ -43,6 +43,10 @@
 # TODO:
 """
 
+- replace objects.get -> objects.get_or_404
+- can not subscript more than one
+
+
 - utilize SuccessMessageMixin
 - pagination for all listviews                                                          Done
 - filter for projects listing pages (use django-filters) (filter)                       Later
@@ -74,5 +78,25 @@
 --- ProjectPhasesView(CreateView) will use ProjectPhaseForm
 ----- List of Phases as context
 -----
+
+
+
+
+
+1 - client: display project map
+2 - authall interfaces
+
+3 - developer:
+    Updates
+    
+    
+    
+    
+later: get address form leaflet map
+
+
+
+
+
 
 """

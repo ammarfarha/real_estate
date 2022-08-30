@@ -198,14 +198,12 @@ class ProjectUploadImageView(DeveloperMixin, CreateView):
 
 class ClientReferralSubscribe(ClientMixin, RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        code = str(kwargs.get('ref_code'))
+        client_pk = int(kwargs.get('cpk'))
         try:
-            client = Client.objects.get(code=code)
-            self.request.session['ref_client'] = client.pk
+            self.request.session['ref_client'] = client_pk
         except:
             pass
-        print(self.request.session.get('ref_client'))
-        return reverse_lazy('main_app:subscribe', kwargs={'pk': kwargs.get('pk')})
+        return reverse_lazy('main_app:subscribe', kwargs={'pk': kwargs.get('ppk')})
 
 
 class ClientSubscribeProjectView(ClientMixin, CreateView):
