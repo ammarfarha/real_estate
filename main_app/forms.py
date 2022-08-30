@@ -6,16 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from leaflet.forms.widgets import LeafletWidget
 
 
-class AddProjectForm(forms.ModelForm):
-    location = PointField(
-        required=True,
-        widget=LeafletWidget(
-            attrs={
-                'display_raw': True,
-                'map_width': '600px',
-                'map_height': '400px',
-            }
-        ))
+class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
@@ -24,7 +15,19 @@ class AddProjectForm(forms.ModelForm):
             'summary',
             'type',
             'area',
+            'location',
         ]
+
+    def __init__(self, * args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['location'].widget = LeafletWidget(
+            attrs={
+                # 'display_raw': True,
+                'map_width': '600px',
+                'map_height': '400px',
+                'geom_type': 'POINT',
+            }
+        )
 
 
 class AddProjectImageFileForm(forms.ModelForm):

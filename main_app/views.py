@@ -15,7 +15,7 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from accounts.views import ClientMixin, DeveloperMixin
 from django.views.generic.edit import CreateView
-from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm
+from .forms import ProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
 
@@ -87,9 +87,9 @@ class ClientSubscribedProjectsListView(ClientMixin, ProjectsListView):
         return context
 
 
-class ProjectAddView(DeveloperMixin, CreateView):
+class ProjectCreateView(DeveloperMixin, CreateView):
     model = Project
-    form_class = AddProjectForm
+    form_class = ProjectForm
     template_name = 'dashboards/add_project.html'
     success_url = reverse_lazy('main:my-project-list')
 
@@ -148,7 +148,7 @@ class AddProjectSubPhaseUpdateView(ProjectCanEditMixin, CreateView):
 class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
     model = Project
     template_name = 'dashboards/project_edit.html'
-    form_class = AddProjectForm
+    form_class = ProjectForm
     context_object_name = 'project'
 
     def get_success_url(self):
