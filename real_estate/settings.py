@@ -51,12 +51,15 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
     'phonenumber_field',
     'django_countries',
-    'crispy_forms',
+    "crispy_forms",
+    "crispy_bootstrap5",
     'leaflet',
     'djgeojson',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_FAIL_SILENTLY = not DEBUG
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
