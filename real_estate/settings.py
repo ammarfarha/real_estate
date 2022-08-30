@@ -52,12 +52,18 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_countries',
     'crispy_forms',
+    "crispy_forms",
+    "crispy_bootstrap5",
     'leaflet',
     'djgeojson',
     'fullurl',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_FAIL_SILENTLY = not DEBUG
+>>>>>>> f011c51cf5d354924f6afd341aa55f923a409df4
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
