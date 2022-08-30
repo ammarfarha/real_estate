@@ -5,6 +5,7 @@ from django_countries.fields import CountryField
 from django.utils.translation import gettext_lazy as _
 from .file_validator import validate_file_extensions
 from phonenumber_field.modelfields import PhoneNumberField
+from .utils import generate_ref_code
 
 
 class GenderList(models.TextChoices):
@@ -57,6 +58,12 @@ class Client(AbstractUser):
         blank=True,
         upload_to='photos/',
     )
+    code = models.CharField(
+        max_length=20,
+        verbose_name=_('Code'),
+        blank=True,
+        null=True
+    )
 
     class Meta:
         verbose_name = _('Client')
@@ -80,6 +87,12 @@ class Client(AbstractUser):
             return self.photo.url
         else:
             return '{}{}'.format(settings.STATIC_URL, 'images/avatar.png')
+
+    def save(self, *args, **kwargs):
+        if self.code == "":
+            self.code = generate_ref_code()
+
+        super().save(*args, **kwargs)
 
 
 class Developer(Client):
