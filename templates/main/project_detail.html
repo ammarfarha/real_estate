@@ -1,6 +1,7 @@
 {% extends 'main/main_base.html' %}
 {% load static %}
 {% load i18n %}
+{% load fullurl %}
 {% block page_header %}
         <!--============== Page title Start ==============-->
 <div class="full-row py-5">
@@ -93,6 +94,11 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div class="widget widget_contact bg-white border p-30 shadow-one rounded mb-30">
+                        <h5 class="mb-4">{% trans "Invit a Friend" %}</h5>
+                        <p>Just copy the link and send it to you friend</p>
+                        <p>{% fullurl 'main_app:ref-subscribe' project.pk user.code %}</p>
                     </div>
                 </div>
                 <div class="col-xl-8 order-xl-1">
