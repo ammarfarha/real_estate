@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'fullurl',
 ]
 
+<<<<<<< HEAD
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
