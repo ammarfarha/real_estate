@@ -160,7 +160,7 @@ class Subscription(models.Model):
         verbose_name=_('Referral User'),
         on_delete=models.CASCADE,
         null=True,
-        blank=False,
+        blank=True,
     )
 
     # meta:
