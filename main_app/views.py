@@ -22,7 +22,7 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from accounts.views import ClientMixin, DeveloperMixin
 from django.views.generic.edit import CreateView
-from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm
+from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm, SubPhaseUpdateForm
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
 from django.shortcuts import get_object_or_404
@@ -191,7 +191,7 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
     model = SubPhaseUpdate
     template_name = "main/phases.html"
     context_object_name = "updates"
-    paginate_by = 9
+    paginate_by = 10
 
     def get_project(self, *args, **kwargs):
         return get_object_or_404(Project, pk=self.kwargs.get('pk'))
@@ -216,6 +216,7 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
         context['project'] = self.get_project()
         context['main_phase'] = self.get_main_phase()
         context['sub_phase'] = self.get_sub_phase()
+        context['addForm'] = SubPhaseUpdateForm
         return context
 
 
@@ -261,3 +262,16 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('main:index')
+
+
+class AddSubPhaseUpdateView(DeveloperMixin, CreateView):
+    models = SubPhaseUpdate
+    form_class = SubPhaseUpdateForm
+    template_name = 'main/phases.html'
+
+    def form_valid(self, form):
+        form.instance.sub_phase = self.kwargs.get('spk')
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:sub-phase', args=[self.kwargs.get('pk'), self.kwargs.get('mpk')])
