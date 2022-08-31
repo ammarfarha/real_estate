@@ -191,7 +191,7 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
     model = SubPhaseUpdate
     template_name = "main/phases.html"
     context_object_name = "updates"
-    paginate_by = 10
+    paginate_by = 3
 
     def get_project(self, *args, **kwargs):
         return get_object_or_404(Project, pk=self.kwargs.get('pk'))
@@ -270,8 +270,8 @@ class AddSubPhaseUpdateView(DeveloperMixin, CreateView):
     template_name = 'main/phases.html'
 
     def form_valid(self, form):
-        form.instance.sub_phase = self.kwargs.get('spk')
+        form.instance.sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('main_app:sub-phase', args=[self.kwargs.get('pk'), self.kwargs.get('mpk')])
+        return reverse_lazy('main_app:sub-phase-updates', args=[self.kwargs.get('pk'), self.kwargs.get('mpk'), self.kwargs.get('spk')])

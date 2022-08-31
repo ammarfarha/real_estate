@@ -13,7 +13,11 @@
                         <ul>
                             {% for phase in project.main_phases.all %}
                             <li>
-                                <a href="{% url "main_app:sub-phase" project.pk phase.pk %}">
+                                {% if phase.sub_phases.count > 0  %}
+                                    <a href="{% url "main_app:sub-phase" project.pk phase.pk %}">
+                                {% else %}
+                                    <a href="#">
+                                {% endif %}
                                     {% if phase.pk == main_phase.pk %}
                                         <b>{{ phase.title }}</b>
                                     {% else %}
@@ -106,4 +110,6 @@
             </div>
         </div>
     </div>
+
+    {% include "pagination.html" %}
 {% endblock page_header %}
