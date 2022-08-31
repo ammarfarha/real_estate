@@ -22,7 +22,8 @@ from accounts.models import Developer
 
 class ProjectCanEditMixin(DeveloperMixin):
     def test_func(self):
-        return super().test_func() and self.get_object().developer == self.request.user.get_developer()
+        project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        return super().test_func() and project.developer == self.request.user.get_developer()
 
 
 class ProjectsListView(ListView):
