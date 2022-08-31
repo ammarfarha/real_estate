@@ -18,6 +18,7 @@ from django.views.generic.edit import CreateView
 from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
+from django.shortcuts import get_object_or_404
 
 
 class ProjectCanEditMixin(DeveloperMixin):
@@ -94,7 +95,7 @@ class ProjectAddView(DeveloperMixin, CreateView):
     success_url = reverse_lazy('main:my-project-list')
 
     def form_valid(self, form):
-        form.instance.developer = Developer.objects.get(username=self.request.user.username)
+        form.instance.developer = get_object_or_404(Developer, username=self.request.user.username)
         form.instance.status = 'PL'
         return super().form_valid(form)
 
@@ -155,7 +156,7 @@ class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
         return reverse_lazy('main:project-update', args=[self.object.pk])
 
     def form_valid(self, form):
-        form.instance.developer = Developer.objects.get(username=self.request.user.username)
+        form.instance.developer = get_object_or_404(Developer, username=self.request.user.username)
         return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -189,7 +190,7 @@ class ProjectUploadImageView(DeveloperMixin, CreateView):
     template_name = 'dashboards/profile.html'
 
     def form_valid(self, form):
-        form.instance.project = Project.objects.get(id=self.request.POST['pk'])
+        form.instance.project = get_object_or_404(Project, id=self.request.POST['pk'])
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -212,11 +213,11 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
     template_name = 'main/subscribe.html'
 
     def form_valid(self, form):
-        form.instance.project = Project.objects.get(id=self.kwargs.get('pk'))
+        form.instance.project = get_object_or_404(Project, id=self.kwargs.get('pk'))
         form.instance.client = self.request.user
         try:
             if self.request.session.get('ref_client'):
-                form.instance.referral_user = Client.objects.get(pk=self.request.session.get('ref_client'))
+                form.instance.referral_user = get_object_or_404(Client, pk=self.request.session.get('ref_client'))
             else:
                 form.instance.referral_user = None
         except:

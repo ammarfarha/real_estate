@@ -37,13 +37,16 @@
 - implement developer field in the project create form
 - fix base.html and toolbar as we agreed
 
+
+- replace objects.get -> objects.get_or_404
+
 """
 
 
 # TODO:
 """
 
-- replace objects.get -> objects.get_or_404
+
 - can not subscript more than one
 
 

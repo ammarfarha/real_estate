@@ -8,6 +8,7 @@ from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm
     DeveloperProfileForm
 from django.utils.translation import gettext_lazy as _
 from main_app.forms import ProjectsSearchForm
+from django.shortcuts import get_object_or_404
 
 
 class ClientMixin(LoginRequiredMixin):
@@ -25,9 +26,9 @@ class ProfileView(ClientMixin, ListView):
     context_object_name = 'current'
 
     def get_queryset(self):
-        current = Client.objects.get(username=self.request.user.username)
+        current = get_object_or_404(Client, username=self.request.user.username)
         if current.is_developer():
-            current = Developer.objects.get(username=self.request.user.username)
+            current = get_object_or_404(Developer, username=self.request.user.username)
         return current
 
 
