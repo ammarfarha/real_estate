@@ -9,7 +9,7 @@ from django.views.generic import (
     TemplateView,
     RedirectView,
 )
-from .models import Project, Subscription, ProjectImage
+from .models import Project, Subscription, ProjectImage, MainPhase
 from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
@@ -180,8 +180,20 @@ class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
         return get_object_or_404(Project, id=id_)
 
 
-class ProjectPhasesListView(ClientMixin, ListView):
-    model = Project
+class ProjectPhasesListView(DeveloperMixin, ListView):
+    model = MainPhase
+    template_name = "dashboards/project_main_phases.html"
+    context_object_name = "phases"
+    paginate_by = 9
+
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(
+            project=get_object_or_404(Project, pk=self.kwargs['pk']))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['project_name'] = get_object_or_404(Project, pk=self.kwargs['pk']).name
+        return context
 
 
 class ProjectUploadImageView(DeveloperMixin, CreateView):
@@ -226,3 +238,7 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('main:index')
+
+
+class SubPhasesView(DeveloperMixin, ListView):
+    pass
