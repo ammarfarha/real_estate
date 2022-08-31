@@ -28,6 +28,7 @@ class ProjectForm(forms.ModelForm):
                 'geom_type': 'POINT',
             }
         )
+        self.fields['location'].required = True
 
 
 class AddProjectImageFileForm(forms.ModelForm):
