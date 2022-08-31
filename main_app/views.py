@@ -9,7 +9,14 @@ from django.views.generic import (
     TemplateView,
     RedirectView,
 )
-from .models import Project, Subscription, ProjectImage, MainPhase
+from .models import (
+    Project,
+    Subscription,
+    ProjectImage,
+    MainPhase,
+    SubPhase,
+    SubPhaseUpdate,
+)
 from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
@@ -181,18 +188,34 @@ class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
 
 
 class ProjectPhasesListView(DeveloperMixin, ListView):
-    model = MainPhase
-    template_name = "dashboards/project_main_phases.html"
-    context_object_name = "phases"
+    model = SubPhaseUpdate
+    template_name = "main/phases.html"
+    context_object_name = "updates"
     paginate_by = 9
 
+    def get_project(self, *args, **kwargs):
+        return get_object_or_404(Project, pk=self.kwargs.get('pk'))
+
+    def get_main_phase(self, *args, **kwargs):
+        if self.kwargs.get('mpk'):
+            return get_object_or_404(MainPhase, pk=self.kwargs.get('mpk'))
+        else:
+            return MainPhase.objects.filter(project=self.get_project()).first()
+
+    def get_sub_phase(self, *args, **kwargs):
+        if self.kwargs.get('spk'):
+            return get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
+        else:
+            return SubPhase.objects.filter(phase=self.get_main_phase()).first()
+
     def get_queryset(self, *args, **kwargs):
-        return super().get_queryset(*args, **kwargs).filter(
-            project=get_object_or_404(Project, pk=self.kwargs['pk']))
+        return super().get_queryset(*args, **kwargs).filter(sub_phase=self.get_sub_phase())
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['project_name'] = get_object_or_404(Project, pk=self.kwargs['pk']).name
+        context['project'] = self.get_project()
+        context['main_phase'] = self.get_main_phase()
+        context['sub_phase'] = self.get_sub_phase()
         return context
 
 
@@ -238,7 +261,3 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
 
     def get_success_url(self):
         return reverse_lazy('main:index')
-
-
-class SubPhasesView(DeveloperMixin, ListView):
-    pass
