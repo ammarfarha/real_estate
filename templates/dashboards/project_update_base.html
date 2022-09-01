@@ -2,6 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load i18n %}
+{% load project_template_tags %}
 
 {% block page_header %}
     <div class="row">
@@ -17,7 +18,7 @@
             <div class="col">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a  href="{% url 'main_app:project-update' project.pk as basic_url %}{{ basic_url }}" class="nav-link btn{% if request.get_full_path == basic_url %} btn-primary text-white{% endif %}" aria-current="page">1. {% trans "Project Basic Info" %}</a>
+                        <a  href="{% url 'main_app:project-update' project.pk as basic_url %}{{ basic_url }}" class="nav-link btn{% if request.get_full_path|is_similar:basic_url %} btn-primary text-white{% endif %}" aria-current="page">1. {% trans "Project Basic Info" %}</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'main_app:upload-image' project.pk as images_url %}{{ images_url }}" class="nav-link btn{% if request.get_full_path == images_url %} btn-primary text-white{% endif %}">2. {% trans 'Project Images' %}</a>
