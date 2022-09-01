@@ -171,9 +171,10 @@ class ProjectUpdateView(SuccessMessageMixin, ProjectCanEditMixin, UpdateView):
         return context
 
 
-class ProjectImagesUploadView(ProjectCanEditMixin, CreateView):
+class ProjectImagesUploadView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     form_class = ProjectImageForm
     template_name = 'dashboards/project_images_upload.html'
+    success_message = _("Your Image Has been Uploaded Successfully")
 
     def form_valid(self, form):
         form.instance.project = self.project
