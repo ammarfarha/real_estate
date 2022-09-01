@@ -15,15 +15,22 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from accounts.views import ClientMixin, DeveloperMixin
 from django.views.generic.edit import CreateView
-from .forms import ProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm
+from .forms import ProjectForm, ProjectsSearchForm, ProjectImageForm, SubscriptionForm
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
 
 
 class ProjectCanEditMixin(DeveloperMixin):
+    project = None
+
     def test_func(self):
-        project = get_object_or_404(Project, pk=self.kwargs['pk'])
-        return super().test_func() and project.developer == self.request.user.get_developer()
+        self.project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        return super().test_func() and self.project.developer == self.request.user.get_developer()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['project'] = self.project
+        return context
 
 
 class ProjectsListView(ListView):
@@ -93,17 +100,20 @@ class ProjectCreateView(DeveloperMixin, CreateView):
     form_class = ProjectForm
     template_name = 'dashboards/add_project.html'
     success_url = reverse_lazy('main:my-project-list')
+    created_project_pk = None
 
     def form_valid(self, form):
-        form.instance.developer = Developer.objects.get(username=self.request.user.username)
-        form.instance.status = 'PL'
+        form.instance.developer = self.request.user.get_developer()
+        form.instance.status = Project.StatusList.PLANING
         return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
         context['listing_title'] = _('Add Project')
         return context
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:upload-image', args=[self.object.pk, ])
 
 
 class ProjectDetailsView(ClientMixin, DetailView):
@@ -121,14 +131,6 @@ class ProjectDetailsView(ClientMixin, DetailView):
         context['main_phases'] = self.object.main_phases.all()
         context['free_phase'] = self.object.main_phases.all().first()
         return context
-
-
-class ProjectAddImageViews(ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-
-    def test_func(self):
-        return super().test_func()
 
 
 class AddProjectMainPhasesView(ProjectCanEditMixin, CreateView):
@@ -153,18 +155,33 @@ class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
     context_object_name = 'project'
 
     def get_success_url(self):
-        return reverse_lazy('main:project-update', args=[self.object.pk])
+        return reverse_lazy('main:project-update', args=[self.project.pk])
 
     def form_valid(self, form):
-        form.instance.developer = Developer.objects.get(username=self.request.user.username)
+        form.instance.developer = self.request.user.get_developer()
         return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['upload_imag_form'] = AddProjectImageFileForm()
-        context['listing_title'] = _('Add Project')
-        context['project_images'] = ProjectImage.objects.filter(project_id=self.object.pk)
+        context['page_title'] = _('Project {project} Basic Info').format(project=self.project)
         return context
+
+
+class ProjectImagesUploadView(ProjectCanEditMixin, CreateView):
+    form_class = ProjectImageForm
+    template_name = 'dashboards/project_images_upload.html'
+
+    def form_valid(self, form):
+        form.instance.project = self.project
+        return super().form_valid(form)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['page_title'] = _('Project {project} Images').format(project=self.project)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('main:upload-image', args=[self.project.pk, ])
 
 
 class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
@@ -182,19 +199,6 @@ class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
 
 class ProjectPhasesListView(ClientMixin, ListView):
     model = Project
-
-
-class ProjectUploadImageView(DeveloperMixin, CreateView):
-    models = ProjectImage
-    form_class = AddProjectImageFileForm
-    template_name = 'dashboards/profile.html'
-
-    def form_valid(self, form):
-        form.instance.project = Project.objects.get(id=self.request.POST['pk'])
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse_lazy('main:project-update', args=[self.request.POST['pk']])
 
 
 class ClientReferralSubscribe(ClientMixin, RedirectView):

@@ -31,7 +31,7 @@ class ProjectForm(forms.ModelForm):
         self.fields['location'].required = True
 
 
-class AddProjectImageFileForm(forms.ModelForm):
+class ProjectImageForm(forms.ModelForm):
     class Meta:
         model = ProjectImage
         fields = [
