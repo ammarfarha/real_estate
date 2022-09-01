@@ -242,9 +242,7 @@ class ProjectUploadImageView(SuccessMessageMixin, DeveloperMixin, CreateView):
         return reverse_lazy('main:project-update', args=[self.request.POST['pk']])
 
 
-class ClientReferralSubscribe(SuccessMessageMixin, ClientMixin, RedirectView):
-    success_message = _("Your subscription Added Successfully")
-
+class ClientReferralSubscribe(ClientMixin, RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         client_pk = int(kwargs.get('cpk'))
         try:
@@ -260,20 +258,28 @@ class ClientSubscribeProjectView(SuccessMessageMixin, ClientMixin, CreateView):
     template_name = 'main/subscribe.html'
     success_message = _("Your Subscription Added Successfully")
 
+    def car_subscribe(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        user = self.request.user
+        return not Subscription.objects.filter(project=project, client=user).exists()
+
     def form_valid(self, form):
-        form.instance.project = get_object_or_404(Project, id=self.kwargs.get('pk'))
-        form.instance.client = self.request.user
-        try:
+        if self.car_subscribe():
+            form.instance.project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+            form.instance.client = self.request.user
             if self.request.session.get('ref_client'):
                 form.instance.referral_user = get_object_or_404(Client, pk=self.request.session.get('ref_client'))
             else:
                 form.instance.referral_user = None
-        except:
-            pass
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('main:index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['can_subscribe'] = self.car_subscribe()
+        return context
 
 
 class AddSubPhaseUpdateView(SuccessMessageMixin, DeveloperMixin, CreateView):

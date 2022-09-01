@@ -1,21 +1,31 @@
 {% extends 'main/main_base.html' %}
-{% load static %}
+{% load static i18n %}
 {% load crispy_forms_tags %}
 {% block main_content %}
 <div class="row">
     <div class="col mb-30">
         <div class="border rounded bg-white p-30">
-            <h4 class="mb-4">You are going to delete <b style="color: red;">test</b> project</h4>
+            <h4 class="mb-4">ٍ{% trans "Subscribe in Project" %}</h4>
+            {% if can_subscribe %}
             <form class="form-boder" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <div class="row">
                     <div class="col-md-12 mb-20">
-                        <a class="btn btn-primary" href="{% url 'main:index' %}">Cancel</a>
-                        <button type="submit" class="btn btn-primary" name="submitbasic">Subscribe</button>
+                        <a class="btn btn-primary" href="{% url 'main:index' %}">{% trans "Cancel" %}</a>
+                        <button type="submit" class="btn btn-primary" name="submitbasic">{% trans "Subscribe" %}</button>
                     </div>
                 </div>
             </form>
+            {% else %}
+                <div class="row">
+                    <div class="col-md-12 mb-20">
+                        <p>{% trans "You Are All ready Subcribed" %}</p>
+                        <a class="btn btn-primary" href="{% url 'main:index' %}">{% trans "Back" %}</a>
+
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
