@@ -40,6 +40,16 @@ class ProjectImageForm(forms.ModelForm):
         ]
 
 
+class MainPhaseForm(forms.ModelForm):
+
+    class Meta:
+        model = MainPhase
+        fields = ['title', ]
+
+    def __init__(self, * args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
 class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription

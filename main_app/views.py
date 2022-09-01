@@ -30,6 +30,7 @@ from .forms import (
     ProjectImageForm,
     SubscriptionForm,
     SubPhaseUpdateForm,
+    MainPhaseForm,
 )
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
@@ -187,6 +188,34 @@ class ProjectImagesUploadView(SuccessMessageMixin, ProjectCanEditMixin, CreateVi
 
     def get_success_url(self):
         return reverse_lazy('main:upload-image', args=[self.project.pk, ])
+
+
+class ProjectMainPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
+    form_class = MainPhaseForm
+    template_name = 'dashboards/project_main_phase.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['page_title'] = _('Project {project} Main-Phases').format(project=self.project)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:create-main-phase', args=(self.project.pk, ))
+
+
+class ProjectMainPhaseCreateView(ProjectMainPhaseBaseView, CreateView):
+    success_message = _('Main phase was added successfully')
+
+    def form_valid(self, form):
+        form.instance.project = self.project
+        return super().form_valid(form)
+
+
+class ProjectMainPhaseUpdateView(ProjectMainPhaseBaseView, UpdateView):
+    success_message = _('Main phase was updated successfully')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(MainPhase, pk=self.kwargs.get('main_phase_pk'), project=self.project)
 
 
 class ProjectDeleteView(SuccessMessageMixin, ProjectCanEditMixin, DeleteView):

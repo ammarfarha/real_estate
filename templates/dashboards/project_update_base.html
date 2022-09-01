@@ -21,10 +21,10 @@
                         <a  href="{% url 'main_app:project-update' project.pk as basic_url %}{{ basic_url }}" class="nav-link btn{% if request.get_full_path|is_similar:basic_url %} btn-primary text-white{% endif %}" aria-current="page">1. {% trans "Project Basic Info" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'main_app:upload-image' project.pk as images_url %}{{ images_url }}" class="nav-link btn{% if request.get_full_path == images_url %} btn-primary text-white{% endif %}">2. {% trans 'Project Images' %}</a>
+                        <a href="{% url 'main_app:upload-image' project.pk as images_url %}{{ images_url }}" class="nav-link btn{% if request.get_full_path|is_similar:images_url %} btn-primary text-white{% endif %}">2. {% trans 'Project Images' %}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'main_app:upload-image' project.pk as main_phases_url %}{{ main_phases_url }}" class="nav-link btn{% if request.get_full_path == main_phases_url %} btn-primary text-white{% endif %}">3. {% trans 'Project Main Phases' %}</a>
+                        <a href="{% url 'main_app:create-main-phase' project.pk as main_phases_url %}{{ main_phases_url }}" class="nav-link btn{% if request.get_full_path|is_similar:main_phases_url %} btn-primary text-white{% endif %}">3. {% trans 'Project Main Phases' %}</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'main_app:upload-image' project.pk as sub_phases_url %}{{ sub_phases_url }}" class="nav-link btn{% if request.get_full_path == sub_phases_url %} btn-primary text-white{% endif %}">4. {% trans 'Project Sub-Phases' %}</a>
