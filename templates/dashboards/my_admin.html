@@ -1,5 +1,5 @@
 {% extends 'dashboards/dashboard_base.html' %}
-{% load static %}
+{% load static i18n %}
 {% load crispy_forms_tags %}
 {% block page_header %}
 <div class="row">
@@ -43,15 +43,30 @@
                                 <a href="{% url 'main:project-phases' project.pk %}" class="text-primary mb-1"><i class="fas fa-building"></i></a>
                             </td>
                         </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" style="text-align: center">
+                                <strong>{% trans "There Are No Projects Add By You!" %}</strong>
+                            </td>
+                        </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
-            <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
-                <div class="col">
-                    <a href="{% url 'main:add-project' %}" class="btn btn-outline-primary">Add New Project</a>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-20">
+                        <a href="{% url "main_app:add-project" %}" class="btn btn-primary">{% trans 'Add New Project' %}</a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
             {% include 'pagination.html' %}
         </div>
     </div>

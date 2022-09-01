@@ -24,8 +24,8 @@
                     <div class="row">
                         <div class="col">
                             <nav class="navbar navbar-expand-lg nav-secondary nav-primary-hover nav-line-active">
-                                <a class="navbar-brand" href="#">
-                                    <img class="nav-logo" src="{% static 'images/logo/logo11.png' %}" alt="Image not found !">
+                                <a class="navbar-brand" href="{% url "main_app:index" %}">
+                                    <img class="nav-logo" src="{% static 'images/logo/logo11.png' %}" alt="Logo">
                                 </a>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -45,14 +45,14 @@
                                     <ul class="navbar-nav sm-mx-none ps-3">
                                         <li class="nav-item">
                                             <i class="fas fa-user me-1"></i>
-                                            Welcome {{ user }}
+                                            {% trans "Welcome" %} {{ user }}
                                         </li>
                                     </ul>
-                                        {% if user.is_developer %}
-                                            <a href="{% url 'accounts:developer-profile' %}" class="btn btn-primary md-mx-none">Edit Profile</a>
-                                         {% else %}
-                                            <a href="{% url 'accounts:client-profile' %}" class="btn btn-primary md-mx-none">Edit Profile</a>
-                                         {% endif %}
+                                    {% if user.is_developer %}
+                                            <a href="{% url 'main_app:my-project-list' %}" class="btn btn-primary md-mx-none">{% trans "Manage" %}</a>
+                                    {% else %}
+                                            <a href="{% url 'accounts:client-profile' %}">{% trans "Register" %}</a>
+                                    {% endif %}
                                     <li class="nav-item">
                                         <a class="nav-link" href="{% url 'accounts:logout' %}">Sign Out</a>
                                     </li>
