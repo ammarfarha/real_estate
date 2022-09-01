@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.views.generic import (
     FormView,
@@ -47,6 +48,9 @@ class ProjectsListView(ListView):
         context['search_form'] = ProjectsSearchForm(
             self.request.GET or None)
         context['listing_title'] = _('All Projects')
+        # messages.warning(self.request, _("sdasdaddad"))
+        # messages.error(self.request, _("test error"))
+        # messages.success(self.request, _("test success"))
         return context
 
     def get_queryset(self, *args, **kwargs):
@@ -211,12 +215,14 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
             return MainPhase.objects.filter(project=self.get_project()).first()
 
     def get_sub_phase(self, *args, **kwargs):
+        # TODO : relate the sub phase with the phase with the project
         if self.kwargs.get('spk'):
             return get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
         else:
             return SubPhase.objects.filter(phase=self.get_main_phase()).first()
 
     def get_queryset(self, *args, **kwargs):
+        # TODO : make query set bt kwargs patterns
         return super().get_queryset(*args, **kwargs).filter(sub_phase=self.get_sub_phase())
 
     def get_context_data(self, *, object_list=None, **kwargs):

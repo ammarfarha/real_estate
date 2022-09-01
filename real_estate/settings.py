@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'leaflet',
     'djgeojson',
     'fullurl',
+    'martor',
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -158,6 +159,7 @@ LOCALE_PATHS = (
 
 # poedit
 
+STATIC_ROOT = 'static/add/'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
