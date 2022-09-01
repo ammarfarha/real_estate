@@ -1,6 +1,7 @@
 from django import forms
 from leaflet.forms.fields import PointField
 
+from accounts.forms import DateInput
 from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
 from django.utils.translation import gettext_lazy as _
 from leaflet.forms.widgets import LeafletWidget
@@ -46,8 +47,25 @@ class MainPhaseForm(forms.ModelForm):
         model = MainPhase
         fields = ['title', ]
 
-    def __init__(self, * args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+class SubPhaseForm(forms.ModelForm):
+
+    class Meta:
+        model = SubPhase
+        fields = '__all__'
+
+        widgets = {
+            'start_date': DateInput(),
+            'end_date': DateInput(),
+            'completion_date': DateInput(),
+        }
+
+    def __init__(self, project, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['phase'].queryset = project.main_phases.all()
 
 
 class SubscriptionForm(forms.ModelForm):

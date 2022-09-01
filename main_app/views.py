@@ -31,6 +31,7 @@ from .forms import (
     SubscriptionForm,
     SubPhaseUpdateForm,
     MainPhaseForm,
+    SubPhaseForm,
 )
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
@@ -190,6 +191,7 @@ class ProjectImagesUploadView(SuccessMessageMixin, ProjectCanEditMixin, CreateVi
         return reverse_lazy('main:upload-image', args=[self.project.pk, ])
 
 
+# TODO: implement delete and reordering
 class ProjectMainPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
     form_class = MainPhaseForm
     template_name = 'dashboards/project_main_phase.html'
@@ -216,6 +218,40 @@ class ProjectMainPhaseUpdateView(ProjectMainPhaseBaseView, UpdateView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(MainPhase, pk=self.kwargs.get('main_phase_pk'), project=self.project)
+
+
+# TODO: implement delete and reordering
+class ProjectSubPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
+    form_class = SubPhaseForm
+    template_name = 'dashboards/project_sub_phase.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['page_title'] = _('Project {project} Sub-Phases').format(project=self.project)
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['project'] = self.project
+        return kwargs
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:create-sub-phase', args=(self.project.pk, ))
+
+
+class ProjectSubPhaseCreateView(ProjectSubPhaseBaseView, CreateView):
+    success_message = _('Sub-phase was added successfully')
+
+    def form_valid(self, form):
+        form.instance.project = self.project
+        return super().form_valid(form)
+
+
+class ProjectSubPhaseUpdateView(ProjectSubPhaseBaseView, UpdateView):
+    success_message = _('Sub-phase was updated successfully')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'), phase__project=self.project)
 
 
 class ProjectDeleteView(SuccessMessageMixin, ProjectCanEditMixin, DeleteView):
