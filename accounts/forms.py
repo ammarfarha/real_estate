@@ -43,12 +43,7 @@ class ClientCreationForm(UserCreationForm):
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-
-        if 'gmail' in email or 'yahoo' in email or 'hotmail' in email:
-            raise ValidationError(_('You have to enter an official email address'))
-
         email = email.lower()
-
         return email
 
 
@@ -86,8 +81,14 @@ class DeveloperCreationForm(ClientCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
         self.fields['is_company'].widget = forms.RadioSelect(choices=YES_NO_CHOICES)
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if 'gmail' in email or 'yahoo' in email or 'hotmail' in email:
+            raise ValidationError(_('You have to enter an official email address'))
+        email = email.lower()
+        return email
 
 
 class DeveloperProfileForm(DeveloperCreationForm):
