@@ -1,0 +1,45 @@
+{% extends 'dashboards/project_update_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block inner_edit_space %}
+    <div class="row">
+        <div class="col mb-30">
+            <div class="border rounded bg-white p-30">
+                <div class="row">
+                    <div class="col-md-12 mt-20">
+                        <h6>{% trans 'Current Phases' %}</h6>
+                        <ul class="list-group">
+                            {% for main_phase in project.main_phases.all %}
+                                <li class="list-group-item">
+                                    {{ forloop.counter }}. {{ main_phase }}
+                                    <a class="float-end" href="{% url 'main_app:update-main-phase' main_phase.project.pk main_phase.pk %}">{% trans 'Delete' %}</a>
+                                    <span class="float-end">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                    <a class="float-end" href="{% url 'main_app:update-main-phase' main_phase.project.pk main_phase.pk %}">{% trans 'Edit' %}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <form method="POST" class="form-boder">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-20">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <button type="submit" class="btn btn-primary"
+                                    name="submitbasic">{% trans 'Submit' %}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock inner_edit_space %}

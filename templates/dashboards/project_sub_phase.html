@@ -1,0 +1,77 @@
+{% extends 'dashboards/project_update_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block inner_edit_space %}
+    <div class="row">
+        <div class="col mb-30">
+            <div class="border rounded bg-white p-30">
+                <div class="row">
+                    <div class="col-md-12 mt-20">
+                        <h6>{% trans 'Current Phases' %}</h6>
+                        <ul class="list-group">
+                            {% for main_phase in project.main_phases.all %}
+                                <li class="list-group-item">
+                                    <h6>{% trans 'Phase' %} #{{ forloop.counter }}: {{ main_phase }}</h6>
+                                    {% if main_phase.sub_phases.all %}
+                                        <table class="w-100 items-list table table-bordered table-striped table-hover">
+                                            <thead>
+                                            <tr class="bg-white">
+                                                <th class="col-1">{% trans '#' %}</th>
+                                                <th class="col-4">{% trans 'Title' %}</th>
+                                                <th class="col-2">{% trans 'Start Date' %}</th>
+                                                <th class="col-2">{% trans 'Finish Date' %}</th>
+                                                <th class="col-2">{% trans 'Completion Date' %}</th>
+                                                <th class="col-1"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for sub_phase in main_phase.sub_phases.all %}
+                                                <tr>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ sub_phase }}</td>
+                                                    <td>{{ sub_phase.start_date }}</td>
+                                                    <td>{{ sub_phase.end_date }}</td>
+                                                    <td>{{ sub_phase.completion_date }}</td>
+                                                    <td>
+                                                        <a href="{% url 'main_app:update-sub-phase' main_phase.project.pk sub_phase.pk %}"
+                                                           class="text-primary me-4 mb-1"><i
+                                                                class="fas fa-edit"></i></a>
+                                                        <a href="{% url 'main_app:update-sub-phase' main_phase.project.pk sub_phase.pk %}"
+                                                           class="text-primary mb-1"><i
+                                                                class="fas fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <div class="alert alert-warning">{% trans 'No Sub-phases added here yet. Use the form below to add them' %}</div>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <form method="POST" class="form-boder">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-20">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <button type="submit" class="btn btn-primary"
+                                    name="submitbasic">{% trans 'Submit' %}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock inner_edit_space %}

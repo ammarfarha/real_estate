@@ -204,7 +204,7 @@ class SubPhase(models.Model):
     phase = models.ForeignKey(
         MainPhase,
         related_name='sub_phases',
-        verbose_name=_('Sub Phase'),
+        verbose_name=_('Main Phase'),
         on_delete=models.CASCADE,
         null=True,
         blank=False,
@@ -221,14 +221,14 @@ class SubPhase(models.Model):
         blank=False,
     )
     end_date = models.DateField(
-        verbose_name=_('Finish Date'),
+        verbose_name=_('End Date'),
         null=True,
         blank=False,
     )
     completion_date = models.DateTimeField(
-        verbose_name=_('Duration'),
+        verbose_name=_('Actual Completion Date'),
         null=True,
-        blank=False,
+        blank=True,
     )
 
     # meta:

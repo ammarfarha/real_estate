@@ -1,63 +1,23 @@
-{% extends 'dashboards/dashboard_base.html' %}
+{% extends 'dashboards/project_update_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block page_header %}
-<div class="row">
-    <div class="col">
-        <h3 class="my-3">Add New Project</h3>
-    </div>
-</div>
-{% endblock page_header %}
+{% load i18n %}
 
-{% block main_containt %}
+{% block inner_edit_space %}
 <div class="row">
     <div class="col mb-30">
         <div class="border rounded bg-white p-30">
-            <h4 class="mb-4">Basic Information</h4>
             <form class="form-boder" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <div class="row">
                     <div class="col-md-12 mb-20">
-                        <button type="submit" class="btn btn-primary" name="submitbasic">Save</button>
+                        <button type="submit" class="btn btn-primary" name="submitbasic">{% trans 'Save' %}</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col mb-30">
-        <div class="border rounded bg-white p-30">
-            <h4 class="mb-4">Project Images</h4>
-            <form id="project_image_list" action="{% url 'main:upload-image' project.id %}" class="form-boder" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="pk" value="{{ project.id }}">
-                <div class="form-row">
-                    <div class="col-md-12 mt-20">
-                        <ul class="row row-cols-xl-6 row-cols-md-3 row-cols-2 media-upload">
-                            {% for image in project_images %}
-                                <li class="col">
-                                <img src="/media/{{ image.image }}" class="rounded pb-30" alt="{{ image.alt }}">
-                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
-                            {% empty %}
-                                <li class="col">
-                                <img src="{% static 'images/no_image.jpg' %}" class="rounded pb-30" alt="real estate template">
-                                <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="col-md-12 mb-20">
-                        {% csrf_token %}
-                        {{ upload_imag_form|crispy }}
-                     </div>
-                    <div class="col-md-12 mb-20">
-                        <button type="submit" class="btn btn-primary" name="submitbasic">Save Image</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-{% endblock main_containt %}
+{% endblock inner_edit_space %}
 

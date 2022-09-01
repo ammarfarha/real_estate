@@ -1,5 +1,3 @@
-from django.contrib import messages
-from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.views.generic import (
     FormView,
     ListView,
@@ -21,9 +19,20 @@ from .models import (
 from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-from accounts.views import ClientMixin, DeveloperMixin
+from accounts.views import (
+    ClientMixin,
+    DeveloperMixin,
+)
 from django.views.generic.edit import CreateView
-from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm, SubscriptionForm, SubPhaseUpdateForm
+from .forms import (
+    ProjectForm,
+    ProjectsSearchForm,
+    ProjectImageForm,
+    SubscriptionForm,
+    SubPhaseUpdateForm,
+    MainPhaseForm,
+    SubPhaseForm,
+)
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
 from django.shortcuts import get_object_or_404
@@ -31,8 +40,16 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 
 class ProjectCanEditMixin(DeveloperMixin):
+    project = None
+
     def test_func(self):
-        return super().test_func() and self.get_object().developer == self.request.user.get_developer()
+        self.project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        return super().test_func() and self.project.developer == self.request.user.get_developer()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['project'] = self.project
+        return context
 
 
 class ProjectsListView(ListView):
@@ -100,23 +117,26 @@ class ClientSubscribedProjectsListView(ClientMixin, ProjectsListView):
         return context
 
 
-class ProjectAddView(SuccessMessageMixin, DeveloperMixin, CreateView):
+class ProjectCreateView(DeveloperMixin, CreateView):
     model = Project
-    form_class = AddProjectForm
+    form_class = ProjectForm
     template_name = 'dashboards/add_project.html'
     success_message = _("Your Project Have been Added Successfully")
     success_url = reverse_lazy('main:my-project-list')
+    created_project_pk = None
 
     def form_valid(self, form):
-        form.instance.developer = get_object_or_404(Developer, username=self.request.user.username)
-        form.instance.status = 'PL'
+        form.instance.developer = self.request.user.get_developer()
+        form.instance.status = Project.StatusList.PLANING
         return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
         context['listing_title'] = _('Add Project')
         return context
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:upload-image', args=[self.object.pk, ])
 
 
 class ProjectDetailsView(ClientMixin, DetailView):
@@ -136,60 +156,112 @@ class ProjectDetailsView(ClientMixin, DetailView):
         return context
 
 
-class ProjectAddImageViews(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Your Image Have been Uploaded Successfully")
-
-    def test_func(self):
-        return super().test_func()
-
-
-class AddProjectMainPhasesView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Mian Phase Have been Uploaded Successfully")
-
-
-class AddProjectSubPhaseView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Sub Phase Have been Added Successfully")
-
-
-class AddProjectSubPhaseUpdateView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Update Yor Sub Phase Successfully")
-
-
 class ProjectUpdateView(SuccessMessageMixin, ProjectCanEditMixin, UpdateView):
     model = Project
     template_name = 'dashboards/project_edit.html'
-    form_class = AddProjectForm
+    form_class = ProjectForm
     context_object_name = 'project'
     success_message = _("Your Project Have Been Updated Successfully")
 
     def get_success_url(self):
-        return reverse_lazy('main:project-update', args=[self.object.pk])
+        return reverse_lazy('main:project-update', args=[self.project.pk])
 
     def form_valid(self, form):
-        form.instance.developer = get_object_or_404(Developer, username=self.request.user.username)
+        form.instance.developer = self.request.user.get_developer()
         return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['upload_imag_form'] = AddProjectImageFileForm()
-        context['listing_title'] = _('Add Project')
-        context['project_images'] = ProjectImage.objects.filter(project_id=self.object.pk)
+        context['page_title'] = _('Project {project} Basic Info').format(project=self.project)
         return context
+
+
+class ProjectImagesUploadView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
+    form_class = ProjectImageForm
+    template_name = 'dashboards/project_images_upload.html'
+    success_message = _("Your Image Has been Uploaded Successfully")
+
+    def form_valid(self, form):
+        form.instance.project = self.project
+        return super().form_valid(form)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['page_title'] = _('Project {project} Images').format(project=self.project)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('main:upload-image', args=[self.project.pk, ])
+
+
+# TODO: implement delete and reordering
+class ProjectMainPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
+    form_class = MainPhaseForm
+    template_name = 'dashboards/project_main_phase.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['page_title'] = _('Project {project} Main-Phases').format(project=self.project)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:create-main-phase', args=(self.project.pk, ))
+
+
+class ProjectMainPhaseCreateView(ProjectMainPhaseBaseView, CreateView):
+    success_message = _('Main phase was added successfully')
+
+    def form_valid(self, form):
+        form.instance.project = self.project
+        return super().form_valid(form)
+
+
+class ProjectMainPhaseUpdateView(ProjectMainPhaseBaseView, UpdateView):
+    success_message = _('Main phase was updated successfully')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(MainPhase, pk=self.kwargs.get('main_phase_pk'), project=self.project)
+
+
+# TODO: implement delete and reordering
+class ProjectSubPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
+    form_class = SubPhaseForm
+    template_name = 'dashboards/project_sub_phase.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['page_title'] = _('Project {project} Sub-Phases').format(project=self.project)
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['project'] = self.project
+        return kwargs
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:create-sub-phase', args=(self.project.pk, ))
+
+
+class ProjectSubPhaseCreateView(ProjectSubPhaseBaseView, CreateView):
+    success_message = _('Sub-phase was added successfully')
+
+    def form_valid(self, form):
+        form.instance.project = self.project
+        return super().form_valid(form)
+
+
+class ProjectSubPhaseUpdateView(ProjectSubPhaseBaseView, UpdateView):
+    success_message = _('Sub-phase was updated successfully')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'), phase__project=self.project)
 
 
 class ProjectDeleteView(SuccessMessageMixin, ProjectCanEditMixin, DeleteView):
     models = Project
     template_name = 'dashboards/delete.html'
     success_message = _("Your Project Have Been Deleted Successfully")
-    success_url = reverse_lazy('main_app:admin-my-project-list')
+    success_url = reverse_lazy('main_app:my-project-list')
 
     def test_func(self):
         return super().test_func() and self.get_object().developer == self.request.user.get_developer()
@@ -232,20 +304,6 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
         context['sub_phase'] = self.get_sub_phase()
         context['addForm'] = SubPhaseUpdateForm
         return context
-
-
-class ProjectUploadImageView(SuccessMessageMixin, DeveloperMixin, CreateView):
-    models = ProjectImage
-    form_class = AddProjectImageFileForm
-    success_message = _("Your Image Have Been Uploaded Successfully")
-    template_name = 'dashboards/profile.html'
-
-    def form_valid(self, form):
-        form.instance.project = get_object_or_404(Project, id=self.request.POST['pk'])
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        return reverse_lazy('main:project-update', args=[self.request.POST['pk']])
 
 
 class ClientReferralSubscribe(ClientMixin, RedirectView):

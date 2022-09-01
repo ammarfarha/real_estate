@@ -1,0 +1,38 @@
+{% extends 'dashboards/dashboard_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load project_template_tags %}
+
+{% block page_header %}
+    <div class="row">
+        <div class="col">
+            <h3 class="my-3">{{ page_title }}</h3>
+        </div>
+    </div>
+{% endblock page_header %}
+
+{% block main_containt %}
+    <div class="property-overview border rounded bg-white p-30 mb-30">
+        <div class="row row-cols-1">
+            <div class="col">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a  href="{% url 'main_app:project-update' project.pk as basic_url %}{{ basic_url }}" class="nav-link btn{% if request.get_full_path|is_similar:basic_url %} btn-primary text-white{% endif %}" aria-current="page">1. {% trans "Project Basic Info" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'main_app:upload-image' project.pk as images_url %}{{ images_url }}" class="nav-link btn{% if request.get_full_path|is_similar:images_url %} btn-primary text-white{% endif %}">2. {% trans 'Project Images' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'main_app:create-main-phase' project.pk as main_phases_url %}{{ main_phases_url }}" class="nav-link btn{% if request.get_full_path|is_similar:main_phases_url %} btn-primary text-white{% endif %}">3. {% trans 'Project Main Phases' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'main_app:create-sub-phase' project.pk as sub_phases_url %}{{ sub_phases_url }}" class="nav-link btn{% if request.get_full_path|is_similar:sub_phases_url %} btn-primary text-white{% endif %}">4. {% trans 'Project Sub-Phases' %}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% block inner_edit_space %}{% endblock inner_edit_space %}
+{% endblock main_containt %}
