@@ -14,11 +14,6 @@
                                 <li class="col">
                                     <img src="/media/{{ image.image }}" class="rounded pb-30" alt="{{ image.alt }}">
                                     <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
-                                    {% empty %}
-                                <li class="col">
-                                    <img src="{% static 'images/no_image.jpg' %}" class="rounded pb-30"
-                                         alt="real estate template">
-                                    <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
                                 </li>
                             {% endfor %}
                         </ul>
