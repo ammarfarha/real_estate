@@ -26,6 +26,7 @@ from .forms import AddProjectForm, ProjectsSearchForm, AddProjectImageFileForm, 
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
 from django.shortcuts import get_object_or_404
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class ProjectCanEditMixin(DeveloperMixin):
@@ -95,10 +96,11 @@ class ClientSubscribedProjectsListView(ClientMixin, ProjectsListView):
         return context
 
 
-class ProjectAddView(DeveloperMixin, CreateView):
+class ProjectAddView(SuccessMessageMixin, DeveloperMixin, CreateView):
     model = Project
     form_class = AddProjectForm
     template_name = 'dashboards/add_project.html'
+    success_message = _("Your Project Have been Added Successfully")
     success_url = reverse_lazy('main:my-project-list')
 
     def form_valid(self, form):
@@ -130,34 +132,39 @@ class ProjectDetailsView(ClientMixin, DetailView):
         return context
 
 
-class ProjectAddImageViews(ProjectCanEditMixin, CreateView):
+class ProjectAddImageViews(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     model = ProjectImage
     template_name = 'main/project_detail.html'
+    success_message = _("Your Image Have been Uploaded Successfully")
 
     def test_func(self):
         return super().test_func()
 
 
-class AddProjectMainPhasesView(ProjectCanEditMixin, CreateView):
+class AddProjectMainPhasesView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     model = ProjectImage
     template_name = 'main/project_detail.html'
+    success_message = _("Mian Phase Have been Uploaded Successfully")
 
 
-class AddProjectSubPhaseView(ProjectCanEditMixin, CreateView):
+class AddProjectSubPhaseView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     model = ProjectImage
     template_name = 'main/project_detail.html'
+    success_message = _("Sub Phase Have been Added Successfully")
 
 
-class AddProjectSubPhaseUpdateView(ProjectCanEditMixin, CreateView):
+class AddProjectSubPhaseUpdateView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     model = ProjectImage
     template_name = 'main/project_detail.html'
+    success_message = _("Update Yor Sub Phase Successfully")
 
 
-class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
+class ProjectUpdateView(SuccessMessageMixin, ProjectCanEditMixin, UpdateView):
     model = Project
     template_name = 'dashboards/project_edit.html'
     form_class = AddProjectForm
     context_object_name = 'project'
+    success_message = _("Your Project Have Been Updated Successfully")
 
     def get_success_url(self):
         return reverse_lazy('main:project-update', args=[self.object.pk])
@@ -174,9 +181,10 @@ class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
         return context
 
 
-class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
+class ProjectDeleteView(SuccessMessageMixin, ProjectCanEditMixin, DeleteView):
     models = Project
     template_name = 'dashboards/delete.html'
+    success_message = _("Your Project Have Been Deleted Successfully")
     success_url = reverse_lazy('main_app:admin-my-project-list')
 
     def test_func(self):
@@ -220,9 +228,10 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
         return context
 
 
-class ProjectUploadImageView(DeveloperMixin, CreateView):
+class ProjectUploadImageView(SuccessMessageMixin, DeveloperMixin, CreateView):
     models = ProjectImage
     form_class = AddProjectImageFileForm
+    success_message = _("Your Image Have Been Uploaded Successfully")
     template_name = 'dashboards/profile.html'
 
     def form_valid(self, form):
@@ -233,7 +242,9 @@ class ProjectUploadImageView(DeveloperMixin, CreateView):
         return reverse_lazy('main:project-update', args=[self.request.POST['pk']])
 
 
-class ClientReferralSubscribe(ClientMixin, RedirectView):
+class ClientReferralSubscribe(SuccessMessageMixin, ClientMixin, RedirectView):
+    success_message = _("Your subscription Added Successfully")
+
     def get_redirect_url(self, *args, **kwargs):
         client_pk = int(kwargs.get('cpk'))
         try:
@@ -243,10 +254,11 @@ class ClientReferralSubscribe(ClientMixin, RedirectView):
         return reverse_lazy('main_app:subscribe', kwargs={'pk': kwargs.get('ppk')})
 
 
-class ClientSubscribeProjectView(ClientMixin, CreateView):
+class ClientSubscribeProjectView(SuccessMessageMixin, ClientMixin, CreateView):
     models = Subscription
     form_class = SubscriptionForm
     template_name = 'main/subscribe.html'
+    success_message = _("Your Subscription Added Successfully")
 
     def form_valid(self, form):
         form.instance.project = get_object_or_404(Project, id=self.kwargs.get('pk'))
@@ -264,14 +276,16 @@ class ClientSubscribeProjectView(ClientMixin, CreateView):
         return reverse_lazy('main:index')
 
 
-class AddSubPhaseUpdateView(DeveloperMixin, CreateView):
+class AddSubPhaseUpdateView(SuccessMessageMixin, DeveloperMixin, CreateView):
     models = SubPhaseUpdate
     form_class = SubPhaseUpdateForm
     template_name = 'main/phases.html'
+    success_message = _("Add Update Successfully")
 
     def form_valid(self, form):
         form.instance.sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('main_app:sub-phase-updates', args=[self.kwargs.get('pk'), self.kwargs.get('mpk'), self.kwargs.get('spk')])
+        return reverse_lazy('main_app:sub-phase-updates',
+                            args=[self.kwargs.get('pk'), self.kwargs.get('mpk'), self.kwargs.get('spk')])
