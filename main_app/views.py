@@ -151,33 +151,6 @@ class ProjectDetailsView(ClientMixin, DetailView):
         return context
 
 
-class ProjectAddImageViews(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Your Image Have been Uploaded Successfully")
-
-    def test_func(self):
-        return super().test_func()
-
-
-class AddProjectMainPhasesView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Mian Phase Have been Uploaded Successfully")
-
-
-class AddProjectSubPhaseView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Sub Phase Have been Added Successfully")
-
-
-class AddProjectSubPhaseUpdateView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
-    model = ProjectImage
-    template_name = 'main/project_detail.html'
-    success_message = _("Update Yor Sub Phase Successfully")
-
-
 class ProjectUpdateView(SuccessMessageMixin, ProjectCanEditMixin, UpdateView):
     model = Project
     template_name = 'dashboards/project_edit.html'
