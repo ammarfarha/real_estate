@@ -1,4 +1,3 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.views.generic import (
     FormView,
     ListView,
@@ -9,15 +8,33 @@ from django.views.generic import (
     TemplateView,
     RedirectView,
 )
-from .models import Project, Subscription, ProjectImage
+from .models import (
+    Project,
+    Subscription,
+    ProjectImage,
+    MainPhase,
+    SubPhase,
+    SubPhaseUpdate,
+)
 from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
-from accounts.views import ClientMixin, DeveloperMixin
+from accounts.views import (
+    ClientMixin,
+    DeveloperMixin,
+)
 from django.views.generic.edit import CreateView
-from .forms import ProjectForm, ProjectsSearchForm, ProjectImageForm, SubscriptionForm
+from .forms import (
+    ProjectForm,
+    ProjectsSearchForm,
+    ProjectImageForm,
+    SubscriptionForm,
+    SubPhaseUpdateForm,
+)
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
+from django.shortcuts import get_object_or_404
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class ProjectCanEditMixin(DeveloperMixin):
@@ -99,6 +116,7 @@ class ProjectCreateView(DeveloperMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = 'dashboards/add_project.html'
+    success_message = _("Your Project Have been Added Successfully")
     success_url = reverse_lazy('main:my-project-list')
     created_project_pk = None
 
@@ -133,26 +151,39 @@ class ProjectDetailsView(ClientMixin, DetailView):
         return context
 
 
-class AddProjectMainPhasesView(ProjectCanEditMixin, CreateView):
+class ProjectAddImageViews(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     model = ProjectImage
     template_name = 'main/project_detail.html'
+    success_message = _("Your Image Have been Uploaded Successfully")
+
+    def test_func(self):
+        return super().test_func()
 
 
-class AddProjectSubPhaseView(ProjectCanEditMixin, CreateView):
+class AddProjectMainPhasesView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     model = ProjectImage
     template_name = 'main/project_detail.html'
+    success_message = _("Mian Phase Have been Uploaded Successfully")
 
 
-class AddProjectSubPhaseUpdateView(ProjectCanEditMixin, CreateView):
+class AddProjectSubPhaseView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     model = ProjectImage
     template_name = 'main/project_detail.html'
+    success_message = _("Sub Phase Have been Added Successfully")
 
 
-class ProjectUpdateView(ProjectCanEditMixin, UpdateView):
+class AddProjectSubPhaseUpdateView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
+    model = ProjectImage
+    template_name = 'main/project_detail.html'
+    success_message = _("Update Yor Sub Phase Successfully")
+
+
+class ProjectUpdateView(SuccessMessageMixin, ProjectCanEditMixin, UpdateView):
     model = Project
     template_name = 'dashboards/project_edit.html'
     form_class = ProjectForm
     context_object_name = 'project'
+    success_message = _("Your Project Have Been Updated Successfully")
 
     def get_success_url(self):
         return reverse_lazy('main:project-update', args=[self.project.pk])
@@ -184,10 +215,11 @@ class ProjectImagesUploadView(ProjectCanEditMixin, CreateView):
         return reverse_lazy('main:upload-image', args=[self.project.pk, ])
 
 
-class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
+class ProjectDeleteView(SuccessMessageMixin, ProjectCanEditMixin, DeleteView):
     models = Project
     template_name = 'dashboards/delete.html'
-    success_url = reverse_lazy('main_app:admin-my-project-list')
+    success_message = _("Your Project Have Been Deleted Successfully")
+    success_url = reverse_lazy('main_app:my-project-list')
 
     def test_func(self):
         return super().test_func() and self.get_object().developer == self.request.user.get_developer()
@@ -197,38 +229,89 @@ class ProjectDeleteView(ProjectCanEditMixin, DeleteView):
         return get_object_or_404(Project, id=id_)
 
 
-class ProjectPhasesListView(ClientMixin, ListView):
-    model = Project
+class ProjectPhasesListView(DeveloperMixin, ListView):
+    model = SubPhaseUpdate
+    template_name = "main/phases.html"
+    context_object_name = "updates"
+    paginate_by = 3
+
+    def get_project(self, *args, **kwargs):
+        return get_object_or_404(Project, pk=self.kwargs.get('pk'))
+
+    def get_main_phase(self, *args, **kwargs):
+        if self.kwargs.get('mpk'):
+            return get_object_or_404(MainPhase, pk=self.kwargs.get('mpk'))
+        else:
+            return MainPhase.objects.filter(project=self.get_project()).first()
+
+    def get_sub_phase(self, *args, **kwargs):
+        if self.kwargs.get('spk'):
+            return get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
+        else:
+            return SubPhase.objects.filter(phase=self.get_main_phase()).first()
+
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(sub_phase=self.get_sub_phase())
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['project'] = self.get_project()
+        context['main_phase'] = self.get_main_phase()
+        context['sub_phase'] = self.get_sub_phase()
+        context['addForm'] = SubPhaseUpdateForm
+        return context
 
 
 class ClientReferralSubscribe(ClientMixin, RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        code = str(kwargs.get('ref_code'))
+        client_pk = int(kwargs.get('cpk'))
         try:
-            client = Client.objects.get(code=code)
-            self.request.session['ref_client'] = client.pk
+            self.request.session['ref_client'] = client_pk
         except:
             pass
-        print(self.request.session.get('ref_client'))
-        return reverse_lazy('main_app:subscribe', kwargs={'pk': kwargs.get('pk')})
+        return reverse_lazy('main_app:subscribe', kwargs={'pk': kwargs.get('ppk')})
 
 
-class ClientSubscribeProjectView(ClientMixin, CreateView):
+class ClientSubscribeProjectView(SuccessMessageMixin, ClientMixin, CreateView):
     models = Subscription
     form_class = SubscriptionForm
     template_name = 'main/subscribe.html'
+    success_message = _("Your Subscription Added Successfully")
+
+    def car_subscribe(self):
+        project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+        user = self.request.user
+        return not Subscription.objects.filter(project=project, client=user).exists()
 
     def form_valid(self, form):
-        form.instance.project = Project.objects.get(id=self.kwargs.get('pk'))
-        form.instance.client = self.request.user
-        try:
+        if self.car_subscribe():
+            form.instance.project = get_object_or_404(Project, id=self.kwargs.get('pk'))
+            form.instance.client = self.request.user
             if self.request.session.get('ref_client'):
-                form.instance.referral_user = Client.objects.get(pk=self.request.session.get('ref_client'))
+                form.instance.referral_user = get_object_or_404(Client, pk=self.request.session.get('ref_client'))
             else:
                 form.instance.referral_user = None
-        except:
-            pass
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('main:index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['can_subscribe'] = self.car_subscribe()
+        return context
+
+
+class AddSubPhaseUpdateView(SuccessMessageMixin, DeveloperMixin, CreateView):
+    models = SubPhaseUpdate
+    form_class = SubPhaseUpdateForm
+    template_name = 'main/phases.html'
+    success_message = _("Add Update Successfully")
+
+    def form_valid(self, form):
+        form.instance.sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('main_app:sub-phase-updates',
+                            args=[self.kwargs.get('pk'), self.kwargs.get('mpk'), self.kwargs.get('spk')])

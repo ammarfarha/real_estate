@@ -1,10 +1,10 @@
 {% extends 'dashboards/dashboard_base.html' %}
-{% load static %}
+{% load static i18n %}
 {% load crispy_forms_tags %}
 {% block page_header %}
 <div class="row">
     <div class="col">
-        <h3 class="my-3">My Projects List</h3>
+        <h3 class="my-3">{{ project_name }} {% trans "Main Phases" %}</h3>
     </div>
 </div>
 {% endblock page_header %}
@@ -18,29 +18,20 @@
                     <thead>
                         <tr class="bg-white">
                             <th>Name</th>
-                            <th>type</th>
-                            <th>current status</th>
-                            <th>area</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for project in projects %}
+                        {% for phase in phases %}
                         <tr>
                             <td>
-                                <img class="rounded" src="{{ project.get_first_image_or_default }}" alt="">
-                                <div class="property-info d-table">
-                                    <h5 class="text-secondary font-400">{{ project.name }}</h5>
+                                <h5 class="text-secondary font-400">{{ phase.title }}</h5>
 {#                                    <span><i class="fas fa-map-marker-alt text-primary font-13"></i> {{ project.location }}</span>#}
                                 </div>
                             </td>
-                            <td>{{ project.get_type_display }}</td>
-                            <td>{{ project.get_statue_display }}</td>
-                            <td>{{ project.area }}</td>
                             <td>
-                                <a href="{% url 'main:project-update' project.pk %}" class="text-primary me-4 mb-1"><i class="fas fa-edit"></i></a>
-                                <a href="{% url 'main:project-delete' project.pk %}" class="text-primary me-4 mb-1"><i class="fas fa-trash"></i></a>
-                                <a href="{% url 'main:project-phases' project.pk %}" class="text-primary mb-1"><i class="fas fa-building"></i></a>
+                                <a href="{% url 'main:sub-phase' phase.project_id phase.pk %}" class="text-primary me-4 mb-1"><i class="fas fa-edit"></i></a>
+{#                                <a href="{% url 'main:main-phase-delete' phase.project_id phase.pk %}" class="text-primary me-4 mb-1"><i class="fas fa-trash"></i></a>#}
                             </td>
                         </tr>
                     {% endfor %}
@@ -49,7 +40,7 @@
             </div>
             <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
                 <div class="col">
-                    <a href="{% url 'main:add-project' %}" class="btn btn-outline-primary">Add New Project</a>
+                    <a href="#" class="btn btn-outline-primary">Add New Phase</a>
                 </div>
             </div>
             {% include 'pagination.html' %}

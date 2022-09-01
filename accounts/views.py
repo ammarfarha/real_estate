@@ -8,7 +8,7 @@ from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm
     DeveloperProfileForm
 from django.utils.translation import gettext_lazy as _
 from main_app.forms import ProjectsSearchForm
-from .utils import generate_ref_code
+from django.shortcuts import get_object_or_404
 
 
 class ClientMixin(LoginRequiredMixin):
@@ -26,21 +26,18 @@ class ProfileView(ClientMixin, ListView):
     context_object_name = 'current'
 
     def get_queryset(self):
-        current = Client.objects.get(username=self.request.user.username)
+        current = get_object_or_404(Client, username=self.request.user.username)
         if current.is_developer():
-            current = Developer.objects.get(username=self.request.user.username)
+            current = get_object_or_404(Developer, username=self.request.user.username)
         return current
 
 
-class ClientRegistrationView(CreateView):
+class ClientRegistrationView(SuccessMessageMixin, CreateView):
     model = Client
     template_name = "main/registration.html"
     form_class = ClientCreationForm
+    success_message = _("congratulations, You have been successfully registered")
     success_url = reverse_lazy('main:index')
-
-    def form_valid(self, form):
-        form.instance.code = generate_ref_code()
-        return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
@@ -68,11 +65,11 @@ class DeveloperRegistrationView(SuccessMessageMixin, CreateView):
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'accounts/user_form.html'
-    success_message = "Password Have been Rest Successfully"
+    success_message = _("Password Have been Rest Successfully")
     success_url = reverse_lazy('accounts:login')
 
 
-class ClientProfileUpdateView(UpdateView):
+class ClientProfileUpdateView(SuccessMessageMixin, UpdateView):
     model = Client
     template_name = 'dashboards/profile.html'
     form_class = ClientProfileForm

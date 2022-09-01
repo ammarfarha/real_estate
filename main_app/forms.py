@@ -67,3 +67,14 @@ class ProjectsSearchForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.fields['type'].required = False
         self.fields['status'].required = False
+
+
+class SubPhaseUpdateForm(forms.ModelForm):
+    class Meta:
+        model = SubPhaseUpdate
+        fields = [
+            'description',
+        ]
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3,}),
+        }

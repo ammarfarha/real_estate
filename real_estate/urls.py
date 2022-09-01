@@ -8,11 +8,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
-    path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('main_app.urls', namespace='main')),
     path('users/', include('accounts.urls', namespace='accounts')),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+    path('accounts/', include('allauth.urls')),
 )

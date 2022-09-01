@@ -37,35 +37,34 @@
 - implement developer field in the project create form
 - fix base.html and toolbar as we agreed
 
+
+- replace objects.get -> objects.get_or_404
+- pagination for all listviews
+- social login
+- google maps
+- referral
+-- slider or gallery                                                                    Done
+-- phases
+---- show free phases only for non-subscribed users
+---- enable subscription
 """
 
 
 # TODO:
 """
-
+- can not subscript more than one
 - utilize SuccessMessageMixin
-- pagination for all listviews                                                          Done
 - filter for projects listing pages (use django-filters) (filter)                       Later
 - form validation for developer registration page and implement it client/server side
-
 - project details view/template                                                          
--- slider or gallery                                                                    Done
--- phases
----- show free phases only for non-subscribed users
----- enable subscription
-
-- add messages to models                                                                Done
+- add messages to models                                                               testing
 --  send messages as email
-
-
-- social login
-- google maps
 - tow factor authentication
 - payment gateway
 - msm gateway
-- referral 
 
-- Assigned to Abdullah
+
+Assigned to Abdullah
 - new project form
 --- Step1ProjectCreateView(CreateView) will use Step1ProjectForm
 --- ProjectImagesView(CreateView) will use ProjectImageForm
@@ -74,5 +73,25 @@
 --- ProjectPhasesView(CreateView) will use ProjectPhaseForm
 ----- List of Phases as context
 -----
+
+
+
+
+
+1 - client: display project map
+2 - authall interfaces
+
+3 - developer:
+    Updates
+    
+    
+    
+    
+later: get address form leaflet map
+
+
+
+
+
 
 """
