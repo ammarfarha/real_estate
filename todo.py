@@ -89,6 +89,9 @@ Assigned to Abdullah
     
 later: get address form leaflet map
 
+- make description files as rich text editor:
+--- Normal
+--- https://github.com/agusmakmun/django-markdown-editor
 
 
 

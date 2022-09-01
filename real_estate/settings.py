@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from pathlib import Path
 
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
@@ -215,8 +216,12 @@ SOCIALACCOUNT_PROVIDERS = {
     },
 }
 
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 try:
     from .local_settings import *
 except ImportError:
     print('WARNING: local_settings file is not defined or does NOT exist')
+
