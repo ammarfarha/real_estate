@@ -331,6 +331,12 @@ class ClientSubscribeProjectView(SuccessMessageMixin, ClientMixin, CreateView):
     template_name = 'main/subscribe.html'
     success_message = _("Your Subscription Added Successfully")
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+
     def car_subscribe(self):
         project = get_object_or_404(Project, id=self.kwargs.get('pk'))
         user = self.request.user

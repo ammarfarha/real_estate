@@ -40,6 +40,15 @@ class ProjectImageForm(forms.ModelForm):
         ]
 
 
+class UpdateAttachmentForm(forms.ModelForm):
+    class Meta:
+        model = UpdateAttachment
+        fields = [
+            'update',
+            'update_file',
+        ]
+
+
 class MainPhaseForm(forms.ModelForm):
     class Meta:
         model = MainPhase
@@ -66,53 +75,13 @@ class SubPhaseForm(forms.ModelForm):
 
 
 class SubscriptionForm(forms.ModelForm):
-    FullName = forms.CharField(
+    full_name = forms.CharField(
         label=_("Full Name"),
         required=False,
         widget=forms.TextInput(
             attrs={
-                'value': "",
                 'disabled': 'disabled',
-            }
-        )
-    )
-    email = forms.EmailField(
-        label=_("Email Address"),
-        required=False,
-        widget=forms.TextInput(
-            attrs={
-                'value': "",
-                'disabled': 'disabled',
-            }
-        )
-    )
-    region = forms.CharField(
-        label=_("Region"),
-        required=False,
-        widget=forms.TextInput(
-            attrs={
-                'value': "",
-                'disabled': 'disabled',
-            }
-        )
-    )
-    city = forms.CharField(
-        label=_("City"),
-        required=False,
-        widget=forms.TextInput(
-            attrs={
-                'value': "",
-                'disabled': 'disabled',
-            }
-        )
-    )
-    address = forms.CharField(
-        label=_("Address"),
-        required=False,
-        widget=forms.TextInput(
-            attrs={
-                'value': "",
-                'disabled': 'disabled',
+                'class': 'form-control bg-light',
             }
         )
     )
@@ -121,8 +90,8 @@ class SubscriptionForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(
             attrs={
-                'value': "",
                 'disabled': 'disabled',
+                'class': 'form-control bg-light',
             }
         )
     )
@@ -131,8 +100,8 @@ class SubscriptionForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(
             attrs={
-                'value': "",
                 'disabled': 'disabled',
+                'class': 'form-control bg-light',
             }
         )
     )
@@ -141,8 +110,8 @@ class SubscriptionForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(
             attrs={
-                'value': "",
                 'disabled': 'disabled',
+                'class': 'form-control bg-light',
             }
         )
     )
@@ -150,6 +119,13 @@ class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
         fields = []
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
+        super().__init__(*args, **kwargs)
+        self.initial['full_name'] = user.first_name + " " + user.last_name
+        self.initial['account_number'] = str('0123456789')
+        self.initial['price'] = str('3000')
 
 
 class ProjectsSearchForm(forms.Form):
@@ -176,10 +152,13 @@ class ProjectsSearchForm(forms.Form):
 
 
 class SubPhaseUpdateForm(forms.ModelForm):
+    attachments = forms.FileField(required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
     class Meta:
         model = SubPhaseUpdate
         fields = [
             'description',
+            'attachments',
         ]
         widgets = {
             'description': forms.Textarea(attrs={'rows': 3, }),
