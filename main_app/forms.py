@@ -161,6 +161,6 @@ class SubPhaseUpdateForm(forms.ModelForm):
             'description',
             'attachments',
         ]
-        # widgets = {
-        #     'description': forms.Textarea(attrs={'rows': 3, }),
-        # }
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3, }),
+        }

@@ -2,7 +2,6 @@
 {% load static %}
 {% load i18n %}
 {% load leaflet_tags %}
-{% load martortags %}
 
 {% block page_title %}
     Django Projects
@@ -11,9 +10,12 @@
 {% block custom_CSS %}
     {% leaflet_css plugins="ALL" %}
     {% leaflet_js plugins="ALL" %}
+<<<<<<< HEAD
     <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
     <link href="{% static 'plugins/css/resizable.min.css' %}" type="text/css" media="all" rel="stylesheet" />
     <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+=======
+>>>>>>> 42b7a95c0cc56984c6f91f33f3bd7399947bd988
 {% endblock custom_CSS %}
 
 {% block body %}
@@ -183,6 +185,7 @@
     </div>
 {% endblock body %}
 {% block Custom_JS %}
+<<<<<<< HEAD
     <script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
       <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
       <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
@@ -198,6 +201,10 @@
             hljs.highlightBlock(block);
         });
         $('#single-property').layerSlider({
+=======
+    <script>
+       $('#single-property').layerSlider({
+>>>>>>> 42b7a95c0cc56984c6f91f33f3bd7399947bd988
             sliderVersion: '6.5.0b2',
             type: 'popup',
             pauseOnHover: 'disabled',
