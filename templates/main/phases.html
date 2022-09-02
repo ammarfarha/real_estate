@@ -80,13 +80,6 @@
                                                                  class="img-thumbnail"
                                                                  alt="attachment {{ attachment.pk }}"/>
                                                         {% endfor %}
-                                                        <form action="{% url "main_app:update-attachment" update.sub_phase.pk %}"
-                                                              method="post" enctype="multipart/form-data">
-                                                            {% csrf_token %}
-                                                            <input type="hidden" name="update" value="{{ update.pk }}">
-                                                            <input type="file" name="attachment">
-                                                            <button type="submit">{% trans "Upload" %}</button>
-                                                        </form>
                                                     </div>
                                                 </div>
                                             {% empty %}
