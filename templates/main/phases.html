@@ -58,47 +58,38 @@
                                                 </button>
                                             </form>
                                         </div>
-                                            <table class="w-100 items-list bg-transparent">
-                                                <thead>
-                                                <tr class="bg-white">
-                                                    <th>{% trans "My Update" %}
-                                                        <a href="#" class="text-primary me-4 mb-1">
-                                                            <i class="fas fa-plus"></i>
-                                                        </a>
-                                                    </th>
-                                                    <th>{% trans "Added Date" %}</th>
-                                                    <th>{% trans "Action" %}</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for update in updates %}
-                                                    <tr>
-                                                        <td>
-                                                            <div class="property-info d-table">
-                                                                <p>{{ update.description }}</p>
-                                                                {% for image in update.attachments.update_file %}
-                                                                    <img src="{{ image.url }}"
-                                                                     width="150"
-                                                                     height="100" class="img-thumbnail"
-                                                                     alt="real estate template">
-                                                                {% endfor %}
+                                        {% for update in updates %}
+                                            <div class="media">
+                                                        <img src="{{ project.developer.get_logo_image_or_avatar }}"
+                                                             class="me-3 rounded-circle"
+                                                             alt="{{ project.developer }}">
+                                                        <div class="media-body">
+                                                            <div class="row d-flex align-items-center">
+                                                                <h5 class="col-auto mb-0">{{ project.developer.get_full_name }}</h5>
                                                             </div>
-                                                        </td>
-                                                        <td>{{ update.update_date }}</td>
-                                                        <td>
-                                                            <a href="#" class="text-primary me-4 mb-1">
-                                                                <i class="fas fa-edit"></i>
-                                                            </a>
-                                                            <a href="#" class="text-primary mb-1">
-                                                                <i class="fas fa-trash"></i></a>
-                                                        </td>
-
-                                                    </tr>
-                                                {% empty %}
-                                                    {% trans "There are no updates" %}
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
+                                                            <div class="comments-date mb-2">
+                                                                <span>{% trans "Posted On" %} {{ update.update_date }}</span><a
+                                                                    href="#"></a></div>
+                                                            <p>{{ update.description|safe|linebreaksbr }}</p>
+                                                            {% for attachment in update.attachments.all %}
+                                                                {# TODO: make flexible for other filetypes like PDF #}
+                                                                <img src="{{ attachment.update_file.url }}"
+                                                                     width="200"
+                                                                     height="200"
+                                                                     class="img-thumbnail"
+                                                                     alt="attachment {{ attachment.pk }}" />
+                                                            {% endfor %}
+                                                            <form action="{% url "main_app:update-attachment" update.sub_phase.pk %}" method="post" enctype="multipart/form-data">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="update" value="{{ update.pk }}">
+                                                                <input type="file" name="attachment">
+                                                                <button type="submit">{% trans "Upload" %}</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                        {% empty %}
+                                            {% trans "There are no updates" %}
+                                        {% endfor %}
                                         </div>
                                     </div>
                                 </div>

@@ -232,6 +232,11 @@
                                                                     </div>
                                                             {% endfor %}
                                                             <br>
+                                                        {% empty %}
+                                                            <div class="tab-pane tab-hide" id="tb-panel-{{ main_phase.pk }}"
+                                                                 style="display: block;">
+                                                                <div class="alert alert-primary">{% trans "There is no information at this stage yet !" %}</div>
+                                                            </div>
                                                         {% endfor %}
                                                     {% else %}
                                                         <div class="tab-pane tab-hide" id="tb-panel-{{ main_phase.pk }}"
