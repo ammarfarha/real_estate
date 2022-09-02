@@ -15,6 +15,7 @@ from .models import (
     MainPhase,
     SubPhase,
     SubPhaseUpdate,
+    UpdateAttachment,
 )
 from accounts.models import Client
 from django.utils.translation import gettext_lazy as _
@@ -31,7 +32,7 @@ from .forms import (
     SubscriptionForm,
     SubPhaseUpdateForm,
     MainPhaseForm,
-    SubPhaseForm,
+    SubPhaseForm, UpdateAttachmentForm,
 )
 from accounts.views import DeveloperMixin
 from accounts.models import Developer
@@ -194,6 +195,20 @@ class ProjectImagesUploadView(SuccessMessageMixin, ProjectCanEditMixin, CreateVi
         return reverse_lazy('main:upload-image', args=[self.project.pk, ])
 
 
+class UpdateFileUploadView(SuccessMessageMixin, CreateView):
+    model = UpdateAttachment
+    form_class = UpdateAttachmentForm
+    success_message = _("Your File Has been Uploaded Successfully")
+
+    def form_valid(self, form, *args, **kwargs):
+        form.instance.update = get_object_or_404(UpdateAttachment, pk=self.request.POST['update'])
+        form.instance.update_file = self.request.FILES['attachment']
+        return super().form_valid(form)
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy('main:add-update', args=[self.kwargs.get('sub_phase_pk'), ])
+
+
 # TODO: implement delete and reordering
 class ProjectMainPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
     form_class = MainPhaseForm
@@ -277,35 +292,33 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
     context_object_name = "updates"
     paginate_by = 3
 
-    def get_queryset(self, *args, **kwargs):
+    def get_main_and_sub_phases(self):
+        project, main_phase, sub_phase = None, None, None
+
         if self.kwargs.get('sub_phase_pk'):
             sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'))
             main_phase = sub_phase.phase
-            project = main_phase.project
-        if self.kwargs.get('main_phase_pk'):
+            if main_phase:
+                project = main_phase.project
+        elif self.kwargs.get('main_phase_pk'):
             main_phase = get_object_or_404(MainPhase, pk=self.kwargs.get('main_phase_pk'))
             sub_phase = main_phase.sub_phases.first()
             project = main_phase.project
-        if self.kwargs.get('project_pk'):
+        elif self.kwargs.get('project_pk'):
             project = get_object_or_404(Project, pk=self.kwargs.get('project_pk'))
             main_phase = project.main_phases.first()
-            sub_phase = main_phase.sub_phases.first()
+            if main_phase:
+                sub_phase = main_phase.sub_phases.first()
+
+        return project, main_phase, sub_phase
+
+    def get_queryset(self, *args, **kwargs):
+        project, main_phase, sub_phase = self.get_main_and_sub_phases()
 
         return super().get_queryset(*args, **kwargs).filter(sub_phase=sub_phase)
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        if self.kwargs.get('sub_phase_pk'):
-            sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'))
-            main_phase = sub_phase.phase
-            project = main_phase.project
-        if self.kwargs.get('main_phase_pk'):
-            main_phase = get_object_or_404(MainPhase, pk=self.kwargs.get('main_phase_pk'))
-            sub_phase = main_phase.sub_phases.first()
-            project = main_phase.project
-        if self.kwargs.get('project_pk'):
-            project = get_object_or_404(Project, pk=self.kwargs.get('project_pk'))
-            main_phase = project.main_phases.first()
-            sub_phase = main_phase.sub_phases.first()
+        project, main_phase, sub_phase = self.get_main_and_sub_phases()
 
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['project'] = project
@@ -362,13 +375,19 @@ class ClientSubscribeProjectView(SuccessMessageMixin, ClientMixin, CreateView):
 
 
 class AddSubPhaseUpdateView(SuccessMessageMixin, DeveloperMixin, CreateView):
-    models = SubPhaseUpdate
     form_class = SubPhaseUpdateForm
-    template_name = 'main/phases.html'
     success_message = _("Add Update Successfully")
+    http_method_names = ('post', )
 
     def form_valid(self, form):
         form.instance.sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'))
+        update = form.save()
+        files = self.request.FILES.getlist('attachments')
+        for file in files:
+            attachment = UpdateAttachment()
+            attachment.update = update
+            attachment.update_file = file
+            attachment.save()
         return super().form_valid(form)
 
     def get_success_url(self):

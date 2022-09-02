@@ -4,7 +4,7 @@ from accounts.forms import DateInput
 from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
 from django.utils.translation import gettext_lazy as _
 from leaflet.forms.widgets import LeafletWidget
-from django_countries.widgets import CountrySelectWidget
+from martor.fields import MartorFormField
 
 
 class ProjectForm(forms.ModelForm):
@@ -153,6 +153,7 @@ class ProjectsSearchForm(forms.Form):
 
 class SubPhaseUpdateForm(forms.ModelForm):
     attachments = forms.FileField(required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    description = MartorFormField()
 
     class Meta:
         model = SubPhaseUpdate
@@ -160,6 +161,6 @@ class SubPhaseUpdateForm(forms.ModelForm):
             'description',
             'attachments',
         ]
-        widgets = {
-            'description': forms.Textarea(attrs={'rows': 3, }),
-        }
+        # widgets = {
+        #     'description': forms.Textarea(attrs={'rows': 3, }),
+        # }

@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% load leaflet_tags %}
+{% load martortags %}
 
 {% block page_title %}
     Django Projects
@@ -10,6 +11,8 @@
 {% block custom_CSS %}
     {% leaflet_css plugins="ALL" %}
     {% leaflet_js plugins="ALL" %}
+    <link href="{% static 'global/plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static 'global/martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
 {% endblock custom_CSS %}
 
 {% block body %}
@@ -179,34 +182,39 @@
     </div>
 {% endblock body %}
 {% block Custom_JS %}
-<script>
-    $('#single-property').layerSlider({
-        sliderVersion: '6.5.0b2',
-        type: 'popup',
-        pauseOnHover: 'disabled',
-        skin: 'photogallery',
-        globalBGSize: 'cover',
-        navStartStop: false,
-        hoverBottomNav: true,
-        showCircleTimer: false,
-        thumbnailNavigation: 'always',
-        tnContainerWidth: '100%',
-        tnHeight: 70,
-        popupShowOnTimeout: 1,
-        popupShowOnce: false,
-        popupCloseButtonStyle: 'background: rgba(0,0,0,.5); border-radius: 2px; border: 0; left: auto; right: 10px;',
-        popupResetOnClose: 'disabled',
-        popupDistanceLeft: 20,
-        popupDistanceRight: 20,
-        popupDistanceTop: 20,
-        popupDistanceBottom: 20,
-        popupDurationIn: 750,
-        popupDelayIn: 500,
-        popupTransitionIn: 'scalefromtop',
-        popupTransitionOut: 'scaletobottom',
-        skinsPath: "{% static 'skins' %}",
-    });
-</script>
+    <script type="text/javascript" src="{% static 'global/plugins/js/highlight.min.js' %}"></script>
+    <script>
+        $('.martor-preview pre').each(function(i, block){
+                hljs.highlightBlock(block);
+        });
+
+        $('#single-property').layerSlider({
+            sliderVersion: '6.5.0b2',
+            type: 'popup',
+            pauseOnHover: 'disabled',
+            skin: 'photogallery',
+            globalBGSize: 'cover',
+            navStartStop: false,
+            hoverBottomNav: true,
+            showCircleTimer: false,
+            thumbnailNavigation: 'always',
+            tnContainerWidth: '100%',
+            tnHeight: 70,
+            popupShowOnTimeout: 1,
+            popupShowOnce: false,
+            popupCloseButtonStyle: 'background: rgba(0,0,0,.5); border-radius: 2px; border: 0; left: auto; right: 10px;',
+            popupResetOnClose: 'disabled',
+            popupDistanceLeft: 20,
+            popupDistanceRight: 20,
+            popupDistanceTop: 20,
+            popupDistanceBottom: 20,
+            popupDurationIn: 750,
+            popupDelayIn: 500,
+            popupTransitionIn: 'scalefromtop',
+            popupTransitionOut: 'scaletobottom',
+            skinsPath: "{% static 'skins' %}",
+        });
+    </script>
 {% endblock Custom_JS %}
 </body>
 </html>

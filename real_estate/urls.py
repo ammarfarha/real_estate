@@ -15,4 +15,5 @@ urlpatterns += i18n_patterns(
     path('users/', include('accounts.urls', namespace='accounts')),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('accounts/', include('allauth.urls')),
+    path('martor/', include('martor.urls')),
 )

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from accounts.models import Developer, Client
 from djgeojson.fields import PointField
+from martor.models import MartorField
 
 
 class Project(models.Model):
@@ -254,7 +255,12 @@ class SubPhaseUpdate(models.Model):
         verbose_name=_('Update Date'),
         auto_now_add=True,
     )
-    description = models.TextField(
+    # description = models.TextField(
+    #     verbose_name=_('Update Description'),
+    #     null=True,
+    #     blank=False,
+    # )
+    description = MartorField(
         verbose_name=_('Update Description'),
         null=True,
         blank=False,

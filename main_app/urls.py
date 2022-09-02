@@ -15,6 +15,7 @@ urlpatterns = [
     path('my_projects/<int:pk>/delete/',    views.ProjectDeleteView.as_view(), name='project-delete'),
     path('my_projects/<int:pk>/upload/',    views.ProjectImagesUploadView.as_view(), name='upload-image'),
 
+
     path('project/<int:pk>/main/phase/',                     views.ProjectMainPhaseCreateView.as_view(), name='create-main-phase'),
     path('project/<int:pk>/main/phase/<int:main_phase_pk>/', views.ProjectMainPhaseUpdateView.as_view(), name='update-main-phase'),
     path('project/<int:pk>/sub/phase/',                     views.ProjectSubPhaseCreateView.as_view(), name='create-sub-phase'),
@@ -25,4 +26,6 @@ urlpatterns = [
     path('project/phases/subphases/updates/<int:sub_phase_pk>/', views.ProjectPhasesListView.as_view(), name='sub-phase'),
     path('project/phases/subphases/updates/<int:sub_phase_pk>/add/', views.AddSubPhaseUpdateView.as_view(), name='add-update'),
 
+
+    path('projects/<int:sub_phase_pk>/upload/',    views.UpdateFileUploadView.as_view(), name='update-attachment'),
 ]
