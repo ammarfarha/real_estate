@@ -14,7 +14,7 @@
                             {% for phase in project.main_phases.all %}
                             <li>
                                 {% if phase.sub_phases.count > 0  %}
-                                    <a href="{% url "main_app:sub-phase" project.pk phase.pk %}">
+                                    <a href="{% url "main_app:main_phase" phase.pk %}">
                                 {% else %}
                                     <a href="#">
                                 {% endif %}
@@ -36,7 +36,7 @@
                                 <ul class="nav justify-content-center">
                                     {% for sub in main_phase.sub_phases.all %}
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="{% url "main_app:sub-phase-updates" project.pk main_phase.pk sub.pk %}">
+                                            <a class="nav-link active" aria-current="page" href="{% url "main_app:sub-phase" sub.pk %}">
                                                 {% if sub == sub_phase %}
                                                     <b>{{ sub.title }}</b>
                                                 {% else %}
@@ -50,7 +50,7 @@
                                     <div class="property-overview border rounded bg-white p-30 mb-30">
                                         <div class="px-4 py-3">
                                         <div class="col-md-12 mb-20">
-                                            <form action="{% url "main_app:add-updates" project.pk main_phase.pk sub_phase.pk %}" method="post">
+                                            <form action="{% url 'main_app:add-update' sub_phase.pk %}" method="post">
                                                 {% csrf_token %}
                                                 {{ addForm|crispy }}
                                                 <button type="submit" class="btn btn-primary" name="submitbasic">

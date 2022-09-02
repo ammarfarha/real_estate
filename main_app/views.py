@@ -205,7 +205,7 @@ class ProjectMainPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('main_app:create-main-phase', args=(self.project.pk, ))
+        return reverse_lazy('main_app:create-main-phase', args=(self.project.pk,))
 
 
 class ProjectMainPhaseCreateView(ProjectMainPhaseBaseView, CreateView):
@@ -239,7 +239,7 @@ class ProjectSubPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
         return kwargs
 
     def get_success_url(self):
-        return reverse_lazy('main_app:create-sub-phase', args=(self.project.pk, ))
+        return reverse_lazy('main_app:create-sub-phase', args=(self.project.pk,))
 
 
 class ProjectSubPhaseCreateView(ProjectSubPhaseBaseView, CreateView):
@@ -277,31 +277,40 @@ class ProjectPhasesListView(DeveloperMixin, ListView):
     context_object_name = "updates"
     paginate_by = 3
 
-    def get_project(self, *args, **kwargs):
-        return get_object_or_404(Project, pk=self.kwargs.get('pk'))
-
-    def get_main_phase(self, *args, **kwargs):
-        if self.kwargs.get('mpk'):
-            return get_object_or_404(MainPhase, pk=self.kwargs.get('mpk'))
-        else:
-            return MainPhase.objects.filter(project=self.get_project()).first()
-
-    def get_sub_phase(self, *args, **kwargs):
-        # TODO : relate the sub phase with the phase with the project
-        if self.kwargs.get('spk'):
-            return get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
-        else:
-            return SubPhase.objects.filter(phase=self.get_main_phase()).first()
-
     def get_queryset(self, *args, **kwargs):
-        # TODO : make query set bt kwargs patterns
-        return super().get_queryset(*args, **kwargs).filter(sub_phase=self.get_sub_phase())
+        if self.kwargs.get('sub_phase_pk'):
+            sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'))
+            main_phase = sub_phase.phase
+            project = main_phase.project
+        if self.kwargs.get('main_phase_pk'):
+            main_phase = get_object_or_404(MainPhase, pk=self.kwargs.get('main_phase_pk'))
+            sub_phase = main_phase.sub_phases.first()
+            project = main_phase.project
+        if self.kwargs.get('project_pk'):
+            project = get_object_or_404(Project, pk=self.kwargs.get('project_pk'))
+            main_phase = project.main_phases.first()
+            sub_phase = main_phase.sub_phases.first()
+
+        return super().get_queryset(*args, **kwargs).filter(sub_phase=sub_phase)
 
     def get_context_data(self, *, object_list=None, **kwargs):
+        if self.kwargs.get('sub_phase_pk'):
+            sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'))
+            main_phase = sub_phase.phase
+            project = main_phase.project
+        if self.kwargs.get('main_phase_pk'):
+            main_phase = get_object_or_404(MainPhase, pk=self.kwargs.get('main_phase_pk'))
+            sub_phase = main_phase.sub_phases.first()
+            project = main_phase.project
+        if self.kwargs.get('project_pk'):
+            project = get_object_or_404(Project, pk=self.kwargs.get('project_pk'))
+            main_phase = project.main_phases.first()
+            sub_phase = main_phase.sub_phases.first()
+
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['project'] = self.get_project()
-        context['main_phase'] = self.get_main_phase()
-        context['sub_phase'] = self.get_sub_phase()
+        context['project'] = project
+        context['main_phase'] = main_phase
+        context['sub_phase'] = sub_phase
         context['addForm'] = SubPhaseUpdateForm
         return context
 
@@ -353,9 +362,8 @@ class AddSubPhaseUpdateView(SuccessMessageMixin, DeveloperMixin, CreateView):
     success_message = _("Add Update Successfully")
 
     def form_valid(self, form):
-        form.instance.sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('spk'))
+        form.instance.sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'))
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('main_app:sub-phase-updates',
-                            args=[self.kwargs.get('pk'), self.kwargs.get('mpk'), self.kwargs.get('spk')])
+        return reverse_lazy('main_app:sub-phase', args=[self.kwargs.get('sub_phase_pk')])

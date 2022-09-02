@@ -36,11 +36,17 @@
                                                     <td>{{ sub_phase.completion_date }}</td>
                                                     <td>
                                                         <a href="{% url 'main_app:update-sub-phase' main_phase.project.pk sub_phase.pk %}"
-                                                           class="text-primary me-4 mb-1"><i
-                                                                class="fas fa-edit"></i></a>
+                                                           class="text-primary me-4 mb-1">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
                                                         <a href="{% url 'main_app:update-sub-phase' main_phase.project.pk sub_phase.pk %}"
-                                                           class="text-primary mb-1"><i
-                                                                class="fas fa-trash"></i></a>
+                                                           class="text-primary mb-1">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                        <a href="{% url 'main_app:sub-phase' sub_phase.pk %}"
+                                                           class="text-primary me-4 mb-1">
+                                                            <i class="fas fa-building"></i>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             {% endfor %}
