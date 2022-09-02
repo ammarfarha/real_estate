@@ -1,14 +1,13 @@
 from django import forms
 from leaflet.forms.fields import PointField
-
 from accounts.forms import DateInput
 from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
 from django.utils.translation import gettext_lazy as _
 from leaflet.forms.widgets import LeafletWidget
+from django_countries.widgets import CountrySelectWidget
 
 
 class ProjectForm(forms.ModelForm):
-
     class Meta:
         model = Project
         fields = [
@@ -19,7 +18,7 @@ class ProjectForm(forms.ModelForm):
             'location',
         ]
 
-    def __init__(self, * args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['location'].widget = LeafletWidget(
             attrs={
@@ -42,7 +41,6 @@ class ProjectImageForm(forms.ModelForm):
 
 
 class MainPhaseForm(forms.ModelForm):
-
     class Meta:
         model = MainPhase
         fields = ['title', ]
@@ -52,7 +50,6 @@ class MainPhaseForm(forms.ModelForm):
 
 
 class SubPhaseForm(forms.ModelForm):
-
     class Meta:
         model = SubPhase
         fields = '__all__'
@@ -69,6 +66,87 @@ class SubPhaseForm(forms.ModelForm):
 
 
 class SubscriptionForm(forms.ModelForm):
+    FullName = forms.CharField(
+        label=_("Full Name"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+    email = forms.EmailField(
+        label=_("Email Address"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+    region = forms.CharField(
+        label=_("Region"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+    city = forms.CharField(
+        label=_("City"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+    address = forms.CharField(
+        label=_("Address"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+    card_code = forms.CharField(
+        label=_("Card Code"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+    account_number = forms.CharField(
+        label=_("For Account Number"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+    price = forms.CharField(
+        label=_("Price Of Subscribe"),
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'value': "",
+                'disabled': 'disabled',
+            }
+        )
+    )
+
     class Meta:
         model = Subscription
         fields = []
@@ -104,5 +182,5 @@ class SubPhaseUpdateForm(forms.ModelForm):
             'description',
         ]
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 3,}),
+            'description': forms.Textarea(attrs={'rows': 3, }),
         }
