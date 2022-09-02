@@ -1,6 +1,5 @@
 {% extends 'main/main_base.html' %}
-{% load static i18n crispy_forms_tags %}
-{# TODO: the dispaly like the project details #}
+{% load static i18n crispy_forms_tags martortags %}
 {% block page_header %}
     <div class="full-row">
         <div class="container">
@@ -8,23 +7,23 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="fag-category list-color-general list-text-hover-primary py-5 px-4 bg-white border rounded mb-5">
-                        <li><a href="#" class="text-primary me-4 mb-1">Add New Main Phase <i
+                        <li><a href="{% url "main_app:create-main-phase" project.pk %}" class="text-primary me-4 mb-1">Add New Main Phase <i
                                 class="fas fa-edit"></i></a></li>
                         <ul>
                             {% for phase in project.main_phases.all %}
-                            <li>
-                                {% if phase.sub_phases.count > 0  %}
-                                    <a href="{% url "main_app:main_phase" phase.pk %}">
-                                {% else %}
-                                    <a href="#">
-                                {% endif %}
+                                <li>
+                                    {% if phase.sub_phases.count > 0 %}
+                                        <a href="{% url "main_app:main_phase" phase.pk %}">
+                                    {% else %}
+                                        <a href="#">
+                                    {% endif %}
                                     {% if phase.pk == main_phase.pk %}
                                         <b>{{ phase.title }}</b>
                                     {% else %}
                                         {{ phase.title }}
                                     {% endif %}
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -36,7 +35,8 @@
                                 <ul class="nav justify-content-center">
                                     {% for sub in main_phase.sub_phases.all %}
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" href="{% url "main_app:sub-phase" sub.pk %}">
+                                            <a class="nav-link active" aria-current="page"
+                                               href="{% url "main_app:sub-phase" sub.pk %}">
                                                 {% if sub == sub_phase %}
                                                     <b>{{ sub.title }}</b>
                                                 {% else %}
@@ -49,47 +49,49 @@
                                 <div class="tab-simple tab-action">
                                     <div class="property-overview border rounded bg-white p-30 mb-30">
                                         <div class="px-4 py-3">
-                                        <div class="col-md-12 mb-20">
-                                            <form action="{% url 'main_app:add-update' sub_phase.pk %}" method="post">
-                                                {% csrf_token %}
-                                                {{ addForm|crispy }}
-                                                <button type="submit" class="btn btn-primary" name="submitbasic">
-                                                {% trans "Add Update" %}
-                                                </button>
-                                            </form>
-                                        </div>
-                                        {% for update in updates %}
-                                            <div class="media">
-                                                        <img src="{{ project.developer.get_logo_image_or_avatar }}"
-                                                             class="me-3 rounded-circle"
-                                                             alt="{{ project.developer }}">
-                                                        <div class="media-body">
-                                                            <div class="row d-flex align-items-center">
-                                                                <h5 class="col-auto mb-0">{{ project.developer.get_full_name }}</h5>
-                                                            </div>
-                                                            <div class="comments-date mb-2">
-                                                                <span>{% trans "Posted On" %} {{ update.update_date }}</span><a
-                                                                    href="#"></a></div>
-                                                            <p>{{ update.description|safe|linebreaksbr }}</p>
-                                                            {% for attachment in update.attachments.all %}
-                                                                {# TODO: make flexible for other filetypes like PDF #}
-                                                                <img src="{{ attachment.update_file.url }}"
-                                                                     width="200"
-                                                                     height="200"
-                                                                     class="img-thumbnail"
-                                                                     alt="attachment {{ attachment.pk }}" />
-                                                            {% endfor %}
-                                                            <form action="{% url "main_app:update-attachment" update.sub_phase.pk %}" method="post" enctype="multipart/form-data">
-                                                                {% csrf_token %}
-                                                                <input type="hidden" name="update" value="{{ update.pk }}">
-                                                                <input type="file" name="attachment">
-                                                                <button type="submit">{% trans "Upload" %}</button>
-                                                            </form>
+                                            <div class="col-md-12 mb-20">
+                                                <form class="form-boder" action="{% url 'main_app:add-update' sub_phase.pk %}"
+                                                      method="post" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    {{ addForm|crispy }}
+                                                    <button type="submit" class="btn btn-primary" name="submitbasic">
+                                                        {% trans "Add Update" %}
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            {% for update in updates %}
+                                                <div class="media">
+                                                    <img src="{{ project.developer.get_logo_image_or_avatar }}"
+                                                         class="me-3 rounded-circle"
+                                                         alt="{{ project.developer }}">
+                                                    <div class="media-body">
+                                                        <div class="row d-flex align-items-center">
+                                                            <h5 class="col-auto mb-0">{{ project.developer.get_full_name }}</h5>
                                                         </div>
+                                                        <div class="comments-date mb-2">
+                                                            <span>{% trans "Posted On" %} {{ update.update_date }}</span><a
+                                                                href="#"></a></div>
+                                                        <p>{{ update.description|safe|linebreaksbr }}</p>
+                                                        {% for attachment in update.attachments.all %}
+                                                            {# TODO: make flexible for other filetypes like PDF #}
+                                                            <img src="{{ attachment.update_file.url }}"
+                                                                 width="200"
+                                                                 height="200"
+                                                                 class="img-thumbnail"
+                                                                 alt="attachment {{ attachment.pk }}"/>
+                                                        {% endfor %}
+                                                        <form action="{% url "main_app:update-attachment" update.sub_phase.pk %}"
+                                                              method="post" enctype="multipart/form-data">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="update" value="{{ update.pk }}">
+                                                            <input type="file" name="attachment">
+                                                            <button type="submit">{% trans "Upload" %}</button>
+                                                        </form>
                                                     </div>
-                                        {% empty %}
-                                            {% trans "There are no updates" %}
-                                        {% endfor %}
+                                                </div>
+                                            {% empty %}
+                                                {% trans "There are no updates" %}
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
