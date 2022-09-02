@@ -2,7 +2,6 @@
 {% load static %}
 {% load i18n %}
 {% load leaflet_tags %}
-{% load martortags %}
 
 {% block page_title %}
     Django Projects
@@ -11,8 +10,6 @@
 {% block custom_CSS %}
     {% leaflet_css plugins="ALL" %}
     {% leaflet_js plugins="ALL" %}
-    <link href="{% static 'global/plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
-    <link href="{% static 'global/martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
 {% endblock custom_CSS %}
 
 {% block body %}
@@ -182,13 +179,8 @@
     </div>
 {% endblock body %}
 {% block Custom_JS %}
-    <script type="text/javascript" src="{% static 'global/plugins/js/highlight.min.js' %}"></script>
     <script>
-        $('.martor-preview pre').each(function(i, block){
-                hljs.highlightBlock(block);
-        });
-
-        $('#single-property').layerSlider({
+       $('#single-property').layerSlider({
             sliderVersion: '6.5.0b2',
             type: 'popup',
             pauseOnHover: 'disabled',

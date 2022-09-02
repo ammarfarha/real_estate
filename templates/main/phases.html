@@ -1,5 +1,7 @@
 {% extends 'main/main_base.html' %}
-{% load static i18n crispy_forms_tags martortags %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
 {% block page_header %}
     <div class="full-row">
         <div class="container">
@@ -7,8 +9,12 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="fag-category list-color-general list-text-hover-primary py-5 px-4 bg-white border rounded mb-5">
-                        <li><a href="{% url "main_app:create-main-phase" project.pk %}" class="text-primary me-4 mb-1">Add New Main Phase <i
-                                class="fas fa-edit"></i></a></li>
+                        <li>
+                            <a href="{% url "main_app:create-main-phase" project.pk %}"
+                               class="text-primary me-4 mb-1">Add New Main Phase
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </li>
                         <ul>
                             {% for phase in project.main_phases.all %}
                                 <li>
