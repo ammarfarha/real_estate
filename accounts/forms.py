@@ -38,7 +38,6 @@ class ClientCreationForm(UserCreationForm):
         self.fields['mobile'].required = True
         self.fields['email'].required = True
         self.fields['gender'].required = True
-
         self.fields['gender'].widget = forms.RadioSelect(choices=GenderList.choices)
 
     def clean_email(self):
@@ -49,7 +48,7 @@ class ClientCreationForm(UserCreationForm):
 
 class ClientProfileForm(ClientCreationForm):
     class Meta(ClientCreationForm.Meta):
-        fields = [
+        fields = ClientCreationForm.Meta.fields + [
             'first_name',
             'last_name',
             'birth_date',
@@ -67,6 +66,9 @@ class ClientProfileForm(ClientCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        del self.fields['username']
+        del self.fields['password1']
+        del self.fields['password2']
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['nationality'].required = True

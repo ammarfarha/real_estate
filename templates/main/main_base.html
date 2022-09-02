@@ -10,12 +10,9 @@
 {% block custom_CSS %}
     {% leaflet_css plugins="ALL" %}
     {% leaflet_js plugins="ALL" %}
-<<<<<<< HEAD
     <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
     <link href="{% static 'plugins/css/resizable.min.css' %}" type="text/css" media="all" rel="stylesheet" />
     <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
-=======
->>>>>>> 42b7a95c0cc56984c6f91f33f3bd7399947bd988
 {% endblock custom_CSS %}
 
 {% block body %}
@@ -51,13 +48,16 @@
                                     <ul class="navbar-nav sm-mx-none ps-3">
                                         <li class="nav-item">
                                             <i class="fas fa-user me-1"></i>
-                                            {% trans "Welcome" %} {{ user }}
+                                            {% trans "Welcome" %}
+                                            {% if user.is_developer %}
+                                                <a href="{% url "accounts:developer-profile" %}">{{ user }}</a>
+                                            {% else %}
+                                                <a href="{% url "accounts:client-profile" %}">{{ user }}</a>
+                                            {% endif %}
                                         </li>
                                     </ul>
                                     {% if user.is_developer %}
-                                            <a href="{% url 'main_app:my-project-list' %}" class="btn btn-primary md-mx-none">{% trans "Manage" %}</a>
-                                    {% else %}
-                                            <a href="{% url 'accounts:client-profile' %}">{% trans "Register" %}</a>
+                                        <a href="{% url 'main_app:my-project-list' %}">{% trans "My Projects" %}</a>
                                     {% endif %}
                                     <li class="nav-item">
                                         <a class="nav-link" href="{% url 'accounts:logout' %}">Sign Out</a>
