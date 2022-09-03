@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from accounts.models import Developer, Client
 from djgeojson.fields import PointField
 from geopy.geocoders import Nominatim
+from django.core.exceptions import FieldDoesNotExist
 
 
 class Project(models.Model):
@@ -102,8 +103,11 @@ class Project(models.Model):
         return self.subscriptions.filter(client=client).exists()
 
     def get_address(self):
-        geolocator = Nominatim(user_agent="main_app")
-        return geolocator.reverse(reversed(self.location["coordinates"]))
+        try:
+            geolocator = Nominatim(user_agent="main_app")
+            return geolocator.reverse(reversed(self.location["coordinates"]))
+        except FieldDoesNotExist:
+            raise _('No Address Found')
 
     # clean:
     # save:
