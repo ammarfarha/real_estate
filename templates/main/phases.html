@@ -1,4 +1,5 @@
 {% extends 'main/main_base.html' %}
+<<<<<<< HEAD
 {% load static %}
 {% load i18n %}
 {% load crispy_forms_tags %}
@@ -6,6 +7,9 @@
 {% load martortags %}
 =======
 >>>>>>> 42b7a95c0cc56984c6f91f33f3bd7399947bd988
+=======
+{% load static i18n crispy_forms_tags martortags %}
+>>>>>>> parent of be32b1d (apply martor editor)
 {% block page_header %}
     <div class="full-row">
         <div class="container">
@@ -13,12 +17,8 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="fag-category list-color-general list-text-hover-primary py-5 px-4 bg-white border rounded mb-5">
-                        <li>
-                            <a href="{% url "main_app:create-main-phase" project.pk %}"
-                               class="text-primary me-4 mb-1">Add New Main Phase
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </li>
+                        <li><a href="{% url "main_app:create-main-phase" project.pk %}" class="text-primary me-4 mb-1">Add New Main Phase <i
+                                class="fas fa-edit"></i></a></li>
                         <ul>
                             {% for phase in project.main_phases.all %}
                                 <li>
