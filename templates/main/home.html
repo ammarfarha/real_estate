@@ -1,0 +1,421 @@
+{% extends "main/main_base.html" %}
+{% load static i18n %}
+<!--============== Search Banner Start ==============-->
+{% block main_content %}
+    <div class="full-row p-0" style="background-image: url('{% static "images/slider/home1.png" %}'); background-position: center center; background-size: cover;">
+    <div class="container">
+        <div class="row justify-content-md-center py-8">
+            <div class="col-md-10">
+                <div class="banner-search sm-p-0" style="padding-top: 170px; padding-bottom: 190px;">
+                    <h2 class="text-center mx-auto text-white">Search what you are looking for...</h2>
+                    <span class="d-table mx-auto text-white font-medium mb-4">We have listed over 100000+ property in our database</span>
+                    <form action="#" class="banner-search-form p-4" method="POST">
+                        <div class="row">
+                            <div class="col-lg-3 my-2">
+                                <select class="form-control">
+                                    <option>Property Types</option>
+                                    <option>House</option>
+                                    <option>Office</option>
+                                    <option>Appartment</option>
+                                    <option>Condos</option>
+                                    <option>Villa</option>
+                                    <option>Small Family</option>
+                                    <option>Single Room</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-7 my-2">
+                                <input type="text" class="form-control" placeholder="Enter Keyword...">
+                            </div>
+                            <div class="col-lg-2 my-2">
+                                <button class="btn btn-primary w-100">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row row-cols-lg-5 row-cols-sm-4 row-cols-1 g-3 justify-content-center">
+            <div class="col">
+                <a class="text-center d-flex flex-column align-items-center hover-text-white p-4 bg-white transation text-general hover-bg-primary h-100">
+                    <div class="box-70px position-relative">
+                        <i class="flaticon-home flat-medium d-inline-block text-primary position-absolute xy-center"></i>
+                    </div>
+                    <h5 class="d-block text-secondary">Residential</h5>
+                </a>
+            </div>
+            <div class="col">
+                <a  class="text-center d-flex flex-column align-items-center hover-text-white p-4 bg-white transation text-general hover-bg-primary h-100">
+                    <div class="box-70px position-relative">
+                        <i class="flaticon-sketch-1 flat-medium d-inline-block text-primary position-absolute xy-center"></i>
+                    </div>
+                    <h6 class="d-block text-secondary">Lands</h6>
+                </a>
+            </div>
+            <div class="col">
+                <a  class="text-center d-flex flex-column align-items-center hover-text-white p-4 bg-white transation text-general hover-bg-primary h-100">
+                    <div class="box-70px position-relative">
+                        <i class="flaticon-online-booking flat-medium d-inline-block text-primary position-absolute xy-center"></i>
+                    </div>
+                    <h6 class="d-block text-secondary">Industrial</h6>
+                </a>
+            </div>
+            <div class="col">
+                <a  class="text-center d-flex flex-column align-items-center hover-text-white p-4 bg-white transation text-general hover-bg-primary h-100">
+                    <div class="box-70px position-relative">
+                        <i class="flaticon-shop flat-medium d-inline-block text-primary position-absolute xy-center"></i>
+                    </div>
+                    <h6 class="d-block text-secondary">Commercial</h6>
+                </a>
+            </div>
+
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Search Banner End ==============-->
+<!--============== About This System Start ==============-->
+<div class="full-row">
+    <div class="container">
+        <div class="row">
+            <div class="col" id="about">
+<!--                        <div class="bg-white rounded border p-30">-->
+                    <h2 style="text-align:center">About This System </h2>
+                    <p style="text-align:center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin. Donec non odio neque. Aliquam hendrerit sollicitudin purus, quis rutrum mi accumsan nec. Quisque bibendum orci ac nibh facilisis,
+                        at malesuada orci congue. Nullam tempus sollicitudin cursus. Ut et adipiscing erat. Curabitur this is a text link libero tempus congue.
+                        Posuere ante tincidunt sed porta senectus fusce interdum. Dictum class semper Ornare venenatis habitant sodales. Venenatis volutpat torquent. Curae; suspendisse ligula suscipit magna. Interdum dapibus in nulla mollis velit
+                        taciti mollis gravida torquent lacus lobortis volutpat elementum leo pharetra. Hac congue consequat ante laoreet consectetuer. Cum. Nulla nisl purus a. Et felis platea ligula cubilia massa ultrices leo iaculis porttitor.
+                    </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== About This System End ==============-->
+<!--============== Mission & Vision Start ==============-->
+<div class="full-row bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-5">
+                <h3 class="mb-4 text-center w-50 w-sm-100 mx-auto">Mission & Vision</h3>
+                <span class="text-secondary w-75 d-table text-center w-sm-100 mx-auto pb-4">Molestie accumsan ipsum condimentum curabitur euismod tempor aptent nullam aliquet phasellus. Lobortis felis tortor curae mi semper porta pellentesque.</span>
+            </div>
+        </div>
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+            <div class="col mb-5">
+                <div class="thumb-modern-border p-4 h-100">
+                    <i class="flaticon-capital flat-medium text-primary bg-gray d-table"></i>
+                    <h5 class="my-3"><a href="#">Mission 1</a></h5>
+                    <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="thumb-modern-border p-4 h-100">
+                    <i class="flaticon-cost flat-medium text-primary bg-gray d-table"></i>
+                    <h5 class="my-3"><a href="#">Mission 2</a></h5>
+                    <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="thumb-modern-border p-4 h-100">
+                    <i class="flaticon-insurance flat-medium text-primary bg-gray d-table"></i>
+                    <h5 class="my-3"><a href="#">Mission 3</a></h5>
+                    <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="thumb-modern-border p-4 h-100">
+                    <i class="flaticon-money-1 flat-medium text-primary bg-gray d-table"></i>
+                    <h5 class="my-3"><a href="#">Vision 1</a></h5>
+                    <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="thumb-modern-border p-4 h-100">
+                    <i class="flaticon-cargo flat-medium text-primary bg-gray d-table"></i>
+                    <h5 class="my-3"><a href="#">Vision 2</a></h5>
+                    <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
+                </div>
+            </div>
+            <div class="col mb-5">
+                <div class="thumb-modern-border p-4 h-100">
+                    <i class="flaticon-group flat-medium text-primary bg-gray d-table"></i>
+                    <h5 class="my-3"><a href="#">Vision 3</a></h5>
+                    <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Mission & Vision End ==============-->
+ <!--============== Recent Projects Start ==============-->
+<div class="full-row bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col mb-4">
+                <div class="align-items-center d-flex" id="projects">
+                    <div class="me-auto">
+                        <h2 class="d-table">{% trans "Recent Projects" %}</h2>
+                    </div>
+                    <a href="{% url "main_app:projects" %}" class="btn-link text-secondary hover-text-primary transation ms-auto">{% trans "All Projects" %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="3block-carusel nav-disable owl-carousel">
+                    {% for project in projects %}
+                    <div class="item">
+                        <div class="property-grid-2 property-block transation">
+                            <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom">
+                                <div class="cata position-absolute">
+                                    <span class="sale bg-secondary text-white">For Sale</span>
+                                </div>
+                                <a href="{% url "main_app:project-details" project.pk %}">
+                                    <img src="{{ project.get_first_image_or_default }}" alt="Image Not Found!">
+                                </a>
+                                <ul class="position-absolute quick-meta">
+                                    <li><a href="#" title="Add Compare" style="padding-top: 10px"><i class="flaticon-transfer flat-mini"></i></a></li>
+                                    <li><a href="#" title="Add Favourite" style="padding-top: 10px"><i class="flaticon-like-1 flat-mini"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="post-content py-3">
+                                <div class="post-meta font-small text-uppercase list-color-primary">
+                                    <a href="#" class="listing-ctg"><i class="fa-solid fa-building"></i><span>{{ project.get_type_display }}</span></a>
+                                </div>
+                                <h5><a class="text-secondary" href="{% url "main_app:project-details" project.pk %}">{{ project.name }}</a></h5>
+                                <span class="mb-3 d-block font-fifteen"><i class="fas fa-map-marker-alt text-primary"></i> {{ project.get_address }}</span>
+                                <span class="listing-price">{{ project.developer.get_full_name }}<small>Developer</small></span>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="item">
+                        <div class="property-grid-2 property-block transation">
+                            {% trans "There Are No Projects" %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Recent Projects End ==============-->
+<br>
+<!--============== Make Design Banner Section Start ==============-->
+<div class="full-row p-0" id="register">
+    <div class="container">
+        <div class="overlay-secondary rounded py-8 sm-px-0" style="padding-left: 150px; padding-right: 150px; background-image: url(assets/images/background/join.jpg); background-repeat: no-repeat; background-position: center center; background-size: cover; overflow: hidden;">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center position-relative">
+                    <h2 class="text-white text-uppercase mb-4 font-400">WHY SHOULD YOU JOIN US ?</h2>
+                    <div class="text-white">
+                        <p>Accumsan justo nunc maecenas nostra pulvinar augue nunc rhoncus consequat a felis Mollis sollicitudin proin turpis sociis in erat eros lectus class potenti lobortis enim scelerisque.</p>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-3">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Make Design Banner Section End ==============-->
+<br>
+
+<!--============== Partner Section Start ==============-->
+<div class="full-row">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="tagline-3 d-table text-dark font-500 mx-auto mb-3">Our Partners</span>
+<!--                        <h2 class="down-line text-dark w-50 w-sm-100 mx-auto text-center mb-5">Publish What We Think, About Our Company Activities</h2>-->
+            </div>
+        </div>
+        <br>
+
+            <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-sm-3 row-cols-1 g-4" style="">
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/24.png" alt="partner logo">
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/25.png" alt="partner logo">
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/26.png" alt="partner logo">
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/27.png" alt="partner logo">
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/28.png" alt="partner logo">
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/29.png" alt="partner logo">
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/30.png" alt="partner logo">
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="hover-img-upshow overflow-hidden d-table d-sm-block my-20">
+                    <img class="w-auto" src="assets/images/partner/31.png" alt="partner logo">
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!--============== Partner Section End ==============-->
+
+<br>
+
+<!--============== Contact form Start ==============-->
+<div class="full-row pt-0" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 order-md-2">
+                <h4 class="down-line mb-4">Get In Touch</h4>
+                <p>Nullam vel enim risus. Integer rhoncus hendrerit sem egestas porttitor.</p>
+                <div class="mb-3">
+                    <ul>
+                        <li class="mb-3">
+                            <h6 class="mb-0">Office Address :</h6> Level 13, 2 Elizabeth St, Melbourne, Victoria 3000 Australia
+                        </li>
+                        <li class="mb-3">
+                            <h6>Contact Number :</h6> (1) 000 991 8830, (800) 8001-8588
+                        </li>
+                        <li class="mb-3">
+                            <h6>Email Address :</h6> Info@patron.com, support@patron.com
+                        </li>
+                    </ul>
+                </div>
+                <h5 class="mb-2">Career Info</h5>
+                <p>If you’re interested in employment opportunities at Unicoder, please email us:<br> <a href="#">support@unicoderbd.com</a></p>
+            </div>
+            <div class="col-md-7 order-md-1">
+                <h4 class="down-line mb-4">Send Message</h4>
+                <div class="form-simple">
+                    <form class="form-boder" id="contact-form" action="#" method="post" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-md-6 mb-20">
+                                <label class="mb-2">Full Name:</label>
+                                <input type="text" class="form-control bg-white" name="name" required="">
+                            </div>
+                            <div class="col-md-6 mb-20">
+                                <label class="mb-2">Your Email:</label>
+                                <input type="email" class="form-control bg-white" name="email" required="">
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label class="mb-2">Subject:</label>
+                                <input type="text" class="form-control bg-white" name="subject" required="">
+                            </div>
+                            <div class="col-md-12 mb-20">
+                                <label class="mb-2">Message:</label>
+                                <textarea class="form-control bg-white" name="message" rows="8" required=""></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" name="submit" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Contact form End ==============-->
+
+<!-- Scroll to top -->
+<div class="scroll-top-vertical xs-mx-none" id="scroll">Go Top <i class="ms-2 fa-solid fa-arrow-right-long"></i></div>
+<!-- End Scroll To top -->
+
+<!--============== Modal Start ==============-->
+<div class="overlay-dark modal fade quick-view-modal" id="quick-view">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="close view-close">
+                <span aria-hidden="true">&times;</span>
+            </div>
+            <div class="modal-body property-block summary p-3">
+                <div class="row row-cols-xl-2 row-cols-1">
+                    <div class="col">
+                        <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
+                            <div class="cata position-absolute">
+                                <span class="sale bg-secondary text-white">For Rent</span>
+                                <span class="featured bg-primary text-white">Featured</span>
+                            </div>
+                            <a href="#"><img class="w-100" src="assets/images/property/2.png" alt=""></a>
+                            <ul class="position-absolute quick-meta">
+                                <li><a href="#"><i class="flaticon-transfer flat-mini"></i></a></li>
+                                <li><a href="#"><i class="flaticon-like-1 flat-mini"></i></a></li>
+                                <li><a href="#"><i class="flaticon-share flat-mini"></i></a></li>
+                                <li><a href="#"><i class="flaticon-printer flat-mini"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="property_text transation py-3 pe-3">
+                            <span class="d-inline-block text-primary">Condos</span>
+                            <h5 class="modal-title mb-1" id="staticBackdropLabel"><a href="#" class="text-secondary hover-text-primary transation">Luxury Condos Infront of the street of Green Park</a></h5>
+                            <span class="mt-1 mb-3 d-block font-fifteen"><i class="fas fa-map-marker-alt text-primary"></i> 2305 Tree Frog Lane Overlandpk, MO 66210</span>
+                            <a href="#" class="d-block text-light hover-text-primary font-small mb-2">( 100 People Recommended )</a>
+                            <div class="d-flex">
+                                <span class="text-secondary font-large">$5600 - $8300/<small>mo</small></span>
+                                <span class="text-white font-mini px-2 rounded product-status ms-5 my-1 bg-primary"><i class="fas fa-check"></i> Available</span>
+                            </div>
+                            <div class="product-offers mt-3">
+                                <ul class="product-offers-list">
+                                    <li class="product-offer-item"> <strong>Special Price </strong>Get extra 19% off (price inclusive of discount)</li>
+                                    <li class="product-offer-item"> <strong>Bank Offer </strong> 10% instant discount on VISA Cards</li>
+                                    <li class="product-offer-item"> <strong>No cost EMI $49/month.</strong> Standard EMI also available</li>
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="quantity">
+                                <ul class="d-flex">
+                                    <li><span>Rooms:</span> 5</li>
+                                    <li><span>Beds:</span> 3</li>
+                                    <li><span>Bathrooms:</span> 2</li>
+                                    <li><span>Garage:</span> 1</li>
+                                    <li><span>Area:</span> 1100 Sqft</li>
+                                </ul>
+                            </div>
+                            <h5 class="text-secondary my-3">Description</h5>
+                            <p>Bibendum purus aenean mus aenean eu interdum nonummy ipsum ad consequat. Dui eros donec faucibus convallis tempus rutrum id donec mus hymenaeos placerat congue curae mauris turpis gravida viverra consequat consequat
+                                gravida luctus.</p>
+                            <div class="short-description d-flex">
+                                <span class="me-4"><b>Highlights:</b></span>
+                                <div class="short-description">
+                                    <ul class="list-style-tick">
+                                        <li>Regular Fit.</li>
+                                        <li>Full sleeves.</li>
+                                        <li>Machine wash, tumble dry.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center post-meta mt-2 py-3 border-top">
+                                <div class="agent">
+                                    <a href="#" class="d-flex text-general align-items-center"><img class="rounded-circle me-2" src="assets/images/team/1.jpg" alt="avata"><span>Ali Tufan</span></a>
+                                </div>
+                                <div class="post-date ms-auto"><span>2 Month Ago</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Modal End ==============-->
+{% endblock main_content %}

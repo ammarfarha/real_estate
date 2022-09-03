@@ -53,6 +53,17 @@ class ProjectCanEditMixin(DeveloperMixin):
         return context
 
 
+class HomePageView(TemplateView):
+    template_name = "main/home.html"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
+        context['projects'] = Project.objects.filter()[:7]
+        context['listing_title'] = _('All Projects')
+        return context
+
+
 class ProjectsListView(ListView):
     model = Project
     template_name = "main/projects.html"
@@ -349,7 +360,6 @@ class ClientSubscribeProjectView(SuccessMessageMixin, ClientMixin, CreateView):
         kwargs['user'] = self.request.user
         return kwargs
 
-
     def car_subscribe(self):
         project = get_object_or_404(Project, id=self.kwargs.get('pk'))
         user = self.request.user
@@ -377,7 +387,7 @@ class ClientSubscribeProjectView(SuccessMessageMixin, ClientMixin, CreateView):
 class AddSubPhaseUpdateView(SuccessMessageMixin, DeveloperMixin, CreateView):
     form_class = SubPhaseUpdateForm
     success_message = _("Add Update Successfully")
-    http_method_names = ('post', )
+    http_method_names = ('post',)
 
     def form_valid(self, form):
         form.instance.sub_phase = get_object_or_404(SubPhase, pk=self.kwargs.get('sub_phase_pk'))
