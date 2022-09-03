@@ -103,11 +103,11 @@ class Project(models.Model):
         return self.subscriptions.filter(client=client).exists()
 
     def get_address(self):
-        try:
+        if self.location and self.location.get("coordinates"):
             geolocator = Nominatim(user_agent="main_app")
             return geolocator.reverse(reversed(self.location["coordinates"]))
-        except FieldDoesNotExist:
-            raise _('No Address Found')
+        else:
+            return _('No Address Found')
 
     # clean:
     # save:

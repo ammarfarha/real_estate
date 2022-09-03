@@ -70,16 +70,11 @@ class ProjectsListView(ListView):
     context_object_name = "projects"
     paginate_by = 9
 
-    # TODO: make a form for search and load it its initial with request.GET
-
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['search_form'] = ProjectsSearchForm(
             self.request.GET or None)
         context['listing_title'] = _('All Projects')
-        # messages.warning(self.request, _("sdasdaddad"))
-        # messages.error(self.request, _("test error"))
-        # messages.success(self.request, _("test success"))
         return context
 
     def get_queryset(self, *args, **kwargs):
