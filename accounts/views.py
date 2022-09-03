@@ -1,14 +1,28 @@
+from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import TemplateView, FormView, CreateView, DetailView, ListView, UpdateView
 from .models import Developer, Client
 from django.urls import reverse_lazy
-from .forms import DeveloperCreationForm, ClientCreationForm, ForgetPasswordForm, ClientProfileForm, \
-    DeveloperProfileForm
+from .forms import (
+    DeveloperCreationForm,
+    ClientCreationForm,
+    ForgetPasswordForm,
+    ClientProfileForm,
+    DeveloperProfileForm,
+)
 from django.utils.translation import gettext_lazy as _
 from main_app.forms import ProjectsSearchForm
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.backends import AllowAllUsersModelBackend
+
+
+class CustomLogInView(LoginView):
+    template_name = 'main/login.html'
+    form_class = AuthenticationForm
 
 
 class ClientMixin(LoginRequiredMixin):

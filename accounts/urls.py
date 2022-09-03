@@ -5,7 +5,7 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('login/', LoginView.as_view(template_name='main/login.html'), name='login'),
+    path('login/', views.CustomLogInView.as_view(), name='login'),
     # path('login/', LoginView.as_view(template_name='account/login.html'), name='login'),
     path('logout/', LogoutView.as_view(success_url_allowed_hosts='main:my-project-list'), name='logout'),
     path('forget_password/', views.ResetPasswordView.as_view(), name='forget-password'),
