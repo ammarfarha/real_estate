@@ -76,6 +76,11 @@
                 </div>
             </div>
             {% endfor %}
+            {% if zero_subs %}
+            <div class="alert alert-warning">
+                {% trans 'You currently have NO subscriptions. Navigate to our projects list to subscribe to a project of your choice'  %}
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
