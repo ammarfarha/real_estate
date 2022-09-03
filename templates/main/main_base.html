@@ -10,8 +10,8 @@
 {% block custom_CSS %}
     {% leaflet_css plugins="ALL" %}
     {% leaflet_js plugins="ALL" %}
-    <link href="{% static 'global/plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
-    <link href="{% static 'global/martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
 {% endblock custom_CSS %}
 
 {% block body %}
@@ -184,8 +184,6 @@
     </div>
 {% endblock body %}
 {% block Custom_JS %}
-<<<<<<< HEAD
-<<<<<<< HEAD
     <script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
       <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
       <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
@@ -196,19 +194,11 @@
       <script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'martor/js/martor.bootstrap.min.js' %}"></script>
-=======
-    <script type="text/javascript" src="{% static 'global/plugins/js/highlight.min.js' %}"></script>
->>>>>>> parent of be32b1d (apply martor editor)
     <script>
         $('.martor-preview pre').each(function(i, block){
                 hljs.highlightBlock(block);
         });
-
-        $('#single-property').layerSlider({
-=======
-    <script>
        $('#single-property').layerSlider({
->>>>>>> 42b7a95c0cc56984c6f91f33f3bd7399947bd988
             sliderVersion: '6.5.0b2',
             type: 'popup',
             pauseOnHover: 'disabled',

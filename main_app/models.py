@@ -62,10 +62,16 @@ class Project(models.Model):
         blank=False,
     )
     location = PointField()
+    address = models.CharField(
+        max_length=600,
+        verbose_name=_('Project Address'),
+        null=True,
+        blank=True
+    )
     area = models.DecimalField(
         verbose_name=_('Area in Square Meters'),
         max_digits=10,
-        decimal_places=2,
+        decimal_places=0,
         null=True,
         blank=False,
     )
