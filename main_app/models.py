@@ -105,7 +105,7 @@ class Project(models.Model):
     def get_address(self):
         if self.location and self.location.get("coordinates"):
             geolocator = Nominatim(user_agent="main_app")
-            return geolocator.reverse(reversed(self.location["coordinates"]))
+            return geolocator.reverse(reversed(self.location["coordinates"]), language='en,ar', addressdetails=True)
         else:
             return _('No Address Found')
 
