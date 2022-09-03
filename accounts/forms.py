@@ -92,10 +92,10 @@ class DeveloperCreationForm(ClientCreationForm):
         return email
 
 
-class DeveloperProfileForm(UserChangeForm):
-    class Meta:
+class DeveloperProfileForm(ClientProfileForm):
+    class Meta(ClientProfileForm.Meta):
         model = Developer
-        fields = [
+        fields = ClientProfileForm.Meta.fields + [
             'is_company',
             'company_name',
             'web_site',
@@ -104,9 +104,6 @@ class DeveloperProfileForm(UserChangeForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        del self.fields['username']
-        del self.fields['password1']
-        del self.fields['password2']
 
     def clean(self):
         cleaned_data = super().clean()

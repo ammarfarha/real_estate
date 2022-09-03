@@ -90,6 +90,7 @@ class ClientProfileUpdateView(SuccessMessageMixin, UpdateView):
 class DeveloperProfileUpdateView(DeveloperMixin, ClientProfileUpdateView):
     model = Developer
     form_class = DeveloperProfileForm
+    success_url = reverse_lazy('accounts:developer-profile')
 
     def get_object(self, queryset=None):
         return self.request.user.get_developer()
