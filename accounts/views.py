@@ -74,14 +74,14 @@ class ClientProfileUpdateView(SuccessMessageMixin, UpdateView):
     template_name = 'dashboards/profile.html'
     form_class = ClientProfileForm
     success_message = _("Your Profile Updated Successfully.")
-    success_url = reverse_lazy('main:index')
+    success_url = reverse_lazy('accounts:client-profile')
 
     def get_object(self, queryset=None):
         return self.request.user
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context['search_form'] = ProjectsSearchForm(self.request.GET or None)
+        # context['search_form'] = ProjectsSearchForm(self.request.GET or None)
         context['listing_title'] = _('Update Client Profile')
         context['bottom_title'] = _('Update')
         return context

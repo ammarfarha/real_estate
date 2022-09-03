@@ -44,9 +44,9 @@
                                         </li>
                                     </ul>
                                     {% if user.is_authenticated %}
-                                    <ul class="navbar-nav sm-mx-none ps-3">
+                                    <ul class="navbar-nav sm-mx-none ps-3  user-option">
                                         <li class="nav-item">
-                                            <i class="fas fa-user me-1"></i>
+                                           <img src="{{ user.get_logo_image_or_avatar }}" alt="">
                                             {% trans "Welcome" %}
                                             {% if user.is_developer %}
                                                 <a href="{% url "accounts:developer-profile" %}">{{ user }}</a>

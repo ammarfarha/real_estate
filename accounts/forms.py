@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm, UserChangeForm
 from django.core.exceptions import ValidationError
 
 from .models import Developer, Client, GenderList
@@ -46,9 +46,10 @@ class ClientCreationForm(UserCreationForm):
         return email
 
 
-class ClientProfileForm(ClientCreationForm):
-    class Meta(ClientCreationForm.Meta):
-        fields = ClientCreationForm.Meta.fields + [
+class ClientProfileForm(UserChangeForm):
+    class Meta():
+        model = Client
+        fields = [
             'first_name',
             'last_name',
             'birth_date',
@@ -66,9 +67,7 @@ class ClientProfileForm(ClientCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        del self.fields['username']
-        del self.fields['password1']
-        del self.fields['password2']
+        del self.fields['password']
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['nationality'].required = True
@@ -93,9 +92,10 @@ class DeveloperCreationForm(ClientCreationForm):
         return email
 
 
-class DeveloperProfileForm(DeveloperCreationForm):
-    class Meta(DeveloperCreationForm.Meta):
-        fields = DeveloperCreationForm.Meta.fields + [
+class DeveloperProfileForm(UserChangeForm):
+    class Meta:
+        model = Developer
+        fields = [
             'is_company',
             'company_name',
             'web_site',
