@@ -11,10 +11,10 @@
                 <nav aria-label="breadcrumb" class="mb-2">
                     <ol class="breadcrumb mb-0 bg-transparent p-0">
                         <li class="breadcrumb-item"><a href="{% url 'main:index' %}">{% trans "Home" %}</a></li>
-                        <li class="breadcrumb-item active text-primary" aria-current="page">{% trans "Project List" %}</li>
+                        <li class="breadcrumb-item active text-primary" aria-current="page">{% trans "Projects List" %}</li>
                     </ol>
                 </nav>
-                <h3 class="text-secondary">{% trans "List Of All Projects" %}</h3>
+                <h3 class="text-secondary">{{ listing_title }}</h3>
             </div>
         </div>
 
