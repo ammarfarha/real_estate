@@ -10,6 +10,7 @@ urlpatterns = [
     path('subscribe/<int:pk>/',             views.ClientSubscribeProjectView.as_view(), name='subscribe'),
     path('subscribe/<int:ppk>/<int:cpk>/',  views.ClientReferralSubscribe.as_view(), name='ref-subscribe'),
     path('my_projects/',                    views.DeveloperProjectsListView.as_view(), name='my-project-list'),
+    path('my_subscribe/',                    views.ClientSubscribedProjectsListView.as_view(), name='my-subscribe-list'),
     path('my_projects/add/',                views.ProjectCreateView.as_view(), name='add-project'),
     path('my_projects/<int:pk>/update/',    views.ProjectUpdateView.as_view(), name='project-update'),
     path('my_projects/<int:pk>/delete/',    views.ProjectDeleteView.as_view(), name='project-delete'),

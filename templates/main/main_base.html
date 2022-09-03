@@ -36,36 +36,41 @@
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav ms-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'main_app:index' %}">{% trans "Home" %}</a>
+                                       <li class="nav-item">
+                                            <a class="nav-link" href="{% url "main_app:index" %}">{% trans "Home" %}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'main_app:contact' %}">{% trans "Contact" %}</a>
+                                            <a class="nav-link" href="{% url "main_app:index" %}#projects">{% trans "Projects" %}</a>
                                         </li>
-                                    </ul>
-                                    {% if user.is_authenticated %}
-                                    <ul class="navbar-nav sm-mx-none ps-3  user-option">
                                         <li class="nav-item">
-                                           <img src="{{ user.get_logo_image_or_avatar }}" alt="">
-                                            {% trans "Welcome" %}
-                                            {% if user.is_developer %}
-                                                <a href="{% url "accounts:developer-profile" %}">{{ user }}</a>
-                                            {% else %}
-                                                <a href="{% url "accounts:client-profile" %}">{{ user }}</a>
-                                            {% endif %}
+                                            <a class="nav-link" href="{% url "main_app:index" %}#about">{% trans "About This System" %}</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url "main_app:index" %}#contact">{% trans "Contact" %}</a>
                                         </li>
                                     </ul>
-                                    {% if user.is_developer %}
-                                        <a href="{% url 'main_app:my-project-list' %}">{% trans "My Projects" %}</a>
-                                    {% endif %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'accounts:logout' %}">Sign Out</a>
-                                    </li>
-                                    {% else %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'accounts:login' %}">Sign In</a>
-                                    </li>
-                                    {% endif %}
+
+                                    <ul class="navbar-nav ms-auto sm-mx-none ps-3 user-option">
+                                        {% if user.is_authenticated %}
+                                           <li class="nav-item dropdown">
+                                            <img src="{{ user.get_logo_image_or_avatar }}" alt="">
+                                                <a class="dropdown-toggle" href="#">{{ user.first_name }}</a>
+                                            <ul class="dropdown-menu">
+                                                {% if user.is_developer %}
+                                                <li><a class="dropdown-item" href="{% url "main_app:my-project-list" %}">{% trans "My Projects" %}</a></li>
+                                                {% endif %}
+                                                <li><a class="dropdown-item" href="{% url "main_app:my-subscribe-list" %}">{% trans "Subscribed Projects" %}</a></li>
+                                                {% if user.is_developer %}
+                                                <li><a class="dropdown-item" href="{% url "accounts:developer-profile" %}">{% trans "Subscribed Projects" %}</a></li>
+                                                {% else %}
+                                                <li><a class="dropdown-item" href="{% url "accounts:client-profile" %}">{% trans "My Profile" %}</a></li>
+                                                {% endif %}
+                                                <li><a class="dropdown-item" href="{% url "accounts:logout" %}">{% trans "Logout" %}</a></li>
+                                            </ul>
+                                        </li>
+                                        {% else %}
+                                        {% endif %}
+                                    </ul>
                                 </div>
                             </nav>
                         </div>
