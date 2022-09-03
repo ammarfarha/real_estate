@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from accounts.models import Developer, Client
 from djgeojson.fields import PointField
+from geopy.geocoders import Nominatim
 
 
 class Project(models.Model):
@@ -62,12 +63,6 @@ class Project(models.Model):
         blank=False,
     )
     location = PointField()
-    address = models.CharField(
-        max_length=600,
-        verbose_name=_('Project Address'),
-        null=True,
-        blank=True
-    )
     area = models.DecimalField(
         verbose_name=_('Area in Square Meters'),
         max_digits=10,
@@ -105,6 +100,10 @@ class Project(models.Model):
 
     def is_subscribed(self, client):
         return self.subscriptions.filter(client=client).exists()
+
+    def get_address(self):
+        geolocator = Nominatim(user_agent="main_app")
+        return geolocator.reverse(reversed(self.location["coordinates"]))
 
     # clean:
     # save:

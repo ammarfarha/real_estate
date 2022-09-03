@@ -135,13 +135,7 @@
                                         </tr>
                                         <tr>
                                             <td>{% trans "Address" %} :</td>
-                                            <td>
-                                                {% if project.address %}
-                                                    {{ project.address }}
-                                                {% else %}
-                                                    {{ project.location }}
-                                                {% endif %}
-                                            </td>
+                                            <td>{{ project.get_address }}</td>
                                         </tr>
                                         <tr>
                                             <td>{% trans "Developer Name" %} :</td>

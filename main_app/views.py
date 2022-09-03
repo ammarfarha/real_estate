@@ -1,4 +1,3 @@
-from geopy.geocoders import Nominatim
 from django.views.generic import (
     FormView,
     ListView,
@@ -130,8 +129,6 @@ class ProjectCreateView(DeveloperMixin, CreateView):
     def form_valid(self, form):
         form.instance.developer = self.request.user.get_developer()
         form.instance.status = Project.StatusList.PLANING
-        geolocator = Nominatim(user_agent="main_app")
-        form.instance.address = geolocator.reverse(reversed(form.instance.location["coordinates"]))
         return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
