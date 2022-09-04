@@ -1,15 +1,10 @@
 {% extends 'main/main_base.html' %}
-<<<<<<< HEAD
 {% load static %}
 {% load i18n %}
 {% load crispy_forms_tags %}
-<<<<<<< HEAD
 {% load martortags %}
-=======
->>>>>>> 42b7a95c0cc56984c6f91f33f3bd7399947bd988
-=======
-{% load static i18n crispy_forms_tags martortags %}
->>>>>>> parent of be32b1d (apply martor editor)
+
+{# TODO: Fix This template. It doesnt have main_content bloc #}
 {% block page_header %}
     <div class="full-row">
         <div class="container">
@@ -81,7 +76,7 @@
                                                         <div class="comments-date mb-2">
                                                             <span>{% trans "Posted On" %} {{ update.update_date }}</span><a
                                                                 href="#"></a></div>
-                                                        <p>{{ update.description|safe|linebreaksbr }}</p>
+                                                        <p>{{ update.description|safe_markdown }}</p>
                                                         {% for attachment in update.attachments.all %}
                                                             {# TODO: make flexible for other filetypes like PDF #}
                                                             <img src="{{ attachment.update_file.url }}"

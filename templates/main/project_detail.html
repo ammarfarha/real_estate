@@ -3,6 +3,8 @@
 {% load i18n %}
 {% load fullurl %}
 {% load leaflet_tags %}
+{% load martortags %}
+
 {% block page_header %}
     <!--============== Page title Start ==============-->
     <div class="full-row py-5">
@@ -227,7 +229,9 @@
                                                                             <div class="comments-date mb-2">
                                                                                 <span>{% trans "Posted On" %} {{ update.update_date }}</span><a
                                                                                     href="#"></a></div>
-                                                                            <p>{{ update.description|safe|linebreaksbr }}</p>
+                                                                            <p>
+                                                                                {{ update.description|safe_markdown }}
+                                                                            </p>
                                                                             {% for attachment in update.attachments.all %}
                                                                                 {# TODO: make flexible for other filetypes like PDF #}
                                                                                 <img src="{{ attachment.update_file.url }}"
