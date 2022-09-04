@@ -9,6 +9,8 @@ from django.core.exceptions import FieldDoesNotExist
 
 from shared_app.models import SiteConfiguration
 
+
+# TODO: Add projects moderation functionality
 class Project(models.Model):
     # Constants:
     class TypeList(models.TextChoices):
