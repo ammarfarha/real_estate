@@ -144,11 +144,17 @@ class ProjectsSearchForm(forms.Form):
         choices=Project.StatusList.choices,
         # widget=forms.CheckboxSelectMultiple,
     )
+    title = forms.CharField(
+        label=_('Project Title')
+        # widget=forms.CheckboxSelectMultiple,
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['type'].required = False
         self.fields['status'].required = False
+        self.fields['title'].required = False
+
 
 
 class SubPhaseUpdateForm(forms.ModelForm):
