@@ -147,7 +147,7 @@ class ProjectCreateView(DeveloperMixin, CreateView):
         return reverse_lazy('main_app:upload-image', args=[self.object.pk, ])
 
 
-class ProjectDetailsView(ClientMixin, DetailView):
+class ProjectDetailsView(DetailView):
     model = Project
     template_name = 'main/project_detail.html'
     context_object_name = 'project'

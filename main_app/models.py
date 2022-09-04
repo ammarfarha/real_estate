@@ -97,10 +97,10 @@ class Project(models.Model):
         return self.developer == developer
 
     def can_subscribe(self, client):
-        return not bool(self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
+        return client.is_authenticated and not bool(self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
 
     def is_subscribed(self, client):
-        return self.subscriptions.filter(client=client).exists()
+        return client.is_authenticated and self.subscriptions.filter(client=client).exists()
 
     def get_address(self):
         if self.location and self.location.get("coordinates"):
@@ -254,6 +254,7 @@ class SubPhaseUpdate(models.Model):
         null=True,
         blank=False,
     )
+    # TODO: change to datetime
     update_date = models.DateField(
         verbose_name=_('Update Date'),
         auto_now_add=True,

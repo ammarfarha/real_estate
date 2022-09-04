@@ -99,11 +99,13 @@
                             </div>
                         </form>
                     </div>
+                    {% if user.is_authenticated %}
                     <div class="widget widget_contact bg-white border p-30 shadow-one rounded mb-30">
                         <h5 class="mb-4">{% trans "Invit a Friend" %}</h5>
                         <p>Just copy the link and send it to you friend</p>
                         <p>{% fullurl 'main_app:ref-subscribe' project.pk user.pk %}</p>
                     </div>
+                    {% endif %}
                 </div>
                 <div class="col-xl-8 order-xl-1">
                     <div class="property-overview border summary rounded bg-white p-30 mb-30">
