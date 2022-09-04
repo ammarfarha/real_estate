@@ -7,6 +7,7 @@ from djgeojson.fields import PointField
 from geopy.geocoders import Nominatim
 from django.core.exceptions import FieldDoesNotExist
 
+from shared_app.models import SiteConfiguration
 
 class Project(models.Model):
     # Constants:
@@ -108,6 +109,26 @@ class Project(models.Model):
             return geolocator.reverse(reversed(self.location["coordinates"]), language='en,ar', addressdetails=True)
         else:
             return _('No Address Found')
+
+    def create_main_and_sub_phases_from_template(self):
+        config = SiteConfiguration.get_solo()
+        projects_phases_template = config.projects_phases_template
+        if projects_phases_template:
+            lines = projects_phases_template.splitlines()
+
+            if lines[0].startswith('****'):
+                raise Exception('Invalid Phases Template in Site Configurations. Kindly contact the site admin.')
+
+            current_main_phase, current_sub_phase, main_phase_list, sub_phase_list = None, None, [], []
+            for line in lines:
+                if line.startswith('***'):
+                    sub_phase_list.append(SubPhase(title=line.replace('***', ''), phase=current_main_phase))
+                else:
+                    current_main_phase = MainPhase(title=line, project=self)
+                    main_phase_list.append(current_main_phase)
+
+            MainPhase.objects.bulk_create(main_phase_list)
+            SubPhase.objects.bulk_create(sub_phase_list)
 
     # clean:
     # save:

@@ -126,17 +126,19 @@ class ClientSubscribedProjectsListView(ClientMixin, ProjectsListView):
         return context
 
 
-class ProjectCreateView(DeveloperMixin, CreateView):
+class ProjectCreateView(SuccessMessageMixin, DeveloperMixin, CreateView):
     model = Project
     form_class = ProjectForm
     template_name = 'dashboards/add_project.html'
-    success_message = _("Your Project Have been Added Successfully")
+    success_message = _("Your project have been added successfully")
     success_url = reverse_lazy('main:my-project-list')
     created_project_pk = None
 
     def form_valid(self, form):
         form.instance.developer = self.request.user.get_developer()
         form.instance.status = Project.StatusList.PLANING
+        project = form.save()
+        project.create_main_and_sub_phases_from_template()
         return super().form_valid(form)
 
     def get_context_data(self, *, object_list=None, **kwargs):
