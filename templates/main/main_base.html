@@ -40,7 +40,7 @@
                                             <a class="nav-link" href="{% url "main_app:index" %}">{% trans "Home" %}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url "main_app:index" %}#projects">{% trans "Projects" %}</a>
+                                            <a class="nav-link" href="{% url "main_app:projects" %}">{% trans "All Projects" %}</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{% url "main_app:index" %}#about">{% trans "About This System" %}</a>
@@ -48,29 +48,46 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="{% url "main_app:index" %}#contact">{% trans "Contact" %}</a>
                                         </li>
-                                    </ul>
-
-                                    <ul class="navbar-nav ms-auto sm-mx-none ps-3 user-option">
-                                        {% if user.is_authenticated %}
-                                           <li class="nav-item dropdown">
-                                            <img src="{{ user.get_logo_image_or_avatar }}" alt="">
-                                                <a class="dropdown-toggle" href="#">{{ user.first_name }}</a>
-                                            <ul class="dropdown-menu">
-                                                {% if user.is_developer %}
-                                                <li><a class="dropdown-item" href="{% url "main_app:my-project-list" %}">{% trans "My Projects" %}</a></li>
-                                                {% endif %}
-                                                <li><a class="dropdown-item" href="{% url "main_app:my-subscribe-list" %}">{% trans "Subscribed Projects" %}</a></li>
-                                                {% if user.is_developer %}
-                                                <li><a class="dropdown-item" href="{% url "accounts:developer-profile" %}">{% trans "Subscribed Projects" %}</a></li>
-                                                {% else %}
-                                                <li><a class="dropdown-item" href="{% url "accounts:client-profile" %}">{% trans "My Profile" %}</a></li>
-                                                {% endif %}
-                                                <li><a class="dropdown-item" href="{% url "accounts:logout" %}">{% trans "Logout" %}</a></li>
-                                            </ul>
+                                        {% if not user.is_authenticated %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url "accounts:login" %}">{% trans "Login" %}</a>
                                         </li>
-                                        {% else %}
                                         {% endif %}
                                     </ul>
+
+                                    {% if user.is_authenticated %}
+                                        <ul class="navbar-nav ms-auto sm-mx-none ps-3 user-option">
+                                            <li class="nav-item dropdown">
+                                                <img src="{{ user.get_logo_image_or_avatar }}" alt="">
+                                                <a class="dropdown-toggle" href="#">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user }}{% endif %}</a>
+                                                <ul class="dropdown-menu">
+                                                    {% if user.is_developer %}
+                                                        <li><a class="dropdown-item"
+                                                               href="{% url "main_app:my-project-list" %}">{% trans "My Projects" %}</a>
+                                                        </li>
+                                                    {% endif %}
+
+                                                    <li><a class="dropdown-item"
+                                                           href="{% url "main_app:my-subscribe-list" %}">{% trans "Subscriptions" %}</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                           href="{% if user.is_developer %}{% url "accounts:developer-profile" %}{% else %}{% url "accounts:client-profile" %}{% endif %}">
+                                                            {% trans "My Profile" %}
+                                                        </a>
+                                                    </li>
+                                                    <li><a class="dropdown-item"
+                                                           href="{% url "accounts:change-password" %}">{% trans "Change Password" %}</a>
+                                                    </li>
+
+                                                    <li><a class="dropdown-item"
+                                                           href="{% url "accounts:logout" %}">{% trans "Logout" %}</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    {% endif %}
                                 </div>
                             </nav>
                         </div>

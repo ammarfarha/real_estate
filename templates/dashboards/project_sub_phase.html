@@ -19,11 +19,11 @@
                                             <thead>
                                             <tr class="bg-white">
                                                 <th class="col-1">{% trans '#' %}</th>
-                                                <th class="col-4">{% trans 'Title' %}</th>
+                                                <th class="col-3">{% trans 'Title' %}</th>
                                                 <th class="col-2">{% trans 'Start Date' %}</th>
                                                 <th class="col-2">{% trans 'Finish Date' %}</th>
                                                 <th class="col-2">{% trans 'Completion Date' %}</th>
-                                                <th class="col-1"></th>
+                                                <th class="col-2"></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -40,11 +40,11 @@
                                                             <i class="fas fa-edit"></i>
                                                         </a>
                                                         <a href="{% url 'main_app:update-sub-phase' main_phase.project.pk sub_phase.pk %}"
-                                                           class="text-primary mb-1">
+                                                           class="text-primary me-4 mb-1">
                                                             <i class="fas fa-trash"></i>
                                                         </a>
                                                         <a href="{% url 'main_app:sub-phase' sub_phase.pk %}"
-                                                           class="text-primary me-4 mb-1">
+                                                           class="text-primary mb-1">
                                                             <i class="fas fa-building"></i>
                                                         </a>
                                                     </td>

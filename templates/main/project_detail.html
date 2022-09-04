@@ -193,18 +193,12 @@
                                         <div class="tab-simple tab-action">
                                             <ul class="nav-tab-line list-color-secondary d-table mb-3">
                                                 {% for main_phase in main_phases %}
-                                                    {% if free_phase.id == main_phase.id or is_subscribed %}
-                                                        <li class="{% if forloop.first %}active{% endif %}"
-                                                            data-target="#tb-panel-{{ main_phase.id }}">
-                                                            {{ main_phase.title }}
-                                                        </li>
-                                                    {% else %}
-                                                        <li class="{% if forloop.first %}active{% endif %}"
-                                                            data-target="#tb-panel-{{ main_phase.id }}">
-                                                            <i class="fa fa-lock"></i>
-                                                            {{ main_phase.title }}
-                                                        </li>
-                                                    {% endif %}
+                                                    <li class="{% if forloop.first %}active{% endif %}"
+                                                        data-target="#tb-panel-{{ main_phase.id }}">
+                                                        {{ forloop.counter }}. {{ main_phase.title }}
+                                                        {% if free_phase.id == main_phase.id or is_subscribed %}{% else %}
+                                                            <i class="fa fa-lock"></i>{% endif %}
+                                                    </li>
                                                 {% endfor %}
                                             </ul>
                                             <div class="tab-element">
@@ -213,8 +207,8 @@
                                                          style="display: block;">
                                                         {% if free_phase.id == main_phase.id or is_subscribed %}
                                                             {% for sub_phase in main_phase.sub_phases.all %}
-                                                                <h4>{{ sub_phase.title }}: </h4>
-                                                                <span>{{ sub_phase.start_date }} - {{ sub_phase.end_date }}</span>
+                                                                <br>
+                                                                <h4>{{ forloop.counter }}\ {{ sub_phase.title }} <small class="text-gray">({{ sub_phase.start_date }} - {{ sub_phase.end_date }})</small></h4>
                                                                 <br/>
                                                                 <br/>
                                                                 {% for update in sub_phase.updates.all %}
@@ -241,7 +235,7 @@
                                                                                      alt="attachment {{ attachment.pk }}"/>
                                                                             {% endfor %}
                                                                         </div>
-                                                                    </div>
+                                                                    </div><br>
                                                                 {% empty %}
                                                                     <div class="tab-pane tab-hide"
                                                                          id="tb-panel-{{ main_phase.pk }}"
