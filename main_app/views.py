@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views.generic import (
     FormView,
     ListView,
@@ -161,6 +162,7 @@ class ProjectDetailsView(DetailView):
         context['is_subscribed'] = self.object.is_subscribed(self.request.user)
         context['main_phases'] = self.object.main_phases.all()
         context['free_phase'] = self.object.main_phases.all().first()
+        context['default_zoom'] = settings.LEAFLET_CONFIG.get('DEFAULT_ZOOM')
         return context
 
 
