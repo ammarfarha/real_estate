@@ -218,6 +218,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
 }
 
+CSRF_COOKIE_HTTPONLY = False
+
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
