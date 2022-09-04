@@ -132,7 +132,7 @@
                     <div class="col">
                         <div class="footer-widget mb-4">
                             <div class="footer-logo mb-4">
-                                <a href="#"><img src="{% static 'images/logo.jpg' %}" alt="Image not found!" /></a>
+                                <a href="#"><img src="{% static 'images/logo.jpg' %}" alt="{% trans 'Image not found!' %}" /></a>
                             </div>
                             <p></p>
                         </div>
@@ -146,7 +146,7 @@
                     </div>
                     <div class="col">
                         <div class="footer-widget contact-widget mb-4">
-                            <h3 class="widget-title mb-4">Contact Info</h3>
+                            <h3 class="widget-title mb-4">{% trans "Contact Info" %}</h3>
                             <ul>
                                 <li>Unicoder Design Agency 301 The Greenhouse, Custard Factory, London, E3 8DY.</li>
                                 <li>+1 246-345-0695</li>
@@ -156,21 +156,21 @@
                     </div>
                     <div class="col">
                         <div class="footer-widget footer-nav mb-4">
-                            <h3 class="widget-title mb-4">Quick Links</h3>
+                            <h3 class="widget-title mb-4">{% trans "Quick Links" %}</h3>
                             <ul>
-                                <li><a href="#">Our Services</a></li>
-                                <li><a href="#">Investment Solution</a></li>
-                                <li><a href="#">Frequenly Ask Question</a></li>
-                                <li><a href="#">How It Work</a></li>
-                                <li><a href="#">Become a Member</a></li>
+                                <li><a href="#">{% treans "Our Services" %}</a></li>
+                                <li><a href="#">{% treans "Investment Solution" %}</a></li>
+                                <li><a href="#">{% treans "requenly Ask Question" %}</a></li>
+                                <li><a href="#">{% treans "ow It Work" %}</a></li>
+                                <li><a href="#">{% treans "ecome a Member" %}</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col">
                         <div class="footer-widget newslatter-widget mb-4">
-                            <h4 class="widget-title mb-4">Appointment</h4>
+                            <h4 class="widget-title mb-4">{% trans "Appointment" %}</h4>
                             <p>Litora ligula dapibus scelerisque vitae, fermentum aenean gravida lobortis mus pulvinar magna turient primis.</p>
-                            <a href="#" class="btn btn-primary w-100">Register Now</a>
+                            <a href="#" class="btn btn-primary w-100">{% trans "Register Now" %}</a>
                         </div>
                     </div>
                 </div>
@@ -183,13 +183,13 @@
             <div class="container">
                 <div class="row row-cols-md-2 row-cols-1">
                     <div class="col">
-                        <span class="text-white">© 2022 Uniland All right reserved</span>
+                        <span class="text-white">© 2022 Uniland {% trans "All right reserved" %}</span>
                     </div>
                     <div class="col">
                         <ul class="line-menu float-end list-color-gray">
-                            <li><a href="#">Privacy & Policy </a></li>
+                            <li><a href="#">{% trans "Privacy & Policy" %} </a></li>
                             <li>|</li>
-                            <li><a href="#">Site Map</a></li>
+                            <li><a href="#">{% trans "Site Map" %}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
         <!--============== Copyright Section End ==============-->
 
         <!-- Scroll to top -->
-        <a href="#" class="text-general scroll-top-vertical xs-mx-none" id="scroll">Scroll to top</a>
+        <a href="#" class="text-general scroll-top-vertical xs-mx-none" id="scroll">{% trans "Scroll to top" %}</a>
         <!-- End Scroll To top -->
 
         {% block modal %}

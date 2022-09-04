@@ -72,30 +72,30 @@
                             <div class="form-row">
                                 <div class="col-12 mb-10">
                                     <div class="form-group mb-0">
-                                        <input type="text" class="form-control" name="name" placeholder="Your Name">
+                                        <input type="text" class="form-control" name="name" placeholder="{% trans "Your Name" %}">
                                     </div>
                                 </div>
                                 <div class="col-12 mb-10">
                                     <div class="form-group mb-0">
                                         <input type="text" class="form-control" name="phone"
-                                               placeholder="Phone Number">
+                                               placeholder="{% trans "Phone Number" %}">
                                     </div>
                                 </div>
                                 <div class="col-12 mb-10">
                                     <div class="form-group mb-0">
                                         <input type="email" class="form-control" name="email"
-                                               placeholder="Your Email">
+                                               placeholder="{% trans 'Your Email' %}">
                                     </div>
                                 </div>
                                 <div class="col-12 mb-10">
                                     <div class="form-group mb-0">
-                                            <textarea class="form-control" name="message" placeholder="Message"
+                                            <textarea class="form-control" name="message" placeholder="{% trans 'Message' %}"
                                                       rows="10"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group mb-0">
-                                        <button class="btn btn-primary w-100">Send Message</button>
+                                        <button class="btn btn-primary w-100">{% trans "Send Message" %}</button>
                                     </div>
                                 </div>
                             </div>
@@ -250,7 +250,9 @@
                                                                 <div class="tab-pane tab-hide"
                                                                      id="tb-panel-{{ main_phase.pk }}"
                                                                      style="display: block;">
-                                                                    <div class="alert alert-primary">{% trans "There is no information at this stage yet !" %}</div>
+                                                                    <div class="alert alert-primary">
+                                                                        {% trans "There is no information at this stage yet !" %}
+                                                                    </div>
                                                                 </div>
                                                             {% endfor %}
                                                         {% else %}

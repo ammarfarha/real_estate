@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 {% if page_obj.paginator.num_pages > 1 %}
 <div class="row">
     <div class="col mt-5">
@@ -6,7 +6,7 @@
             <ul class="pagination pagination-dotted-active justify-content-center">
                 <li class="page-item">
                     {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous Page</a>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">{% trans "Previous Page" %}</a>
                     {% endif %}
                 </li>
                 <li class="page-item active">
@@ -18,7 +18,7 @@
                 </li>
                 <li class="page-item">
                     {% if page_obj.has_next %}
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next Page</a>
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans "Next Page" %}</a>
                     {% endif %}
                 </li>
             </ul>

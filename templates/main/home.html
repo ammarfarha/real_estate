@@ -7,27 +7,27 @@
         <div class="row justify-content-md-center py-8">
             <div class="col-md-10">
                 <div class="banner-search sm-p-0" style="padding-top: 170px; padding-bottom: 190px;">
-                    <h2 class="text-center mx-auto text-white">Search what you are looking for...</h2>
-                    <span class="d-table mx-auto text-white font-medium mb-4">We have listed over 100000+ property in our database</span>
+                    <h2 class="text-center mx-auto text-white">{% trans "Search what you are looking for..." %}</h2>
+                    <span class="d-table mx-auto text-white font-medium mb-4">{% trans "We have listed over 100000+ property in our database" %}</span>
                     <form action="#" class="banner-search-form p-4" method="POST">
                         <div class="row">
                             <div class="col-lg-3 my-2">
                                 <select class="form-control">
-                                    <option>Property Types</option>
-                                    <option>House</option>
-                                    <option>Office</option>
-                                    <option>Appartment</option>
-                                    <option>Condos</option>
-                                    <option>Villa</option>
-                                    <option>Small Family</option>
-                                    <option>Single Room</option>
+                                    <option>{% trans "Property Types" %}</option>
+                                    <option>{% trans "House" %}</option>
+                                    <option>{% trans "Office" %}</option>
+                                    <option>{% trans "Appartment" %}</option>
+                                    <option>{% trans "Condos" %}</option>
+                                    <option>{% trans "Villa" %}</option>
+                                    <option>{% trans "Small Family" %}</option>
+                                    <option>{% trans "Single Room" %}</option>
                                 </select>
                             </div>
                             <div class="col-lg-7 my-2">
                                 <input type="text" class="form-control" placeholder="Enter Keyword...">
                             </div>
                             <div class="col-lg-2 my-2">
-                                <button class="btn btn-primary w-100">Search</button>
+                                <button class="btn btn-primary w-100">{% trans "Search" %}</button>
                             </div>
                         </div>
                     </form>
@@ -37,7 +37,7 @@
                     <div class="box-70px position-relative">
                         <i class="flaticon-home flat-medium d-inline-block text-primary position-absolute xy-center"></i>
                     </div>
-                    <h5 class="d-block text-secondary">Residential</h5>
+                    <h5 class="d-block text-secondary">{% trans "Residential" %}</h5>
                 </a>
             </div>
             <div class="col">
@@ -45,7 +45,7 @@
                     <div class="box-70px position-relative">
                         <i class="flaticon-sketch-1 flat-medium d-inline-block text-primary position-absolute xy-center"></i>
                     </div>
-                    <h6 class="d-block text-secondary">Lands</h6>
+                    <h6 class="d-block text-secondary">{% trans "Lands" %}</h6>
                 </a>
             </div>
             <div class="col">
@@ -53,7 +53,7 @@
                     <div class="box-70px position-relative">
                         <i class="flaticon-online-booking flat-medium d-inline-block text-primary position-absolute xy-center"></i>
                     </div>
-                    <h6 class="d-block text-secondary">Industrial</h6>
+                    <h6 class="d-block text-secondary">{% trans "Industrial" %}</h6>
                 </a>
             </div>
             <div class="col">
@@ -61,7 +61,7 @@
                     <div class="box-70px position-relative">
                         <i class="flaticon-shop flat-medium d-inline-block text-primary position-absolute xy-center"></i>
                     </div>
-                    <h6 class="d-block text-secondary">Commercial</h6>
+                    <h6 class="d-block text-secondary">{% trans "Industrial" %}Industrial</h6>
                 </a>
             </div>
 
@@ -78,7 +78,7 @@
         <div class="row">
             <div class="col" id="about">
 <!--                        <div class="bg-white rounded border p-30">-->
-                    <h2 style="text-align:center">About This System </h2>
+                    <h2 style="text-align:center">{% trans "About This System " %}</h2>
                     <p style="text-align:center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis et sem sed sollicitudin. Donec non odio neque. Aliquam hendrerit sollicitudin purus, quis rutrum mi accumsan nec. Quisque bibendum orci ac nibh facilisis,
                         at malesuada orci congue. Nullam tempus sollicitudin cursus. Ut et adipiscing erat. Curabitur this is a text link libero tempus congue.
                         Posuere ante tincidunt sed porta senectus fusce interdum. Dictum class semper Ornare venenatis habitant sodales. Venenatis volutpat torquent. Curae; suspendisse ligula suscipit magna. Interdum dapibus in nulla mollis velit
@@ -94,7 +94,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mb-5">
-                <h3 class="mb-4 text-center w-50 w-sm-100 mx-auto">Mission & Vision</h3>
+                <h3 class="mb-4 text-center w-50 w-sm-100 mx-auto">{% trans "Mission & Vision" %}</h3>
                 <span class="text-secondary w-75 d-table text-center w-sm-100 mx-auto pb-4">Molestie accumsan ipsum condimentum curabitur euismod tempor aptent nullam aliquet phasellus. Lobortis felis tortor curae mi semper porta pellentesque.</span>
             </div>
         </div>
@@ -102,42 +102,42 @@
             <div class="col mb-5">
                 <div class="thumb-modern-border p-4 h-100">
                     <i class="flaticon-capital flat-medium text-primary bg-gray d-table"></i>
-                    <h5 class="my-3"><a href="#">Mission 1</a></h5>
+                    <h5 class="my-3"><a href="#">{% trans "Mission" %} 1</a></h5>
                     <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
                 </div>
             </div>
             <div class="col mb-5">
                 <div class="thumb-modern-border p-4 h-100">
                     <i class="flaticon-cost flat-medium text-primary bg-gray d-table"></i>
-                    <h5 class="my-3"><a href="#">Mission 2</a></h5>
+                    <h5 class="my-3"><a href="#">{% trans "Mission" %} 2</a></h5>
                     <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
                 </div>
             </div>
             <div class="col mb-5">
                 <div class="thumb-modern-border p-4 h-100">
                     <i class="flaticon-insurance flat-medium text-primary bg-gray d-table"></i>
-                    <h5 class="my-3"><a href="#">Mission 3</a></h5>
+                    <h5 class="my-3"><a href="#">{% trans "Mission" %} 3</a></h5>
                     <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
                 </div>
             </div>
             <div class="col mb-5">
                 <div class="thumb-modern-border p-4 h-100">
                     <i class="flaticon-money-1 flat-medium text-primary bg-gray d-table"></i>
-                    <h5 class="my-3"><a href="#">Vision 1</a></h5>
+                    <h5 class="my-3"><a href="#">{% trans "Vision" %} 1</a></h5>
                     <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
                 </div>
             </div>
             <div class="col mb-5">
                 <div class="thumb-modern-border p-4 h-100">
                     <i class="flaticon-cargo flat-medium text-primary bg-gray d-table"></i>
-                    <h5 class="my-3"><a href="#">Vision 2</a></h5>
+                    <h5 class="my-3"><a href="#">{% trans "Vision" %} 2</a></h5>
                     <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
                 </div>
             </div>
             <div class="col mb-5">
                 <div class="thumb-modern-border p-4 h-100">
                     <i class="flaticon-group flat-medium text-primary bg-gray d-table"></i>
-                    <h5 class="my-3"><a href="#">Vision 3</a></h5>
+                    <h5 class="my-3"><a href="#">{% trans "Vision" %} 3</a></h5>
                     <p>Mollis lorem posuere porta class sociis rhoncus primis ornare. Suscipit risus volutpat varius eget. Elementum mauris tempor at class nullam.</p>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                                 </div>
                                 <h5><a class="text-secondary" href="{% url "main_app:project-details" project.pk %}">{{ project.name }}</a></h5>
                                 <span class="mb-3 d-block font-fifteen"><i class="fas fa-map-marker-alt text-primary"></i> {{ project.get_address }}</span>
-                                <span class="listing-price">{{ project.developer.get_full_name }}<small>Developer</small></span>
+                                <span class="listing-price">{{ project.developer.get_full_name }}<small>{% trans "Developer" %}</small></span>
                             </div>
                         </div>
                     </div>
@@ -206,11 +206,11 @@
         <div class="overlay-secondary rounded py-8 sm-px-0" style="padding-left: 150px; padding-right: 150px; background-image: url({% static 'images/background/join.jpg' %}); background-repeat: no-repeat; background-position: center center; background-size: cover; overflow: hidden;">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center position-relative">
-                    <h2 class="text-white text-uppercase mb-4 font-400">WHY SHOULD YOU JOIN US ?</h2>
+                    <h2 class="text-white text-uppercase mb-4 font-400">{% trans "WHY SHOULD YOU JOIN US ?" %}</h2>
                     <div class="text-white">
                         <p>Accumsan justo nunc maecenas nostra pulvinar augue nunc rhoncus consequat a felis Mollis sollicitudin proin turpis sociis in erat eros lectus class potenti lobortis enim scelerisque.</p>
                     </div>
-                    <a href="#" class="btn btn-primary mt-3">Register</a>
+                    <a href="#" class="btn btn-primary mt-3">{% trans "Register" %}</a>
                 </div>
             </div>
         </div>
@@ -224,7 +224,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <span class="tagline-3 d-table text-dark font-500 mx-auto mb-3">Our Partners</span>
+                <span class="tagline-3 d-table text-dark font-500 mx-auto mb-3">{% trans "Our Partners" %}</span>
 <!--                        <h2 class="down-line text-dark w-50 w-sm-100 mx-auto text-center mb-5">Publish What We Think, About Our Company Activities</h2>-->
             </div>
         </div>
@@ -285,47 +285,47 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 order-md-2">
-                <h4 class="down-line mb-4">Get In Touch</h4>
+                <h4 class="down-line mb-4">{% trans "Get In Touch" %}</h4>
                 <p>Nullam vel enim risus. Integer rhoncus hendrerit sem egestas porttitor.</p>
                 <div class="mb-3">
                     <ul>
                         <li class="mb-3">
-                            <h6 class="mb-0">Office Address :</h6> Level 13, 2 Elizabeth St, Melbourne, Victoria 3000 Australia
+                            <h6 class="mb-0">{% trans "Office Address" %} :</h6> Level 13, 2 Elizabeth St, Melbourne, Victoria 3000 Australia
                         </li>
                         <li class="mb-3">
-                            <h6>Contact Number :</h6> (1) 000 991 8830, (800) 8001-8588
+                            <h6>{% trans "Contact Number" %} :</h6> (1) 000 991 8830, (800) 8001-8588
                         </li>
                         <li class="mb-3">
-                            <h6>Email Address :</h6> Info@patron.com, support@patron.com
+                            <h6>{% trans "Email Address" %} :</h6> Info@patron.com, support@patron.com
                         </li>
                     </ul>
                 </div>
-                <h5 class="mb-2">Career Info</h5>
+                <h5 class="mb-2">{% trans "Career Info" %}</h5>
                 <p>If you’re interested in employment opportunities at Unicoder, please email us:<br> <a href="#">support@unicoderbd.com</a></p>
             </div>
             <div class="col-md-7 order-md-1">
-                <h4 class="down-line mb-4">Send Message</h4>
+                <h4 class="down-line mb-4">{% trans "Send Message" %}</h4>
                 <div class="form-simple">
                     <form class="form-boder" id="contact-form" action="#" method="post" novalidate="novalidate">
                         <div class="row">
                             <div class="col-md-6 mb-20">
-                                <label class="mb-2">Full Name:</label>
+                                <label class="mb-2">{% trans "Full Name" %}:</label>
                                 <input type="text" class="form-control bg-white" name="name" required="">
                             </div>
                             <div class="col-md-6 mb-20">
-                                <label class="mb-2">Your Email:</label>
+                                <label class="mb-2">{% trans "Your Email" %}:</label>
                                 <input type="email" class="form-control bg-white" name="email" required="">
                             </div>
                             <div class="col-md-12 mb-20">
-                                <label class="mb-2">Subject:</label>
+                                <label class="mb-2">{% trans "Subject" %}:</label>
                                 <input type="text" class="form-control bg-white" name="subject" required="">
                             </div>
                             <div class="col-md-12 mb-20">
-                                <label class="mb-2">Message:</label>
+                                <label class="mb-2">{% trans "Message" %}:</label>
                                 <textarea class="form-control bg-white" name="message" rows="8" required=""></textarea>
                             </div>
                             <div class="col-md-12">
-                                <button class="btn btn-primary" name="submit" type="submit">Send Message</button>
+                                <button class="btn btn-primary" name="submit" type="submit">{% trans "Send Message" %}</button>
                             </div>
                         </div>
                     </form>

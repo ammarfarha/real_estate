@@ -20,8 +20,8 @@
                                     <button type="submit" class="btn btn-primary mb-3">{% trans 'Register' %}</button>
                                 </div>
                                 <div class="col">
-                                    <a href="{% url 'accounts:forget-password' %}" class="text-dark d-table py-1">Forgot Password or Username</a>
-                                    <a href="{% url 'accounts:login' %}" class="text-dark d-table py-1"><u>already have Account</u></a>
+                                    <a href="{% url 'accounts:forget-password' %}" class="text-dark d-table py-1">{% trans "Forgot Password or Username" %}</a>
+                                    <a href="{% url 'accounts:login' %}" class="text-dark d-table py-1"><u>{% trans "Already Have An Account" %}</u></a>
                                 </div>
                             </div>
                         </form>

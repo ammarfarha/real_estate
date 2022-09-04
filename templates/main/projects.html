@@ -30,7 +30,7 @@
 {#                        <form class="woocommerce-ordering" method="get">#}
 {#                            {% csrf_token %}#}
 {#                            {{ search_form|crispy }}#}
-{#                            <button type="submit" class="btn btn-border-dark">Search</button>#}
+{#                            <button type="submit" class="btn btn-border-dark">{% trans "Search" %}</button>#}
 {#                        </form>#}
 {#                    </div>#}
 {#                </div>#}
@@ -62,8 +62,8 @@
                         <div class="portfolio-title d-inline-block">
                             <h5 class="font-400 mb-0"><a href="#" class="text-secondary">{{ project.name }}</a></h5>
                             <div class="text-primary">
-                                <a href="#">Business</a> .
-                                <a href="#">Developer {{ project.developer.first_name }}</a>
+                                <a href="#">{% trans "Business" %}</a> .
+                                <a href="#">{% trans "Developer" %} {{ project.developer.first_name }}</a>
                             </div>
 
                         </div>
@@ -99,8 +99,8 @@
             <div class="col">
                 <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
                     <div class="cata position-absolute">
-                        <span class="sale bg-secondary text-white">For Rent</span>
-                        <span class="featured bg-primary text-white">Featured</span>
+                        <span class="sale bg-secondary text-white">{% trans "For Rent" %}</span>
+                        <span class="featured bg-primary text-white">{% trans "Featured" %}</span>
                     </div>
                     <a href="#"><img class="w-100" src="{{ project.get_first_image_or_default }}" alt=""></a>
 {#                    <ul class="position-absolute quick-meta">#}
@@ -116,10 +116,10 @@
                     <span class="d-inline-block text-primary">{{ project.get_type_display }}</span>
                     <h5 class="modal-title mb-1" id="staticBackdropLabel"><a href="#" class="text-secondary hover-text-primary transation">{{ project.name }}</a></h5>
                     <span class="mt-1 mb-3 d-block font-fifteen"><i class="fas fa-map-marker-alt text-primary"></i> {{ project.location }}</span>
-                    <a href="#" class="d-block text-light hover-text-primary font-small mb-2">( 100 People Recommended )</a>
+                    <a href="#" class="d-block text-light hover-text-primary font-small mb-2">{% trans "( 100 People Recommended )" %}</a>
                     <div class="d-flex">
 {#                        <span class="text-secondary font-large">$5600 - $8300/<small>mo</small></span>#}
-{#                        <span class="text-white font-mini px-2 rounded product-status ms-5 my-1 bg-primary"><i class="fas fa-check"></i> Available</span>#}
+{#                        <span class="text-white font-mini px-2 rounded product-status ms-5 my-1 bg-primary"><i class="fas fa-check"></i> {% trans "Available" %}</span>#}
                     </div>
 {#                    <div class="product-offers mt-3">#}
 {#                        <ul class="product-offers-list">#}
@@ -141,12 +141,12 @@
                     <h5 class="text-secondary my-3">{% trans "Description" %}</h5>
                     <p>{{ project.summary }}</p>
                     <div class="short-description d-flex">
-                        <span class="me-4"><b>Highlights:</b></span>
+                        <span class="me-4"><b>{% trans "Highlights" %}:</b></span>
                         <div class="short-description">
                             <ul class="list-style-tick">
-                                <li>Regular Fit.</li>
-                                <li>Full sleeves.</li>
-                                <li>Machine wash, tumble dry.</li>
+                                <li>{% trans "Regular Fit" %}.</li>
+                                <li>{% trans "Full sleeves" %}.</li>
+                                <li>{% trans "Machine wash, tumble dry" %}.</li>
                             </ul>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                                 <span>{{ project.developer.first_name }} {{ project.developer.last_name }}</span>
                             </a>
                         </div>
-                        <div class="post-date ms-auto"><span>2 Month Ago</span></div>
+                        <div class="post-date ms-auto"><span>{% trans "2 Month Ago" %}</span></div>
                     </div>
                 </div>
             </div>
