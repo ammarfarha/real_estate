@@ -1,5 +1,12 @@
 {% load static %}
 {% load i18n %}
+
+<!DOCTYPE html>
+{% if LANGUAGE_CODE == 'ar' %}
+<html  class="no-js arabic" lang="ar" dir="rtl">
+{% else %}
+<html  class="no-js" lang="en" dir="ltr">
+{% endif %}
 <head>
     <!-- Meta Tag -->
     <meta charset="utf-8">
@@ -37,6 +44,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/colors/color.css' %}">
     <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    {% if LANGUAGE_CODE == 'ar' %}
+    {# TODO: Add RTL CSS files#}
+    {% endif %}
     {% block custom_CSS %}
 
     {% endblock custom_CSS %}
@@ -67,6 +77,9 @@
     <script src="{% static 'js/mixitup.min.js' %}"></script>
     <script src="{% static 'js/paraxify.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+    {% if LANGUAGE_CODE == 'ar' %}
+    {# TODO: Add RTL JS files#}
+    {% endif %}
 {% block Custom_JS %}
 {% endblock Custom_JS %}
  </body>
