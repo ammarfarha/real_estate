@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'main_app',
     'accounts',
+    'shared_app',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     'djgeojson',
     'fullurl',
     'martor',
+    'solo',
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
