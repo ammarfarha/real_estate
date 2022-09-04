@@ -15,14 +15,8 @@ from .forms import (
 from django.utils.translation import gettext_lazy as _
 from main_app.forms import ProjectsSearchForm
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.backends import AllowAllUsersModelBackend
-
-
-class CustomLogInView(LoginView):
-    template_name = 'main/login.html'
-    form_class = AuthenticationForm
 
 
 class ClientMixin(LoginRequiredMixin):
@@ -32,18 +26,6 @@ class ClientMixin(LoginRequiredMixin):
 class DeveloperMixin(ClientMixin, UserPassesTestMixin):
     def test_func(self):
         return self.request.user.is_developer()
-
-
-class ProfileView(ClientMixin, ListView):
-    model = Client
-    template_name = 'accounts/profile.html'
-    context_object_name = 'current'
-
-    def get_queryset(self):
-        current = get_object_or_404(Client, username=self.request.user.username)
-        if current.is_developer():
-            current = get_object_or_404(Developer, username=self.request.user.username)
-        return current
 
 
 class ClientRegistrationView(SuccessMessageMixin, CreateView):

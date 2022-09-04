@@ -1,14 +1,14 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from allauth.account.views import LoginView, LogoutView, PasswordChangeView
 from django.urls import path
 from . import views
 
 app_name = 'accounts'
 
 urlpatterns = [
-    path('login/', views.CustomLogInView.as_view(), name='login'),
-    # path('login/', LoginView.as_view(template_name='account/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(success_url_allowed_hosts='main:my-project-list'), name='logout'),
-    path('forget_password/', views.ResetPasswordView.as_view(), name='forget-password'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('password/reset/', views.ResetPasswordView.as_view(), name='forget-password'),
+    path('password/change/', PasswordChangeView.as_view(), name='change-password'),
     path('register_client/', views.ClientRegistrationView.as_view(), name='register-client'),
     path('register_developer/', views.DeveloperRegistrationView.as_view(), name='register-developer'),
     path('dev_profile/', views.DeveloperProfileUpdateView.as_view(), name='developer-profile'),
