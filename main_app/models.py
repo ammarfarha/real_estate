@@ -193,7 +193,7 @@ class Subscription(models.Model):
     # meta:
     # srt:
     def __str__(self):
-        return str(self.client) + " - subscripe in: " + str(self.project)
+        return str(self.client) + " - subscribe in: " + str(self.project)
     # clean:
     # save:
 
