@@ -1,0 +1,614 @@
+body,
+p {
+    text-align: right;
+}
+
+.text-start p {
+    text-align: left
+}
+
+ul {
+    direction: rtl;
+}
+
+.text-center p {
+    text-align: center;
+}
+
+.nav-bar-top.right li:first-child {
+    margin-left: 20px;
+}
+
+.nav-bar-top.right li:last-child {
+    margin-left: 0;
+}
+
+.line-menu li:first-child a {
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+.line-menu li:last-child a {
+    padding-right: 10px;
+    padding-left: 0;
+}
+
+.form-control {
+    text-align: right;
+}
+
+.agent-text .user-info,
+.thumb-team-simple .user-info,
+.dir-rtl {
+    direction: rtl;
+}
+
+.down-line-white::before,
+.down-line-secondary::before,
+.down-line::before {
+    left: inherit;
+    right: 0;
+}
+
+.text-start .down-line-white::before,
+.text-start .down-line-secondary::before,
+.text-start .down-line::before {
+    left: 0;
+    right: inherit;
+}
+
+.nav-pills .nav-item:not(:last-child) {
+    margin-left: 20px;
+    margin-right: 0 !important;
+}
+
+
+/* Side bar */
+
+.widget_recent_property li img {
+    margin-right: inherit;
+    margin-left: 15px;
+}
+
+.product-tab-table ul,
+.table-classic ul {
+    display: table;
+}
+
+.product-tab-table ul li {
+    width: 50%;
+}
+
+
+/* Table Style */
+
+.compare-list-properties td:first-child {
+    text-align: right;
+    padding-left: inherit;
+    padding-right: 25px;
+}
+
+
+/* Dashboard */
+
+.dashboard-nav .navbar-nav .db-dropdown .nav-link.dropdown-toggle::after {
+    right: inherit;
+    left: 20px;
+}
+
+ul.navbar-nav.user-option .nav-link img {
+    margin-right: inherit;
+    margin-left: 10px;
+}
+
+.header-unfix .navbar .navbar-nav li>ul.dropdown-menu {
+    left: inherit;
+    right: -10px;
+}
+
+.items-list td img {
+    float: right;
+    margin-right: inherit;
+    margin-left: 15px;
+}
+
+.msg-history li .avata,
+.active-chat-list li .avata {
+    margin-right: inherit;
+    margin-left: 20px;
+}
+
+.text-write-box input {
+    padding-right: 24px !important;
+    padding-left: 105px !important;
+}
+
+.text-write-box button {
+    right: inherit;
+    left: 15px;
+}
+
+.custom-check-box-2 label,
+.custom-check-box li label {
+    padding-left: inherit;
+    padding-right: 27px;
+}
+
+.custom-check-box-2 label::before,
+.custom-check-box li label::before {
+    left: inherit;
+    right: 0;
+}
+
+.alert-dismissible {
+    padding-right: inherit;
+    padding-left: 3rem;
+    position: relative;
+}
+
+.alert-dismissible strong {
+    float: right;
+    margin-left: 10px;
+}
+
+.alert-dismissible .close {
+    position: absolute;
+    left: 20px;
+    top: 13px;
+}
+
+.ball::before {
+    left: inherit;
+    right: 15px;
+}
+
+
+/* Pricing Style */
+
+.form-check label {
+    margin-left: inherit;
+    margin-right: 25px;
+}
+
+.form-switch {
+    padding-left: inherit;
+    padding-right: 2.5em;
+}
+
+.form-switch .form-check-input {
+    margin-left: 0;
+    margin-right: -2.5em;
+}
+
+
+/* Extra Css */
+
+.thumb-angle-left .box-70px::before {
+    left: inherit;
+    right: -10px;
+}
+
+.shadow-text {
+    left: inherit;
+    right: 45px;
+}
+
+
+/* Breadcrumb */
+
+.breadcrumb {
+    direction: rtl;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    float: right;
+    padding-right: 0;
+    padding-left: .5rem;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: 0;
+    padding-right: .5rem;
+}
+
+
+/* About Us */
+
+.about-us-info-wrap blockquote {
+    border-left: 0;
+    border-right: 4px solid;
+    border-color: var(--theme-primary-color);
+    font-size: 16px;
+}
+
+.list-half-width>* {
+    padding-left: 20px;
+    padding-right: 0;
+}
+
+.icon-text-1 {
+    flex-direction: row-reverse;
+}
+
+.icon-text-1 .icon-area {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.line-list li {
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+.line-list li::before {
+    right: 0;
+    left: auto;
+}
+
+.flat-info {
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+
+.flat-info li span:first-child {
+    flex-direction: row-reverse;
+}
+
+
+/*===============================================================================
+Form Design Style Start
+==================================================================================*/
+
+select {
+    background-position: 20px;
+}
+
+.woocommerce-ordering select {
+    padding-right: 0
+}
+
+.form-boder select,
+.widget.agent-search select {
+    padding: 15px 15px 15px 30px;
+    background-position: 20px;
+}
+
+.quick-search .form-control {
+    padding: 15px 15px 15px 40px;
+    text-align: right !important;
+}
+
+.form-icon-left .icon-font,
+.form-icon-left .fas {
+    left: 20px;
+    top: 30px;
+    position: absolute;
+}
+
+.form-icon-right .icon-font,
+.form-icon-right .fas {
+    right: inherit;
+    left: 20px;
+}
+
+.aditional-features::before {
+    right: 75%;
+}
+
+.search-form.header-active-form .form-control {
+    padding: 15px 20px 15px 40px;
+}
+
+.search-form .btn-search {
+    right: inherit;
+    left: 22px;
+}
+
+.entry-form button {
+    right: inherit;
+    left: 0;
+}
+
+.slider-signup input {
+    padding: 8px 30px 8px 130px;
+}
+
+.slider-signup button {
+    right: inherit;
+    left: 5px;
+}
+
+
+/*===============================================================================
+Header CSS Start
+==================================================================================*/
+
+
+/* top header */
+
+.top-contact li {
+    margin-right: 0;
+}
+
+
+/* main nav */
+
+.navbar-brand {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+.navbar-expand-lg .navbar-nav>li.dropdown>a.nav-link::after {
+    right: auto;
+    left: -15px
+}
+
+.dropdown-item {
+    text-align: right;
+}
+
+.navbar-expand-lg .navbar-nav>li.dropdown>ul.dropdown-menu>li.dropdown .dropdown-toggle::after {
+    right: auto;
+    left: 20px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    padding-left: inherit;
+    padding-right: 35px;
+}
+
+.navbar-toggler,
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
+/* About Page */
+
+.tagline-2::before {
+    left: inherit;
+    right: -60px;
+}
+
+.testimonial-item .name,
+.testimonial-slider .testimonial-item {
+    padding-left: 0;
+    padding-right: 100px;
+}
+
+.testimonial-slider .testimonial-item .quote-icon {
+    left: inherit;
+    right: 2px;
+}
+
+.testimonial-slider .owl-nav {
+    right: inherit;
+    left: 30px;
+}
+
+.line-title::before,
+.testimonial-item .name::before {
+    left: inherit;
+    right: 0;
+    top: 15px
+}
+
+
+/* Woocommerce Style */
+
+.woocommerce-ordering {
+    margin-right: inherit;
+}
+
+
+/* Scroll Style */
+
+#scroll {
+    right: inherit;
+    left: 30px;
+}
+
+
+/*===============================================================================
+Property Block Style Start
+==================================================================================*/
+
+.quick-meta {
+    right: inherit;
+    left: 15px;
+}
+
+.price-on {
+    left: inherit;
+    right: 15px;
+}
+
+.quantity ul li span {
+    float: right;
+    margin-left: 4px;
+}
+
+.thumb-blog-horizontal .post-image {
+    float: right;
+}
+
+.property-grid-3 .data-on {
+    left: inherit;
+    right: 15px;
+}
+
+.property-grid-4 .location {
+    right: 15px;
+    left: inherit;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.property-grid-4 .location i {
+    margin-left: 5px;
+}
+
+.property-grid-4 .thumbnail-img .quick-meta li a {
+    flex-direction: row-reverse;
+}
+
+.property-grid-5 .post-meta ul li:not(:last-child) {
+    margin-right: 0;
+}
+
+.property-grid-5 .post-meta ul li:not(:first-child) {
+    margin-right: 30px;
+}
+
+.apartments-info-list>ul li label {
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.apartments-info-list>ul li span {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.agent-style-1 .image-wrap {
+    margin-right: 0;
+}
+
+.agent-style-1 .about-avata {
+    align-items: self-end;
+}
+
+
+/* Single Blog */
+
+.share-post span {
+    padding-right: inherit;
+    padding-left: 15px;
+}
+
+.author-image {
+    margin-right: inherit;
+    margin-left: 15px;
+}
+
+
+/*===============================================================================
+Fact Counter Style Start
+==================================================================================*/
+
+.bar-progress .skill-percent {
+    right: inherit;
+    left: 0;
+}
+
+
+/*===============================================================================
+Modal Start Style Start
+==================================================================================*/
+
+.view-close {
+    right: inherit;
+    left: 15px;
+}
+
+div.summary .product-offer-item::before {
+    margin-right: inherit;
+    margin-left: 10px;
+}
+
+.quantity li {
+    padding-right: inherit;
+    padding-left: 15px;
+}
+
+.list-style-tick li {
+    padding-left: inherit;
+    padding-right: 20px;
+}
+
+.list-style-tick li::before {
+    left: inherit;
+    right: 0;
+}
+
+.list-style-tick li::before {
+    transform: translateY(-50%) rotateY(180deg);
+}
+
+.property-block .cata {
+    left: inherit;
+    right: 15px;
+}
+
+
+/* Agent Details */
+
+.prop-details b {
+    float: right;
+    margin-left: 5px;
+}
+
+.media-widget a {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+.member-score::before {
+    left: inherit;
+    right: -10px;
+    transform: translateY(-50%) rotateY(180deg);
+}
+
+
+/* Pricing Table */
+
+.divider-col-3>div:nth-child(3n) {
+    border-right: 1px solid var(--theme-gray-color);
+}
+
+.divider-col-3>div:nth-child(1) {
+    border-right: none
+}
+
+@media screen and (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .dropdown-menu .dropdown-menu {
+        left: auto;
+        right: 100%;
+    }
+    .nav-line-active .navbar-nav .nav-item:first-child {
+        padding-left: 20px;
+        padding-right: 0;
+    }
+    .text-lg-start p {
+        text-align: left;
+    }
+    .text-lg-start .down-line-white::before,
+    .text-lg-start .down-line-secondary::before,
+    .text-lg-start .down-line::before {
+        left: 0;
+        right: inherit;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .divider-col-3>div:nth-child(3n) {
+        border-right: none
+    }
+}
+
+@media screen and (max-width: 991.98px) {
+    .navbar-expand-lg .navbar-nav>li.dropdown>a.nav-link::after {
+        left: 0
+    }
+    .navbar-expand-lg .navbar-nav>li.dropdown>ul.dropdown-menu>li.dropdown .dropdown-toggle::after {
+        transform: translateY(-50%) rotate(90deg);
+        content: "\f105";
+        font-family: "Font Awesome 5 Free";
+        font-size: 10px;
+        border: none;
+        font-weight: 600;
+    }
+}
