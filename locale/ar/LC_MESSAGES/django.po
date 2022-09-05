@@ -753,7 +753,7 @@ msgstr ""
 
 #: .\templates\main\main_base.html:48
 msgid "About This System"
-msgstr ""
+msgstr "حول النظام"
 
 #: .\templates\main\main_base.html:52
 msgid "Contact"
