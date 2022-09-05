@@ -94,7 +94,6 @@
                         </nav>
                     </div>
                 </div>
-
                 <div class="col-md-8 col-lg-9 col-xl-10 px-0 dashboard-body" style="height: 100vh; overflow-y: scroll;">
                     <!--============== Header Section Start ==============-->
                     <header class="header-unfix border-bottom bg-white">
@@ -113,11 +112,11 @@
                                                     <li class="nav-item">
                                                         {% if user.is_developer %}
                                                         <a class="nav-link" href="{% url 'accounts:developer-profile' %}">
-                                                            <img src="{{ user.get_logo_image_or_avatar }}" alt=""> Hi, {{ user.get_full_name }}
+                                                            <img src="{{ user.get_logo_image_or_avatar }}" alt=""> {% trans "Hi," %} {{ user.get_full_name }}
                                                         </a>
                                                         {% else %}
                                                         <a class="nav-link" href="{% url 'accounts:client-profile' %}">
-                                                            <img src="{{ user.get_logo_image_or_avatar }}" alt=""> Hi, {{ user.get_full_name }}
+                                                            <img src="{{ user.get_logo_image_or_avatar }}" alt=""> {% trans "Hi," %} {{ user.get_full_name }}
                                                         </a>
                                                         {% endif %}
                                                     </li>
@@ -147,7 +146,7 @@
                     <div class="full-row pt-0 pb-5">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 text-center"><span>© 2022 All right reserved</span></div>
+                                <div class="col-12 text-center"><span>© {% trans "2022 All right reserved" %}</span></div>
                             </div>
                         </div>
                     </div>
