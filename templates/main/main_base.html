@@ -15,9 +15,12 @@
 {% endblock custom_CSS %}
 
 {% block body %}
-    <div class="preloader">
+    {% if LANGUAGE_CODE == 'ar' %}
+    {% else %}
+        <div class="preloader">
         <div class="loader xy-center"></div>
     </div>
+    {% endif %}
     <div id="page_wrapper" class="bg-light">
         <!--============== Header Section Start ==============-->
         <header class="header-style nav-on-top bg-white">
