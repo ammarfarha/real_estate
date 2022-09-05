@@ -1,10 +1,10 @@
 from django import forms
-from leaflet.forms.fields import PointField
-from accounts.forms import DateInput
-from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
 from django.utils.translation import gettext_lazy as _
 from leaflet.forms.widgets import LeafletWidget
 from martor.fields import MartorFormField
+
+from accounts.forms import DateInput
+from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
 
 
 class ProjectForm(forms.ModelForm):
@@ -154,7 +154,6 @@ class ProjectsSearchForm(forms.Form):
         self.fields['type'].required = False
         self.fields['status'].required = False
         self.fields['title'].required = False
-
 
 
 class SubPhaseUpdateForm(forms.ModelForm):

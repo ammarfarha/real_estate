@@ -1,31 +1,23 @@
 from django.conf import settings
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import (
-    FormView,
     ListView,
-    CreateView,
     DetailView,
     DeleteView,
     UpdateView,
     TemplateView,
     RedirectView,
 )
-from .models import (
-    Project,
-    Subscription,
-    ProjectImage,
-    MainPhase,
-    SubPhase,
-    SubPhaseUpdate,
-    UpdateAttachment,
-)
+from django.views.generic.edit import CreateView
+
 from accounts.models import Client
-from django.utils.translation import gettext_lazy as _
-from django.urls import reverse_lazy
 from accounts.views import (
     ClientMixin,
-    DeveloperMixin,
 )
-from django.views.generic.edit import CreateView
+from accounts.views import DeveloperMixin
 from .forms import (
     ProjectForm,
     ProjectsSearchForm,
@@ -35,10 +27,14 @@ from .forms import (
     MainPhaseForm,
     SubPhaseForm, UpdateAttachmentForm,
 )
-from accounts.views import DeveloperMixin
-from accounts.models import Developer
-from django.shortcuts import get_object_or_404
-from django.contrib.messages.views import SuccessMessageMixin
+from .models import (
+    Project,
+    Subscription,
+    MainPhase,
+    SubPhase,
+    SubPhaseUpdate,
+    UpdateAttachment,
+)
 
 
 class ProjectCanEditMixin(DeveloperMixin):

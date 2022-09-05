@@ -1,12 +1,11 @@
 from django.conf import settings
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from django.utils.translation import gettext_lazy as _
-from accounts.models import Developer, Client
 from djgeojson.fields import PointField
 from geopy.geocoders import Nominatim
-from django.core.exceptions import FieldDoesNotExist
 
+from accounts.models import Developer, Client
 from shared_app.models import SiteConfiguration
 
 
@@ -100,7 +99,8 @@ class Project(models.Model):
         return self.developer == developer
 
     def can_subscribe(self, client):
-        return client.is_authenticated and not bool(self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
+        return client.is_authenticated and not bool(
+            self.subscriptions.all().filter(client=client)) and not self.can_edit(client)
 
     def is_subscribed(self, client):
         return client.is_authenticated and self.subscriptions.filter(client=client).exists()
