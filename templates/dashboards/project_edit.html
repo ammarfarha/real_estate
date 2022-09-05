@@ -4,20 +4,20 @@
 {% load i18n %}
 
 {% block inner_edit_space %}
-<div class="row">
-    <div class="col mb-30">
-        <div class="border rounded bg-white p-30">
-            <form class="form-boder" method="POST">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="row">
-                    <div class="col-md-12 mb-20">
-                        <button type="submit" class="btn btn-primary" name="submitbasic">{% trans 'Save' %}</button>
+    <div class="row">
+        <div class="col mb-30">
+            <div class="border rounded bg-white p-30">
+                <form class="form-boder" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="row">
+                        <div class="col-md-12 mb-20">
+                            <button type="submit" class="btn btn-primary" name="submitbasic">{% trans 'Save' %}</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 {% endblock inner_edit_space %}
 

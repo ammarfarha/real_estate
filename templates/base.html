@@ -3,9 +3,9 @@
 
 <!DOCTYPE html>
 {% if LANGUAGE_CODE == 'ar' %}
-<html  class="no-js arabic" lang="ar" dir="rtl">
+    <html class="no-js arabic" lang="ar" dir="rtl">
 {% else %}
-<html  class="no-js" lang="en" dir="ltr">
+    <html class="no-js" lang="en" dir="ltr">
 {% endif %}
 <head>
     <!-- Meta Tag -->
@@ -13,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Uniland - Real Estate HTML5 Template">
-    <meta name="keywords" content="real estate, property, property search, agent, apartments, booking, business, idx, housing, real estate agency, rental">
+    <meta name="keywords"
+          content="real estate, property, property search, agent, apartments, booking, business, idx, housing, real estate agency, rental">
     <meta name="author" content="unicoder">
     <title>{% block page_title %}{% endblock page_title %}</title>
     <!-- Favicon -->
@@ -26,7 +27,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+          rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -45,7 +47,7 @@
     <link rel="stylesheet" href="{% static 'css/colors/color.css' %}">
     <link rel="stylesheet" href="{% static 'css/loader.css' %}">
     {% if LANGUAGE_CODE == 'ar' %}
-    {# TODO: Add RTL CSS files#}
+        {# TODO: Add RTL CSS files#}
     {% endif %}
     {% block custom_CSS %}
 
@@ -56,31 +58,31 @@
 {% block body %}
 {% endblock body %}
 
-    <!-- Javascript Files -->
+<!-- Javascript Files -->
 
 
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/greensock.js' %}"></script>
-    <script src="{% static 'js/layerslider.transitions.js' %}"></script>
-    <script src="{% static 'js/layerslider.kreaturamedia.jquery.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap-select.min.js' %}"></script>
-    <script src="{% static 'js/piechart/chart.min.js' %}"></script>
-    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
-    <script src="{% static 'js/owl.js' %}"></script>
-    <script src="{% static 'js/range/tmpl.js' %}"></script>
-    <script src="{% static 'js/range/jquery.dependClass.js' %}"></script>
-    <script src="{% static 'js/range/draggable.js' %}"></script>
-    <script src="{% static 'js/range/jquery.slider.js' %}"></script>
-    <script src="{% static 'js/wow.js' %}"></script>
-    <script src="{% static 'js/mixitup.min.js' %}"></script>
-    <script src="{% static 'js/paraxify.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
-    {% if LANGUAGE_CODE == 'ar' %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/greensock.js' %}"></script>
+<script src="{% static 'js/layerslider.transitions.js' %}"></script>
+<script src="{% static 'js/layerslider.kreaturamedia.jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'js/piechart/chart.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/range/tmpl.js' %}"></script>
+<script src="{% static 'js/range/jquery.dependClass.js' %}"></script>
+<script src="{% static 'js/range/draggable.js' %}"></script>
+<script src="{% static 'js/range/jquery.slider.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/paraxify.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% if LANGUAGE_CODE == 'ar' %}
     {# TODO: Add RTL JS files#}
-    {% endif %}
+{% endif %}
 {% block Custom_JS %}
 {% endblock Custom_JS %}
- </body>
+</body>
 </html>

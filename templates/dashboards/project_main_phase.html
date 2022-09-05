@@ -14,9 +14,11 @@
                             {% for main_phase in project.main_phases.all %}
                                 <li class="list-group-item">
                                     {{ forloop.counter }}. {{ main_phase }}
-                                    <a class="float-end" href="{% url 'main_app:update-main-phase' main_phase.project.pk main_phase.pk %}">{% trans 'Delete' %}</a>
+                                    <a class="float-end"
+                                       href="{% url 'main_app:update-main-phase' main_phase.project.pk main_phase.pk %}">{% trans 'Delete' %}</a>
                                     <span class="float-end">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                                    <a class="float-end" href="{% url 'main_app:update-main-phase' main_phase.project.pk main_phase.pk %}">{% trans 'Edit' %}</a>
+                                    <a class="float-end"
+                                       href="{% url 'main_app:update-main-phase' main_phase.project.pk main_phase.pk %}">{% trans 'Edit' %}</a>
                                 </li>
                             {% endfor %}
                         </ul>

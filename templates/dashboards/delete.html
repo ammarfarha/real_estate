@@ -2,34 +2,36 @@
 {% load static i18n %}
 {% load crispy_forms_tags %}
 {% block page_header %}
-<div class="row">
-    <div class="col">
-        <h3 class="my-3">{% trans "Delete" %} {{ project.name }} Project</h3>
+    <div class="row">
+        <div class="col">
+            <h3 class="my-3">{% trans "Delete" %} {{ project.name }} Project</h3>
+        </div>
     </div>
-</div>
 {% endblock page_header %}
 
 {% block main_containt %}
-<div class="row">
-    <div class="col mb-30">
-        <div class="border rounded bg-white p-30">
-            <h4 class="mb-4">{% trans "You are going to delete" %} <b style="color: red;">{{ project.name }}</b> project</h4>
-            <form class="form-boder" method="POST">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-12 mb-20">
-                        {% trans "Are You sure" %}?
+    <div class="row">
+        <div class="col mb-30">
+            <div class="border rounded bg-white p-30">
+                <h4 class="mb-4">{% trans "You are going to delete" %} <b style="color: red;">{{ project.name }}</b>
+                    project</h4>
+                <form class="form-boder" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12 mb-20">
+                            {% trans "Are You sure" %}?
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 mb-20">
-                        <a class="btn btn-primary" href="{% url 'main:my-project-list' %}">{% trans "Cancel" %}</a>
-                        <button type="submit" class="btn btn-primary" name="submitbasic">{% trans "Delete" %}</button>
+                    <div class="row">
+                        <div class="col-md-12 mb-20">
+                            <a class="btn btn-primary" href="{% url 'main:my-project-list' %}">{% trans "Cancel" %}</a>
+                            <button type="submit" class="btn btn-primary"
+                                    name="submitbasic">{% trans "Delete" %}</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 {% endblock main_containt %}
 

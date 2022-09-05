@@ -2,32 +2,34 @@
 {% load static i18n %}
 {% load crispy_forms_tags %}
 {% block main_content %}
-<!--============== Signup Form Start ==============-->
-<div class="full-row">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-5 col-lg-6 mx-auto">
-                <div class="bg-white xs-p-20 p-30 border rounded">
-                    <div class="form-icon-left rounded form-boder">
-                        <h4 class="mb-4">{% trans "Forget Password" %}</h4>
-                        <form method="post">
-                            <div class="row row-cols-1 g-3">
-                                {% csrf_token %}
-                                {{ form|crispy }}
-                                <div class="col">
-                                    <button type="submit" class="btn btn-primary mb-3">{% trans "Send" %}</button>
+    <!--============== Signup Form Start ==============-->
+    <div class="full-row">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 mx-auto">
+                    <div class="bg-white xs-p-20 p-30 border rounded">
+                        <div class="form-icon-left rounded form-boder">
+                            <h4 class="mb-4">{% trans "Forget Password" %}</h4>
+                            <form method="post">
+                                <div class="row row-cols-1 g-3">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary mb-3">{% trans "Send" %}</button>
+                                    </div>
+                                    <div class="col">
+                                        <a href="{% url 'accounts:forget-password' %}"
+                                           class="text-dark d-table py-1">{% trans "Forgot Password or Username" %}</a>
+                                        <a href="{% url 'accounts:login' %}"
+                                           class="text-dark d-table py-1"><u>{% trans "already have Account" %}</u></a>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <a href="{% url 'accounts:forget-password' %}" class="text-dark d-table py-1">{% trans "Forgot Password or Username" %}</a>
-                                    <a href="{% url 'accounts:login' %}" class="text-dark d-table py-1"><u>{% trans "already have Account" %}</u></a>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--============== Signup Form End ==============-->
+    <!--============== Signup Form End ==============-->
 {% endblock main_content %}

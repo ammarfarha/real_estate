@@ -8,60 +8,62 @@
 {% endblock page_header %}
 
 {% block main_content %}
-<div class="full-row">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-5 col-lg-6 mx-auto">
-                <div class="bg-white xs-p-20 p-30 border rounded">
-                    <div class="form-icon-left rounded form-boder">
-                        <h1>{% trans "Sign In" %}</h1>
+    <div class="full-row">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 mx-auto">
+                    <div class="bg-white xs-p-20 p-30 border rounded">
+                        <div class="form-icon-left rounded form-boder">
+                            <h1>{% trans "Sign In" %}</h1>
 
-                        {% get_providers as socialaccount_providers %}
+                            {% get_providers as socialaccount_providers %}
 
-                        {% if socialaccount_providers %}
-                        <p>{% blocktrans with site.name as site_name %}Please sign in with one
-                        of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-                        for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+                            {% if socialaccount_providers %}
+                                <p>{% blocktrans with site.name as site_name %}Please sign in with one
+                                    of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                                    for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-                        <div class="socialaccount_ballot">
-                          <ul class="socialaccount_providers">
-                            {% include "account/provider_list.html" with process="login" %}
-                          </ul>
-                          <div class="login-or">{% trans 'or' %}</div>
+                                <div class="socialaccount_ballot">
+                                    <ul class="socialaccount_providers">
+                                        {% include "account/provider_list.html" with process="login" %}
+                                    </ul>
+                                    <div class="login-or">{% trans 'or' %}</div>
+                                </div>
+
+                                {% include "socialaccount/snippets/login_extra.html" %}
+
+                            {% else %}
+                                <p>{% blocktrans %}If you have not created an account yet, then please
+                                    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+                            {% endif %}
+
+                            <form class="login" method="POST" action="{% url 'account_login' %}">
+                                <div class="row row-cols-1 g-3">
+                                    {% csrf_token %}
+                                    {% if redirect_field_value %}
+                                        <input type="hidden" name="{{ redirect_field_name }}"
+                                               value="{{ redirect_field_value }}"/>
+                                    {% endif %}
+                                    {{ form|crispy }}
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary mb-3">Login</button>
+                                    </div>
+                                    <div class="col">
+                                        <a href="{% url 'account_reset_password' %}" class="text-dark d-table py-1">Forgot
+                                            Password or Username</a>
+                                        <a href="{% url 'accounts:register-client' %}"
+                                           class="text-dark d-table py-1"><u>Create
+                                            Client Account</u></a>
+                                        <a href="{% url 'accounts:register-developer' %}"
+                                           class="text-dark d-table py-1"><u>Create
+                                            Developer Account</u></a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-
-                        {% include "socialaccount/snippets/login_extra.html" %}
-
-                        {% else %}
-                        <p>{% blocktrans %}If you have not created an account yet, then please
-                        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-                        {% endif %}
-
-                        <form class="login" method="POST" action="{% url 'account_login' %}">
-                            <div class="row row-cols-1 g-3">
-                                {% csrf_token %}
-                                {% if redirect_field_value %}
-                                    <input type="hidden" name="{{ redirect_field_name }}"
-                                           value="{{ redirect_field_value }}"/>
-                                {% endif %}
-                                {{ form|crispy }}
-                                <div class="col">
-                                    <button type="submit" class="btn btn-primary mb-3">Login</button>
-                                </div>
-                                <div class="col">
-                                    <a href="{% url 'account_reset_password' %}" class="text-dark d-table py-1">Forgot
-                                        Password or Username</a>
-                                    <a href="{% url 'accounts:register-client' %}" class="text-dark d-table py-1"><u>Create
-                                        Client Account</u></a>
-                                    <a href="{% url 'accounts:register-developer' %}" class="text-dark d-table py-1"><u>Create
-                                        Developer Account</u></a>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock main_content %}

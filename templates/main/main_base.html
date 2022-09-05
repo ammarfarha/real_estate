@@ -1,4 +1,4 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
 {% load leaflet_tags %}
@@ -10,14 +10,14 @@
 {% block custom_CSS %}
     {% leaflet_css plugins="ALL" %}
     {% leaflet_js plugins="ALL" %}
-    <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
-    <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
+    <link href="{% static 'martor/css/martor.bootstrap.min.css' %}" type="text/css" media="all" rel="stylesheet"/>
 {% endblock custom_CSS %}
 
 {% block body %}
     <div class="preloader">
-		<div class="loader xy-center"></div>
-	</div>
+        <div class="loader xy-center"></div>
+    </div>
     <div id="page_wrapper" class="bg-light">
         <!--============== Header Section Start ==============-->
         <header class="header-style nav-on-top bg-white">
@@ -30,28 +30,32 @@
                                     <img class="nav-logo" src="{% static 'images/logo/logo11.png' %}" alt="Logo">
                                 </a>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                         aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon flaticon-menu flat-small text-primary"></span>
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav ms-auto">
-                                       <li class="nav-item">
+                                        <li class="nav-item">
                                             <a class="nav-link" href="{% url "main_app:index" %}">{% trans "Home" %}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url "main_app:projects" %}">{% trans "All Projects" %}</a>
+                                            <a class="nav-link"
+                                               href="{% url "main_app:projects" %}">{% trans "All Projects" %}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url "main_app:index" %}#about">{% trans "About This System" %}</a>
+                                            <a class="nav-link"
+                                               href="{% url "main_app:index" %}#about">{% trans "About This System" %}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url "main_app:index" %}#contact">{% trans "Contact" %}</a>
+                                            <a class="nav-link"
+                                               href="{% url "main_app:index" %}#contact">{% trans "Contact" %}</a>
                                         </li>
                                         {% if not user.is_authenticated %}
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{% url "accounts:login" %}">{% trans "Login" %}</a>
-                                        </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                   href="{% url "accounts:login" %}">{% trans "Login" %}</a>
+                                            </li>
                                         {% endif %}
                                     </ul>
 
@@ -59,7 +63,9 @@
                                         <ul class="navbar-nav ms-auto sm-mx-none ps-3 user-option">
                                             <li class="nav-item dropdown">
                                                 <img src="{{ user.get_logo_image_or_avatar }}" alt="">
-                                                <a class="dropdown-toggle" href="#">{% if user.first_name %}{{ user.first_name }}{% else %}{{ user }}{% endif %}</a>
+                                                <a class="dropdown-toggle" href="#">
+                                                    {% if user.first_name %}{{ user.first_name }}{% else %}
+                                                        {{ user }}{% endif %}</a>
                                                 <ul class="dropdown-menu">
                                                     {% if user.is_developer %}
                                                         <li><a class="dropdown-item"
@@ -73,7 +79,9 @@
 
                                                     <li>
                                                         <a class="dropdown-item"
-                                                           href="{% if user.is_developer %}{% url "accounts:developer-profile" %}{% else %}{% url "accounts:client-profile" %}{% endif %}">
+                                                           href="
+
+                                                                   {% if user.is_developer %}{% url "accounts:developer-profile" %}{% else %}{% url "accounts:client-profile" %}{% endif %}">
                                                             {% trans "My Profile" %}
                                                         </a>
                                                     </li>
@@ -96,20 +104,22 @@
             </div>
         </header>
         {% if messages %}
-        <div class="container">
-            {% for message in messages %}
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10">
-                    <div{% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="success">
-                        <strong>{{ message.tags }}</strong> {{ message }}.
-                        <a href="#" style="float: right" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <div class="container">
+                {% for message in messages %}
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <div{% if message.tags %}
+                                class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %}
+                                role="success">
+                                <strong>{{ message.tags }}</strong> {{ message }}.
+                                <a href="#" style="float: right" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </div>
+                        </div>
+                        <div class="col-1"></div>
                     </div>
-                </div>
-                <div class="col-1"></div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% endif %}
         <!--============== Header Section End ==============-->
         {% block page_header %}
@@ -119,7 +129,7 @@
         <div class="full-row pt-0">
             <div class="container">
                 {% block main_content %}
-                
+
                 {% endblock main_content %}
             </div>
         </div>
@@ -132,7 +142,8 @@
                     <div class="col">
                         <div class="footer-widget mb-4">
                             <div class="footer-logo mb-4">
-                                <a href="#"><img src="{% static 'images/logo.jpg' %}" alt="{% trans 'Image not found!' %}" /></a>
+                                <a href="#"><img src="{% static 'images/logo.jpg' %}"
+                                                 alt="{% trans 'Image not found!' %}"/></a>
                             </div>
                             <p></p>
                         </div>
@@ -169,7 +180,8 @@
                     <div class="col">
                         <div class="footer-widget newslatter-widget mb-4">
                             <h4 class="widget-title mb-4">{% trans "Appointment" %}</h4>
-                            <p>Litora ligula dapibus scelerisque vitae, fermentum aenean gravida lobortis mus pulvinar magna turient primis.</p>
+                            <p>Litora ligula dapibus scelerisque vitae, fermentum aenean gravida lobortis mus pulvinar
+                                magna turient primis.</p>
                             <a href="#" class="btn btn-primary w-100">{% trans "Register Now" %}</a>
                         </div>
                     </div>
@@ -207,20 +219,20 @@
 {% endblock body %}
 {% block Custom_JS %}
     <script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/typo.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/spellcheck.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
-      <script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
-      <script type="text/javascript" src="{% static 'martor/js/martor.bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/typo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/spellcheck.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'martor/js/martor.bootstrap.min.js' %}"></script>
     <script>
-        $('.martor-preview pre').each(function(i, block){
-                hljs.highlightBlock(block);
+        $('.martor-preview pre').each(function (i, block) {
+            hljs.highlightBlock(block);
         });
-       $('#single-property').layerSlider({
+        $('#single-property').layerSlider({
             sliderVersion: '6.5.0b2',
             type: 'popup',
             pauseOnHover: 'disabled',

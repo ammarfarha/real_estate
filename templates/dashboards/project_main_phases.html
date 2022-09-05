@@ -2,40 +2,41 @@
 {% load static i18n %}
 {% load crispy_forms_tags %}
 {% block page_header %}
-<div class="row">
-    <div class="col">
-        <h3 class="my-3">{{ project_name }} {% trans "Main Phases" %}</h3>
+    <div class="row">
+        <div class="col">
+            <h3 class="my-3">{{ project_name }} {% trans "Main Phases" %}</h3>
+        </div>
     </div>
-</div>
 {% endblock page_header %}
 
 {% block main_containt %}
-<div class="row">
-    <div class="col">
-        <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
-            <div class="overflow-x-scroll font-fifteen">
-                <table class="w-100 items-list bg-transparent">
-                    <thead>
+    <div class="row">
+        <div class="col">
+            <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
+                <div class="overflow-x-scroll font-fifteen">
+                    <table class="w-100 items-list bg-transparent">
+                        <thead>
                         <tr class="bg-white">
                             <th>{% trans "Name" %}</th>
                             <th>{% trans "Action" %}</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         {% for phase in phases %}
-                        <tr>
-                            <td>
-                                <h5 class="text-secondary font-400">{{ phase.title }}</h5>
-{#                                    <span><i class="fas fa-map-marker-alt text-primary font-13"></i> {{ project.location }}</span>#}
-                                </div>
+                            <tr>
+                                <td>
+                                    <h5 class="text-secondary font-400">{{ phase.title }}</h5>
+                                    {#                                    <span><i class="fas fa-map-marker-alt text-primary font-13"></i> {{ project.location }}</span>#}
+                            </div>
                             </td>
                             <td>
-                                <a href="{% url 'main:sub-phase' phase.project_id phase.pk %}" class="text-primary me-4 mb-1"><i class="fas fa-edit"></i></a>
-{#                                <a href="{% url 'main:main-phase-delete' phase.project_id phase.pk %}" class="text-primary me-4 mb-1"><i class="fas fa-trash"></i></a>#}
+                                <a href="{% url 'main:sub-phase' phase.project_id phase.pk %}"
+                                   class="text-primary me-4 mb-1"><i class="fas fa-edit"></i></a>
+                                {#                                <a href="{% url 'main:main-phase-delete' phase.project_id phase.pk %}" class="text-primary me-4 mb-1"><i class="fas fa-trash"></i></a>#}
                             </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
+                            </tr>
+                        {% endfor %}
+                </tbody>
                 </table>
             </div>
             <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
@@ -46,5 +47,5 @@
             {% include 'pagination.html' %}
         </div>
     </div>
-</div>
+    </div>
 {% endblock main_containt %}

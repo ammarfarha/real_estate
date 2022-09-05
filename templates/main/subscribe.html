@@ -2,8 +2,6 @@
 {% load static i18n %}
 {% load crispy_forms_tags %}
 {% block main_content %}
-
-
     <div class="full-row">
         <div class="container">
             <div class="row">
@@ -12,24 +10,25 @@
                         <h4 class="mb-4 down-line">{% trans "Subscribe" %}</h4>
                         <div class="form-icon-left form-boder">
                             {% if can_subscribe %}
-                            <form action="#" method="post">
-                                {% csrf_token %}
-                                {{ form|crispy }}
-                                <div class="row row-cols-1 g-3">
-                                    <div class="col">
+                                <form action="#" method="post">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <div class="row row-cols-1 g-3">
                                         <div class="col">
-                                            <button type="submit" class="btn btn-primary mb-3">{% trans "Subscribe" %}</button>
+                                            <div class="col">
+                                                <button type="submit"
+                                                        class="btn btn-primary mb-3">{% trans "Subscribe" %}</button>
+                                            </div>
                                         </div>
-                                    </div>
-                            </form>
+                                </form>
                             {% else %}
-                            <div class="row">
-                                <div class="col-md-12 mb-20">
-                                    <p>{% trans "You Are All ready Subcribed" %}</p>
-                                    <a class="btn btn-primary" href="{% url 'main:index' %}">{% trans "Back" %}</a>
+                                <div class="row">
+                                    <div class="col-md-12 mb-20">
+                                        <p>{% trans "You Are All ready Subcribed" %}</p>
+                                        <a class="btn btn-primary" href="{% url 'main:index' %}">{% trans "Back" %}</a>
 
+                                    </div>
                                 </div>
-                            </div>
                             {% endif %}
 
                         </div>

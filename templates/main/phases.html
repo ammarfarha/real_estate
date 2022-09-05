@@ -59,7 +59,8 @@
                                     <div class="property-overview border rounded bg-white p-30 mb-30">
                                         <div class="px-4 py-3">
                                             <div class="col-md-12 mb-20">
-                                                <form class="form-boder" action="{% url 'main_app:add-update' sub_phase.pk %}"
+                                                <form class="form-boder"
+                                                      action="{% url 'main_app:add-update' sub_phase.pk %}"
                                                       method="post" enctype="multipart/form-data">
                                                     {% csrf_token %}
                                                     {{ addForm|crispy }}
