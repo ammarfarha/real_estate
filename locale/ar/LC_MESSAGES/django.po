@@ -3,312 +3,312 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-05 08:41-0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-09-06 10:04+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: .\accounts\file_validator.py:10
 msgid "Unsupported File Type"
-msgstr ""
+msgstr "صيغة الملف غير مدعومة"
 
 #: .\accounts\forms.py:9
 msgid "Yes"
-msgstr ""
+msgstr "نعم"
 
 #: .\accounts\forms.py:10
 msgid "No"
-msgstr ""
+msgstr "لا"
 
 #: .\accounts\forms.py:88
 msgid "You have to enter an official email address"
-msgstr ""
+msgstr "يجب عليك إدخال عنوان إلكتروني رسمي"
 
 #: .\accounts\forms.py:115
 msgid "You have to enter a company name"
-msgstr ""
+msgstr "يجب إدخال اسم الشركة"
 
 #: .\accounts\forms.py:117
 msgid "You have to enter a your company commercial license"
-msgstr ""
+msgstr "يجب رفع السجل التجاري للشركة"
 
 #: .\accounts\forms.py:120
 msgid "You are not a company"
-msgstr ""
+msgstr "ليس لديك شركة"
 
 #: .\accounts\models.py:11
 msgid "Male"
-msgstr ""
+msgstr "ذكر"
 
 #: .\accounts\models.py:12
 msgid "Female"
-msgstr ""
+msgstr "أنثى"
 
 #: .\accounts\models.py:16
 msgid "Birth Date"
-msgstr ""
+msgstr "تاريخ الميلاد"
 
 #: .\accounts\models.py:21 .\templates\main\project_detail.html:82
 msgid "Phone Number"
-msgstr ""
+msgstr "رقم الهاتف"
 
 #: .\accounts\models.py:27
 msgid "Mobile Number"
-msgstr ""
+msgstr "رقم الجوال"
 
 #: .\accounts\models.py:30
 msgid "Country"
-msgstr ""
+msgstr "البلدة"
 
 #: .\accounts\models.py:37
 msgid "Gender"
-msgstr ""
+msgstr "الجنس"
 
 #: .\accounts\models.py:45
 msgid "City"
-msgstr ""
+msgstr "المدينة"
 
 #: .\accounts\models.py:50
 msgid "Full Address"
-msgstr ""
+msgstr "العنوان الكامل"
 
 #: .\accounts\models.py:55 .\main_app\models.py:149
 msgid "Client Photo"
-msgstr ""
+msgstr "صورة العميل"
 
 #: .\accounts\models.py:62 .\main_app\models.py:167
 msgid "Client"
-msgstr ""
+msgstr "العميل"
 
 #: .\accounts\models.py:90
 msgid "Are you a Company?"
-msgstr ""
+msgstr "هل انت شركة؟"
 
 #: .\accounts\models.py:96
 msgid "Company Name"
-msgstr ""
+msgstr "اسم الشركة"
 
 #: .\accounts\models.py:103
 msgid "Company Website"
-msgstr ""
+msgstr "الربط الإلكتروني للشركة"
 
 #: .\accounts\models.py:108
 msgid "Trade Record"
-msgstr ""
+msgstr "السجل التجاري"
 
 #: .\accounts\models.py:117 .\main_app\models.py:33
 #: .\templates\main\home.html:206 .\templates\main\project_detail.html:61
 #: .\templates\main\projects.html:70
 msgid "Developer"
-msgstr ""
+msgstr "المطور"
 
 #: .\accounts\views.py:35
 msgid "congratulations, You have been successfully registered"
-msgstr ""
+msgstr "تهانينا, تم التسجيل بنجاح"
 
 #: .\accounts\views.py:40
 msgid "Create New Client"
-msgstr ""
+msgstr "انشاء عميل جديد"
 
 #: .\accounts\views.py:48
 msgid ""
 "congratulations, You have been successfully registered, You will receive a "
 "message that your account has been activated"
-msgstr ""
+msgstr "تهانينا، تم التسجبل بنجاح , ستصلك رسالة تغعيل الحساب في أقرب وقت"
 
 #: .\accounts\views.py:58
 msgid "Create New Developer"
-msgstr ""
+msgstr "إنشاء مطور جديد"
 
 #: .\accounts\views.py:64
 msgid "Password Have been Rest Successfully"
-msgstr ""
+msgstr "تم إعادة تعيين كلمة المرور بنجاح"
 
 #: .\accounts\views.py:72
 msgid "Your Profile Updated Successfully."
-msgstr ""
+msgstr "تم تحديث المعلومات الشخصية بنجاح."
 
 #: .\accounts\views.py:81
 msgid "Update Client Profile"
-msgstr ""
+msgstr "تحديث المعلومات الشخصية للعميل"
 
 #: .\accounts\views.py:82 .\templates\dashboards\profile.html:12
 msgid "Update"
-msgstr ""
+msgstr "تحديث"
 
 #: .\accounts\views.py:96
 msgid "Update Developer Profile"
-msgstr ""
+msgstr "تحديث المعلومات الشخصية للمطور"
 
 #: .\main_app\forms.py:79 .\templates\main\home.html:338
 msgid "Full Name"
-msgstr ""
+msgstr "الاسم الكامل"
 
 #: .\main_app\forms.py:89
 msgid "Card Code"
-msgstr ""
+msgstr "رمز البطاقة"
 
 #: .\main_app\forms.py:99
 msgid "For Account Number"
-msgstr ""
+msgstr "لحساب رقم"
 
 #: .\main_app\forms.py:109
 msgid "Price Of Subscribe"
-msgstr ""
+msgstr "ثمن الإشتراك"
 
 #: .\main_app\forms.py:138 .\templates\dashboards\my_admin.html:21
 msgid "Type"
-msgstr ""
+msgstr "النوع"
 
 #: .\main_app\forms.py:143
 msgid "Status"
-msgstr ""
+msgstr "الحالة"
 
 #: .\main_app\forms.py:148
 msgid "Project Title"
-msgstr ""
+msgstr "عنوان المشروع"
 
 #: .\main_app\models.py:16
 msgid "Commercial"
-msgstr ""
+msgstr "تجاري"
 
 #: .\main_app\models.py:17 .\templates\main\home.html:41
 msgid "Residential"
-msgstr ""
+msgstr "سكني"
 
 #: .\main_app\models.py:18 .\templates\main\home.html:57
 #: .\templates\main\home.html:65
 msgid "Industrial"
-msgstr ""
+msgstr "صناعي"
 
 #: .\main_app\models.py:19
 msgid "Special Purpose"
-msgstr ""
+msgstr "مشروع خاص"
 
 #: .\main_app\models.py:20 .\templates\main\home.html:49
 msgid "Lands"
-msgstr ""
+msgstr "أراضي"
 
 #: .\main_app\models.py:23
 msgid "Planing"
-msgstr ""
+msgstr "تخطيط"
 
 #: .\main_app\models.py:24
 msgid "Initial"
-msgstr ""
+msgstr "مبدئي"
 
 #: .\main_app\models.py:25
 msgid "Under Construction"
-msgstr ""
+msgstr "قيد الإنشاء"
 
 #: .\main_app\models.py:26
 msgid "Done"
-msgstr ""
+msgstr "تم"
 
 #: .\main_app\models.py:27
 msgid "Ready To Use"
-msgstr ""
+msgstr "متوفر للإستخدام"
 
 #: .\main_app\models.py:41
 msgid "Project Name"
-msgstr ""
+msgstr "اسم المشروع"
 
 #: .\main_app\models.py:48
 msgid "Summary"
-msgstr ""
+msgstr "الوصف العام للمشروع"
 
 #: .\main_app\models.py:55
 msgid "Type of the Project"
-msgstr ""
+msgstr "نوع المشروع"
 
 #: .\main_app\models.py:63
 msgid "The project Status"
-msgstr ""
+msgstr "حالة المشروع"
 
 #: .\main_app\models.py:70
 msgid "Area in Square Meters"
-msgstr ""
+msgstr "مساحة المشروع (متر)"
 
 #: .\main_app\models.py:77
 msgid "Project Stakeholders"
-msgstr ""
+msgstr "أصحاب المصلحة للمشروع"
 
 #: .\main_app\models.py:82
 msgid "Project Neighborhood"
-msgstr ""
+msgstr "منطقة المشروع"
 
 #: .\main_app\models.py:113
 msgid "No Address Found"
-msgstr ""
+msgstr "لم إيجاد العنوان"
 
 #: .\main_app\models.py:143 .\main_app\models.py:175 .\main_app\models.py:207
 msgid "Project"
-msgstr ""
+msgstr "المشروع"
 
 #: .\main_app\models.py:182
 msgid "Subscription Date"
-msgstr ""
+msgstr "تاريخ الاشتراك"
 
 #: .\main_app\models.py:187
 msgid "Referral User"
-msgstr ""
+msgstr "الوسيط"
 
 #: .\main_app\models.py:214 .\main_app\models.py:241
 #: .\templates\dashboards\project_sub_phase.html:22
 msgid "Title"
-msgstr ""
+msgstr "العنوان"
 
 #: .\main_app\models.py:234
 msgid "Main Phase"
-msgstr ""
+msgstr "المرحلة الرئيسية"
 
 #: .\main_app\models.py:246 .\templates\dashboards\project_sub_phase.html:23
 msgid "Start Date"
-msgstr ""
+msgstr "تاريخ البدء"
 
 #: .\main_app\models.py:251
 msgid "End Date"
-msgstr ""
+msgstr "تارخ الانتهاء"
 
 #: .\main_app\models.py:256
 msgid "Actual Completion Date"
-msgstr ""
+msgstr "تاريخ الانتهاء المتوقع"
 
 #: .\main_app\models.py:275
 msgid "Sub Phase Update"
-msgstr ""
+msgstr "تحديث المرحلة الفرعية"
 
 #: .\main_app\models.py:282
 msgid "Update Date"
-msgstr ""
+msgstr "تاريخ التحديث"
 
 #: .\main_app\models.py:286
 msgid "Update Description"
-msgstr ""
+msgstr "تحديث الوصف"
 
 #: .\main_app\models.py:305
 msgid "Update Sun Phase"
-msgstr ""
+msgstr "تحديث المرحلة الفرعية"
 
 #: .\main_app\models.py:311
 msgid "Attachment"
-msgstr ""
+msgstr "إرفاق ملف"
 
 #: .\main_app\views.py:60 .\main_app\views.py:74 .\templates\main\home.html:172
 #: .\templates\main\main_base.html:44
 msgid "All Projects"
-msgstr "المشاريع"
+msgstr "كل المشاريع"
 
 #: .\main_app\views.py:108 .\templates\dashboards\dashboard_base.html:72
 #: .\templates\main\main_base.html:72
@@ -317,91 +317,91 @@ msgstr "مشاريعي"
 
 #: .\main_app\views.py:120
 msgid "My Subscriptions"
-msgstr ""
+msgstr "مشاريع مشترك يها"
 
 #: .\main_app\views.py:129
 msgid "Your project have been added successfully"
-msgstr ""
+msgstr "تم إضافة المشروع بنجاح"
 
 #: .\main_app\views.py:142
 msgid "Add Project"
-msgstr ""
+msgstr "إضافة مشروع"
 
 #: .\main_app\views.py:156
 msgid "Display Project"
-msgstr ""
+msgstr "عرض المشروع"
 
 #: .\main_app\views.py:172
 msgid "Your Project Have Been Updated Successfully"
-msgstr ""
+msgstr "تم تحديث المشروع بنجاح"
 
 #: .\main_app\views.py:183
 #, python-brace-format
 msgid "Project {project} Basic Info"
-msgstr ""
+msgstr "لمشروع {project} المعلومات الرئيسية"
 
 #: .\main_app\views.py:190
 msgid "Your Image Has been Uploaded Successfully"
-msgstr ""
+msgstr "تم رفع الصورة بنجاح"
 
 #: .\main_app\views.py:198
 #, python-brace-format
 msgid "Project {project} Images"
-msgstr ""
+msgstr "المشروع{project} صور"
 
 #: .\main_app\views.py:208
 msgid "Your File Has been Uploaded Successfully"
-msgstr ""
+msgstr "تم رفع الملف بنجاح"
 
 #: .\main_app\views.py:226
 #, python-brace-format
 msgid "Project {project} Main-Phases"
-msgstr ""
+msgstr "المراحل الأساسية لمشروع  {project}"
 
 #: .\main_app\views.py:234
 msgid "Main phase was added successfully"
-msgstr ""
+msgstr "تم إضافة المرحلة الرئيسية بنجاح"
 
 #: .\main_app\views.py:242
 msgid "Main phase was updated successfully"
-msgstr ""
+msgstr "تم تحديث المرحلة الرئيسية بنجاح"
 
 #: .\main_app\views.py:255
 #, python-brace-format
 msgid "Project {project} Sub-Phases"
-msgstr ""
+msgstr "المراحل الفرعية لمشروع  {project}"
 
 #: .\main_app\views.py:268
 msgid "Sub-phase was added successfully"
-msgstr ""
+msgstr "تم إضافة المرحلة الفرعية بنجاح"
 
 #: .\main_app\views.py:276
 msgid "Sub-phase was updated successfully"
-msgstr ""
+msgstr "تم تحديث المرحلة الفرعية بنجاح"
 
 #: .\main_app\views.py:285
 msgid "Your Project Have Been Deleted Successfully"
-msgstr ""
+msgstr "تم حذف المشروع الخاص بك بنجاح"
 
 #: .\main_app\views.py:352
 msgid "Your Subscription Added Successfully"
-msgstr ""
+msgstr "تم إضافة الإشتراك الخاص بك بنجاح"
 
 #: .\main_app\views.py:385
 msgid "Add Update Successfully"
-msgstr ""
+msgstr "تم التحديث بنجاح"
 
 #: .\real_estate\settings.py:153
 msgid "English"
-msgstr ""
+msgstr "انكليزي"
 
 #: .\real_estate\settings.py:154
 msgid "Arabic"
-msgstr ""
+msgstr "عربي"
 
 #: .\templates\account\login.html:7 .\templates\account\login.html:17
 msgid "Sign In"
-msgstr ""
+msgstr "تسجيل الدخول"
 
 #: .\templates\account\login.html:22
 #, python-format
@@ -412,10 +412,15 @@ msgid ""
 "                                    for a %(site_name)s account and sign in "
 "below:"
 msgstr ""
+"سجيل الدخول عن طريق\n"
+"                                    of your existing third party accounts. "
+"Or, <a href=\"%(signup_url)s\">sign up</a>\n"
+"                                    for a %(site_name)s account and sign in "
+"below:"
 
 #: .\templates\account\login.html:30
 msgid "or"
-msgstr ""
+msgstr "أو"
 
 #: .\templates\account\login.html:36
 #, python-format
@@ -424,315 +429,319 @@ msgid ""
 "                                    <a href=\"%(signup_url)s\">sign up</a> "
 "first."
 msgstr ""
+"اذا لم تكن تملك حساب بعد ، قم \n"
+"                                    <a href=\"%(signup_url)s\">بالتسجيل</a> "
+"أولا."
 
 #: .\templates\account\password_change.html:9
 #: .\templates\account\password_change.html:21
 #: .\templates\dashboards\dashboard_base.html:86
 #: .\templates\main\main_base.html:89
 msgid "Change Password"
-msgstr ""
+msgstr "تغيير كلمة المرور"
 
 #: .\templates\account\password_change.html:23
 msgid "Forgot Password?"
-msgstr ""
+msgstr "نسيت كلمة المرور؟"
 
 #: .\templates\account\signup-test.html:5
 msgid "Signup"
-msgstr ""
+msgstr "تسجيل الخروج"
 
 #: .\templates\account\signup-test.html:8
 #: .\templates\account\signup-test.html:19
 msgid "Sign Up"
-msgstr ""
+msgstr "اشتراك"
 
 #: .\templates\account\signup-test.html:10
 #, python-format
 msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
+"لديك حساب مسبقاً ؟ تسجيل الدخول<a href=\"%(login_url)s\">تسجيل الدخول</a>."
 
 #: .\templates\dashboards\dashboard_base.html:62
 msgid "Open Dashboard Navigation"
-msgstr ""
+msgstr "فتح التنقل في لوحة التحكم"
 
 #: .\templates\dashboards\dashboard_base.html:68
 msgid "Projects Administration"
-msgstr ""
+msgstr "مشاريع"
 
 #: .\templates\dashboards\dashboard_base.html:76
 msgid "Account Settings"
-msgstr ""
+msgstr "إعدادات الحساب"
 
 #: .\templates\dashboards\dashboard_base.html:80
 msgid "Personal Profile"
-msgstr ""
+msgstr "الملف الشخصي"
 
 #: .\templates\dashboards\dashboard_base.html:92
 #: .\templates\main\main_base.html:93
 msgid "Logout"
-msgstr ""
+msgstr "خروج"
 
 #: .\templates\dashboards\dashboard_base.html:110
 msgid "Dashboard"
-msgstr ""
+msgstr "الصف"
 
 #: .\templates\dashboards\dashboard_base.html:119
 #: .\templates\dashboards\dashboard_base.html:124
 msgid "Hi,"
-msgstr ""
+msgstr "مرحبا,"
 
 #: .\templates\dashboards\dashboard_base.html:154
 msgid "2022 All right reserved"
-msgstr ""
+msgstr "جميع الحقوق محفوظة 2022"
 
 #: .\templates\dashboards\delete.html:7 .\templates\dashboards\delete.html:29
 #: .\templates\dashboards\project_main_phase.html:18
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: .\templates\dashboards\delete.html:16
 msgid "You are going to delete"
-msgstr ""
+msgstr "هل تريد الحذف بالتأكيد"
 
 #: .\templates\dashboards\delete.html:22
 msgid "Are You sure"
-msgstr ""
+msgstr "هل أنت متأكد"
 
 #: .\templates\dashboards\delete.html:27
 msgid "Cancel"
-msgstr ""
+msgstr "إلغاء"
 
 #: .\templates\dashboards\my_admin.html:20
 #: .\templates\dashboards\project_main_phases.html:20
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #: .\templates\dashboards\my_admin.html:22
 msgid "Current Status"
-msgstr ""
+msgstr "الحالة الحالية"
 
 #: .\templates\dashboards\my_admin.html:23
 #: .\templates\main\project_detail.html:139
 msgid "Area"
-msgstr ""
+msgstr "المساحة"
 
 #: .\templates\dashboards\my_admin.html:53
 msgid "There Are No Projects Added By You!"
-msgstr ""
+msgstr "لم يتم إضافة أي من المشاريع بعد!"
 
 #: .\templates\dashboards\my_admin.html:65
 msgid "Add New Project"
-msgstr ""
+msgstr "إضافة مشروع جديد"
 
 #: .\templates\dashboards\project_edit.html:15
 msgid "Save"
-msgstr ""
+msgstr "حفظ"
 
 #: .\templates\dashboards\project_images_upload.html:30
 msgid "Upload Image"
-msgstr ""
+msgstr "رفع صورة"
 
 #: .\templates\dashboards\project_main_phase.html:12
 #: .\templates\dashboards\project_sub_phase.html:12
 msgid "Current Phases"
-msgstr ""
+msgstr "المراحل الحالية"
 
 #: .\templates\dashboards\project_main_phase.html:21
 msgid "Edit"
-msgstr ""
+msgstr "تعديل"
 
 #: .\templates\dashboards\project_main_phase.html:38
 #: .\templates\dashboards\project_sub_phase.html:74
 msgid "Submit"
-msgstr ""
+msgstr "تسجيل"
 
 #: .\templates\dashboards\project_main_phases.html:7
 msgid "Main Phases"
-msgstr ""
+msgstr "المراحل الرئيسية للمشروع"
 
 #: .\templates\dashboards\project_main_phases.html:21
 msgid "Action"
-msgstr ""
+msgstr "إجراء"
 
 #: .\templates\dashboards\project_main_phases.html:44
 msgid "Add New Phase"
-msgstr ""
+msgstr "أضافة مرحلة جديدة"
 
 #: .\templates\dashboards\project_sub_phase.html:16
 msgid "Phase"
-msgstr ""
+msgstr "المرحلة"
 
 #: .\templates\dashboards\project_sub_phase.html:21
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: .\templates\dashboards\project_sub_phase.html:24
 msgid "Finish Date"
-msgstr ""
+msgstr "تاريخ الانتهاء"
 
 #: .\templates\dashboards\project_sub_phase.html:25
 msgid "Completion Date"
-msgstr ""
+msgstr "موعد اكتمال المشروع"
 
 #: .\templates\dashboards\project_sub_phase.html:56
 msgid "No Sub-phases added here yet. Use the form below to add them"
-msgstr ""
+msgstr "لم يتم إضافة مراحل فرعية بعد ، قم بتعبئة النموذج لإنشاء مرحلة فرعية"
 
 #: .\templates\dashboards\project_update_base.html:23
 msgid "Project Basic Info"
-msgstr ""
+msgstr "معلومات أساسية حول المشروع"
 
 #: .\templates\dashboards\project_update_base.html:27
 msgid "Project Images"
-msgstr ""
+msgstr "صور عن المشروع"
 
 #: .\templates\dashboards\project_update_base.html:32
 msgid "Project Main Phases"
-msgstr ""
+msgstr "المراحل الرئيسية للمشروع"
 
 #: .\templates\dashboards\project_update_base.html:36
 msgid "Project Sub-Phases"
-msgstr ""
+msgstr "المراحل الفرعية للمشروع"
 
 #: .\templates\main\forget.html:12
 msgid "Forget Password"
-msgstr ""
+msgstr "نسيت الباسوورد"
 
 #: .\templates\main\forget.html:18
 msgid "Send"
-msgstr ""
+msgstr "إرسال"
 
 #: .\templates\main\forget.html:22 .\templates\main\login.html:22
 #: .\templates\main\registration.html:25
 msgid "Forgot Password or Username"
-msgstr ""
+msgstr "هل نسيت كلمة المررو أو اسم المستخدم"
 
 #: .\templates\main\forget.html:24
 msgid "already have Account"
-msgstr ""
+msgstr "لديك حساب مسبقاً"
 
 #: .\templates\main\home.html:11
 msgid "Search what you are looking for..."
-msgstr ""
+msgstr "ابحث حول ماتريده..."
 
 #: .\templates\main\home.html:12
 msgid "We have listed over 100000+ property in our database"
-msgstr ""
+msgstr "لدينا أكثر من 100000+مشروع ضمن نظام العقارات"
 
 #: .\templates\main\home.html:17
 msgid "Property Types"
-msgstr ""
+msgstr "نوع المشروع"
 
 #: .\templates\main\home.html:18
 msgid "House"
-msgstr ""
+msgstr "منزل"
 
 #: .\templates\main\home.html:19
 msgid "Office"
-msgstr ""
+msgstr "مكتب"
 
 #: .\templates\main\home.html:20
 msgid "Appartment"
-msgstr ""
+msgstr "شقة سكنية"
 
 #: .\templates\main\home.html:21
 msgid "Condos"
-msgstr ""
+msgstr "شقق سكنية"
 
 #: .\templates\main\home.html:22
 msgid "Villa"
-msgstr ""
+msgstr "فيلا"
 
 #: .\templates\main\home.html:23
 msgid "Small Family"
-msgstr ""
+msgstr "عائلة صغيرة"
 
 #: .\templates\main\home.html:24
 msgid "Single Room"
-msgstr ""
+msgstr "غرقة مفردة"
 
 #: .\templates\main\home.html:31
 msgid "Search"
-msgstr ""
+msgstr "بحث"
 
 #: .\templates\main\home.html:82
 msgid "About This System "
-msgstr "حول النظام"
+msgstr "حول نظام العقارات"
 
 #: .\templates\main\home.html:105
 msgid "Mission & Vision"
-msgstr ""
+msgstr "المهمة والرؤية"
 
 #: .\templates\main\home.html:113 .\templates\main\home.html:121
 #: .\templates\main\home.html:129
 msgid "Mission"
-msgstr ""
+msgstr "المهمة"
 
 #: .\templates\main\home.html:137 .\templates\main\home.html:145
 #: .\templates\main\home.html:153
 msgid "Vision"
-msgstr ""
+msgstr "الرؤية"
 
 #: .\templates\main\home.html:169
 msgid "Recent Projects"
-msgstr ""
+msgstr "أحدث المشاريع"
 
 #: .\templates\main\home.html:213
 msgid "There Are No Projects"
-msgstr ""
+msgstr "لا يوجد مشاريع بعد "
 
 #: .\templates\main\home.html:231
 msgid "WHY SHOULD YOU JOIN US ?"
-msgstr ""
+msgstr "لماذا يجب أن تنضم إلينا؟"
 
 #: .\templates\main\home.html:237 .\templates\main\registration.html:21
 msgid "Register"
-msgstr ""
+msgstr "تسجيل"
 
 #: .\templates\main\home.html:251
 msgid "Our Partners"
-msgstr ""
+msgstr "شركاؤنا"
 
 #: .\templates\main\home.html:312
 msgid "Get In Touch"
-msgstr ""
+msgstr "ابقى على تواصل"
 
 #: .\templates\main\home.html:317
 msgid "Office Address"
-msgstr ""
+msgstr "العنوان"
 
 #: .\templates\main\home.html:321
 msgid "Contact Number"
-msgstr ""
+msgstr "الاتصال"
 
 #: .\templates\main\home.html:324
 msgid "Email Address"
-msgstr ""
+msgstr "البريد الإلكتروني"
 
 #: .\templates\main\home.html:328
 msgid "Career Info"
-msgstr ""
+msgstr "معلومات مهمة"
 
 #: .\templates\main\home.html:333 .\templates\main\home.html:356
 #: .\templates\main\project_detail.html:100
 msgid "Send Message"
-msgstr ""
+msgstr "إرسال رسالة"
 
 #: .\templates\main\home.html:342 .\templates\main\project_detail.html:88
 msgid "Your Email"
-msgstr ""
+msgstr "بريدك الإلكتروني"
 
 #: .\templates\main\home.html:346
 msgid "Subject"
-msgstr ""
+msgstr "موضوع الرسالة"
 
 #: .\templates\main\home.html:350 .\templates\main\project_detail.html:94
 msgid "Message"
-msgstr ""
+msgstr "الرسالة"
 
 #: .\templates\main\login.html:12
 msgid "User Login"
-msgstr ""
+msgstr "تسجيل الدخول"
 
 #: .\templates\main\login.html:18 .\templates\main\main_base.html:57
 msgid "Login"
@@ -740,20 +749,20 @@ msgstr "دخول"
 
 #: .\templates\main\login.html:24
 msgid "Create Client Account"
-msgstr ""
+msgstr "إنشاء حساب عميل"
 
 #: .\templates\main\login.html:26
 msgid "Create Developer Account"
-msgstr ""
+msgstr "إنشاء حساب مطور"
 
 #: .\templates\main\main_base.html:40 .\templates\main\project_detail.html:16
 #: .\templates\main\projects.html:13
 msgid "Home"
-msgstr ""
+msgstr "الرئيسية"
 
 #: .\templates\main\main_base.html:48
 msgid "About This System"
-msgstr ""
+msgstr "حول نظام العقارات"
 
 #: .\templates\main\main_base.html:52
 msgid "Contact"
@@ -761,39 +770,39 @@ msgstr "للتواصل معنا"
 
 #: .\templates\main\main_base.html:77
 msgid "Subscriptions"
-msgstr ""
+msgstr "الإشتراكات"
 
 #: .\templates\main\main_base.html:85
 msgid "My Profile"
-msgstr ""
+msgstr "الصفحة الشخصية"
 
 #: .\templates\main\main_base.html:146
 msgid "Image not found!"
-msgstr ""
+msgstr "الصورة غير متوفرة!"
 
 #: .\templates\main\main_base.html:160
 msgid "Contact Info"
-msgstr ""
+msgstr "معلومات التواصل"
 
 #: .\templates\main\main_base.html:170
 msgid "Quick Links"
-msgstr ""
+msgstr "روابط سريعة"
 
 #: .\templates\main\main_base.html:172
 msgid "Our Services"
-msgstr ""
+msgstr "خدماتنا"
 
 #: .\templates\main\main_base.html:173
 msgid "Investment Solution"
-msgstr ""
+msgstr "حل الاستثمار"
 
 #: .\templates\main\main_base.html:174
 msgid "requenly Ask Question"
-msgstr ""
+msgstr "اسأل سؤالاً"
 
 #: .\templates\main\main_base.html:175
 msgid "ow It Work"
-msgstr ""
+msgstr "كيف يعمل "
 
 #: .\templates\main\main_base.html:176
 msgid "ecome a Member"
@@ -801,137 +810,141 @@ msgstr ""
 
 #: .\templates\main\main_base.html:182
 msgid "Appointment"
-msgstr ""
+msgstr "موعد"
 
 #: .\templates\main\main_base.html:185
 msgid "Register Now"
-msgstr ""
+msgstr "اشترك الآن"
 
 #: .\templates\main\main_base.html:198
 msgid "All right reserved"
-msgstr ""
+msgstr "جميع الحقوق محفوظة"
 
 #: .\templates\main\main_base.html:202
 msgid "Privacy & Policy"
-msgstr ""
+msgstr "سياسة الخصوصية"
 
 #: .\templates\main\main_base.html:204
 msgid "Site Map"
-msgstr ""
+msgstr "خريطة الموقع"
 
 #: .\templates\main\main_base.html:213
 msgid "Scroll to top"
-msgstr ""
+msgstr "انتقل إلى الأعلى"
 
 #: .\templates\main\phases.html:17
 msgid "Add New Main Phase"
-msgstr ""
+msgstr "إضافة مرحلة رئيسية جديدة"
 
 #: .\templates\main\phases.html:68
 msgid "Add Update"
-msgstr ""
+msgstr "إضافة تحديث"
 
 #: .\templates\main\phases.html:82 .\templates\main\project_detail.html:228
 msgid "Posted On"
-msgstr ""
+msgstr "نشر بتاريخ"
 
 #: .\templates\main\phases.html:96
 msgid "There are no updates"
-msgstr ""
+msgstr "لايوجد تحديثات بعد"
 
 #: .\templates\main\project_detail.html:17
 msgid "Projects"
-msgstr ""
+msgstr "المشاريع"
 
 #: .\templates\main\project_detail.html:76
 msgid "Your Name"
-msgstr ""
+msgstr "اسمك"
 
 #: .\templates\main\project_detail.html:108
 msgid "Invit a Friend"
-msgstr ""
+msgstr "دعوة الأصدقاء"
 
 #: .\templates\main\project_detail.html:118 .\templates\main\projects.html:151
 msgid "Description"
-msgstr ""
+msgstr "الوصف"
 
 #: .\templates\main\project_detail.html:126
 msgid "Project Summary"
-msgstr ""
+msgstr "لمحة عامة حول المشروع"
 
 #: .\templates\main\project_detail.html:131
 msgid "Property Id"
-msgstr ""
+msgstr "رقم المشروع"
 
 #: .\templates\main\project_detail.html:135
 msgid "Property Type"
-msgstr ""
+msgstr "نوع المشروع"
 
 #: .\templates\main\project_detail.html:143
 msgid "Address"
-msgstr ""
+msgstr "العنوان"
 
 #: .\templates\main\project_detail.html:147
 msgid "Developer Name"
-msgstr ""
+msgstr "اسم المطور"
 
 #: .\templates\main\project_detail.html:151
 msgid "Location"
-msgstr ""
+msgstr "الموقع"
 
 #: .\templates\main\project_detail.html:157
 msgid "Project Status"
-msgstr ""
+msgstr "حالة المشروع"
 
 #: .\templates\main\project_detail.html:192
 msgid "Project Phases"
-msgstr ""
+msgstr "مراحل المشروع"
 
 #: .\templates\main\project_detail.html:248
 #: .\templates\main\project_detail.html:258
 msgid "There is no information at this stage yet !"
-msgstr ""
+msgstr "لا يوجد معلومات في هذه المرحلة بعد!"
 
 #: .\templates\main\project_detail.html:267
 msgid ""
 "Sorry! this information is only available to people who subscribe to the "
 "real estate system, if you want to follow it you have to subscribe"
 msgstr ""
+"عذراً! هذه المعلومات متاحة فقط للأشخاص المشتركين في النظام العقاري ، إذا كنت "
+"ترغب في متابعتها فعليك الاشتراك"
 
 #: .\templates\main\project_detail.html:270 .\templates\main\subscribe.html:10
 #: .\templates\main\subscribe.html:20
 msgid "Subscribe"
-msgstr ""
+msgstr "اشتراك"
 
 #: .\templates\main\projects.html:15
 msgid "Projects List"
-msgstr ""
+msgstr "قائمة المشاريع"
 
 #: .\templates\main\projects.html:69
 msgid "Business"
-msgstr ""
+msgstr "أعمال"
 
 #: .\templates\main\projects.html:77
 msgid "More Details"
-msgstr ""
+msgstr "المزيد من التفاصيل"
 
 #: .\templates\main\projects.html:86
 msgid ""
 "You currently have NO subscriptions. Navigate to our projects list to "
 "subscribe to a project of your choice"
 msgstr ""
+"ليس لديك حاليا اشتراكات. انتقل إلى قائمة مشاريعنا للاشتراك في مشروع من "
+"اختيارك"
 
 #: .\templates\main\projects.html:107
 msgid "For Rent"
-msgstr ""
+msgstr "للإيجار"
 
 #: .\templates\main\projects.html:108
 msgid "Featured"
-msgstr ""
+msgstr "لاحقاً"
 
 #: .\templates\main\projects.html:129
 msgid "( 100 People Recommended )"
-msgstr ""
+msgstr "(100 شخص موصى به)"
 
 #: .\templates\main\projects.html:154
 msgid "Highlights"
@@ -939,36 +952,36 @@ msgstr ""
 
 #: .\templates\main\projects.html:157
 msgid "Regular Fit"
-msgstr ""
+msgstr "تناسب منتظم"
 
 #: .\templates\main\projects.html:158
 msgid "Full sleeves"
-msgstr ""
+msgstr "أكمام كاملة"
 
 #: .\templates\main\projects.html:159
 msgid "Machine wash, tumble dry"
-msgstr ""
+msgstr "غسيل آلي ، تجفيف آلي"
 
 #: .\templates\main\projects.html:172
 msgid "2 Month Ago"
-msgstr ""
+msgstr "منذ شهرين 2"
 
 #: .\templates\main\registration.html:27
 msgid "Already Have An Account"
-msgstr ""
+msgstr "لديك حساب مسبقاً"
 
 #: .\templates\main\subscribe.html:27
 msgid "You Are All ready Subcribed"
-msgstr ""
+msgstr "أنت بالفعل مشترك"
 
 #: .\templates\main\subscribe.html:28
 msgid "Back"
-msgstr ""
+msgstr "عودة"
 
 #: .\templates\pagination.html:10
 msgid "Previous Page"
-msgstr ""
+msgstr "الصفحة السابقة"
 
 #: .\templates\pagination.html:23
 msgid "Next Page"
-msgstr ""
+msgstr "الصفحة التالية"
