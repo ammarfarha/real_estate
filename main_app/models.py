@@ -88,19 +88,7 @@ class Project(models.Model):
         null=True,
         blank=False,
     )
-    stakeholders = models.TextField(
-        verbose_name=_('Project Stakeholders'),
-        null=True,
-        blank=True
-    )
-    neighborhood = models.TextField(
-        verbose_name=_('Project Neighborhood'),
-        null=True,
-        blank=True
-    )
 
-    # meta:
-    # srt:
     def __str__(self):
         return str(self.name)
 
