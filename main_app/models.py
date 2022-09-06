@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from djgeojson.fields import PointField
 from geopy.geocoders import Nominatim
@@ -105,12 +106,46 @@ class Project(models.Model):
     def is_subscribed(self, client):
         return client.is_authenticated and self.subscriptions.filter(client=client).exists()
 
-    def get_address(self):
+    # region geolocator methods
+    def _get_reversed_geolocator(self, language='ar'):
         if self.location and self.location.get("coordinates"):
             geolocator = Nominatim(user_agent="main_app")
-            return geolocator.reverse(reversed(self.location["coordinates"]), language='en,ar', addressdetails=True)
-        else:
-            return _('No Address Found')
+            return geolocator.reverse(reversed(self.location["coordinates"]), language=language, addressdetails=True)
+
+    def address(self, language='ar'):
+        project_address = self._get_reversed_geolocator(language)
+        return str(project_address) if project_address else _('No address')
+
+    def _get_address_component(self, component, language='ar'):
+        project_address = self._get_reversed_geolocator(language)
+        if project_address and project_address.raw:
+            address_components = project_address.raw.get('address')
+            if address_components and address_components.get(component):
+                return address_components.get(component)
+
+        return ''
+
+    def country(self):
+        language = translation.get_language()
+        return self._get_address_component(component='country', language=language)
+
+    def country_code(self):
+        language = translation.get_language()
+        return self._get_address_component(component='country_code', language=language)
+
+    def state(self):
+        language = translation.get_language()
+        return self._get_address_component(component='state', language=language)
+
+    def province(self):
+        language = translation.get_language()
+        return self._get_address_component(component='province', language=language)
+
+    def suburb(self):
+        language = translation.get_language()
+        return self._get_address_component(component='suburb', language=language)
+    # endregion geolocator methods
+
 
     def create_main_and_sub_phases_from_template(self):
         config = SiteConfiguration.get_solo()
