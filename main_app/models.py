@@ -59,7 +59,7 @@ class Project(models.Model):
     type = models.CharField(
         max_length=2,
         choices=TypeList.choices,
-        verbose_name=_('Type of the Project'),
+        verbose_name=_('Type'),
         default=TypeList.COMMERCIAL,
         null=True,
         blank=False,
@@ -67,7 +67,7 @@ class Project(models.Model):
     statue = models.CharField(
         max_length=2,
         choices=StatusList.choices,
-        verbose_name=_('The project Status'),
+        verbose_name=_('Status'),
         default=StatusList.PLANNING,
         null=True,
         blank=False,
@@ -75,14 +75,14 @@ class Project(models.Model):
     visibility = models.CharField(
         max_length=2,
         choices=Visibility.choices,
-        verbose_name=_('The project Status'),
+        verbose_name=_('Visibility'),
         default=Visibility.UNDER_REVIEW,
         null=True,
         blank=False,
     )
     location = PointField()
     area = models.DecimalField(
-        verbose_name=_('Area in Square Meters'),
+        verbose_name=_('Area (Square Meters)'),
         max_digits=10,
         decimal_places=0,
         null=True,
