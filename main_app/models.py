@@ -27,6 +27,12 @@ class Project(models.Model):
         DONE = 'DO', _('Done')
         READY_TO_USE = 'RE', _('Ready To Use')
 
+    class Visibility(models.TextChoices):
+        UNDER_REVIEW = 'UR', _('Under Review')
+        PUBLISHED = 'P', _('Published')
+        HIDDEN_BY_DEVELOPER = 'HD', _('Hidden by the Developer')
+        HIDDEN_BY_ADMIN = 'HA', _('Hidden by he Admin')
+
     # Fields:
     developer = models.ForeignKey(
         Developer,
@@ -63,6 +69,14 @@ class Project(models.Model):
         choices=StatusList.choices,
         verbose_name=_('The project Status'),
         default=StatusList.PLANNING,
+        null=True,
+        blank=False,
+    )
+    visibility = models.CharField(
+        max_length=2,
+        choices=Visibility.choices,
+        verbose_name=_('The project Status'),
+        default=Visibility.UNDER_REVIEW,
         null=True,
         blank=False,
     )
