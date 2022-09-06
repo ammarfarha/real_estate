@@ -20,7 +20,7 @@ class Project(models.Model):
         LANDS = 'LA', _('Lands')
 
     class StatusList(models.TextChoices):
-        PLANING = 'PL', _('Planing')
+        PLANNING = 'PL', _('Planning')
         INITIAL = 'IN', _('Initial')
         UNDER_CONSTRUCTION = 'UC', _('Under Construction')
         DONE = 'DO', _('Done')
@@ -61,7 +61,7 @@ class Project(models.Model):
         max_length=2,
         choices=StatusList.choices,
         verbose_name=_('The project Status'),
-        default=StatusList.PLANING,
+        default=StatusList.PLANNING,
         null=True,
         blank=False,
     )

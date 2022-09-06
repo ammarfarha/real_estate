@@ -132,7 +132,7 @@ class ProjectCreateView(SuccessMessageMixin, DeveloperMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.developer = self.request.user.get_developer()
-        form.instance.status = Project.StatusList.PLANING
+        form.instance.status = Project.StatusList.PLANNING
         project = form.save()
         project.create_main_and_sub_phases_from_template()
         return super().form_valid(form)
