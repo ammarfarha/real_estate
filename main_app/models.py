@@ -10,7 +10,12 @@ from accounts.models import Developer, Client
 from shared_app.models import SiteConfiguration
 
 
-# TODO: Add projects moderation functionality
+# TODO: use the below manager in all pages facing the client
+class VisibleProjectManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(visibility=Project.Visibility.PUBLISHED)
+
+
 class Project(models.Model):
     # Constants:
     class TypeList(models.TextChoices):
@@ -89,6 +94,9 @@ class Project(models.Model):
         blank=False,
     )
 
+    objects = models.Manager()
+    visible_projects = VisibleProjectManager()
+
     def __str__(self):
         return str(self.name)
 
@@ -148,6 +156,8 @@ class Project(models.Model):
         return self._get_address_component(component='suburb', language=language)
     # endregion geolocator methods
 
+    def visible(self):
+        return self.visibility == Project.Visibility.PUBLISHED
 
     def create_main_and_sub_phases_from_template(self):
         config = SiteConfiguration.get_solo()
