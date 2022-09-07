@@ -16,18 +16,33 @@
 
 {% block body %}
     {% if LANGUAGE_CODE == 'ar' %}
+        <div class="preloader">
+			<div class="loader clock xy-center"></div>
+		</div>
     {% else %}
         <div class="preloader">
-        <div class="loader xy-center"></div>
-    </div>
+            <div class="loader xy-center"></div>
+        </div>
     {% endif %}
     <div id="page_wrapper" class="bg-light">
         <!--============== Header Section Start ==============-->
+    {% if LANGUAGE_CODE == 'ar' %}
+        <header class="nav-on-top shadow-sm bg-white">
+            <div class="main-nav py-2 xs-p-0">
+    {% else %}
         <header class="header-style nav-on-top bg-white">
             <div class="main-nav">
+    {% endif %}
                 <div class="container">
                     <div class="row">
                         <div class="col">
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            <nav class="navbar navbar-expand-lg nav-secondary nav-primary-hover nav-line-active">
+                                <a class="navbar-brand order-0 order-lg-" href="{% url "main_app:index" %}">
+                                    <img class="nav-logo" src="{% static 'rtl/images/logo/logo1.png' %}" alt="Image not found !">
+                                </a>
+                                <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        {% else %}
                             <nav class="navbar navbar-expand-lg nav-secondary nav-primary-hover nav-line-active">
                                 <a class="navbar-brand" href="{% url "main_app:index" %}">
                                     <img class="nav-logo" src="{% static 'images/logo/logo11.png' %}" alt="Logo">
@@ -35,10 +50,18 @@
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                         aria-expanded="false" aria-label="Toggle navigation">
+                        {% endif %}
                                     <span class="navbar-toggler-icon flaticon-menu flat-small text-primary"></span>
                                 </button>
+                            {% if LANGUAGE_CODE == 'ar' %}
+                                <div class="collapse navbar-collapse order-1 order-lg-1" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto order-lg-0">
+                            {% else %}
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav ms-auto">
+                                    <ul class="navbar-nav me-auto">
+                            {% endif %}
+
+
                                         <li class="nav-item">
                                             <a class="nav-link" href="{% url "main_app:index" %}">{% trans "Home" %}</a>
                                         </li>
@@ -63,7 +86,7 @@
                                     </ul>
 
                                     {% if user.is_authenticated %}
-                                        <ul class="navbar-nav ms-auto sm-mx-none ps-3 user-option">
+                                        <ul class="navbar-nav {% if LANGUAGE_CODE == 'en' %}ms{% else %}me{% endif %}-auto sm-mx-none ps-3 user-option {% if LANGUAGE_CODE == 'ar' %}order-lg-2{% endif %}">
                                             <li class="nav-item dropdown">
                                                 <img src="{{ user.get_logo_image_or_avatar }}" alt="">
                                                 <a class="dropdown-toggle" href="#">
@@ -130,7 +153,7 @@
         {% endblock page_header %}
         <!--============== Property Grid View Start ==============-->
         <div class="full-row pt-0">
-            <div class="container">
+            <div class="container-fluid">
                 {% block main_content %}
 
                 {% endblock main_content %}

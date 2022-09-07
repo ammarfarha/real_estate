@@ -2,7 +2,7 @@
 {% load static i18n %}
 <!--============== Search Banner Start ==============-->
 {% block main_content %}
-    <div class="full-row p-0"
+    <div class="row p-0"
          style="background-image: url('{% static "images/slider/home1.png" %}'); background-position: center center; background-size: cover;">
         <div class="container">
             <div class="row justify-content-md-center py-8">
@@ -165,11 +165,11 @@
             <div class="row">
                 <div class="col mb-4">
                     <div class="align-items-center d-flex" id="projects">
-                        <div class="me-auto">
+                        <div class="ms-auto">
                             <h2 class="d-table">{% trans "Recent Projects" %}</h2>
                         </div>
                         <a href="{% url "main_app:projects" %}"
-                           class="btn-link text-secondary hover-text-primary transation ms-auto">{% trans "All Projects" %}</a>
+                           class="btn-link text-secondary hover-text-primary transation me-auto">{% trans "All Projects" %}</a>
                     </div>
                 </div>
             </div>

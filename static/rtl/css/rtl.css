@@ -612,3 +612,45 @@ div.summary .product-offer-item::before {
         font-weight: 600;
     }
 }
+
+/* ######## Added by Shahd ######### */
+body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    font-family: 'Cairo', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Cairo', sans-serif;
+    line-height: revert;
+    font-weight: 500;
+}
+
+.navbar .navbar-nav li a, .navbar .navbar-nav li ul.dropdown-menu {
+    font-family: 'Cairo', sans-serif;
+}
+
+.btn.btn-primary {
+    font-family: 'Cairo', sans-serif;
+    background-color: var(--theme-primary-color);
+    color: var(--theme-white-color);
+}
+
+p {
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+}
+
+.navbar-nav > li.dropdown > a.nav-link::after, .navbar-nav > li.dropdown .dropdown-toggle::after {
+    right: inherit;
+    left: -15px;
+}
+
+.user-option img {
+  margin-right: inherit;
+  margin-left: 10px;
+}
+/* ######## End of Addition by Shahd ######### */
