@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-08 10:43-0700\n"
+"POT-Creation-Date: 2022-09-08 14:40-0700\n"
 "PO-Revision-Date: 2022-09-07 16:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -83,7 +83,7 @@ msgstr "المدينة"
 msgid "Full Address"
 msgstr "العنوان الكامل"
 
-#: .\accounts\models.py:55 .\main_app\models.py:196
+#: .\accounts\models.py:55
 msgid "Client Photo"
 msgstr "صورة العميل"
 
@@ -267,6 +267,12 @@ msgstr "العنوان"
 #: .\main_app\models.py:190 .\main_app\models.py:222 .\main_app\models.py:254
 msgid "Project"
 msgstr "المشروع"
+
+#: .\main_app\models.py:196
+#, fuzzy
+#| msgid "Project Phases"
+msgid "Project Photo"
+msgstr "مراحل المشروع"
 
 #: .\main_app\models.py:229
 msgid "Subscription Date"
@@ -787,7 +793,7 @@ msgid "ow It Work"
 msgstr "كيف يعمل "
 
 #: .\templates\main\main_base.html:203
-msgid "ecome a Member"
+msgid "become a Member"
 msgstr ""
 
 #: .\templates\main\main_base.html:209
@@ -859,6 +865,10 @@ msgstr "اسمك"
 msgid "Invit a Friend"
 msgstr "دعوة الأصدقاء"
 
+#: .\templates\main\project_detail.html:109
+msgid "Just copy the link and send it to you friend"
+msgstr ""
+
 #: .\templates\main\project_detail.html:118 .\templates\main\projects.html:129
 msgid "Description"
 msgstr "الوصف"
@@ -912,6 +922,10 @@ msgstr ""
 #: .\templates\main\subscribe.html:20
 msgid "Subscribe"
 msgstr "اشتراك"
+
+#: .\templates\main\project_images_upload.html:16
+msgid "Remove image"
+msgstr ""
 
 #: .\templates\main\project_images_upload.html:30
 msgid "Upload Image"
@@ -1035,11 +1049,11 @@ msgstr "منذ شهرين 2"
 msgid "Already Have An Account"
 msgstr "لديك حساب مسبقاً"
 
-#: .\templates\main\subscribe.html:27
+#: .\templates\main\subscribe.html:28
 msgid "You Are All ready Subcribed"
 msgstr "أنت بالفعل مشترك"
 
-#: .\templates\main\subscribe.html:28
+#: .\templates\main\subscribe.html:29
 msgid "Back"
 msgstr "عودة"
 

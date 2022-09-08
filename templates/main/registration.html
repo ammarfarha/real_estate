@@ -2,7 +2,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load i18n %}
-
 {% block main_content %}
     <!--============== Signup Form Start ==============-->
     <div class="full-row">
@@ -17,14 +16,17 @@
                                     {% csrf_token %}
                                     {{ form|crispy }}
                                     <div class="col">
-                                        <button type="submit"
-                                                class="btn btn-primary mb-3">{% trans 'Register' %}</button>
+                                        <button type="submit" class="btn btn-primary mb-3">
+                                            {% trans 'Register' %}
+                                        </button>
                                     </div>
                                     <div class="col">
-                                        <a href="{% url 'accounts:forget-password' %}"
-                                           class="text-dark d-table py-1">{% trans "Forgot Password or Username" %}</a>
-                                        <a href="{% url 'accounts:login' %}"
-                                           class="text-dark d-table py-1"><u>{% trans "Already Have An Account" %}</u></a>
+                                        <a href="{% url 'accounts:forget-password' %}" class="text-dark d-table py-1">
+                                            {% trans "Forgot Password or Username" %}
+                                        </a>
+                                        <a href="{% url 'accounts:login' %}" class="text-dark d-table py-1">
+                                            <u>{% trans "Already Have An Account" %}</u>
+                                        </a>
                                     </div>
                                 </div>
                             </form>

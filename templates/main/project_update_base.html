@@ -28,6 +28,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="
+
                                 {% url 'main_app:create-main-phase' project.pk as main_phases_url %}{{ main_phases_url }}"
                            class="nav-link btn{% if request.get_full_path|is_similar:main_phases_url %} btn-primary text-white{% endif %}">3. {% trans 'Project Main Phases' %}</a>
                     </li>

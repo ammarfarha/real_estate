@@ -90,7 +90,7 @@ later: get address form leaflet map
 Saturday:
 * fix alert messages and make them floating -----------------------------------------------------Done
 * remove dashboard ------------------------------------------------------------------------------Done
-* TRANSLATE ALL STRINGS
+* TRANSLATE ALL STRINGS ------------------------------------------------------Done neet extra testing
 * revamp the display of phases in sub-phases in the project page
 * Fix the allauth login/signup functionality
 * Fix project images

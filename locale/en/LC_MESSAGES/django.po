@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-08 10:43-0700\n"
+"POT-Creation-Date: 2022-09-08 14:40-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Full Address"
 msgstr ""
 
-#: .\accounts\models.py:55 .\main_app\models.py:196
+#: .\accounts\models.py:55
 msgid "Client Photo"
 msgstr ""
 
@@ -257,6 +257,10 @@ msgstr ""
 
 #: .\main_app\models.py:190 .\main_app\models.py:222 .\main_app\models.py:254
 msgid "Project"
+msgstr ""
+
+#: .\main_app\models.py:196
+msgid "Project Photo"
 msgstr ""
 
 #: .\main_app\models.py:229
@@ -746,7 +750,7 @@ msgid "ow It Work"
 msgstr ""
 
 #: .\templates\main\main_base.html:203
-msgid "ecome a Member"
+msgid "become a Member"
 msgstr ""
 
 #: .\templates\main\main_base.html:209
@@ -818,6 +822,10 @@ msgstr ""
 msgid "Invit a Friend"
 msgstr ""
 
+#: .\templates\main\project_detail.html:109
+msgid "Just copy the link and send it to you friend"
+msgstr ""
+
 #: .\templates\main\project_detail.html:118 .\templates\main\projects.html:129
 msgid "Description"
 msgstr ""
@@ -868,6 +876,10 @@ msgstr ""
 #: .\templates\main\project_detail.html:270 .\templates\main\subscribe.html:10
 #: .\templates\main\subscribe.html:20
 msgid "Subscribe"
+msgstr ""
+
+#: .\templates\main\project_images_upload.html:16
+msgid "Remove image"
 msgstr ""
 
 #: .\templates\main\project_images_upload.html:30
@@ -990,11 +1002,11 @@ msgstr ""
 msgid "Already Have An Account"
 msgstr ""
 
-#: .\templates\main\subscribe.html:27
+#: .\templates\main\subscribe.html:28
 msgid "You Are All ready Subcribed"
 msgstr ""
 
-#: .\templates\main\subscribe.html:28
+#: .\templates\main\subscribe.html:29
 msgid "Back"
 msgstr ""
 

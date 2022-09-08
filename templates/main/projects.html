@@ -23,7 +23,6 @@
     </div>
     <!--============== Page title End ==============-->
 {% endblock page_header %}
-
 {% block main_content %}
     <div class="full-row pt-0">
         <div class="container">
@@ -45,13 +44,13 @@
                             </div>
                             <div class="portfolio-info mt-3">
                                 <div class="portfolio-title d-inline-block">
-                                    <h5 class="font-400 mb-0"><a href="#" class="text-secondary">{{ project.name }}</a>
+                                    <h5 class="font-400 mb-0">
+                                        <a href="#" class="text-secondary">{{ project.name }}</a>
                                     </h5>
                                     <div class="text-primary">
                                         <a href="#">{% trans "Business" %}</a> .
                                         <a href="#">{% trans "Developer" %} {{ project.developer.first_name }}</a>
                                     </div>
-
                                 </div>
                                 <div class="portfolio-view float-end d-inline-block">
                                     <div class="portfolio-view float-end d-inline-block">
@@ -71,73 +70,58 @@
             </div>
         </div>
     </div>
-
     {% block modal %}
         <!--============== Modal Start ==============-->
         {% for project in projects %}
             <div class="overlay-dark modal fade quick-view-modal" id="quick-view-{{ project.pk }}">
-                <div class="modal-dialog modal-dialog-centered modal-xl">
-                    <div class="modal-content">
-                        <div class="close view-close">
-                            <span aria-hidden="true">&times;</span>
-                        </div>
-                        <div class="modal-body property-block summary p-3">
-                            <div class="row row-cols-xl-2 row-cols-1">
-                                <div class="col">
-                                    <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
-                                        <div class="cata position-absolute">
-                                            <span class="sale bg-secondary text-white">{% trans "For Rent" %}</span>
-                                            <span class="featured bg-primary text-white">{% trans "Featured" %}</span>
-                                        </div>
-                                        <a href="#"><img class="w-100" src="{{ project.get_first_image_or_default }}" alt=""></a>
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="close view-close">
+                        <span aria-hidden="true">&times;</span>
+                    </div>
+                    <div class="modal-body property-block summary p-3">
+                        <div class="row row-cols-xl-2 row-cols-1">
+                            <div class="col">
+                                <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom m-2">
+{#                                    <div class="cata position-absolute">#}
+{#                                        <span class="sale bg-secondary text-white">{% trans "For Rent" %}</span>#}
+{#                                        <span class="featured bg-primary text-white">{% trans "Featured" %}</span>#}
+{#                                    </div>#}
+                                    <a href="#">
+                                        <img class="w-100" src="{{ project.get_first_image_or_default }}" alt="">
+                                    </a>
                                 </div>
                                 <div class="col">
                                     <div class="property_text transation py-3 pe-3">
                                         <span class="d-inline-block text-primary">{{ project.get_type_display }}</span>
                                         <h5 class="modal-title mb-1" id="staticBackdropLabel">
-                                            <a href="#" class="text-secondary hover-text-primary transation">{{ project.name }}</a>
+                                            <a href="#"
+                                               class="text-secondary hover-text-primary transation">{{ project.name }}</a>
                                         </h5>
                                         {% if LANGUAGE_CODE == 'ar' %}
                                             <span class="my-3 d-block dir-rtl">
-                                                <i class="fas fa-map-marker-alt text-primary ms-1"></i>  {{ project.location }}</span>
+                                                <i class="fas fa-map-marker-alt text-primary ms-1"></i> {{ project.location }}</span>
                                         {% else %}
                                             <span class="my-3 d-block">
                                                 <i class="fas fa-map-marker-alt text-primary"></i> {{ project.location }}</span>
                                         {% endif %}
-                                        <a href="#" class="d-block text-light hover-text-primary font-small mb-2">{% trans "( 100 People Recommended )" %}</a>
+                                        <a href="#"
+                                           class="d-block text-light hover-text-primary font-small mb-2">{% trans "( 100 People Recommended )" %}</a>
                                         <div class="d-flex">
-                                            {#                        <span class="text-secondary font-large">$5600 - $8300/<small>mo</small></span>#}
-                                            {#                        <span class="text-white font-mini px-2 rounded product-status ms-5 my-1 bg-primary"><i class="fas fa-check"></i> {% trans "Available" %}</span>#}
                                         </div>
-                                        {#                    <div class="product-offers mt-3">#}
-                                        {#                        <ul class="product-offers-list">#}
-                                        {#                            <li class="product-offer-item"> <strong>Special Price </strong>Get extra 19% off (price inclusive of discount)</li>#}
-                                        {#                            <li class="product-offer-item"> <strong>Bank Offer </strong> 10% instant discount on VISA Cards</li>#}
-                                        {#                            <li class="product-offer-item"> <strong>No cost EMI $49/month.</strong> Standard EMI also available</li>#}
-                                        {#                        </ul>#}
-                                        {#                    </div>#}
                                         <hr>
-                                        {#                    <div class="quantity">#}
-                                        {#                        <ul class="d-flex">#}
-                                        {#                            <li><span>Rooms:</span> 5</li>#}
-                                        {#                            <li><span>Beds:</span> 3</li>#}
-                                        {#                            <li><span>Bathrooms:</span> 2</li>#}
-                                        {#                            <li><span>Garage:</span> 1</li>#}
-                                        {#                            <li><span>Area:</span> 1100 Sqft</li>#}
-                                        {#                        </ul>#}
-                                        {#                    </div>#}
                                         <h5 class="text-secondary my-3">{% trans "Description" %}</h5>
                                         <p>{{ project.summary }}</p>
-                                        <div class="short-description d-flex">
-                                            <span class="me-4"><b>{% trans "Highlights" %}:</b></span>
-                                            <div class="short-description">
-                                                <ul class="list-style-tick">
-                                                    <li>{% trans "Regular Fit" %}.</li>
-                                                    <li>{% trans "Full sleeves" %}.</li>
-                                                    <li>{% trans "Machine wash, tumble dry" %}.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+{#                                        <div class="short-description d-flex">#}
+{#                                            <span class="me-4"><b>{% trans "Highlights" %}:</b></span>#}
+{#                                            <div class="short-description">#}
+{#                                                <ul class="list-style-tick">#}
+{#                                                    <li>{% trans "Regular Fit" %}.</li>#}
+{#                                                    <li>{% trans "Full sleeves" %}.</li>#}
+{#                                                    <li>{% trans "Machine wash, tumble dry" %}.</li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
                                         <div class="d-flex align-items-center post-meta mt-2 py-3 border-top">
                                             <div class="agent">
                                                 <a href="#" class="d-flex text-general align-items-center">
@@ -147,7 +131,6 @@
                                                     <span>{{ project.developer.first_name }} {{ project.developer.last_name }}</span>
                                                 </a>
                                             </div>
-                                            <div class="post-date ms-auto"><span>{% trans "2 Month Ago" %}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -159,8 +142,7 @@
         {% endfor %}
         <!--============== Modal End ==============-->
     {% endblock modal %}
-
-    <!--============== Pagination block ==============-->
-    {% include 'pagination.html' %}
-    <!--============== End Pagination block ==============-->
+<!--============== Pagination block ==============-->
+{% include 'pagination.html' %}
+<!--============== End Pagination block ==============-->
 {% endblock main_content %}
