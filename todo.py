@@ -73,19 +73,10 @@ Assigned to Abdullah
 --- ProjectPhasesView(CreateView) will use ProjectPhaseForm
 ----- List of Phases as context
 -----
-
-
-
-
-
 1 - client: display project map
 2 - authall interfaces
-
 3 - developer:
     Updates
-    
-    
-    
     
 later: get address form leaflet map
 
@@ -93,8 +84,28 @@ later: get address form leaflet map
 --- Normal
 --- https://github.com/agusmakmun/django-markdown-editor
 
+"""
+# TODO:
+""""
+Saturday:
+* fix alert messages and make them floating
+* remove dashboard
+* TRANSLATE ALL STRINGS
+* revamp the display of phases in sub-phases in the project page
+* Fix the allauth login/signup functionality
+* Fix project images
+* implement an email notification system (Next step: scalable solution)
+* Implement display for update attachements (all file types)
+* Implement AJAX pagination for updates
+* Fix the search form in home page
 
+Next Week:
+* Implement a payment gateway like payfort
+* implement an image uploading and thumbnailing plugin
 
-
+Refactoring:
+* create a templatetag to display projects (DRY) and make the projects listing consistent
+* create a templatetag to display page titles and reuse it everywhere
+* create a templatetag to display upadates
 
 """
