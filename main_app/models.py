@@ -193,7 +193,7 @@ class ProjectImage(models.Model):
         blank=False,
     )
     image = models.ImageField(
-        verbose_name=_('Client Photo'),
+        verbose_name=_('Project Photo'),
         null=True,
         blank=False,
         upload_to='projects/',

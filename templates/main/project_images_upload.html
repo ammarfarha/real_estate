@@ -13,7 +13,7 @@
                             {% for image in project.project_images.all %}
                                 <li class="col">
                                     <img src="/media/{{ image.image }}" class="rounded pb-30" alt="{{ image.alt }}">
-                                    <a href="#" title="Remove image item"><i class="fas fa-trash"></i></a>
+                                    <a href="#" title="{% trans "Remove image" %}"><i class="fas fa-trash"></i></a>
                                 </li>
                             {% endfor %}
                         </ul>
