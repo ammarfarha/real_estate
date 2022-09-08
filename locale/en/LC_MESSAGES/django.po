@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-05 08:41-0700\n"
+"POT-Creation-Date: 2022-09-07 16:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,8 +107,8 @@ msgid "Trade Record"
 msgstr ""
 
 #: .\accounts\models.py:117 .\main_app\models.py:33
-#: .\templates\main\home.html:206 .\templates\main\project_detail.html:61
-#: .\templates\main\projects.html:70
+#: .\templates\main\home.html:197 .\templates\main\project_detail.html:61
+#: .\templates\main\projects.html:52
 msgid "Developer"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Update Developer Profile"
 msgstr ""
 
-#: .\main_app\forms.py:79 .\templates\main\home.html:338
+#: .\main_app\forms.py:79 .\templates\main\home.html:328
 msgid "Full Name"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgstr ""
 msgid "Project Title"
 msgstr ""
 
-#: .\main_app\models.py:16
+#: .\main_app\models.py:16 .\templates\main\home.html:65
 msgid "Commercial"
 msgstr ""
 
@@ -187,7 +187,6 @@ msgid "Residential"
 msgstr ""
 
 #: .\main_app\models.py:18 .\templates\main\home.html:57
-#: .\templates\main\home.html:65
 msgid "Industrial"
 msgstr ""
 
@@ -304,13 +303,13 @@ msgstr ""
 msgid "Attachment"
 msgstr ""
 
-#: .\main_app\views.py:60 .\main_app\views.py:74 .\templates\main\home.html:172
-#: .\templates\main\main_base.html:44
+#: .\main_app\views.py:60 .\main_app\views.py:74 .\templates\main\home.html:163
+#: .\templates\main\main_base.html:70
 msgid "All Projects"
 msgstr ""
 
 #: .\main_app\views.py:108 .\templates\dashboards\dashboard_base.html:72
-#: .\templates\main\main_base.html:72
+#: .\templates\main\main_base.html:98
 msgid "My Projects"
 msgstr ""
 
@@ -427,7 +426,7 @@ msgstr ""
 #: .\templates\account\password_change.html:9
 #: .\templates\account\password_change.html:21
 #: .\templates\dashboards\dashboard_base.html:86
-#: .\templates\main\main_base.html:89
+#: .\templates\main\main_base.html:115
 msgid "Change Password"
 msgstr ""
 
@@ -467,7 +466,7 @@ msgid "Personal Profile"
 msgstr ""
 
 #: .\templates\dashboards\dashboard_base.html:92
-#: .\templates\main\main_base.html:93
+#: .\templates\main\main_base.html:119
 msgid "Logout"
 msgstr ""
 
@@ -658,74 +657,140 @@ msgstr ""
 msgid "About This System "
 msgstr ""
 
-#: .\templates\main\home.html:105
+#: .\templates\main\home.html:84
+msgid ""
+"The Real Estate System develops and invests in the high-quality real estate, "
+"projects and companies that make up the urban fabric of dynamic cities "
+"around the world. It does so responsibly, with the goal of creating long-"
+"term performance. commit By creating living spaces that enhance the well-"
+"being of people and communities, while reducing their environmental "
+"footprint."
+msgstr ""
+
+#: .\templates\main\home.html:99
 msgid "Mission & Vision"
 msgstr ""
 
-#: .\templates\main\home.html:113 .\templates\main\home.html:121
-#: .\templates\main\home.html:129
+#: .\templates\main\home.html:100 .\templates\main\home.html:131
+msgid ""
+"We redefined the traditional model by building specialized departments ready "
+"to give clients unparalleled expertise and a positive experience."
+msgstr ""
+
+#: .\templates\main\home.html:107 .\templates\main\home.html:114
+#: .\templates\main\home.html:122
 msgid "Mission"
 msgstr ""
 
-#: .\templates\main\home.html:137 .\templates\main\home.html:145
-#: .\templates\main\home.html:153
+#: .\templates\main\home.html:108
+msgid ""
+"We are dedicated to providing world-class service and market-leading "
+"expertise to our clients. We are passionate about providing the extra value "
+"that others simply will not. Fanatical integrity and consistently impressive "
+"results will be the signature of our service. We will succeed because we "
+"will not let our clients fail."
+msgstr ""
+
+#: .\templates\main\home.html:115
+msgid ""
+"Delivering the dream of home ownership everywhere.because owning real estate "
+"provides security, safety and opportunity for individuals. The technology we "
+"build helps real estate agents become more efficient at their job and find "
+"more customers to deliver on that mission."
+msgstr ""
+
+#: .\templates\main\home.html:123
+msgid ""
+"Our agents sell homes. They build relationships. They problem-solve.  They "
+"discover neighbourhoods. values and the newest, hottest listings. They make "
+"sure our clients don’t buy the wrong home."
+msgstr ""
+
+#: .\templates\main\home.html:130 .\templates\main\home.html:137
+#: .\templates\main\home.html:145
 msgid "Vision"
 msgstr ""
 
-#: .\templates\main\home.html:169
+#: .\templates\main\home.html:138
+msgid ""
+"We want to win at what we do, and we do all we can to help our customers, "
+"agents and employees build wealth. We love to work with people who are "
+"passionate about working hard and also giving back to their communities in a "
+"big way."
+msgstr ""
+
+#: .\templates\main\home.html:146
+msgid ""
+"We will be #1 in each of five categories: residential real estate, "
+"development/investments, mortgage, title, and insurance."
+msgstr ""
+
+#: .\templates\main\home.html:160
 msgid "Recent Projects"
 msgstr ""
 
-#: .\templates\main\home.html:213
+#: .\templates\main\home.html:204
 msgid "There Are No Projects"
 msgstr ""
 
-#: .\templates\main\home.html:231
+#: .\templates\main\home.html:222
 msgid "WHY SHOULD YOU JOIN US ?"
 msgstr ""
 
-#: .\templates\main\home.html:237 .\templates\main\registration.html:21
+#: .\templates\main\home.html:228 .\templates\main\registration.html:21
 msgid "Register"
 msgstr ""
 
-#: .\templates\main\home.html:251
+#: .\templates\main\home.html:242
 msgid "Our Partners"
 msgstr ""
 
-#: .\templates\main\home.html:312
+#: .\templates\main\home.html:303
 msgid "Get In Touch"
 msgstr ""
 
-#: .\templates\main\home.html:317
+#: .\templates\main\home.html:304
+msgid "Contact us for the latest news about real estate"
+msgstr ""
+
+#: .\templates\main\home.html:308
 msgid "Office Address"
 msgstr ""
 
-#: .\templates\main\home.html:321
+#: .\templates\main\home.html:308
+msgid "Saudi Arabia, Eastern Province, King Street"
+msgstr ""
+
+#: .\templates\main\home.html:311
 msgid "Contact Number"
 msgstr ""
 
-#: .\templates\main\home.html:324
+#: .\templates\main\home.html:314
 msgid "Email Address"
 msgstr ""
 
-#: .\templates\main\home.html:328
+#: .\templates\main\home.html:318
 msgid "Career Info"
 msgstr ""
 
-#: .\templates\main\home.html:333 .\templates\main\home.html:356
+#: .\templates\main\home.html:319
+msgid "For details of projects and developers,please email us:"
+msgstr ""
+
+#: .\templates\main\home.html:323 .\templates\main\home.html:346
 #: .\templates\main\project_detail.html:100
 msgid "Send Message"
 msgstr ""
 
-#: .\templates\main\home.html:342 .\templates\main\project_detail.html:88
+#: .\templates\main\home.html:332 .\templates\main\project_detail.html:88
 msgid "Your Email"
 msgstr ""
 
-#: .\templates\main\home.html:346
+#: .\templates\main\home.html:336
 msgid "Subject"
 msgstr ""
 
-#: .\templates\main\home.html:350 .\templates\main\project_detail.html:94
+#: .\templates\main\home.html:340 .\templates\main\project_detail.html:94
 msgid "Message"
 msgstr ""
 
@@ -733,7 +798,7 @@ msgstr ""
 msgid "User Login"
 msgstr ""
 
-#: .\templates\main\login.html:18 .\templates\main\main_base.html:57
+#: .\templates\main\login.html:18 .\templates\main\main_base.html:83
 msgid "Login"
 msgstr ""
 
@@ -745,80 +810,80 @@ msgstr ""
 msgid "Create Developer Account"
 msgstr ""
 
-#: .\templates\main\main_base.html:40 .\templates\main\project_detail.html:16
+#: .\templates\main\main_base.html:66 .\templates\main\project_detail.html:16
 #: .\templates\main\projects.html:13
 msgid "Home"
 msgstr ""
 
-#: .\templates\main\main_base.html:48
+#: .\templates\main\main_base.html:74
 msgid "About This System"
 msgstr ""
 
-#: .\templates\main\main_base.html:52
+#: .\templates\main\main_base.html:78
 msgid "Contact"
 msgstr ""
 
-#: .\templates\main\main_base.html:77
+#: .\templates\main\main_base.html:103
 msgid "Subscriptions"
 msgstr ""
 
-#: .\templates\main\main_base.html:85
+#: .\templates\main\main_base.html:111
 msgid "My Profile"
 msgstr ""
 
-#: .\templates\main\main_base.html:146
+#: .\templates\main\main_base.html:172
 msgid "Image not found!"
 msgstr ""
 
-#: .\templates\main\main_base.html:160
+#: .\templates\main\main_base.html:186
 msgid "Contact Info"
 msgstr ""
 
-#: .\templates\main\main_base.html:170
+#: .\templates\main\main_base.html:196
 msgid "Quick Links"
 msgstr ""
 
-#: .\templates\main\main_base.html:172
+#: .\templates\main\main_base.html:198
 msgid "Our Services"
 msgstr ""
 
-#: .\templates\main\main_base.html:173
+#: .\templates\main\main_base.html:199
 msgid "Investment Solution"
 msgstr ""
 
-#: .\templates\main\main_base.html:174
+#: .\templates\main\main_base.html:200
 msgid "requenly Ask Question"
 msgstr ""
 
-#: .\templates\main\main_base.html:175
+#: .\templates\main\main_base.html:201
 msgid "ow It Work"
 msgstr ""
 
-#: .\templates\main\main_base.html:176
+#: .\templates\main\main_base.html:202
 msgid "ecome a Member"
 msgstr ""
 
-#: .\templates\main\main_base.html:182
+#: .\templates\main\main_base.html:208
 msgid "Appointment"
 msgstr ""
 
-#: .\templates\main\main_base.html:185
+#: .\templates\main\main_base.html:211
 msgid "Register Now"
 msgstr ""
 
-#: .\templates\main\main_base.html:198
+#: .\templates\main\main_base.html:224
 msgid "All right reserved"
 msgstr ""
 
-#: .\templates\main\main_base.html:202
+#: .\templates\main\main_base.html:228
 msgid "Privacy & Policy"
 msgstr ""
 
-#: .\templates\main\main_base.html:204
+#: .\templates\main\main_base.html:230
 msgid "Site Map"
 msgstr ""
 
-#: .\templates\main\main_base.html:213
+#: .\templates\main\main_base.html:239
 msgid "Scroll to top"
 msgstr ""
 
@@ -850,7 +915,7 @@ msgstr ""
 msgid "Invit a Friend"
 msgstr ""
 
-#: .\templates\main\project_detail.html:118 .\templates\main\projects.html:151
+#: .\templates\main\project_detail.html:118 .\templates\main\projects.html:129
 msgid "Description"
 msgstr ""
 
@@ -906,49 +971,49 @@ msgstr ""
 msgid "Projects List"
 msgstr ""
 
-#: .\templates\main\projects.html:69
+#: .\templates\main\projects.html:51
 msgid "Business"
 msgstr ""
 
-#: .\templates\main\projects.html:77
+#: .\templates\main\projects.html:59
 msgid "More Details"
 msgstr ""
 
-#: .\templates\main\projects.html:86
+#: .\templates\main\projects.html:68
 msgid ""
 "You currently have NO subscriptions. Navigate to our projects list to "
 "subscribe to a project of your choice"
 msgstr ""
 
-#: .\templates\main\projects.html:107
+#: .\templates\main\projects.html:89
 msgid "For Rent"
 msgstr ""
 
-#: .\templates\main\projects.html:108
+#: .\templates\main\projects.html:90
 msgid "Featured"
 msgstr ""
 
-#: .\templates\main\projects.html:129
+#: .\templates\main\projects.html:107
 msgid "( 100 People Recommended )"
 msgstr ""
 
-#: .\templates\main\projects.html:154
+#: .\templates\main\projects.html:132
 msgid "Highlights"
 msgstr ""
 
-#: .\templates\main\projects.html:157
+#: .\templates\main\projects.html:135
 msgid "Regular Fit"
 msgstr ""
 
-#: .\templates\main\projects.html:158
+#: .\templates\main\projects.html:136
 msgid "Full sleeves"
 msgstr ""
 
-#: .\templates\main\projects.html:159
+#: .\templates\main\projects.html:137
 msgid "Machine wash, tumble dry"
 msgstr ""
 
-#: .\templates\main\projects.html:172
+#: .\templates\main\projects.html:150
 msgid "2 Month Ago"
 msgstr ""
 
