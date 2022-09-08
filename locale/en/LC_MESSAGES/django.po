@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-08 09:55-0700\n"
+"POT-Creation-Date: 2022-09-08 10:43-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -448,6 +448,18 @@ msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 
+#: .\templates\main\add_project.html:8 .\templates\main\my_admin.html:65
+msgid "Add New Project"
+msgstr ""
+
+#: .\templates\main\add_project.html:17
+msgid "Basic Information"
+msgstr ""
+
+#: .\templates\main\add_project.html:23 .\templates\main\project_edit.html:15
+msgid "Save"
+msgstr ""
+
 #: .\templates\main\delete.html:7 .\templates\main\delete.html:29
 #: .\templates\main\project_main_phase.html:18
 msgid "Delete"
@@ -778,10 +790,6 @@ msgstr ""
 msgid "There Are No Projects Added By You!"
 msgstr ""
 
-#: .\templates\main\my_admin.html:65
-msgid "Add New Project"
-msgstr ""
-
 #: .\templates\main\phases.html:17
 msgid "Add New Main Phase"
 msgstr ""
@@ -860,10 +868,6 @@ msgstr ""
 #: .\templates\main\project_detail.html:270 .\templates\main\subscribe.html:10
 #: .\templates\main\subscribe.html:20
 msgid "Subscribe"
-msgstr ""
-
-#: .\templates\main\project_edit.html:15
-msgid "Save"
 msgstr ""
 
 #: .\templates\main\project_images_upload.html:30

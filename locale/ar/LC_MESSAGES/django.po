@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-08 09:55-0700\n"
+"POT-Creation-Date: 2022-09-08 10:43-0700\n"
 "PO-Revision-Date: 2022-09-07 16:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -466,6 +466,18 @@ msgid ""
 msgstr ""
 "لديك حساب مسبقاً ؟ تسجيل الدخول<a href=\"%(login_url)s\">تسجيل الدخول</a>."
 
+#: .\templates\main\add_project.html:8 .\templates\main\my_admin.html:65
+msgid "Add New Project"
+msgstr "إضافة مشروع جديد"
+
+#: .\templates\main\add_project.html:17
+msgid "Basic Information"
+msgstr "المعلومات الأساسية"
+
+#: .\templates\main\add_project.html:23 .\templates\main\project_edit.html:15
+msgid "Save"
+msgstr "حفظ"
+
 #: .\templates\main\delete.html:7 .\templates\main\delete.html:29
 #: .\templates\main\project_main_phase.html:18
 msgid "Delete"
@@ -819,10 +831,6 @@ msgstr "المساحة"
 msgid "There Are No Projects Added By You!"
 msgstr "لم يتم إضافة أي من المشاريع بعد!"
 
-#: .\templates\main\my_admin.html:65
-msgid "Add New Project"
-msgstr "إضافة مشروع جديد"
-
 #: .\templates\main\phases.html:17
 msgid "Add New Main Phase"
 msgstr "إضافة مرحلة رئيسية جديدة"
@@ -904,10 +912,6 @@ msgstr ""
 #: .\templates\main\subscribe.html:20
 msgid "Subscribe"
 msgstr "اشتراك"
-
-#: .\templates\main\project_edit.html:15
-msgid "Save"
-msgstr "حفظ"
 
 #: .\templates\main\project_images_upload.html:30
 msgid "Upload Image"

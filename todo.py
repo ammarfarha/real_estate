@@ -95,7 +95,7 @@ Saturday:
 * Fix the allauth login/signup functionality
 * Fix project images
 * implement an email notification system (Next step: scalable solution)
-* Implement display for update attachements (all file types)
+* Implement display for update attachments (all file types)
 * Implement AJAX pagination for updates
 * Fix the search form in home page
 
