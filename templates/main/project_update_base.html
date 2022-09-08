@@ -1,4 +1,4 @@
-{% extends 'dashboards/dashboard_base.html' %}
+{% extends 'main/main_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% load i18n %}
@@ -12,7 +12,7 @@
     </div>
 {% endblock page_header %}
 
-{% block main_containt %}
+{% block main_content %}
     <div class="property-overview border rounded bg-white p-30 mb-30">
         <div class="row row-cols-1">
             <div class="col">
@@ -39,6 +39,5 @@
             </div>
         </div>
     </div>
-
     {% block inner_edit_space %}{% endblock inner_edit_space %}
-{% endblock main_containt %}
+{% endblock main_content %}

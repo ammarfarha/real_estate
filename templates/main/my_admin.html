@@ -1,4 +1,4 @@
-{% extends 'dashboards/dashboard_base.html' %}
+{% extends 'main/main_base.html' %}
 {% load static i18n %}
 {% load crispy_forms_tags %}
 {% block page_header %}
@@ -9,7 +9,7 @@
     </div>
 {% endblock page_header %}
 
-{% block main_containt %}
+{% block main_content %}
     <div class="row">
         <div class="col">
             <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
@@ -76,4 +76,4 @@
             </div>
         </div>
     </div>
-{% endblock main_containt %}
+{% endblock main_content %}

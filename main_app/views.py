@@ -98,7 +98,7 @@ class ContactUsView(TemplateView):
 
 
 class DeveloperProjectsListView(DeveloperMixin, ProjectsListView):
-    template_name = "dashboards/my_admin.html"
+    template_name = "main/my_admin.html"
 
     def get_queryset(self, *args, **kwargs):
         return super().get_queryset(*args, **kwargs).filter(developer=self.request.user)
@@ -166,7 +166,7 @@ class ProjectDetailsView(DetailView):
 
 class ProjectUpdateView(SuccessMessageMixin, ProjectCanEditMixin, UpdateView):
     model = Project
-    template_name = 'dashboards/project_edit.html'
+    template_name = 'main/project_edit.html'
     form_class = ProjectForm
     context_object_name = 'project'
     success_message = _("Your Project Have Been Updated Successfully")
@@ -186,7 +186,7 @@ class ProjectUpdateView(SuccessMessageMixin, ProjectCanEditMixin, UpdateView):
 
 class ProjectImagesUploadView(SuccessMessageMixin, ProjectCanEditMixin, CreateView):
     form_class = ProjectImageForm
-    template_name = 'dashboards/project_images_upload.html'
+    template_name = 'main/project_images_upload.html'
     success_message = _("Your Image Has been Uploaded Successfully")
 
     def form_valid(self, form):
@@ -219,7 +219,7 @@ class UpdateFileUploadView(SuccessMessageMixin, CreateView):
 # TODO: implement delete and reordering
 class ProjectMainPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
     form_class = MainPhaseForm
-    template_name = 'dashboards/project_main_phase.html'
+    template_name = 'main/project_main_phase.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
@@ -248,7 +248,7 @@ class ProjectMainPhaseUpdateView(ProjectMainPhaseBaseView, UpdateView):
 # TODO: implement delete and reordering
 class ProjectSubPhaseBaseView(SuccessMessageMixin, ProjectCanEditMixin):
     form_class = SubPhaseForm
-    template_name = 'dashboards/project_sub_phase.html'
+    template_name = 'main/project_sub_phase.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -281,7 +281,7 @@ class ProjectSubPhaseUpdateView(ProjectSubPhaseBaseView, UpdateView):
 
 class ProjectDeleteView(SuccessMessageMixin, ProjectCanEditMixin, DeleteView):
     models = Project
-    template_name = 'dashboards/delete.html'
+    template_name = 'main/delete.html'
     success_message = _("Your Project Have Been Deleted Successfully")
     success_url = reverse_lazy('main_app:my-project-list')
 
