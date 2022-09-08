@@ -125,7 +125,7 @@ class ClientSubscribedProjectsListView(ClientMixin, ProjectsListView):
 class ProjectCreateView(SuccessMessageMixin, DeveloperMixin, CreateView):
     model = Project
     form_class = ProjectForm
-    template_name = 'dashboards/add_project.html'
+    template_name = 'main/add_project.html'
     success_message = _("Your project have been added successfully")
     success_url = reverse_lazy('main:my-project-list')
     created_project_pk = None
