@@ -88,8 +88,8 @@ later: get address form leaflet map
 # TODO:
 """"
 Saturday:
-* fix alert messages and make them floating
-* remove dashboard
+* fix alert messages and make them floating ---------------------------------------------------------
+* remove dashboard ----------------------------------------------------------------------------------
 * TRANSLATE ALL STRINGS
 * revamp the display of phases in sub-phases in the project page
 * Fix the allauth login/signup functionality
