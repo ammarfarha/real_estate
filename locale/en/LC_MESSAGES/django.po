@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-07 16:56+0300\n"
+"POT-Creation-Date: 2022-09-08 09:55-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,11 +82,11 @@ msgstr ""
 msgid "Full Address"
 msgstr ""
 
-#: .\accounts\models.py:55 .\main_app\models.py:149
+#: .\accounts\models.py:55 .\main_app\models.py:196
 msgid "Client Photo"
 msgstr ""
 
-#: .\accounts\models.py:62 .\main_app\models.py:167
+#: .\accounts\models.py:62 .\main_app\models.py:214
 msgid "Client"
 msgstr ""
 
@@ -106,7 +106,7 @@ msgstr ""
 msgid "Trade Record"
 msgstr ""
 
-#: .\accounts\models.py:117 .\main_app\models.py:33
+#: .\accounts\models.py:117 .\main_app\models.py:45
 #: .\templates\main\home.html:197 .\templates\main\project_detail.html:61
 #: .\templates\main\projects.html:52
 msgid "Developer"
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Update Client Profile"
 msgstr ""
 
-#: .\accounts\views.py:82 .\templates\dashboards\profile.html:12
+#: .\accounts\views.py:82 .\templates\main\profile.html:12
 msgid "Update"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Update Developer Profile"
 msgstr ""
 
-#: .\main_app\forms.py:79 .\templates\main\home.html:328
+#: .\main_app\forms.py:79 .\templates\main\home.html:326
 msgid "Full Name"
 msgstr ""
 
@@ -166,11 +166,12 @@ msgstr ""
 msgid "Price Of Subscribe"
 msgstr ""
 
-#: .\main_app\forms.py:138 .\templates\dashboards\my_admin.html:21
+#: .\main_app\forms.py:138 .\main_app\models.py:67
+#: .\templates\main\my_admin.html:21
 msgid "Type"
 msgstr ""
 
-#: .\main_app\forms.py:143
+#: .\main_app\forms.py:143 .\main_app\models.py:75
 msgid "Status"
 msgstr ""
 
@@ -178,128 +179,132 @@ msgstr ""
 msgid "Project Title"
 msgstr ""
 
-#: .\main_app\models.py:16 .\templates\main\home.html:65
+#: .\main_app\models.py:22 .\templates\main\home.html:65
 msgid "Commercial"
 msgstr ""
 
-#: .\main_app\models.py:17 .\templates\main\home.html:41
+#: .\main_app\models.py:23 .\templates\main\home.html:41
 msgid "Residential"
 msgstr ""
 
-#: .\main_app\models.py:18 .\templates\main\home.html:57
+#: .\main_app\models.py:24 .\templates\main\home.html:57
 msgid "Industrial"
 msgstr ""
 
-#: .\main_app\models.py:19
+#: .\main_app\models.py:25
 msgid "Special Purpose"
 msgstr ""
 
-#: .\main_app\models.py:20 .\templates\main\home.html:49
+#: .\main_app\models.py:26 .\templates\main\home.html:49
 msgid "Lands"
 msgstr ""
 
-#: .\main_app\models.py:23
-msgid "Planing"
+#: .\main_app\models.py:29
+msgid "Planning"
 msgstr ""
 
-#: .\main_app\models.py:24
+#: .\main_app\models.py:30
 msgid "Initial"
 msgstr ""
 
-#: .\main_app\models.py:25
+#: .\main_app\models.py:31
 msgid "Under Construction"
 msgstr ""
 
-#: .\main_app\models.py:26
+#: .\main_app\models.py:32
 msgid "Done"
 msgstr ""
 
-#: .\main_app\models.py:27
+#: .\main_app\models.py:33
 msgid "Ready To Use"
 msgstr ""
 
-#: .\main_app\models.py:41
+#: .\main_app\models.py:36
+msgid "Under Review"
+msgstr ""
+
+#: .\main_app\models.py:37
+msgid "Published"
+msgstr ""
+
+#: .\main_app\models.py:38
+msgid "Hidden by the Developer"
+msgstr ""
+
+#: .\main_app\models.py:39
+msgid "Hidden by he Admin"
+msgstr ""
+
+#: .\main_app\models.py:53
 msgid "Project Name"
 msgstr ""
 
-#: .\main_app\models.py:48
+#: .\main_app\models.py:60
 msgid "Summary"
 msgstr ""
 
-#: .\main_app\models.py:55
-msgid "Type of the Project"
+#: .\main_app\models.py:83
+msgid "Visibility"
 msgstr ""
 
-#: .\main_app\models.py:63
-msgid "The project Status"
+#: .\main_app\models.py:90
+msgid "Area (Square Meters)"
 msgstr ""
 
-#: .\main_app\models.py:70
-msgid "Area in Square Meters"
+#: .\main_app\models.py:127
+msgid "No address"
 msgstr ""
 
-#: .\main_app\models.py:77
-msgid "Project Stakeholders"
-msgstr ""
-
-#: .\main_app\models.py:82
-msgid "Project Neighborhood"
-msgstr ""
-
-#: .\main_app\models.py:113
-msgid "No Address Found"
-msgstr ""
-
-#: .\main_app\models.py:143 .\main_app\models.py:175 .\main_app\models.py:207
+#: .\main_app\models.py:190 .\main_app\models.py:222 .\main_app\models.py:254
 msgid "Project"
 msgstr ""
 
-#: .\main_app\models.py:182
+#: .\main_app\models.py:229
 msgid "Subscription Date"
 msgstr ""
 
-#: .\main_app\models.py:187
+#: .\main_app\models.py:234
 msgid "Referral User"
 msgstr ""
 
-#: .\main_app\models.py:214 .\main_app\models.py:241
-#: .\templates\dashboards\project_sub_phase.html:22
+#: .\main_app\models.py:261 .\main_app\models.py:288
+#: .\templates\main\project_sub_phase.html:22
 msgid "Title"
 msgstr ""
 
-#: .\main_app\models.py:234
+#: .\main_app\models.py:281
 msgid "Main Phase"
 msgstr ""
 
-#: .\main_app\models.py:246 .\templates\dashboards\project_sub_phase.html:23
+#: .\main_app\models.py:293 .\templates\main\project_sub_phase.html:23
 msgid "Start Date"
 msgstr ""
 
-#: .\main_app\models.py:251
+#: .\main_app\models.py:298
 msgid "End Date"
 msgstr ""
 
-#: .\main_app\models.py:256
+#: .\main_app\models.py:303
 msgid "Actual Completion Date"
 msgstr ""
 
-#: .\main_app\models.py:275
+#: .\main_app\models.py:322
 msgid "Sub Phase Update"
 msgstr ""
 
-#: .\main_app\models.py:282
+#: .\main_app\models.py:329
 msgid "Update Date"
 msgstr ""
 
-#: .\main_app\models.py:286
+#: .\main_app\models.py:333
 msgid "Update Description"
 msgstr ""
 
-#: .\main_app\models.py:305
+#: .\main_app\models.py:352
 msgid "Update Sun Phase"
 msgstr ""
 
-#: .\main_app\models.py:311
+#: .\main_app\models.py:358
 msgid "Attachment"
 msgstr ""
 
@@ -308,8 +313,7 @@ msgstr ""
 msgid "All Projects"
 msgstr ""
 
-#: .\main_app\views.py:108 .\templates\dashboards\dashboard_base.html:72
-#: .\templates\main\main_base.html:98
+#: .\main_app\views.py:108 .\templates\main\main_base.html:98
 msgid "My Projects"
 msgstr ""
 
@@ -390,10 +394,6 @@ msgid "Add Update Successfully"
 msgstr ""
 
 #: .\real_estate\settings.py:153
-msgid "English"
-msgstr ""
-
-#: .\real_estate\settings.py:154
 msgid "Arabic"
 msgstr ""
 
@@ -425,8 +425,7 @@ msgstr ""
 
 #: .\templates\account\password_change.html:9
 #: .\templates\account\password_change.html:21
-#: .\templates\dashboards\dashboard_base.html:86
-#: .\templates\main\main_base.html:115
+#: .\templates\main\main_base.html:116
 msgid "Change Password"
 msgstr ""
 
@@ -449,147 +448,21 @@ msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 
-#: .\templates\dashboards\dashboard_base.html:62
-msgid "Open Dashboard Navigation"
-msgstr ""
-
-#: .\templates\dashboards\dashboard_base.html:68
-msgid "Projects Administration"
-msgstr ""
-
-#: .\templates\dashboards\dashboard_base.html:76
-msgid "Account Settings"
-msgstr ""
-
-#: .\templates\dashboards\dashboard_base.html:80
-msgid "Personal Profile"
-msgstr ""
-
-#: .\templates\dashboards\dashboard_base.html:92
-#: .\templates\main\main_base.html:119
-msgid "Logout"
-msgstr ""
-
-#: .\templates\dashboards\dashboard_base.html:110
-msgid "Dashboard"
-msgstr ""
-
-#: .\templates\dashboards\dashboard_base.html:119
-#: .\templates\dashboards\dashboard_base.html:124
-msgid "Hi,"
-msgstr ""
-
-#: .\templates\dashboards\dashboard_base.html:154
-msgid "2022 All right reserved"
-msgstr ""
-
-#: .\templates\dashboards\delete.html:7 .\templates\dashboards\delete.html:29
-#: .\templates\dashboards\project_main_phase.html:18
+#: .\templates\main\delete.html:7 .\templates\main\delete.html:29
+#: .\templates\main\project_main_phase.html:18
 msgid "Delete"
 msgstr ""
 
-#: .\templates\dashboards\delete.html:16
+#: .\templates\main\delete.html:16
 msgid "You are going to delete"
 msgstr ""
 
-#: .\templates\dashboards\delete.html:22
+#: .\templates\main\delete.html:22
 msgid "Are You sure"
 msgstr ""
 
-#: .\templates\dashboards\delete.html:27
+#: .\templates\main\delete.html:27
 msgid "Cancel"
-msgstr ""
-
-#: .\templates\dashboards\my_admin.html:20
-#: .\templates\dashboards\project_main_phases.html:20
-msgid "Name"
-msgstr ""
-
-#: .\templates\dashboards\my_admin.html:22
-msgid "Current Status"
-msgstr ""
-
-#: .\templates\dashboards\my_admin.html:23
-#: .\templates\main\project_detail.html:139
-msgid "Area"
-msgstr ""
-
-#: .\templates\dashboards\my_admin.html:53
-msgid "There Are No Projects Added By You!"
-msgstr ""
-
-#: .\templates\dashboards\my_admin.html:65
-msgid "Add New Project"
-msgstr ""
-
-#: .\templates\dashboards\project_edit.html:15
-msgid "Save"
-msgstr ""
-
-#: .\templates\dashboards\project_images_upload.html:30
-msgid "Upload Image"
-msgstr ""
-
-#: .\templates\dashboards\project_main_phase.html:12
-#: .\templates\dashboards\project_sub_phase.html:12
-msgid "Current Phases"
-msgstr ""
-
-#: .\templates\dashboards\project_main_phase.html:21
-msgid "Edit"
-msgstr ""
-
-#: .\templates\dashboards\project_main_phase.html:38
-#: .\templates\dashboards\project_sub_phase.html:74
-msgid "Submit"
-msgstr ""
-
-#: .\templates\dashboards\project_main_phases.html:7
-msgid "Main Phases"
-msgstr ""
-
-#: .\templates\dashboards\project_main_phases.html:21
-msgid "Action"
-msgstr ""
-
-#: .\templates\dashboards\project_main_phases.html:44
-msgid "Add New Phase"
-msgstr ""
-
-#: .\templates\dashboards\project_sub_phase.html:16
-msgid "Phase"
-msgstr ""
-
-#: .\templates\dashboards\project_sub_phase.html:21
-msgid "#"
-msgstr ""
-
-#: .\templates\dashboards\project_sub_phase.html:24
-msgid "Finish Date"
-msgstr ""
-
-#: .\templates\dashboards\project_sub_phase.html:25
-msgid "Completion Date"
-msgstr ""
-
-#: .\templates\dashboards\project_sub_phase.html:56
-msgid "No Sub-phases added here yet. Use the form below to add them"
-msgstr ""
-
-#: .\templates\dashboards\project_update_base.html:23
-msgid "Project Basic Info"
-msgstr ""
-
-#: .\templates\dashboards\project_update_base.html:27
-msgid "Project Images"
-msgstr ""
-
-#: .\templates\dashboards\project_update_base.html:32
-msgid "Project Main Phases"
-msgstr ""
-
-#: .\templates\dashboards\project_update_base.html:36
-msgid "Project Sub-Phases"
 msgstr ""
 
 #: .\templates\main\forget.html:12
@@ -719,7 +592,8 @@ msgid ""
 "big way."
 msgstr ""
 
-#: .\templates\main\home.html:146
+#: .\templates\main\home.html:146 .\templates\main\home.html:224
+#: .\templates\main\main_base.html:210
 msgid ""
 "We will be #1 in each of five categories: residential real estate, "
 "development/investments, mortgage, title, and insurance."
@@ -737,60 +611,60 @@ msgstr ""
 msgid "WHY SHOULD YOU JOIN US ?"
 msgstr ""
 
-#: .\templates\main\home.html:228 .\templates\main\registration.html:21
+#: .\templates\main\home.html:226 .\templates\main\registration.html:21
 msgid "Register"
 msgstr ""
 
-#: .\templates\main\home.html:242
+#: .\templates\main\home.html:240
 msgid "Our Partners"
 msgstr ""
 
-#: .\templates\main\home.html:303
+#: .\templates\main\home.html:301
 msgid "Get In Touch"
 msgstr ""
 
-#: .\templates\main\home.html:304
+#: .\templates\main\home.html:302 .\templates\main\main_base.html:189
 msgid "Contact us for the latest news about real estate"
 msgstr ""
 
-#: .\templates\main\home.html:308
+#: .\templates\main\home.html:306
 msgid "Office Address"
 msgstr ""
 
-#: .\templates\main\home.html:308
+#: .\templates\main\home.html:306
 msgid "Saudi Arabia, Eastern Province, King Street"
 msgstr ""
 
-#: .\templates\main\home.html:311
+#: .\templates\main\home.html:309
 msgid "Contact Number"
 msgstr ""
 
-#: .\templates\main\home.html:314
+#: .\templates\main\home.html:312
 msgid "Email Address"
 msgstr ""
 
-#: .\templates\main\home.html:318
+#: .\templates\main\home.html:316
 msgid "Career Info"
 msgstr ""
 
-#: .\templates\main\home.html:319
+#: .\templates\main\home.html:317
 msgid "For details of projects and developers,please email us:"
 msgstr ""
 
-#: .\templates\main\home.html:323 .\templates\main\home.html:346
+#: .\templates\main\home.html:321 .\templates\main\home.html:344
 #: .\templates\main\project_detail.html:100
 msgid "Send Message"
 msgstr ""
 
-#: .\templates\main\home.html:332 .\templates\main\project_detail.html:88
+#: .\templates\main\home.html:330 .\templates\main\project_detail.html:88
 msgid "Your Email"
 msgstr ""
 
-#: .\templates\main\home.html:336
+#: .\templates\main\home.html:334
 msgid "Subject"
 msgstr ""
 
-#: .\templates\main\home.html:340 .\templates\main\project_detail.html:94
+#: .\templates\main\home.html:338 .\templates\main\project_detail.html:94
 msgid "Message"
 msgstr ""
 
@@ -827,43 +701,43 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
-#: .\templates\main\main_base.html:111
+#: .\templates\main\main_base.html:112
 msgid "My Profile"
 msgstr ""
 
-#: .\templates\main\main_base.html:172
-msgid "Image not found!"
+#: .\templates\main\main_base.html:120
+msgid "Logout"
 msgstr ""
 
-#: .\templates\main\main_base.html:186
+#: .\templates\main\main_base.html:187
 msgid "Contact Info"
 msgstr ""
 
-#: .\templates\main\main_base.html:196
+#: .\templates\main\main_base.html:197
 msgid "Quick Links"
 msgstr ""
 
-#: .\templates\main\main_base.html:198
+#: .\templates\main\main_base.html:199
 msgid "Our Services"
 msgstr ""
 
-#: .\templates\main\main_base.html:199
+#: .\templates\main\main_base.html:200
 msgid "Investment Solution"
 msgstr ""
 
-#: .\templates\main\main_base.html:200
+#: .\templates\main\main_base.html:201
 msgid "requenly Ask Question"
 msgstr ""
 
-#: .\templates\main\main_base.html:201
+#: .\templates\main\main_base.html:202
 msgid "ow It Work"
 msgstr ""
 
-#: .\templates\main\main_base.html:202
+#: .\templates\main\main_base.html:203
 msgid "ecome a Member"
 msgstr ""
 
-#: .\templates\main\main_base.html:208
+#: .\templates\main\main_base.html:209
 msgid "Appointment"
 msgstr ""
 
@@ -885,6 +759,27 @@ msgstr ""
 
 #: .\templates\main\main_base.html:239
 msgid "Scroll to top"
+msgstr ""
+
+#: .\templates\main\my_admin.html:20
+#: .\templates\main\project_main_phases.html:20
+msgid "Name"
+msgstr ""
+
+#: .\templates\main\my_admin.html:22
+msgid "Current Status"
+msgstr ""
+
+#: .\templates\main\my_admin.html:23 .\templates\main\project_detail.html:139
+msgid "Area"
+msgstr ""
+
+#: .\templates\main\my_admin.html:53
+msgid "There Are No Projects Added By You!"
+msgstr ""
+
+#: .\templates\main\my_admin.html:65
+msgid "Add New Project"
 msgstr ""
 
 #: .\templates\main\phases.html:17
@@ -967,6 +862,76 @@ msgstr ""
 msgid "Subscribe"
 msgstr ""
 
+#: .\templates\main\project_edit.html:15
+msgid "Save"
+msgstr ""
+
+#: .\templates\main\project_images_upload.html:30
+msgid "Upload Image"
+msgstr ""
+
+#: .\templates\main\project_main_phase.html:12
+#: .\templates\main\project_sub_phase.html:12
+msgid "Current Phases"
+msgstr ""
+
+#: .\templates\main\project_main_phase.html:21
+msgid "Edit"
+msgstr ""
+
+#: .\templates\main\project_main_phase.html:38
+#: .\templates\main\project_sub_phase.html:74
+msgid "Submit"
+msgstr ""
+
+#: .\templates\main\project_main_phases.html:7
+msgid "Main Phases"
+msgstr ""
+
+#: .\templates\main\project_main_phases.html:21
+msgid "Action"
+msgstr ""
+
+#: .\templates\main\project_main_phases.html:41
+msgid "Add New Phase"
+msgstr ""
+
+#: .\templates\main\project_sub_phase.html:16
+msgid "Phase"
+msgstr ""
+
+#: .\templates\main\project_sub_phase.html:21
+msgid "#"
+msgstr ""
+
+#: .\templates\main\project_sub_phase.html:24
+msgid "Finish Date"
+msgstr ""
+
+#: .\templates\main\project_sub_phase.html:25
+msgid "Completion Date"
+msgstr ""
+
+#: .\templates\main\project_sub_phase.html:56
+msgid "No Sub-phases added here yet. Use the form below to add them"
+msgstr ""
+
+#: .\templates\main\project_update_base.html:23
+msgid "Project Basic Info"
+msgstr ""
+
+#: .\templates\main\project_update_base.html:27
+msgid "Project Images"
+msgstr ""
+
+#: .\templates\main\project_update_base.html:32
+msgid "Project Main Phases"
+msgstr ""
+
+#: .\templates\main\project_update_base.html:36
+msgid "Project Sub-Phases"
+msgstr ""
+
 #: .\templates\main\projects.html:15
 msgid "Projects List"
 msgstr ""
@@ -1029,10 +994,10 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: .\templates\pagination.html:10
+#: .\templates\pagination.html:11
 msgid "Previous Page"
 msgstr ""
 
-#: .\templates\pagination.html:23
+#: .\templates\pagination.html:25
 msgid "Next Page"
 msgstr ""
