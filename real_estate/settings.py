@@ -147,12 +147,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-LANGUAGES_CODE = 'en'
 
 LANGUAGES = (
-    ('en', _('English')),
+    # ('en', _('English')),
     ('ar', _('Arabic')),
 )
+
+LANGUAGE_CODE = 'ar'
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, "locale/"),
