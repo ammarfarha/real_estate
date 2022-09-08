@@ -128,23 +128,27 @@
                     </div>
                 </div>
             </div>
-        </header>
-        {% if messages %}
-            <div class="container">
-                {% for message in messages %}
-                    <div class="row">
-                        <div class="col-1"></div>
-                        <div class="col-10">
-                            <div{% if message.tags %}
-                                class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %}
-                                role="success">
-                                <strong>{{ message.tags }}</strong> {{ message }}.
-                                <a href="#" style="float: right" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
+            </nav>
+        </div>
+    </div>
+</div>
+</div>
+</header>
+{% if messages %}
+    <div class="container" style="position:fixed; z-index:9999;">
+        {% for message in messages %}
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <div{% if message.tags %}
+                        class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %}
+                        role="success">
+                        <strong>{{ message.tags }}</strong> {{ message }}.
+                        <a href="#" style="float: right" class="close" data-dismiss="alert"
+                           aria-label="close">&times;</a>
                     </div>
-                {% endfor %}
+                </div>
+                <div class="col-3"></div>
             </div>
         {% endif %}
         <!--============== Header Section End ==============-->
