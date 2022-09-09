@@ -91,7 +91,7 @@ Saturday:
 * fix alert messages and make them floating -----------------------------------------------------Done
 * remove dashboard ------------------------------------------------------------------------------Done
 * TRANSLATE ALL STRINGS ------------------------------------------------------Done neet extra testing
-* revamp the display of phases in sub-phases in the project page
+* revamp the display of phases in sub-phases in the project page -------------Done neet extra testing
 * Fix the allauth login/signup functionality
 * Fix project images
 * implement an email notification system (Next step: scalable solution)
