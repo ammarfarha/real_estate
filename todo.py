@@ -93,7 +93,7 @@ Saturday:
 * TRANSLATE ALL STRINGS ------------------------------------------------------Done neet extra testing
 * revamp the display of phases in sub-phases in the project page -------------Done neet extra testing
 * Fix the allauth login/signup functionality
-* Fix project images
+* Fix project images ----------------------------------------------------------------------------Done
 * implement an email notification system (Next step: scalable solution)
 * Implement display for update attachments (all file types) ------------------------------------ Done
 * Implement AJAX pagination for updates

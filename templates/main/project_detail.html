@@ -37,9 +37,7 @@
                     <div class="col-md-12">
                         <div id="single-property" style="width:1200px; height:600px; margin:0 auto 30px;">
                             {% for image in project_images %}
-                                <!-- Slide 1-->
-                                <div class="ls-slide"
-                                     data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;">
+                                <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;">
                                     <img width="1920" src="{{ image.image.url }}" class="ls-bg" alt="{{ inage.alt }}"/>
                                 </div>
                             {% endfor %}
