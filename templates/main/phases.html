@@ -83,12 +83,23 @@
                                                                 href="#"></a></div>
                                                         <p>{{ update.description|safe_markdown }}</p>
                                                         {% for attachment in update.attachments.all %}
-                                                            {# TODO: make flexible for other filetypes like PDF #}
-                                                            <img src="{{ attachment.update_file.url }}"
-                                                                 width="200"
-                                                                 height="200"
-                                                                 class="img-thumbnail"
-                                                                 alt="attachment {{ attachment.pk }}"/>
+                                                            {% if attachment.extension == ".pdf" %}
+                                                                <a href="{{ attachment.update_file.url }}">
+                                                                    <img src="{% static 'images/pdf.png' %}"
+                                                                         width="70px">
+                                                                </a>
+                                                            {% elif attachment.extension == ".docx" %}
+                                                                <a href="{{ attachment.update_file.url }}">
+                                                                    <img src="{% static 'images/word.png' %}"
+                                                                         width="70px">
+                                                                </a>
+                                                            {% else %}
+                                                                <img src="{{ attachment.update_file.url }}"
+                                                                     width="200"
+                                                                     height="200"
+                                                                     class="img-thumbnail"
+                                                                     alt="attachment {{ attachment.pk }}"/>
+                                                            {% endif %}
                                                         {% endfor %}
                                                     </div>
                                                 </div>

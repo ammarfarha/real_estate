@@ -339,6 +339,7 @@ class SubPhaseUpdate(models.Model):
     # srt:
     def __str__(self):
         return "Update " + str(self.sub_phase) + " where " + str(self.description)
+
     # clean:
     # save:
 
@@ -364,5 +365,10 @@ class UpdateAttachment(models.Model):
     # srt:
     def __str__(self):
         return "File for: " + str(self.update)
+
+    def extension(self):
+        import os
+        name, extension = os.path.splitext(self.update_file.name)
+        return extension
     # clean:
     # save:
