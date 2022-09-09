@@ -2,9 +2,10 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from leaflet.forms.widgets import LeafletWidget
 from martor.fields import MartorFormField
-
 from accounts.forms import DateInput
 from .models import Project, ProjectImage, Subscription, MainPhase, SubPhase, SubPhaseUpdate, UpdateAttachment
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, Field
 
 
 class ProjectForm(forms.ModelForm):
@@ -129,31 +130,27 @@ class SubscriptionForm(forms.ModelForm):
 
 
 class ProjectsSearchForm(forms.Form):
-    # name = forms.CharField(
-    #     label=_('Name'),
-    #     widget=forms.TextInput,
-    # )
-    # TODO: display form without labels and with placeholders
     type = forms.ChoiceField(
         label=_('Type'),
         choices=Project.TypeList.choices,
-        # widget=forms.CheckboxSelectMultiple,
-    )
-    status = forms.ChoiceField(
-        label=_('Status'),
-        choices=Project.StatusList.choices,
-        # widget=forms.CheckboxSelectMultiple,
     )
     title = forms.CharField(
         label=_('Project Title')
-        # widget=forms.CheckboxSelectMultiple,
     )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Div('type', css_class="col-lg-3 my-2"),
+            Div('title', css_class="col-lg-7 my-2"),
+        )
         self.fields['type'].required = False
-        self.fields['status'].required = False
+        self.fields['type'].label = ''
+        self.fields['type'].widget.attrs.update({'class': 'form-control'})
         self.fields['title'].required = False
+        self.fields['title'].label = ''
+        self.fields['title'].widget.attrs.update({'placeholder': ''})
 
 
 class SubPhaseUpdateForm(forms.ModelForm):

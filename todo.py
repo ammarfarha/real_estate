@@ -97,7 +97,7 @@ Saturday:
 * implement an email notification system (Next step: scalable solution)
 * Implement display for update attachments (all file types) ------------------------------------ Done
 * Implement AJAX pagination for updates
-* Fix the search form in home page
+* Fix the search form in home page ------------------------------------------------------------- Done
 
 Next Week:
 * Implement a payment gateway like payfort

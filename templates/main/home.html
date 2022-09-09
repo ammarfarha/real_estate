@@ -1,5 +1,6 @@
 {% extends "main/main_base.html" %}
 {% load static i18n %}
+{% load crispy_forms_tags %}
 <!--============== Search Banner Start ==============-->
 {% block main_content %}
     <div class="row p-0"
@@ -10,23 +11,9 @@
                     <div class="banner-search sm-p-0" style="padding-top: 170px; padding-bottom: 190px;">
                         <h2 class="text-center mx-auto text-white">{% trans "Search what you are looking for..." %}</h2>
                         <span class="d-table mx-auto text-white font-medium mb-4">{% trans "We have listed over 100000+ property in our database" %}</span>
-                        <form action="#" class="banner-search-form p-4" method="POST">
+                        <form action="{% url "main_app:projects" %}" class="banner-search-form p-4" method="get">
                             <div class="row">
-                                <div class="col-lg-3 my-2">
-                                    <select class="form-control">
-                                        <option>{% trans "Property Types" %}</option>
-                                        <option>{% trans "House" %}</option>
-                                        <option>{% trans "Office" %}</option>
-                                        <option>{% trans "Appartment" %}</option>
-                                        <option>{% trans "Condos" %}</option>
-                                        <option>{% trans "Villa" %}</option>
-                                        <option>{% trans "Small Family" %}</option>
-                                        <option>{% trans "Single Room" %}</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-7 my-2">
-                                    <input type="text" class="form-control" placeholder="Enter Keyword...">
-                                </div>
+                                {% crispy search_form %}
                                 <div class="col-lg-2 my-2">
                                     <button class="btn btn-primary w-100">{% trans "Search" %}</button>
                                 </div>
