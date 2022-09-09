@@ -37,7 +37,8 @@
                     <div class="col-md-12">
                         <div id="single-property" style="width:1200px; height:600px; margin:0 auto 30px;">
                             {% for image in project_images %}
-                                <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;">
+                                <div class="ls-slide"
+                                     data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;">
                                     <img width="1920" src="{{ image.image.url }}" class="ls-bg" alt="{{ inage.alt }}"/>
                                 </div>
                             {% endfor %}
@@ -51,210 +52,153 @@
 
     <!--============== Property Details Start ==============-->
     <div class="full-row pt-30">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-4 order-xl-2">
-                <!-- Message Form -->
-                <div class="widget widget_contact bg-white border p-30 shadow-one rounded mb-30">
-                    <h5 class="mb-4">{% trans "Developer" %}</h5>
-                    <div class="media mb-3">
-                        <img class="rounded-circle me-3" src="{{ project.developer.get_logo_image_or_avatar }}"
-                             alt="avata">
-                        <div class="media-body">
-                            <div class="h6 mt-0">{{ project.developer.get_full_name }}</div>
-                            <span>{{ project.developer.mobile }}</span><br>
-                            <span>{{ project.developer.email }}</span>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 order-xl-2">
+                    <!-- Message Form -->
+                    <div class="widget widget_contact bg-white border p-30 shadow-one rounded mb-30">
+                        <h5 class="mb-4">{% trans "Developer" %}</h5>
+                        <div class="media mb-3">
+                            <img class="rounded-circle me-3" src="{{ project.developer.get_logo_image_or_avatar }}"
+                                 alt="avata">
+                            <div class="media-body">
+                                <div class="h6 mt-0">{{ project.developer.get_full_name }}</div>
+                                <span>{{ project.developer.mobile }}</span><br>
+                                <span>{{ project.developer.email }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <form class="quick-search form-icon-right" action="#" method="post">
-                        <div class="form-row">
-                            <div class="col-12 mb-10">
-                                <div class="form-group mb-0">
-                                    <input type="text" class="form-control" name="name"
-                                           placeholder="{% trans "Your Name" %}">
+                        <form class="quick-search form-icon-right" action="#" method="post">
+                            <div class="form-row">
+                                <div class="col-12 mb-10">
+                                    <div class="form-group mb-0">
+                                        <input type="text" class="form-control" name="name"
+                                               placeholder="{% trans "Your Name" %}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 mb-10">
-                                <div class="form-group mb-0">
-                                    <input type="text" class="form-control" name="phone"
-                                           placeholder="{% trans "Phone Number" %}">
+                                <div class="col-12 mb-10">
+                                    <div class="form-group mb-0">
+                                        <input type="text" class="form-control" name="phone"
+                                               placeholder="{% trans "Phone Number" %}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 mb-10">
-                                <div class="form-group mb-0">
-                                    <input type="email" class="form-control" name="email"
-                                           placeholder="{% trans 'Your Email' %}">
+                                <div class="col-12 mb-10">
+                                    <div class="form-group mb-0">
+                                        <input type="email" class="form-control" name="email"
+                                               placeholder="{% trans 'Your Email' %}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 mb-10">
-                                <div class="form-group mb-0">
+                                <div class="col-12 mb-10">
+                                    <div class="form-group mb-0">
                                             <textarea class="form-control" name="message"
                                                       placeholder="{% trans 'Message' %}"
                                                       rows="10"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group mb-0">
+                                        <button class="btn btn-primary w-100">{% trans "Send Message" %}</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group mb-0">
-                                    <button class="btn btn-primary w-100">{% trans "Send Message" %}</button>
+                        </form>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="widget widget_contact bg-white border p-30 shadow-one rounded mb-30">
+                            <h5 class="mb-4">{% trans "Invit a Friend" %}</h5>
+                            <p>{% trans "Just copy the link and send it to you friend" %}</p>
+                            <p>{% fullurl 'main_app:ref-subscribe' project.pk user.pk %}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-xl-8 order-xl-1"{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %}>
+                    <div class="property-overview border summary rounded bg-white p-30 mb-30">
+                        <div class="row row-cols-1">
+                            <div class="col">
+                                <h5 class="mb-3">{% trans "Description" %}</h5>
+                                <p>{{ project.summary }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-overview border rounded bg-white p-30 mb-30"{% if LANGUAGE_CODE == 'ar' %}
+                         dir="rtl"{% endif %}>
+                        <div class="row row-cols-1">
+                            <div class="col">
+                                <h5 class="mb-3">{% trans "Project Summary" %}</h5>
+                                <div class="table-striped overflow-x-scroll pb-2">
+                                    <table class="w-100">
+                                        <tbody>
+                                        <tr>
+                                            <td>{% trans "Property Id" %} :</td>
+                                            <td>{{ project.id }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Property Type" %}:</td>
+                                            <td>{{ project.get_type_display }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Area" %} :</td>
+                                            <td> {{ project.area }} M<sup>2</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Address" %} :</td>
+                                            <td>{{ project.get_address }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Developer Name" %} :</td>
+                                            <td>{{ project.developer.get_full_name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Location" %} :</td>
+                                            <td>
+                                                {% leaflet_map "project_location" %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Project Status" %} :</td>
+                                            <td>{{ project.get_statue_display }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                {% if user.is_authenticated %}
-                    <div class="widget widget_contact bg-white border p-30 shadow-one rounded mb-30">
-                        <h5 class="mb-4">{% trans "Invit a Friend" %}</h5>
-                        <p>{% trans "Just copy the link and send it to you friend" %}</p>
-                        <p>{% fullurl 'main_app:ref-subscribe' project.pk user.pk %}</p>
                     </div>
-                {% endif %}
-            </div>
-            <div class="col-xl-8 order-xl-1"{% if LANGUAGE_CODE == 'ar' %} dir="rtl"{% endif %}>
-                <div class="property-overview border summary rounded bg-white p-30 mb-30">
-                    <div class="row row-cols-1">
-                        <div class="col">
-                            <h5 class="mb-3">{% trans "Description" %}</h5>
-                            <p>{{ project.summary }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="property-overview border rounded bg-white p-30 mb-30"{% if LANGUAGE_CODE == 'ar' %}
-                     dir="rtl"{% endif %}>
-                    <div class="row row-cols-1">
-                        <div class="col">
-                            <h5 class="mb-3">{% trans "Project Summary" %}</h5>
-                            <div class="table-striped overflow-x-scroll pb-2">
-                                <table class="w-100">
-                                    <tbody>
-                                    <tr>
-                                        <td>{% trans "Property Id" %} :</td>
-                                        <td>{{ project.id }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{% trans "Property Type" %}:</td>
-                                        <td>{{ project.get_type_display }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{% trans "Area" %} :</td>
-                                        <td> {{ project.area }} M<sup>2</sup></td>
-                                    </tr>
-                                    <tr>
-                                        <td>{% trans "Address" %} :</td>
-                                        <td>{{ project.get_address }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{% trans "Developer Name" %} :</td>
-                                        <td>{{ project.developer.get_full_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{% trans "Location" %} :</td>
-                                        <td>
-                                            {% leaflet_map "project_location" %}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{% trans "Project Status" %} :</td>
-                                        <td>{{ project.get_statue_display }}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="property-overview border rounded bg-white p-30 mb-30"{% if LANGUAGE_CODE == 'ar' %}
-                     dir="rtl"{% endif %}>
-                    <div class="row row-cols-1">
-                        <div class="col">
-                            <h5 class="mb-3">{% trans "Project Phases" %}</h5>
-                            <div class="row row-cols-1">
-                                <div class="col">
-                                    <div class="tab-simple tab-action">
-                                        <ul class="nav-tab-line list-color-secondary d-table mb-3">
-                                            {% for main_phase in main_phases %}
-                                                <li class="{% if forloop.first %}active{% endif %}"
-                                                    data-target="#tb-panel-{{ main_phase.id }}">
-                                                    {{ forloop.counter }}. {{ main_phase.title }}
-                                                    {% if free_phase.id == main_phase.id or is_subscribed %}{% else %}
-                                                        <i class="fa fa-lock"></i>{% endif %}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                        <div class="tab-element">
-                                            {% for main_phase in main_phases %}
-                                                <div class="tab-pane tab-hide" id="tb-panel-{{ main_phase.id }}"
-                                                     style="display: block;">
+                    <div class="property-overview border rounded bg-white p-30 mb-30"{% if LANGUAGE_CODE == 'ar' %}
+                         dir="rtl"{% endif %}>
+                        <div class="row row-cols-1">
+                            <div class="col">
+                                <h5 class="mb-3">{% trans "Project Phases" %}</h5>
+                                <div class="row row-cols-1">
+                                    <!--*************************************************************************************-->
+                                    <div class="timeline">
+                                    {% for main_phase in main_phases %}
+                                        <div class="timeline-container {% if forloop.counter|divisibleby:2 %}left{% else %}right{% endif %}">
+                                            <div class="content">
+                                                <h5>{{ main_phase }}</h5>
                                                 {% if free_phase.id == main_phase.id or is_subscribed %}
+                                                    <ul>
                                                     {% for sub_phase in main_phase.sub_phases.all %}
-                                                        <br>
-                                                        <h4>{{ forloop.counter }}\ {{ sub_phase.title }} <small
-                                                                class="text-gray">({{ sub_phase.start_date }}
-                                                            - {{ sub_phase.end_date }})</small></h4>
-                                                        <br/>
-                                                        {% if sub_phase.updates.all %}
-                                                            <div class="timeline">
-                                                            {% for update in sub_phase.updates.all %}
-                                                                {% if forloop.counter|divisibleby:2 %}
-                                                                    <div class="timeline-container left">
-                                                                {% else %}
-                                                                    <div class="timeline-container right">
-                                                                {% endif %}
-                                                            <div class="content">
-                                                                <h4>{{ update.update_date }}</h4>
-                                                                <p>{{ update.description|safe_markdown }}</p>
-                                                                {% for attachment in update.attachments.all %}
-                                                                    {% if attachment.extension == ".pdf" %}
-                                                                        <a href="{{ attachment.update_file.url }}">
-                                                                            <img src="{% static 'images/pdf.png' %}"
-                                                                                 width="70px">
-                                                                        </a>
-                                                                    {% elif attachment.extension == ".docx" %}
-                                                                        <a href="{{ attachment.update_file.url }}">
-                                                                            <img src="{% static 'images/word.png' %}"
-                                                                                 width="70px">
-                                                                        </a>
-                                                                    {% else %}
-                                                                        <img src="{{ attachment.update_file.url }}"
-                                                                             width="200"
-                                                                             height="200"
-                                                                             class="img-thumbnail"
-                                                                             alt="attachment {{ attachment.pk }}"/>
-                                                                    {% endif %}
-                                                                {% endfor %}
-                                                            </div>
-                                                            </div>
-                                                            {% endfor %}
-                                                        </div>
-                                                        {% else %}
-                                                            <div class="media">
-                                                                <div class="media-body">
-                                                                    <div class="tab-pane tab-hide"
-                                                                         id="tb-panel-{{ main_phase.pk }}"
-                                                                         style="display: block;">
-                                                                        <div class="alert alert-primary">
-                                                                            {% trans "There is no information at this stage yet !" %}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {% endif %}
+                                                        <li>
+                                                            <a href="#">
+                                                                {{ forloop.counter }} - {{ sub_phase.title }}
+                                                            </a>
+                                                        </li>
                                                     {% endfor %}
+                                                    </ul>
                                                 {% else %}
-                                                    <div class="tab-pane tab-hide"
-                                                         id="tb-panel-{{ main_phase.pk }}"
-                                                         style="display: block;">
-                                                        <div class="alert alert-warning">
-                                                            {% trans "Sorry! this information is only available to people who subscribe to the real estate system, if you want to follow it you have to subscribe" %}
-                                                        </div>
-                                                        <a type="button" class="btn btn-primary md-md-none"
-                                                           href="{% url 'main_app:subscribe' project.pk %}">{% trans "Subscribe" %}</a>
+                                                    <div class="alert alert-warning">
+                                                        {% trans "Sorry! this information is only available to people who subscribe to the real estate system, if you want to follow it you have to subscribe" %}
                                                     </div>
+                                                    <a type="button" class="btn btn-primary md-md-none"
+                                                       href="{% url 'main_app:subscribe' project.pk %}">{% trans "Subscribe" %}</a>
                                                 {% endif %}
                                             </div>
-                                            {% endfor %}
-                                            </div>
                                         </div>
+                                    {% empty %}
+                                    {% endfor %}
                                     </div>
+                                    <!--*************************************************************************************-->
+
                                 </div>
                             </div>
                         </div>
